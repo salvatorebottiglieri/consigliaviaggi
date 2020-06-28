@@ -1,41 +1,50 @@
 package com.ingsw.consigliaviaggi.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Struttura {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     private Long id;
     private String nome;
     private String descrizione;
-    @OneToOne
     private Indirizzo indirizzo;
     private TipoStruttura categoria;
     private int prezzo;
-    @ElementCollection
-    private List<String> foto;
-    @OneToMany
+    private Set<String> foto;
     private List<Recensione> recensioni;
 
     public Struttura(){}
 
-    public Struttura(String nome){
+    public Struttura(String nome, String descrizione, Indirizzo indirizzo){
         this.nome = nome;
-    }//TEST
+        this.descrizione = descrizione;
+        this.indirizzo = indirizzo;
+    }
 
-    public Struttura(String nome, String descrizione, Indirizzo indirizzo, TipoStruttura categoria, int rangeDiPrezzo, String foto){
+    public Struttura(String nome, String descrizione, Indirizzo indirizzo, TipoStruttura categoria, int prezzo, String foto){
         this.nome = nome;
         this.descrizione = descrizione;
         this.indirizzo = indirizzo;
         this.categoria = categoria;
-        this.prezzo = rangeDiPrezzo;
-        this.foto = new LinkedList<>();
+        this.prezzo = prezzo;
+        this.foto = new HashSet<>();
         this.foto.add(foto);
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long getId() {
+        return id;
+    }
+
+    private void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -69,18 +78,19 @@ public class Struttura {
         this.prezzo = rangeDiPrezzo;
     }
 
-    public List<String> getFoto() {
+    @ElementCollection
+    public Set<String> getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
-        this.foto.add(foto);
+    public void setFoto(Set<String> foto) {
+        this.foto.addAll(foto);
     }
 
     public void deleteFoto(String foto){
         this.foto.remove(foto);
-
     }
+    @OneToOne(cascade=CascadeType.ALL)
     public Indirizzo getIndirizzo() {
         return indirizzo;
     }
@@ -89,10 +99,9 @@ public class Struttura {
         this.indirizzo = indirizzo;
     }
 
-    public void setFoto(List<String> foto) {
-        this.foto = foto;
-    }
 
+
+    @OneToMany(mappedBy = "struttura")
     public List<Recensione> getRecensioni() {
         return recensioni;
     }
@@ -101,6 +110,13 @@ public class Struttura {
         this.recensioni = recensioni;
     }
 
+    public int getPrezzo() {
+        return prezzo;
+    }
+
+    public void setPrezzo(int prezzo) {
+        this.prezzo = prezzo;
+    }
 
 
 

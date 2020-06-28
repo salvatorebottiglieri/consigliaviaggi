@@ -4,18 +4,25 @@ import javax.persistence.*;
 import java.util.Date;
 @Entity
 public class Recensione {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     private long id;
     private int voto;
     private String descrizione;
-    private int like;
-    private int dislike;
+    private int likes;
+    private int dislikes;
     private Date dataDiAggiunta;
-    @ManyToOne
     private Utente autore;
-    @ManyToOne
     private Struttura struttura;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public long getId() {
+        return id;
+    }
+
+    private void setId(long id) {
+        this.id = id;
+    }
 
     public int getVoto() {
         return voto;
@@ -33,20 +40,20 @@ public class Recensione {
         this.descrizione = descrizione;
     }
 
-    public int getLike() {
-        return like;
+    public int getLikes() {
+        return likes;
     }
 
-    public void setLike(int like) {
-        this.like = like;
+    public void setLikes(int like) {
+        this.likes = like;
     }
 
-    public int getDislike() {
-        return dislike;
+    public int getDislikes() {
+        return dislikes;
     }
 
-    public void setDislike(int dislike) {
-        this.dislike = dislike;
+    public void setDislikes(int dislike) {
+        this.dislikes = dislike;
     }
 
     public Date getDataDiAggiunta() {
@@ -57,6 +64,8 @@ public class Recensione {
         this.dataDiAggiunta = dataDiAggiunta;
     }
 
+    @ManyToOne
+    @JoinColumn
     public Utente getAutore() {
         return autore;
     }
@@ -65,6 +74,8 @@ public class Recensione {
         this.autore = autore;
     }
 
+    @ManyToOne
+    @JoinColumn
     public Struttura getStruttura() {
         return struttura;
     }

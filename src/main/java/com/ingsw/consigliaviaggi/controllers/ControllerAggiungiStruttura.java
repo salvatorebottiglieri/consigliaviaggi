@@ -1,8 +1,15 @@
 package com.ingsw.consigliaviaggi.controllers;
 
 import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
+import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
-import org.springframework.web.bind.annotation.*;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+
 
 @RestController
 public class ControllerAggiungiStruttura {
@@ -13,17 +20,18 @@ public class ControllerAggiungiStruttura {
         this.strutturaDAO = strutturaDAO;
     }
 
-   /* @PostMapping("/struttura")
+    @PostMapping(path = "/struttura", consumes = "application/json", produces = "application/json")
     public Struttura creaStruttura(@RequestBody Struttura nuovaStruttura){
-        return strutturaDAO.save(nuovaStruttura);
+
+        strutturaDAO.save(nuovaStruttura);
+
+        return nuovaStruttura;
     }
 
-    @GetMapping("/struttura")
-    public void annullaInserimento(){}*/
+    @GetMapping(path = "/struttura", consumes = "application/json", produces = "application/json")
+    public void annullaInserimento(){}
 
-    @GetMapping("/test")
-    public Struttura testController(@RequestParam(value = "nome")String name){
+    public boolean isFormAggiungiStrutturaFilled(){return true;}
 
-        return new Struttura(name);
-    }
+
 }

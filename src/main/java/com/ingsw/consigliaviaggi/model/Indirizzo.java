@@ -1,14 +1,12 @@
 package com.ingsw.consigliaviaggi.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Indirizzo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
+    private Long id;
     private String via;
     private int civico;
     private String city;
@@ -21,6 +19,15 @@ public class Indirizzo {
         this.city = city;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getVia() {
         return via;
@@ -30,6 +37,7 @@ public class Indirizzo {
         this.via = via;
     }
 
+
     public int getCivico() {
         return civico;
     }
@@ -37,6 +45,7 @@ public class Indirizzo {
     public void setCivico(int civico) {
         this.civico = civico;
     }
+
 
     public String getCity() {
         return city;

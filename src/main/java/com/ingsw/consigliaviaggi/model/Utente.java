@@ -3,6 +3,7 @@ package com.ingsw.consigliaviaggi.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class Utente {
     private Date dataDiNascita;
     private TipoRecensore rank;
     private VisibilitaRecensori mostraCome;
-    @OneToMany
+    @OneToMany(mappedBy = "autore")
     private List<Recensione> recensioni;
 
     public Utente(){}
@@ -36,8 +37,6 @@ public class Utente {
         this.dataDiNascita = dataDiNascita;
     }
 
-
-    //public Utente(String nomeUtente,String nome, String cognome, String password, Gender sesso, String cittàDiProvenienza, )
 
     public String getNomeUtente() {
         return nomeUtente;
