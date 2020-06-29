@@ -70,7 +70,7 @@ public class Struttura {
         this.foto=foto;
     }
 
-    public void deleteFoto(String foto){
+    public void deleteFoto(){
         this.foto=null;
     }
 
