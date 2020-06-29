@@ -1,9 +1,12 @@
 package com.ingsw.consigliaviaggi.controllers;
 
+import com.ingsw.consigliaviaggi.dao.IndirizzoDAO;
 import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
 
+import org.hibernate.NonUniqueObjectException;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,17 +24,19 @@ public class ControllerAggiungiStruttura {
     }
 
     @PostMapping(path = "/struttura", consumes = "application/json", produces = "application/json")
-    public Struttura creaStruttura(@RequestBody Struttura nuovaStruttura){
+    public boolean creaStruttura(@RequestBody Struttura nuovaStruttura) {
 
-        strutturaDAO.save(nuovaStruttura);
+        Indirizzo indirizzo = new Indirizzo(nuovaStruttura.getIndirizzo().getVia(),nuovaStruttura.getIndirizzo().getCivico(),nuovaStruttura.getIndirizzo().getCity());
+        Struttura struttura = new Struttura(nuovaStruttura.getNome(),nuovaStruttura.getDescrizione(),indirizzo,nuovaStruttura.getCategoria(),nuovaStruttura.getPrezzo(),nuovaStruttura.getFoto());
 
-        return nuovaStruttura;
+       if(!strutturaDAO.existsStrutturaByIdEquals(struttura.getId())) {
+           strutturaDAO.save(struttura);
+           return true;
+       }
+       return false;
+
     }
 
-    @GetMapping(path = "/struttura", consumes = "application/json", produces = "application/json")
-    public void annullaInserimento(){}
-
-    public boolean isFormAggiungiStrutturaFilled(){return true;}
 
 
 }
