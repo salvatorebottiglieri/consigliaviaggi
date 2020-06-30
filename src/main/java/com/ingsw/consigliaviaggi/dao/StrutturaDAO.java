@@ -6,8 +6,6 @@ import com.ingsw.consigliaviaggi.model.TipoStruttura;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
-import java.util.stream.Stream;
-
 
 public interface StrutturaDAO extends CrudRepository<Struttura, String> {
 
