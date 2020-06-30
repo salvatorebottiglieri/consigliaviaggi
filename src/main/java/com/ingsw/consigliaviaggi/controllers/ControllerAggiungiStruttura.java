@@ -4,9 +4,7 @@ import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 
@@ -19,6 +17,7 @@ public class ControllerAggiungiStruttura {
         this.strutturaDAO = strutturaDAO;
     }
 
+
     @PostMapping(path = "/struttura", consumes = "application/json", produces = "application/json")
     public boolean creaStruttura(@RequestBody Struttura nuovaStruttura) {
 
@@ -26,6 +25,7 @@ public class ControllerAggiungiStruttura {
         Struttura struttura = new Struttura(nuovaStruttura.getNome(),nuovaStruttura.getDescrizione(),indirizzo,nuovaStruttura.getCategoria(),nuovaStruttura.getPrezzo(),nuovaStruttura.getFoto());
 
        if(!strutturaDAO.existsStrutturaByIdEquals(struttura.getId())) {
+
            strutturaDAO.save(struttura);
            return true;
        }

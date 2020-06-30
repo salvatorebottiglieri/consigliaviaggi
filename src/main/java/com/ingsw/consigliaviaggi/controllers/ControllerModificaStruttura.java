@@ -11,7 +11,7 @@ import java.util.Optional;
 @RestController
 public class ControllerModificaStruttura {
 
-    private StrutturaDAO strutturaDAO;
+    private final StrutturaDAO strutturaDAO;
 
     public ControllerModificaStruttura(StrutturaDAO strutturaDAO) {
         this.strutturaDAO = strutturaDAO;
@@ -21,11 +21,10 @@ public class ControllerModificaStruttura {
     public boolean modificaNome(@RequestBody String nome, @PathVariable String id)
     {
         Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
-        Struttura struttura;
 
         if(strutturaOptional.isPresent())
         {
-            struttura=strutturaOptional.get();
+            Struttura struttura=strutturaOptional.get();
             struttura.setNome(nome);
             strutturaDAO.save(struttura);
             return true;

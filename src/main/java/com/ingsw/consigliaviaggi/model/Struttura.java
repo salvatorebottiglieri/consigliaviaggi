@@ -25,7 +25,7 @@ public class Struttura {
         this.categoria = categoria;
         this.prezzo = prezzo;
         this.foto = foto;
-        this.id = indirizzo.getVia()+" "+indirizzo.getCivico()+" "+indirizzo.getCity();
+        this.id = nome+"-"+indirizzo.getVia()+"-"+indirizzo.getCivico()+"-"+indirizzo.getCity();
 
     }
 

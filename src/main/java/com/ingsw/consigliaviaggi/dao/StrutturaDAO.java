@@ -21,7 +21,10 @@ public interface StrutturaDAO extends CrudRepository<Struttura, String> {
 
      List<Struttura> getByCategoria(TipoStruttura tipoStruttura);
 
+
   // Metodi ausiliari
 
      boolean existsStrutturaByIdEquals(String id);
+
+
 }

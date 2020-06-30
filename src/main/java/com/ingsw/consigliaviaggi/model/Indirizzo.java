@@ -17,7 +17,7 @@ public class Indirizzo {
         this.via = via;
         this.civico = civico;
         this.city = city;
-        this.id =via+" "+civico+" "+city;
+        this.id =via+"-"+civico+"-"+city;
     }
 
     @Id
