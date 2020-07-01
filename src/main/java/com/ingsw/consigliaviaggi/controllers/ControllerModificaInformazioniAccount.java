@@ -17,20 +17,25 @@ import java.util.Optional;
 public class ControllerModificaInformazioniAccount {
 
     private final UtenteDAO utenteDAO;
+    private final ControllerRegistrazione controller;
 
-    public ControllerModificaInformazioniAccount(UtenteDAO utenteDAO) { this.utenteDAO = utenteDAO; }
+    public ControllerModificaInformazioniAccount(UtenteDAO utenteDAO, ControllerRegistrazione controller) {
+        this.utenteDAO = utenteDAO;
+        this.controller = controller;
+    }
 
     @PutMapping("/utente/nome/{id}")
     public boolean modificaNome(@RequestBody String nome, @PathVariable String id)
     {
-        Optional<Utente> utenteOptional = utenteDAO.findById(id);
+        if(controller.isValidNome(nome)) {
+            Optional<Utente> utenteOptional = utenteDAO.findById(id);
 
-        if(utenteOptional.isPresent())
-        {
-            Utente utente=utenteOptional.get();
-            utente.setNome(nome);
-            utenteDAO.save(utente);
-            return true;
+            if (utenteOptional.isPresent()) {
+                Utente utente = utenteOptional.get();
+                utente.setNome(nome);
+                utenteDAO.save(utente);
+                return true;
+            }
         }
         return false;
     }
@@ -38,14 +43,15 @@ public class ControllerModificaInformazioniAccount {
     @PutMapping("/utente/cognome/{id}")
     public boolean modificaCognome(@RequestBody String cognome, @PathVariable String id)
     {
-        Optional<Utente> utenteOptional = utenteDAO.findById(id);
+        if(controller.isValidCognome(cognome)) {
+            Optional<Utente> utenteOptional = utenteDAO.findById(id);
 
-        if(utenteOptional.isPresent())
-        {
-            Utente utente=utenteOptional.get();
-            utente.setCognome(cognome);
-            utenteDAO.save(utente);
-            return true;
+            if (utenteOptional.isPresent()) {
+                Utente utente = utenteOptional.get();
+                utente.setCognome(cognome);
+                utenteDAO.save(utente);
+                return true;
+            }
         }
         return false;
     }
@@ -54,14 +60,15 @@ public class ControllerModificaInformazioniAccount {
     @PutMapping("/utente/indirizzoEmail/{id}")
     public boolean modificaIndirizzoEmail(@RequestBody String indirizzoEmail, @PathVariable String id)
     {
-        Optional<Utente> utenteOptional = utenteDAO.findById(id);
+        if(controller.isValidIndirizzoEmail(indirizzoEmail)) {
+            Optional<Utente> utenteOptional = utenteDAO.findById(id);
 
-        if(utenteOptional.isPresent())
-        {
-            Utente utente=utenteOptional.get();
-            utente.setIndirizzoEmail(indirizzoEmail);
-            utenteDAO.save(utente);
-            return true;
+            if (utenteOptional.isPresent()) {
+                Utente utente = utenteOptional.get();
+                utente.setIndirizzoEmail(indirizzoEmail);
+                utenteDAO.save(utente);
+                return true;
+            }
         }
         return false;
     }
@@ -69,14 +76,15 @@ public class ControllerModificaInformazioniAccount {
     @PutMapping("/utente/password/{id}")
     public boolean modificaPassword(@RequestBody String password, @PathVariable String id)
     {
-        Optional<Utente> utenteOptional = utenteDAO.findById(id);
+        if(controller.isValidPassword(password)) {
+            Optional<Utente> utenteOptional = utenteDAO.findById(id);
 
-        if(utenteOptional.isPresent())
-        {
-            Utente utente=utenteOptional.get();
-            utente.setPassword(password);
-            utenteDAO.save(utente);
-            return true;
+            if (utenteOptional.isPresent()) {
+                Utente utente = utenteOptional.get();
+                utente.setPassword(password);
+                utenteDAO.save(utente);
+                return true;
+            }
         }
         return false;
     }
@@ -101,14 +109,15 @@ public class ControllerModificaInformazioniAccount {
     @PutMapping("/utente/city/{id}")
     public boolean modificaCity(@RequestBody String city, @PathVariable String id)
     {
-        Optional<Utente> utenteOptional = utenteDAO.findById(id);
+        if(controller.isValidCity(city)) {
+            Optional<Utente> utenteOptional = utenteDAO.findById(id);
 
-        if(utenteOptional.isPresent())
-        {
-            Utente utente=utenteOptional.get();
-            utente.setCity(city);
-            utenteDAO.save(utente);
-            return true;
+            if (utenteOptional.isPresent()) {
+                Utente utente = utenteOptional.get();
+                utente.setCity(city);
+                utenteDAO.save(utente);
+                return true;
+            }
         }
         return false;
     }
@@ -117,14 +126,15 @@ public class ControllerModificaInformazioniAccount {
     @PutMapping("/utente/dataDiNascita/{id}")
     public boolean modificaDataDiNascita(@RequestBody Date dataDiNascita, @PathVariable String id)
     {
-        Optional<Utente> utenteOptional = utenteDAO.findById(id);
+        if(controller.isValidDataDiNascita(dataDiNascita)) {
+            Optional<Utente> utenteOptional = utenteDAO.findById(id);
 
-        if(utenteOptional.isPresent())
-        {
-            Utente utente=utenteOptional.get();
-            utente.setDataDiNascita(dataDiNascita);
-            utenteDAO.save(utente);
-            return true;
+            if (utenteOptional.isPresent()) {
+                Utente utente = utenteOptional.get();
+                utente.setDataDiNascita(dataDiNascita);
+                utenteDAO.save(utente);
+                return true;
+            }
         }
         return false;
     }
