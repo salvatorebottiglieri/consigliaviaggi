@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class ControllerAggiungiStruttura {
 
     private final StrutturaDAO strutturaDAO;
+    private ControllerModificaStruttura controllerModificaStruttura;
 
     public ControllerAggiungiStruttura(StrutturaDAO strutturaDAO) {
         this.strutturaDAO = strutturaDAO;
@@ -21,17 +22,37 @@ public class ControllerAggiungiStruttura {
     @PostMapping(path = "/struttura", consumes = "application/json", produces = "application/json")
     public boolean creaStruttura(@RequestBody Struttura nuovaStruttura) {
 
-        Indirizzo indirizzo = new Indirizzo(nuovaStruttura.getIndirizzo().getVia(),nuovaStruttura.getIndirizzo().getCivico(),nuovaStruttura.getIndirizzo().getCity());
-        Struttura struttura = new Struttura(nuovaStruttura.getNome(),nuovaStruttura.getDescrizione(),indirizzo,nuovaStruttura.getCategoria(),nuovaStruttura.getPrezzo(),nuovaStruttura.getFoto());
+        if(isValidName(nuovaStruttura.getNome()) && isValidDescription(nuovaStruttura.getDescrizione()) && isValidAddress(nuovaStruttura.getIndirizzo()) && isValidPrice(nuovaStruttura.getPrezzo()) ) {
 
-       if(!strutturaDAO.existsStrutturaByIdEquals(struttura.getId())) {
+            Indirizzo indirizzo = new Indirizzo(nuovaStruttura.getIndirizzo().getVia(), nuovaStruttura.getIndirizzo().getCivico(), nuovaStruttura.getIndirizzo().getCity());
+            Struttura struttura = new Struttura(nuovaStruttura.getNome(), nuovaStruttura.getDescrizione(), indirizzo, nuovaStruttura.getCategoria(), nuovaStruttura.getPrezzo(), nuovaStruttura.getFoto());
 
-           strutturaDAO.save(struttura);
-           return true;
-       }
+            if (!strutturaDAO.existsStrutturaByIdEquals(struttura.getId())) {
+                strutturaDAO.save(struttura);
+                return true;
+            }
+        }
        return false;
 
     }
+
+    private boolean isValidName(String nome){
+        int maxNome = 20;
+        return nome.length() <= maxNome && !nome.isEmpty();
+    }
+    private boolean isValidDescription(String descrizione){
+        int maxDescrizione = 100;
+        return descrizione.length() <= maxDescrizione && !descrizione.isEmpty();
+    }
+    private boolean isValidAddress(Indirizzo indirizzo){
+        String via = indirizzo.getVia();
+        int civico = indirizzo.getCivico();
+        String city = indirizzo.getCity();
+        int maxVia = 20;
+        int maxCity = 15;
+        return (via.length() <= maxVia && !via.isEmpty()) && (city.length() <= maxCity && !city.isEmpty()) && (civico > 0);
+    }
+    private boolean isValidPrice(int prezzo){return prezzo>=0 && prezzo<=5;}
 
 
 
