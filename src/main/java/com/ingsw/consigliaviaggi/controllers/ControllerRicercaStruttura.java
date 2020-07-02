@@ -3,6 +3,7 @@ package com.ingsw.consigliaviaggi.controllers;
 import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
 import com.ingsw.consigliaviaggi.model.Struttura;
 import com.ingsw.consigliaviaggi.model.TipoStruttura;
+import com.sun.rowset.FilteredRowSetImpl;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +23,7 @@ public class ControllerRicercaStruttura {
     @PostMapping("/ricerca")
     public List<Struttura> ricercaStruttura(@RequestBody Filtri filtri){
 
-       if(filtri.searchOnlyByNome(filtri)){ return strutturaDAO.findByNome(filtri.getNome()); }
+       if(filtri.searchOnlyByNome(filtri)){ return strutturaDAO.findByNome(filtri.getNome());}
 
        if(filtri.searchOnlyByCategoria(filtri)){return strutturaDAO.findByCategoria(filtri.getCategoria());}
 
@@ -32,6 +33,66 @@ public class ControllerRicercaStruttura {
 
        if(filtri.searchOnlyByPrezzo(filtri)){return strutturaDAO.findByPrezzo(filtri.getPrezzo());}
 
+
+
+       if(filtri.searchOnlyByNomeAndCity(filtri)){return strutturaDAO.findByNomeAndCity(filtri.getNome(),filtri.getCity());}
+
+       if(filtri.searchOnlyByNomeAndCategoria(filtri)){return strutturaDAO.findByNomeAndCategoria(filtri.getNome(),filtri.getCategoria());}
+
+       if(filtri.searchOnlyByNomeAndCoordinate(filtri)){return strutturaDAO.findByNomeAndCoordinate(filtri.getNome(),filtri.getCoordinate());}
+
+       if(filtri.searchOnlyByNomeAndPrezzo(filtri)){return strutturaDAO.findByNomeAndPrezzo(filtri.getNome(),filtri.getPrezzo());}
+
+       if(filtri.searchOnlyByCityAndCategoria(filtri)){return strutturaDAO.findByCityAndCategoria(filtri.getCity(),filtri.getCategoria().toString());}
+
+       if(filtri.searchOnlyByCityAndCoordinate(filtri)){return strutturaDAO.findByCityAndCoordinate(filtri.getCity(),filtri.getCoordinate()); }
+
+       if(filtri.searchOnlyByCityAndPrezzo(filtri)){return strutturaDAO.findByCityAndPrezzo(filtri.getCity(),filtri.getPrezzo());}
+
+       if(filtri.searchOnlyByCategoriaAndCoordinate(filtri)){return strutturaDAO.findByCategoriaAndCoordinate(filtri.getCategoria().toString(),filtri.getCoordinate());}
+
+       if(filtri.searchOnlyByCategoriaAndPrezzo(filtri)){return strutturaDAO.findByCategoriaAndPrezzo(filtri.getCategoria(),filtri.getPrezzo());}
+
+       if(filtri.searchOnlyByCoordinateAndPrezzo(filtri)){return strutturaDAO.findByCoordinateAndPrezzo(filtri.getCoordinate(),filtri.getPrezzo());}
+
+
+
+
+       if(filtri.searchOnlyByNomeAndCityAndCategoria(filtri)){return strutturaDAO.findByNomeAndCityAndCategoria(filtri.getNome(),filtri.getCity(),filtri.getCategoria().toString());}
+
+       if(filtri.searchOnlyByNomeAndCityAndCoordinate(filtri)){return strutturaDAO.findByNomeAndCityAndCoordinate(filtri.getNome(),filtri.getCity(),filtri.getCoordinate());}
+
+       if(filtri.searchOnlyByNomeAndCityAndPrezzo(filtri)){return strutturaDAO.findByNomeAndCityAndPrezzo(filtri.getNome(),filtri.getCity(),filtri.getPrezzo());}
+
+       if(filtri.searchOnlyByCityAndCategoriaAndCoordinate(filtri)){return strutturaDAO.findByCityAndCategoriaAndCoordinate(filtri.getCity(),filtri.getCategoria().toString(),filtri.getCoordinate());}
+
+       if(filtri.searchOnlyByCityAndCategoriaAndPrezzo(filtri)){return strutturaDAO.findByCityAndCategoriaAndPrezzo(filtri.getCity(),filtri.getCategoria().toString(),filtri.getPrezzo());}
+
+       if(filtri.searchOnlyByCategoriaAndCoordinateAndPrezzo(filtri)){return strutturaDAO.findByCategoriaAndCoordinateAndPrezzo(filtri.getCategoria().toString(),filtri.getCoordinate(),filtri.getPrezzo()); }
+
+       if(filtri.searchOnlyByCategoriaAndNomeAndPrezzo(filtri)){return strutturaDAO.findByCategoriaAndNomeAndPrezzo(filtri.getCategoria(),filtri.getNome(),filtri.getPrezzo());}
+
+       if(filtri.searchOnlyByCoordinateAndPrezzoAndNome(filtri)){return strutturaDAO.findByCoordinateAndPrezzoAndNome(filtri.getCoordinate(),filtri.getPrezzo(),filtri.getNome());}
+
+       if(filtri.searchOnlyByCoordinateAndCityAndPrezzo(filtri)){return strutturaDAO.findByCoordinateAndCityAndPrezzo(filtri.getCoordinate(),filtri.getCity(),filtri.getPrezzo());}
+
+       if(filtri.searchOnlyByNomeAndCategoriaAndCoordinate(filtri)){return strutturaDAO.findByNomeAndCategoriaAndCoordinate(filtri.getNome(),filtri.getCategoria().toString(),filtri.getCoordinate());}
+
+
+
+       if(filtri.searchOnlyByNomeAndCityAndCategoriaAndCoordinate(filtri)){return strutturaDAO.findByNomeAndCityAndCategoriaAndCoordinate(filtri.getNome(),filtri.getCity(),filtri.getCategoria().toString(),filtri.getCoordinate());}
+
+       if(filtri.searchOnlyByNomeAndCityAndCategoriaAndPrezzo(filtri)){return strutturaDAO.findByNomeAndCityAndCategoriaAndPrezzo(filtri.getNome(),filtri.getCity(),filtri.getCategoria().toString(),filtri.getPrezzo());}
+
+       if(filtri.searchOnlyByNomeAndCityAndPrezzoAndCoordinate(filtri)){return strutturaDAO.findByNomeAndCityAndPrezzoAndCoordinate(filtri.getNome(),filtri.getCity(),filtri.getPrezzo(),filtri.getCoordinate());}
+
+       if(filtri.searchOnlyByNomeAndPrezzoAndCoordinateAndCategoria(filtri)){return strutturaDAO.findByNomeAndPrezzoAndCoordinateAndCategoria(filtri.getNome(),filtri.getPrezzo(),filtri.getCoordinate(),filtri.getCategoria().toString());}
+
+       if(filtri.searchOnlyByPrezzoAndCoordinateAndCategoriaAndCity(filtri)){return strutturaDAO.findByPrezzoAndCoordinateAndCategoriaAndCity(filtri.getPrezzo(),filtri.getCoordinate(),filtri.getCategoria().toString(),filtri.getCity());}
+
+
+
+       if(filtri.searchOnlyByNomeAndPrezzoAndCoordinateAndCategoriaAndCity(filtri)){return strutturaDAO.findByNomeAndPrezzoAndCoordinateAndCategoriaAndCity(filtri.getNome(),filtri.getPrezzo(),filtri.getCoordinate(),filtri.getCategoria().toString(),filtri.getCity());}
 
        return new LinkedList<>();
     }
