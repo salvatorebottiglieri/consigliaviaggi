@@ -22,13 +22,9 @@ public class ControllerRegistrazione {
     @PostMapping(path = "/registrazione", consumes = "application/json", produces = "application/json")
     public boolean aggiungiUtente(@RequestBody Utente nuovoUtente){
 
-        if(isValidNome(nuovoUtente.getNome()) && isValidCognome(nuovoUtente.getCognome()) && isValidDataDiNascita(nuovoUtente.getDataDiNascita()) && isValidCity(nuovoUtente.getCity()) && isValidIndirizzoEmail(nuovoUtente.getIndirizzoEmail()) && isValidPassword(nuovoUtente.getPassword())) {
-
-            if (!utenteDAO.existsByNomeUtente(nuovoUtente.getNomeUtente())) {
-
-                utenteDAO.save(nuovoUtente);
-                return true;
-            }
+        if(!utenteDAO.existsByNomeUtente(nuovoUtente.getNomeUtente())) {
+            utenteDAO.save(nuovoUtente);
+            return true;
         }
         return false;
 
