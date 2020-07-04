@@ -54,7 +54,6 @@ public class Struttura {
         this.descrizione = descrizione;
     }
 
-    @Enumerated(EnumType.STRING)
     public TipoStruttura getCategoria() {
         return categoria;
     }
