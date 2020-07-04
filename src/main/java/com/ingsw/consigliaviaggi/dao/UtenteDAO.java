@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface UtenteDAO extends CrudRepository<Utente,String> {
 
     boolean existsByNomeUtente(String nomeUtente);
-    Optional<Utente> findByNomeUtente(String nomeUtente);
+
 
     Optional<Utente> findByNomeUtente(String nomeUtente);
 
