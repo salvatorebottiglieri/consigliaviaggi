@@ -3,6 +3,7 @@ package com.ingsw.consigliaviaggi.controllers;
 import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
+
 import org.springframework.web.bind.annotation.*;
 
 
@@ -17,7 +18,8 @@ public class ControllerAggiungiStruttura {
         this.strutturaDAO = strutturaDAO;
     }
 
-    @PostMapping(path = "/admin/aggiungistruttura", consumes = "application/json", produces = "application/json")
+
+    @PostMapping(path = "/struttura", consumes = "application/json", produces = "application/json")
     public boolean creaStruttura(@RequestBody Struttura nuovaStruttura) {
 
         if(isValidName(nuovaStruttura.getNome()) && isValidDescription(nuovaStruttura.getDescrizione()) && isValidAddress(nuovaStruttura.getIndirizzo()) && isValidPrice(nuovaStruttura.getPrezzo()) ) {
@@ -51,5 +53,7 @@ public class ControllerAggiungiStruttura {
         return (via.length() <= maxVia && !via.isEmpty()) && (city.length() <= maxCity && !city.isEmpty()) && (civico > 0);
     }
     private boolean isValidPrice(int prezzo){return prezzo>=0 && prezzo<=5;}
+
+
 
 }

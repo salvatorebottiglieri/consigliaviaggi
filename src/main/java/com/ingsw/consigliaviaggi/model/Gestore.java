@@ -8,9 +8,6 @@ public class Gestore {
 
     private String id;
     private String password;
-    private boolean isActive;
-    private String ruolo;
-
     @Id
     public String getId() {
         return id;
@@ -26,21 +23,5 @@ public class Gestore {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
-
-    public String getRuolo() {
-        return ruolo;
-    }
-
-    public void setRuolo(String ruolo) {
-        this.ruolo = ruolo;
     }
 }
