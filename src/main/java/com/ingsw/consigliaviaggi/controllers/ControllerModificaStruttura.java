@@ -17,7 +17,7 @@ public class ControllerModificaStruttura {
         this.strutturaDAO = strutturaDAO;
     }
 
-    @PutMapping("/struttura/nome/{id}")  //url che richiama questo metodo
+    @PutMapping("/admin/struttura/nome/{id}")  //url che richiama questo metodo
     public boolean modificaNome(@RequestBody String nome, @PathVariable String id) {
 
         int maxNome = 20;
@@ -34,7 +34,7 @@ public class ControllerModificaStruttura {
         return false;
     }
 
-    @PutMapping("/struttura/descrizione/{id}")  //url che richiama questo metodo
+    @PutMapping("/admin/struttura/descrizione/{id}")  //url che richiama questo metodo
     public boolean modificaDescrizione(@RequestBody String descrizione, @PathVariable String id) {
 
         int maxDescrizione = 100;
@@ -52,7 +52,7 @@ public class ControllerModificaStruttura {
         return false;
     }
 
-    @PutMapping("/struttura/indirizzo/{id}")  //url che richiama questo metodo
+    @PutMapping("/admin/struttura/indirizzo/{id}")  //url che richiama questo metodo
     public boolean modificaIndirizzo(@RequestBody Indirizzo indirizzo, @PathVariable String id){
 
         String via = indirizzo.getVia();
@@ -76,7 +76,7 @@ public class ControllerModificaStruttura {
         return false;
     }
 
-    @PutMapping("/struttura/categoria/{id}")  //url che richiama questo metodo
+    @PutMapping("/admin/struttura/categoria/{id}")  //url che richiama questo metodo
     public boolean modificaCategoria(@RequestBody TipoStruttura categoria, @PathVariable String id)
     {
         Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
@@ -92,7 +92,7 @@ public class ControllerModificaStruttura {
         return false;
     }
 
-    @PutMapping("/struttura/prezzo/{id}")  //url che richiama questo metodo
+    @PutMapping("/admin/struttura/prezzo/{id}")  //url che richiama questo metodo
     public boolean modificaPrezzo(@RequestBody int prezzo, @PathVariable String id)
     {
         if( prezzo>= 0 && prezzo<= 5 ) {
@@ -109,7 +109,7 @@ public class ControllerModificaStruttura {
         return false;
     }
 
-    @DeleteMapping("/struttura/{id}")  //url che richiama questo metodo
+    @DeleteMapping("/admin/struttura/elimina/{id}")  //url che richiama questo metodo
     public boolean eliminaStruttura(@PathVariable String id)
     {
         Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
@@ -122,7 +122,7 @@ public class ControllerModificaStruttura {
         return false;
     }
 
-    @PutMapping("/struttura/foto/{id}")  //url che richiama questo metodo
+    @PutMapping("/admin/struttura/foto/{id}")  //url che richiama questo metodo
     public boolean aggiungiFoto(@RequestBody String foto, @PathVariable String id)
     {
         Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
@@ -138,7 +138,7 @@ public class ControllerModificaStruttura {
         return false;
     }
 
-    @DeleteMapping("/struttura/foto/{id}")  //url che richiama questo metodo
+    @DeleteMapping("/admin/struttura/foto/{id}")  //url che richiama questo metodo
     public boolean eliminaFoto(@PathVariable String id)
     {
         Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
