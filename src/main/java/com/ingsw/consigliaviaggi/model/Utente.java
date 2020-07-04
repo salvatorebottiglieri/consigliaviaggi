@@ -22,10 +22,13 @@ public class Utente {
     private VisibilitaRecensori mostraCome;
     @OneToMany(mappedBy = "autore")
     private List<Recensione> recensioni;
+    private boolean isActive;
+    private String ruolo;
 
     public Utente(){}
 
     public Utente(String nomeUtente, String nome, String cognome, String indirizzoEmail, String password, Gender sesso, String city, Date dataDiNascita) {
+
         this.nomeUtente = nomeUtente;
         this.nome = nome;
         this.cognome = cognome;
@@ -34,6 +37,7 @@ public class Utente {
         this.sesso = sesso;
         this.city = city;
         this.dataDiNascita = dataDiNascita;
+        this.ruolo = "ROLE_USER";
     }
 
 
@@ -133,7 +137,33 @@ public class Utente {
 
     public void addRecensione(Recensione recensione){}
 
+    public boolean isActive() {
+        return isActive;
+    }
 
+    public void setActive(boolean active) {
+        isActive = active;
+    }
 
+    public String getRuolo() {
+        return ruolo;
+    }
 
+    public void setRuolo(String ruolo) {
+        this.ruolo = ruolo;
+    }
+
+    @Override
+    public String toString() {
+        return "Utente{" +
+                "nomeUtente='" + nomeUtente + '\'' +
+                ", nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", indirizzoEmail='" + indirizzoEmail + '\'' +
+                ", password='" + password + '\'' +
+                ", sesso=" + sesso +
+                ", city='" + city + '\'' +
+                ", dataDiNascita=" + dataDiNascita +
+                '}';
+    }
 }
