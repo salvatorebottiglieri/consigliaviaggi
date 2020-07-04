@@ -20,6 +20,8 @@ public class Utente {
     private VisibilitaRecensori mostraCome;
     @OneToMany(mappedBy = "autore")
     private List<Recensione> recensioni;
+    private boolean isActive;
+    private final String ruolo = "USER";
 
     public Utente(){}
 
@@ -32,6 +34,7 @@ public class Utente {
         this.sesso = sesso;
         this.city = city;
         this.dataDiNascita = dataDiNascita;
+
     }
 
 
@@ -134,7 +137,15 @@ public class Utente {
 
     public void addRecensione(Recensione recensione){}
 
+    public boolean isActive() {
+        return isActive;
+    }
 
+    public void setActive(boolean active) {
+        isActive = active;
+    }
 
-
+    public String getRuolo() {
+        return ruolo;
+    }
 }
