@@ -1,8 +1,6 @@
 package com.ingsw.consigliaviaggi.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -81,6 +79,7 @@ public class Utente {
         this.password = password;
     }
 
+    @Enumerated(EnumType.STRING)
     public Gender getSesso() {
         return sesso;
     }
@@ -105,6 +104,7 @@ public class Utente {
         this.dataDiNascita = dataDiNascita;
     }
 
+    @Enumerated(EnumType.STRING)
     public TipoRecensore getRank() {
         return rank;
     }
@@ -113,6 +113,7 @@ public class Utente {
         this.rank = rank;
     }
 
+    @Enumerated(EnumType.STRING)
     public VisibilitaRecensori getMostraCome() {
         return mostraCome;
     }
