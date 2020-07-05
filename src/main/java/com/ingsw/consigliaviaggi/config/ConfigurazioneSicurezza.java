@@ -24,7 +24,7 @@ public class ConfigurazioneSicurezza extends WebSecurityConfigurerAdapter {
 
 
     @Autowired
-    //@Qualifier("servizioDatiUtenteImpl")
+    @Qualifier("servizioDatiUtenteImpl")
     private UserDetailsService servizioDatiUtente;
 
 
