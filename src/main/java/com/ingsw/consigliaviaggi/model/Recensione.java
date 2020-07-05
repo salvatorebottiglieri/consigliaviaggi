@@ -14,6 +14,14 @@ public class Recensione {
     private Utente autore;
     private Struttura struttura;
 
+    public Recensione() {
+    }
+
+    public Recensione(int voto, String descrizione) {
+        this.voto = voto;
+        this.descrizione = descrizione;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {

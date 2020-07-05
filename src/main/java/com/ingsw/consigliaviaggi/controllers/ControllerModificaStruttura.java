@@ -6,6 +6,7 @@ import com.ingsw.consigliaviaggi.model.Struttura;
 import com.ingsw.consigliaviaggi.model.TipoStruttura;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.Optional;
 
 @RestController
@@ -17,6 +18,7 @@ public class ControllerModificaStruttura {
         this.strutturaDAO = strutturaDAO;
     }
 
+    @RolesAllowed("ADMIN")
     @PutMapping("/struttura/nome/{id}")  //url che richiama questo metodo
     public boolean modificaNome(@RequestBody String nome, @PathVariable String id) {
 
@@ -34,6 +36,7 @@ public class ControllerModificaStruttura {
         return false;
     }
 
+    @RolesAllowed("ADMIN")
     @PutMapping("/struttura/descrizione/{id}")  //url che richiama questo metodo
     public boolean modificaDescrizione(@RequestBody String descrizione, @PathVariable String id) {
 
@@ -52,6 +55,7 @@ public class ControllerModificaStruttura {
         return false;
     }
 
+    @RolesAllowed("ADMIN")
     @PutMapping("/struttura/indirizzo/{id}")  //url che richiama questo metodo
     public boolean modificaIndirizzo(@RequestBody Indirizzo indirizzo, @PathVariable String id){
 
@@ -76,6 +80,7 @@ public class ControllerModificaStruttura {
         return false;
     }
 
+    @RolesAllowed("ADMIN")
     @PutMapping("/struttura/categoria/{id}")  //url che richiama questo metodo
     public boolean modificaCategoria(@RequestBody TipoStruttura categoria, @PathVariable String id)
     {
@@ -92,6 +97,7 @@ public class ControllerModificaStruttura {
         return false;
     }
 
+    @RolesAllowed("ADMIN")
     @PutMapping("/struttura/prezzo/{id}")  //url che richiama questo metodo
     public boolean modificaPrezzo(@RequestBody int prezzo, @PathVariable String id)
     {
@@ -109,6 +115,7 @@ public class ControllerModificaStruttura {
         return false;
     }
 
+    @RolesAllowed("ADMIN")
     @DeleteMapping("/struttura/{id}")  //url che richiama questo metodo
     public boolean eliminaStruttura(@PathVariable String id)
     {
@@ -122,6 +129,7 @@ public class ControllerModificaStruttura {
         return false;
     }
 
+    @RolesAllowed("ADMIN")
     @PutMapping("/struttura/foto/{id}")  //url che richiama questo metodo
     public boolean aggiungiFoto(@RequestBody String foto, @PathVariable String id)
     {
@@ -138,6 +146,7 @@ public class ControllerModificaStruttura {
         return false;
     }
 
+    @RolesAllowed("ADMIN")
     @DeleteMapping("/struttura/foto/{id}")  //url che richiama questo metodo
     public boolean eliminaFoto(@PathVariable String id)
     {

@@ -1,10 +1,11 @@
 package com.ingsw.consigliaviaggi.dao;
 
-import com.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura;
 import com.ingsw.consigliaviaggi.model.Struttura;
 import com.ingsw.consigliaviaggi.model.TipoStruttura;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
  public interface StrutturaDAO extends CrudRepository<Struttura, String> {
