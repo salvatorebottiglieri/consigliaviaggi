@@ -1,10 +1,12 @@
 package com.ingsw.consigliaviaggi.config;
 
+import com.ingsw.consigliaviaggi.model.Utente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configurers.userdetails.DaoAuthenticationConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -21,17 +23,19 @@ public class ConfigurazioneSicurezza extends WebSecurityConfigurerAdapter {
 
     private static final String ADMIN = "ADMIN";
     private static final String USER = "USER";
+    private static final String REALM = "REALM";
 
 
     @Autowired
-    //@Qualifier("servizioDatiUtenteImpl")
+    @Qualifier("servizioDatiUtenteImpl")
     private UserDetailsService servizioDatiUtente;
 
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("admin").password(getPasswordEncoder().encode("admin")).roles(ADMIN);
         auth.userDetailsService(servizioDatiUtente);
+        auth.inMemoryAuthentication().withUser("admin").password(getPasswordEncoder().encode("admin")).roles(ADMIN);
+
 
     }
 
@@ -48,14 +52,19 @@ public class ConfigurazioneSicurezza extends WebSecurityConfigurerAdapter {
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/all/**").permitAll()
                 .and()
-                .formLogin();
+                .httpBasic().realmName(REALM).authenticationEntryPoint(getBasicAuthEntryPoint());
         http.csrf()
-                .ignoringAntMatchers("/h2-console/**");
+                .disable();
         http.headers()
                 .frameOptions()
                 .sameOrigin();
 
         http.logout();
+    }
+
+    @Bean
+    public CustomBasicAuthenticationEntryPoint getBasicAuthEntryPoint(){
+        return new CustomBasicAuthenticationEntryPoint();
     }
 
     @Bean

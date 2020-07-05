@@ -1,8 +1,10 @@
 package com.ingsw.consigliaviaggi.dao;
 
+import com.ingsw.consigliaviaggi.model.Recensione;
 import com.ingsw.consigliaviaggi.model.Utente;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface UtenteDAO extends CrudRepository<Utente,String> {
@@ -11,5 +13,7 @@ public interface UtenteDAO extends CrudRepository<Utente,String> {
 
 
     Optional<Utente> findByNomeUtente(String nomeUtente);
+
+
 
 }
