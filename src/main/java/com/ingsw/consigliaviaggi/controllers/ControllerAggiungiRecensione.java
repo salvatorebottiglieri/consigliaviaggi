@@ -43,6 +43,7 @@ public class ControllerAggiungiRecensione {
 
         Optional<Struttura> strutturaOptional = strutturaDAO.findById(strutturaId);
         Struttura struttura = strutturaOptional.get();
+        recensione.setStruttura(struttura);
 
         /*List<Recensione> listaRecensioni = new LinkedList<Recensione>();
         listaRecensioni.add(recensione);
