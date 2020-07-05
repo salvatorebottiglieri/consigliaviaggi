@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.Date;
 import java.util.Optional;
 
@@ -23,7 +24,7 @@ public class ControllerModificaInformazioniAccount {
         this.utenteDAO = utenteDAO;
         this.controller = controller;
     }
-
+    @RolesAllowed("USER")
     @PutMapping("/utente/nome/{id}")
     public boolean modificaNome(@RequestBody String nome, @PathVariable String id)
     {
@@ -40,6 +41,7 @@ public class ControllerModificaInformazioniAccount {
         return false;
     }
 
+    @RolesAllowed("USER")
     @PutMapping("/utente/cognome/{id}")
     public boolean modificaCognome(@RequestBody String cognome, @PathVariable String id)
     {
@@ -56,7 +58,7 @@ public class ControllerModificaInformazioniAccount {
         return false;
     }
 
-
+    @RolesAllowed("USER")
     @PutMapping("/utente/indirizzoEmail/{id}")
     public boolean modificaIndirizzoEmail(@RequestBody String indirizzoEmail, @PathVariable String id)
     {
@@ -73,6 +75,7 @@ public class ControllerModificaInformazioniAccount {
         return false;
     }
 
+    @RolesAllowed("USER")
     @PutMapping("/utente/password/{id}")
     public boolean modificaPassword(@RequestBody String password, @PathVariable String id)
     {
@@ -89,7 +92,7 @@ public class ControllerModificaInformazioniAccount {
         return false;
     }
 
-
+    @RolesAllowed("USER")
     @PutMapping("/utente/sesso/{id}")
     public boolean modificaSesso(@RequestBody Gender sesso, @PathVariable String id)
     {
@@ -105,7 +108,7 @@ public class ControllerModificaInformazioniAccount {
         return false;
     }
 
-
+    @RolesAllowed("USER")
     @PutMapping("/utente/city/{id}")
     public boolean modificaCity(@RequestBody String city, @PathVariable String id)
     {
@@ -122,7 +125,7 @@ public class ControllerModificaInformazioniAccount {
         return false;
     }
 
-
+    @RolesAllowed("USER")
     @PutMapping("/utente/dataDiNascita/{id}")
     public boolean modificaDataDiNascita(@RequestBody Date dataDiNascita, @PathVariable String id)
     {
@@ -139,7 +142,7 @@ public class ControllerModificaInformazioniAccount {
         return false;
     }
 
-
+    @RolesAllowed("USER")
     @PutMapping("/utente/mostraCome/{id}")
     public boolean modificaMostraCome(@RequestBody VisibilitaRecensori mostraCome, @PathVariable String id)
     {

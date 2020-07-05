@@ -6,6 +6,7 @@ import com.ingsw.consigliaviaggi.model.Struttura;
 
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 
 
 @RestController
@@ -18,9 +19,9 @@ public class ControllerAggiungiStruttura {
         this.strutturaDAO = strutturaDAO;
     }
 
-
-    @PostMapping(path = "/struttura", consumes = "application/json", produces = "application/json")
-    public boolean creaStruttura(@RequestBody Struttura nuovaStruttura) {
+    @RolesAllowed("ADMIN")
+    @PostMapping(path = "/admin/aggiungistruttura", consumes = "application/json", produces = "application/json")
+    public Struttura creaStruttura(@RequestBody Struttura nuovaStruttura) {
 
         if(isValidName(nuovaStruttura.getNome()) && isValidDescription(nuovaStruttura.getDescrizione()) && isValidAddress(nuovaStruttura.getIndirizzo()) && isValidPrice(nuovaStruttura.getPrezzo()) ) {
 
@@ -28,11 +29,11 @@ public class ControllerAggiungiStruttura {
             Struttura struttura = new Struttura(nuovaStruttura.getNome(), nuovaStruttura.getDescrizione(), indirizzo, nuovaStruttura.getCategoria(), nuovaStruttura.getPrezzo(), nuovaStruttura.getFoto());
 
             if (!strutturaDAO.existsStrutturaByIdEquals(struttura.getId())) {
-                strutturaDAO.save(struttura);
-                return true;
+                return strutturaDAO.save(struttura);
+
             }
         }
-       return false;
+       return null;
 
     }
 

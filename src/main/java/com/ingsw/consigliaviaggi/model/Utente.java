@@ -121,12 +121,13 @@ public class Utente {
         this.mostraCome = mostraCome;
     }
 
+
     public List<Recensione> getRecensioni() {
         return recensioni;
     }
 
     public void setRecensioni(List<Recensione> recensioni) {
-        this.recensioni = recensioni;
+        this.recensioni.addAll(recensioni);
     }
 
     public Utente(String nomeUtente) {
@@ -135,7 +136,7 @@ public class Utente {
 
     public boolean isUtente(){return true;}
 
-    public void addRecensione(Recensione recensione){}
+
 
     public boolean isActive() {
         return isActive;

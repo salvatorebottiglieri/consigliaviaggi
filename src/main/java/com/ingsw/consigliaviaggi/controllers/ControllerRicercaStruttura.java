@@ -20,7 +20,7 @@ public class ControllerRicercaStruttura {
         this.strutturaDAO = strutturaDAO;
     }
 
-    @PostMapping("/ricerca")
+    @PostMapping("/all/ricerca")
     public List<Struttura> ricercaStruttura(@RequestBody Filtri filtri){
 
        if(filtri.searchOnlyByNome(filtri)){ return strutturaDAO.findByNome(filtri.getNome());}

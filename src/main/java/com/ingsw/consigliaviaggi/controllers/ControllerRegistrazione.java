@@ -19,10 +19,12 @@ public class ControllerRegistrazione {
         this.utenteDAO = utenteDAO;
     }
 
-    @PostMapping(path = "/registrazione", consumes = "application/json", produces = "application/json")
+    @PostMapping(path = "/all/registrazione", consumes = "application/json", produces = "application/json")
     public boolean aggiungiUtente(@RequestBody Utente nuovoUtente){
 
         if(!utenteDAO.existsByNomeUtente(nuovoUtente.getNomeUtente())) {
+
+            nuovoUtente.setActive(true);
             utenteDAO.save(nuovoUtente);
             return true;
         }
