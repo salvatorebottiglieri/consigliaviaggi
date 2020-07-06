@@ -31,7 +31,7 @@ public class ControllerAggiungiRecensione {
     private RecensioneDAO recensioneDAO;
 
     @PostMapping("/user/{strutturaId}/aggiungirecensione")
-    public String aggiungiRecensione(@RequestBody Recensione recensione, @PathVariable String strutturaId){
+    public Recensione aggiungiRecensione(@RequestBody Recensione recensione, @PathVariable String strutturaId){
 
         Authentication authentication = interfacciaAutenticazione.getAuthentication();
 
@@ -43,17 +43,11 @@ public class ControllerAggiungiRecensione {
 
         Optional<Struttura> strutturaOptional = strutturaDAO.findById(strutturaId);
         Struttura struttura = strutturaOptional.get();
-
-        /*List<Recensione> listaRecensioni = new LinkedList<Recensione>();
-        listaRecensioni.add(recensione);
-
-        utente.setRecensioni(listaRecensioni);
-        struttura.setRecensioni(listaRecensioni);*/
+        recensione.setStruttura(struttura);
 
         recensioneDAO.save(recensione);
 
-        return recensione.getDescrizione();
-
+        return recensione;
 
 
     }
