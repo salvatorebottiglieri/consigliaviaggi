@@ -1,5 +1,7 @@
 package com.ingsw.consigliaviaggi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.*;
@@ -86,6 +88,7 @@ public class Struttura {
 
 
     @OneToMany(mappedBy = "struttura")
+    @JsonIgnore
     public List<Recensione> getRecensioni() {
         return recensioni;
     }
@@ -127,5 +130,6 @@ public class Struttura {
     public int hashCode() {
         return Objects.hash(nome, indirizzo);
     }
+
 }
 

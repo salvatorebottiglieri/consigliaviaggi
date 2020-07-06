@@ -1,6 +1,7 @@
 package com.ingsw.consigliaviaggi.model;
 
 import javax.persistence.*;
+import java.util.Comparator;
 import java.util.Date;
 @Entity
 public class Recensione {
@@ -90,5 +91,37 @@ public class Recensione {
 
     public void setStruttura(Struttura struttura) {
         this.struttura = struttura;
+    }
+
+    public static class DataComparator implements Comparator<Recensione> {
+
+
+        @Override
+        public int compare(Recensione o1, Recensione o2) {
+
+            if(o1.getDataDiAggiunta().before(o2.getDataDiAggiunta())){
+                return -1;
+            }
+            else if(o1.getDataDiAggiunta().after(o2.getDataDiAggiunta())){
+                return 1;
+            }
+            else{ return 0;}
+        }
+    }
+
+    public static class VoteComparator implements Comparator<Recensione> {
+
+
+        @Override
+        public int compare(Recensione o1, Recensione o2) {
+
+            if(o1.getVoto() <o2.getVoto()){
+                return -1;
+            }
+            else if(o1.getVoto() >o2.getVoto()){
+                return 1;
+            }
+            else{ return 0;}
+        }
     }
 }

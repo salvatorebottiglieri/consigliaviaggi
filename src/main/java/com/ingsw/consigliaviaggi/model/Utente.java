@@ -1,5 +1,7 @@
 package com.ingsw.consigliaviaggi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +21,7 @@ public class Utente {
     private TipoRecensore rank;
     private VisibilitaRecensori mostraCome;
     @OneToMany(mappedBy = "autore")
+    @JsonIgnore
     private List<Recensione> recensioni;
     private boolean isActive;
     private final String ruolo = "USER";
