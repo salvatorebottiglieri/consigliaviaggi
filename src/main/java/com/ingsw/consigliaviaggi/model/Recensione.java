@@ -3,6 +3,9 @@ package com.ingsw.consigliaviaggi.model;
 import javax.persistence.*;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+
 @Entity
 public class Recensione {
 
@@ -14,6 +17,9 @@ public class Recensione {
     private Date dataDiAggiunta;
     private Utente autore;
     private Struttura struttura;
+    private List<LikesUtenti> likesUtenti;
+    private List<DislikesUtenti> dislikesUtenti;
+
 
     public Recensione() {
     }
@@ -21,6 +27,7 @@ public class Recensione {
     public Recensione(int voto, String descrizione) {
         this.voto = voto;
         this.descrizione = descrizione;
+
     }
 
     @Id
@@ -57,6 +64,8 @@ public class Recensione {
         this.likes = like;
     }
 
+    public void addLike(){ this.likes++;}
+
     public int getDislikes() {
         return dislikes;
     }
@@ -64,6 +73,8 @@ public class Recensione {
     public void setDislikes(int dislike) {
         this.dislikes = dislike;
     }
+
+    public void addDislike(){ this.dislikes++;}
 
     public Date getDataDiAggiunta() {
         return dataDiAggiunta;
@@ -91,6 +102,23 @@ public class Recensione {
 
     public void setStruttura(Struttura struttura) {
         this.struttura = struttura;
+    }
+
+    @OneToMany(mappedBy = "recensione")
+    public List<LikesUtenti> getLikesUtenti() {
+        return likesUtenti;
+    }
+
+    public void setLikesUtenti(List<LikesUtenti> likesUtenti) {
+
+    }
+    @OneToMany(mappedBy = "recensione")
+    public List<DislikesUtenti> getDislikesUtenti() {
+        return dislikesUtenti;
+    }
+
+    public void setDislikesUtenti(List<DislikesUtenti> dislikesUtenti) {
+
     }
 
     public static class DataComparator implements Comparator<Recensione> {
@@ -124,4 +152,7 @@ public class Recensione {
             else{ return 0;}
         }
     }
+
+
+
 }
