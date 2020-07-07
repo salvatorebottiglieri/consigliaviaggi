@@ -159,5 +159,3 @@ Password should contain at least one special character ( @, #, %, &, !, $, etcâ€
 
 
 }
-
-
