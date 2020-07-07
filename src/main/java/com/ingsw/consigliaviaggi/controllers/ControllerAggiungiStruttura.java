@@ -14,6 +14,8 @@ public class ControllerAggiungiStruttura {
 
     private final StrutturaDAO strutturaDAO;
 
+    private ControllerValidazioneInput controllerValidazioneInput;
+
     public ControllerAggiungiStruttura(StrutturaDAO strutturaDAO) {
         this.strutturaDAO = strutturaDAO;
     }
@@ -22,7 +24,7 @@ public class ControllerAggiungiStruttura {
     @PostMapping(path = "/admin/aggiungistruttura", consumes = "application/json", produces = "application/json")
     public Struttura creaStruttura(@RequestBody Struttura nuovaStruttura) {
 
-        if(isValidName(nuovaStruttura.getNome()) && isValidDescription(nuovaStruttura.getDescrizione()) && isValidAddress(nuovaStruttura.getIndirizzo()) && isValidPrice(nuovaStruttura.getPrezzo()) ) {
+        if(controllerValidazioneInput.isValidStruttura(nuovaStruttura) ) {
 
             Indirizzo indirizzo = new Indirizzo(nuovaStruttura.getIndirizzo().getVia(), nuovaStruttura.getIndirizzo().getCivico(), nuovaStruttura.getIndirizzo().getCity());
             Struttura struttura = new Struttura(nuovaStruttura.getNome(), nuovaStruttura.getDescrizione(), indirizzo, nuovaStruttura.getCategoria(), nuovaStruttura.getPrezzo(), nuovaStruttura.getFoto());
@@ -31,28 +33,17 @@ public class ControllerAggiungiStruttura {
                 return strutturaDAO.save(struttura);
 
             }
+            else{
+                return null;//lancia eccezione
+            }
+        }else{
+
+            return null;//lancia eccezione
         }
-       return null;
 
     }
 
-    private boolean isValidName(String nome){
-        int maxNome = 20;
-        return nome.length() <= maxNome && !nome.isEmpty();
-    }
-    private boolean isValidDescription(String descrizione){
-        int maxDescrizione = 100;
-        return descrizione.length() <= maxDescrizione && !descrizione.isEmpty();
-    }
-    private boolean isValidAddress(Indirizzo indirizzo){
-        String via = indirizzo.getVia();
-        int civico = indirizzo.getCivico();
-        String city = indirizzo.getCity();
-        int maxVia = 20;
-        int maxCity = 15;
-        return (via.length() <= maxVia && !via.isEmpty()) && (city.length() <= maxCity && !city.isEmpty()) && (civico > 0);
-    }
-    private boolean isValidPrice(int prezzo){return prezzo>=0 && prezzo<=5;}
+
 
 
 

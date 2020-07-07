@@ -4,6 +4,7 @@ import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
 import com.ingsw.consigliaviaggi.model.TipoStruttura;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
@@ -14,6 +15,9 @@ public class ControllerModificaStruttura {
 
     private final StrutturaDAO strutturaDAO;
 
+    @Autowired
+    private ControllerValidazioneInput controllerValidazioneInput;
+
     public ControllerModificaStruttura(StrutturaDAO strutturaDAO) {
         this.strutturaDAO = strutturaDAO;
     }
@@ -22,8 +26,8 @@ public class ControllerModificaStruttura {
     @PutMapping("/struttura/nome/{id}")  //url che richiama questo metodo
     public boolean modificaNome(@RequestBody String nome, @PathVariable String id) {
 
-        int maxNome = 20;
-        if(nome.length() <= maxNome && !nome.isEmpty()) {
+
+        if(controllerValidazioneInput.isValidNome(nome)) {
             Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
 
             if (strutturaOptional.isPresent()) {
@@ -32,6 +36,9 @@ public class ControllerModificaStruttura {
                 strutturaDAO.save(struttura);
                 return true;
             }
+        }else{
+
+            return false;//lancia un'eccezione
         }
         return false;
     }
@@ -40,8 +47,8 @@ public class ControllerModificaStruttura {
     @PutMapping("/struttura/descrizione/{id}")  //url che richiama questo metodo
     public boolean modificaDescrizione(@RequestBody String descrizione, @PathVariable String id) {
 
-        int maxDescrizione = 100;
-        if(descrizione.length() <= maxDescrizione && !descrizione.isEmpty()) {
+
+        if(controllerValidazioneInput.isValidDescriptionStruttura(descrizione)) {
             Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
             Struttura struttura;
 
@@ -52,20 +59,14 @@ public class ControllerModificaStruttura {
                 return true;
             }
         }
-        return false;
+        return false;//lancia eccezzione
     }
 
     @RolesAllowed("ADMIN")
     @PutMapping("/struttura/indirizzo/{id}")  //url che richiama questo metodo
     public boolean modificaIndirizzo(@RequestBody Indirizzo indirizzo, @PathVariable String id){
 
-        String via = indirizzo.getVia();
-        int civico = indirizzo.getCivico();
-        String city = indirizzo.getCity();
-        int maxVia = 20;
-        int maxCity = 15;
-
-        if ((via.length() <= maxVia && !via.isEmpty()) && (city.length() <= maxCity && !city.isEmpty()) && (civico > 0)) {
+        if (controllerValidazioneInput.isValidAddressStruttura(indirizzo)) {
 
             Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
             Struttura struttura;
@@ -77,7 +78,7 @@ public class ControllerModificaStruttura {
                 return true;
             }
         }
-        return false;
+        return false;//lancia eccezione
     }
 
     @RolesAllowed("ADMIN")
@@ -99,9 +100,8 @@ public class ControllerModificaStruttura {
 
     @RolesAllowed("ADMIN")
     @PutMapping("/struttura/prezzo/{id}")  //url che richiama questo metodo
-    public boolean modificaPrezzo(@RequestBody int prezzo, @PathVariable String id)
-    {
-        if( prezzo>= 0 && prezzo<= 5 ) {
+    public boolean modificaPrezzo(@RequestBody int prezzo, @PathVariable String id) {
+
             Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
             Struttura struttura;
 
@@ -111,8 +111,8 @@ public class ControllerModificaStruttura {
                 strutturaDAO.save(struttura);
                 return true;
             }
-        }
-        return false;
+
+        return false;//lancia eccezione
     }
 
     @RolesAllowed("ADMIN")
@@ -163,21 +163,4 @@ public class ControllerModificaStruttura {
         return false;
     }
 
-    private boolean isValidName(String nome){
-        int maxNome = 20;
-        return nome.length() <= maxNome;
-    }
-    private boolean isValidDescription(String descrizione){
-        int maxDescrizione = 100;
-        return descrizione.length() <= maxDescrizione;
-    }
-    private boolean isValidAddress(Indirizzo indirizzo){
-        String via = indirizzo.getVia();
-        int civico = indirizzo.getCivico();
-        String city = indirizzo.getCity();
-        int maxVia = 20;
-        int maxCity = 15;
-        return via.length() <= maxVia && city.length() <= maxCity && civico > 0;
-    }
-    private boolean isValidPrice(int prezzo){return prezzo>=0 &&prezzo<=5;}
 }
