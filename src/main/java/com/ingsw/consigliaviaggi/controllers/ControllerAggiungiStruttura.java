@@ -13,7 +13,6 @@ import javax.annotation.security.RolesAllowed;
 public class ControllerAggiungiStruttura {
 
     private final StrutturaDAO strutturaDAO;
-    private ControllerModificaStruttura controllerModificaStruttura;
 
     public ControllerAggiungiStruttura(StrutturaDAO strutturaDAO) {
         this.strutturaDAO = strutturaDAO;

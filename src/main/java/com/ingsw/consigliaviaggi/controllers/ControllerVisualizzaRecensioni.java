@@ -56,7 +56,7 @@ public class ControllerVisualizzaRecensioni {
 
         List<Recensione> recensioni = struttura.getRecensioni();
 
-        recensioni.sort(new Recensione.DataComparator());
+        recensioni.sort(new Recensione.VoteComparator());
         Collections.reverse( recensioni );
 
         return recensioni;

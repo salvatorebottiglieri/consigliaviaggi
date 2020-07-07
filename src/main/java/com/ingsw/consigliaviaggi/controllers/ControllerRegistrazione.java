@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Date;
 import java.util.regex.Pattern;
 
+import static com.ingsw.consigliaviaggi.model.VisibilitaRecensori.NOMEUTENTE;
+
 @RestController
 public class ControllerRegistrazione {
 
@@ -20,15 +22,16 @@ public class ControllerRegistrazione {
     }
 
     @PostMapping(path = "/all/registrazione", consumes = "application/json", produces = "application/json")
-    public boolean aggiungiUtente(@RequestBody Utente nuovoUtente){
+    public Utente aggiungiUtente(@RequestBody Utente nuovoUtente){
 
         if(!utenteDAO.existsByNomeUtente(nuovoUtente.getNomeUtente())) {
 
             nuovoUtente.setActive(true);
+            nuovoUtente.setMostraCome(NOMEUTENTE);
             utenteDAO.save(nuovoUtente);
-            return true;
+            return nuovoUtente;
         }
-        return false;
+        return null;
 
 
     }
@@ -71,6 +74,7 @@ Password should contain at least one special character ( @, #, %, &, !, $, etcâ€
 
                 if (password.contains(str1)) {
                     count = 1;
+                    break;
                 }
             }
             if (count == 0) {
@@ -105,6 +109,7 @@ Password should contain at least one special character ( @, #, %, &, !, $, etcâ€
                 String str1 = Character.toString(c);
                 if (password.contains(str1)) {
                     count = 1;
+                    break;
                 }
             }
             if (count == 0) {
@@ -124,6 +129,7 @@ Password should contain at least one special character ( @, #, %, &, !, $, etcâ€
 
                 if (password.contains(str1)) {
                     count = 1;
+                    break;
                 }
             }
             if (count == 0) {
