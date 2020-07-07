@@ -16,8 +16,10 @@ public class DislikesUtenti {
 
     public DislikesUtenti(){}
 
-    public DislikesUtenti(String nomeUtente) {
+    public DislikesUtenti(String nomeUtente,Recensione recensione) {
+
         this.nomeUtente = nomeUtente;
+        this.recensione = recensione;
     }
 
     public String getNomeUtente() {

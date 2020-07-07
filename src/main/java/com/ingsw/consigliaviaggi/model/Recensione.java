@@ -1,5 +1,7 @@
 package com.ingsw.consigliaviaggi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Comparator;
 import java.util.Date;
@@ -12,8 +14,8 @@ public class Recensione {
     private long id;
     private int voto;
     private String descrizione;
-    private int likes;
-    private int dislikes;
+    private int likes =0;
+    private int dislikes= 0;
     private Date dataDiAggiunta;
     private Utente autore;
     private Struttura struttura;
@@ -21,8 +23,7 @@ public class Recensione {
     private List<DislikesUtenti> dislikesUtenti;
 
 
-    public Recensione() {
-    }
+    public Recensione() {}
 
     public Recensione(int voto, String descrizione) {
         this.voto = voto;
@@ -105,14 +106,13 @@ public class Recensione {
     }
 
     @OneToMany(mappedBy = "recensione")
-    public List<LikesUtenti> getLikesUtenti() {
-        return likesUtenti;
-    }
+    @JsonIgnore
+    public List<LikesUtenti> getLikesUtenti() {return likesUtenti;}
 
-    public void setLikesUtenti(List<LikesUtenti> likesUtenti) {
-
-    }
+    public void setLikesUtenti(List<LikesUtenti> likesUtenti) { }
     @OneToMany(mappedBy = "recensione")
+    @JsonIgnore
+
     public List<DislikesUtenti> getDislikesUtenti() {
         return dislikesUtenti;
     }

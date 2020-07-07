@@ -3,11 +3,9 @@ package com.ingsw.consigliaviaggi.controllers;
 import com.ingsw.consigliaviaggi.dao.DislikeUtenteDAO;
 import com.ingsw.consigliaviaggi.dao.LikeUtenteDAO;
 import com.ingsw.consigliaviaggi.dao.RecensioneDAO;
-import com.ingsw.consigliaviaggi.dao.UtenteDAO;
 import com.ingsw.consigliaviaggi.model.DislikesUtenti;
 import com.ingsw.consigliaviaggi.model.LikesUtenti;
 import com.ingsw.consigliaviaggi.model.Recensione;
-import com.ingsw.consigliaviaggi.model.Utente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,11 +38,12 @@ public class ControllerVotaRecensione {
         Optional<Recensione> recensioneOptional = recensioneDAO.findById(recensioneId);
         Recensione recensione = recensioneOptional.get();
 
+
         Authentication authentication = interfacciaAutenticazione.getAuthentication();
         String nomeUtenteAutoreLike = authentication.getName();
 
-        List<LikesUtenti> likesUtenti = recensione.getLikesUtenti();
-        List<DislikesUtenti> dislikesUtenti = recensione.getDislikesUtenti();
+        List<LikesUtenti> likesUtenti = likeUtenteDAO.findALLByRecensione(recensione);
+        List<DislikesUtenti> dislikesUtenti = dislikeUtenteDAO.findALLByRecensione(recensione);
 
 
         for (LikesUtenti utente:likesUtenti){
@@ -53,22 +52,24 @@ public class ControllerVotaRecensione {
 
         }
 
+
         for (DislikesUtenti utente:dislikesUtenti){
 
             if(utente.getNomeUtente().equals(nomeUtenteAutoreLike)){
 
                 dislikeUtenteDAO.delete(utente);
-                likeUtenteDAO.save(new LikesUtenti(nomeUtenteAutoreLike));
+                likeUtenteDAO.save(new LikesUtenti(nomeUtenteAutoreLike,recensione));
+                recensione.addLike();
+                recensioneDAO.save(recensione);
                 return true;
 
             }
         }
 
-        likeUtenteDAO.save(new LikesUtenti(nomeUtenteAutoreLike));
+        likeUtenteDAO.save(new LikesUtenti(nomeUtenteAutoreLike,recensione));
+        recensione.addLike();
+        recensioneDAO.save(recensione);
         return true;
-
-
-
 
     }
     @PutMapping("/user/{recensioneId}/addDislike")
@@ -80,8 +81,8 @@ public class ControllerVotaRecensione {
         Authentication authentication = interfacciaAutenticazione.getAuthentication();
         String nomeUtenteAutoreDislike = authentication.getName();
 
-        List<LikesUtenti> likesUtenti = recensione.getLikesUtenti();
-        List<DislikesUtenti> dislikesUtenti = recensione.getDislikesUtenti();
+        List<LikesUtenti> likesUtenti = likeUtenteDAO.findALLByRecensione(recensione);
+        List<DislikesUtenti> dislikesUtenti = dislikeUtenteDAO.findALLByRecensione(recensione);
 
         for (DislikesUtenti utente:dislikesUtenti){
 
@@ -94,16 +95,18 @@ public class ControllerVotaRecensione {
             if(utente.getNomeUtente().equals(nomeUtenteAutoreDislike)){
 
                 likeUtenteDAO.delete(utente);
-                dislikeUtenteDAO.save(new DislikesUtenti(nomeUtenteAutoreDislike));
+                dislikeUtenteDAO.save(new DislikesUtenti(nomeUtenteAutoreDislike,recensione));
+                recensione.addDislike();
+                recensioneDAO.save(recensione);
                 return true;
 
             }
         }
 
-        dislikeUtenteDAO.save(new DislikesUtenti(nomeUtenteAutoreDislike));
+        dislikeUtenteDAO.save(new DislikesUtenti(nomeUtenteAutoreDislike,recensione));
+        recensione.addDislike();
+        recensioneDAO.save(recensione);
         return true;
-
-
 
     }
 
