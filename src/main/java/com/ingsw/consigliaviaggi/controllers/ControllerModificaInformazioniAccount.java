@@ -14,21 +14,21 @@ import java.util.Date;
 import java.util.Optional;
 
 @RestController
-
 public class ControllerModificaInformazioniAccount {
 
     private final UtenteDAO utenteDAO;
-    private final ControllerRegistrazione controller;
 
-    public ControllerModificaInformazioniAccount(UtenteDAO utenteDAO, ControllerRegistrazione controller) {
+    private ControllerValidazioneInput controllerValidazioneInput;
+
+    public ControllerModificaInformazioniAccount(UtenteDAO utenteDAO) {
         this.utenteDAO = utenteDAO;
-        this.controller = controller;
     }
+
     @RolesAllowed("USER")
     @PutMapping("/utente/nome/{id}")
     public boolean modificaNome(@RequestBody String nome, @PathVariable String id)
     {
-        if(controller.isValidNome(nome)) {
+        if(controllerValidazioneInput.isValidNome(nome)) {
             Optional<Utente> utenteOptional = utenteDAO.findById(id);
 
             if (utenteOptional.isPresent()) {
@@ -45,7 +45,7 @@ public class ControllerModificaInformazioniAccount {
     @PutMapping("/utente/cognome/{id}")
     public boolean modificaCognome(@RequestBody String cognome, @PathVariable String id)
     {
-        if(controller.isValidCognome(cognome)) {
+        if(controllerValidazioneInput.isValidCognome(cognome)) {
             Optional<Utente> utenteOptional = utenteDAO.findById(id);
 
             if (utenteOptional.isPresent()) {
@@ -62,7 +62,7 @@ public class ControllerModificaInformazioniAccount {
     @PutMapping("/utente/indirizzoEmail/{id}")
     public boolean modificaIndirizzoEmail(@RequestBody String indirizzoEmail, @PathVariable String id)
     {
-        if(controller.isValidIndirizzoEmail(indirizzoEmail)) {
+        if(controllerValidazioneInput.isValidIndirizzoEmail(indirizzoEmail)) {
             Optional<Utente> utenteOptional = utenteDAO.findById(id);
 
             if (utenteOptional.isPresent()) {
@@ -79,7 +79,7 @@ public class ControllerModificaInformazioniAccount {
     @PutMapping("/utente/password/{id}")
     public boolean modificaPassword(@RequestBody String password, @PathVariable String id)
     {
-        if(controller.isValidPassword(password)) {
+        if(controllerValidazioneInput.isValidPassword(password)) {
             Optional<Utente> utenteOptional = utenteDAO.findById(id);
 
             if (utenteOptional.isPresent()) {
@@ -112,7 +112,7 @@ public class ControllerModificaInformazioniAccount {
     @PutMapping("/utente/city/{id}")
     public boolean modificaCity(@RequestBody String city, @PathVariable String id)
     {
-        if(controller.isValidCity(city)) {
+        if(controllerValidazioneInput.isValidCity(city)) {
             Optional<Utente> utenteOptional = utenteDAO.findById(id);
 
             if (utenteOptional.isPresent()) {
@@ -129,7 +129,7 @@ public class ControllerModificaInformazioniAccount {
     @PutMapping("/utente/dataDiNascita/{id}")
     public boolean modificaDataDiNascita(@RequestBody Date dataDiNascita, @PathVariable String id)
     {
-        if(controller.isValidDataDiNascita(dataDiNascita)) {
+        if(controllerValidazioneInput.isValidDataDiNascita(dataDiNascita)) {
             Optional<Utente> utenteOptional = utenteDAO.findById(id);
 
             if (utenteOptional.isPresent()) {

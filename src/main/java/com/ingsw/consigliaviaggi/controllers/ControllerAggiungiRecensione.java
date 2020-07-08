@@ -30,24 +30,33 @@ public class ControllerAggiungiRecensione {
     @Autowired
     private RecensioneDAO recensioneDAO;
 
+    private ControllerValidazioneInput controllerValidazioneInput;
+
     @PostMapping("/user/{strutturaId}/aggiungirecensione")
     public Recensione aggiungiRecensione(@RequestBody Recensione recensione, @PathVariable String strutturaId){
 
-        Authentication authentication = interfacciaAutenticazione.getAuthentication();
+        if(controllerValidazioneInput.isValidRecensione(recensione)) {
 
-        recensione.setDataDiAggiunta(new Date());
+            Authentication authentication = interfacciaAutenticazione.getAuthentication();
 
-        Optional<Utente> utenteOptional = utenteDAO.findByNomeUtente(authentication.getName());
-        Utente utente = utenteOptional.get();
-        recensione.setAutore(utente);
+            recensione.setDataDiAggiunta(new Date());
 
-        Optional<Struttura> strutturaOptional = strutturaDAO.findById(strutturaId);
-        Struttura struttura = strutturaOptional.get();
-        recensione.setStruttura(struttura);
+            Optional<Utente> utenteOptional = utenteDAO.findByNomeUtente(authentication.getName());
+            Utente utente = utenteOptional.get();
+            recensione.setAutore(utente);
 
-        recensioneDAO.save(recensione);
+            Optional<Struttura> strutturaOptional = strutturaDAO.findById(strutturaId);
+            Struttura struttura = strutturaOptional.get();
+            recensione.setStruttura(struttura);
 
-        return recensione;
+            recensioneDAO.save(recensione);
+
+            return recensione;
+
+        }
+
+        else{return null;//lancia un'eccezione
+             }
 
 
     }

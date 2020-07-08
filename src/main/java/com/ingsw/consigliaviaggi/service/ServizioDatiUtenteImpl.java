@@ -22,6 +22,7 @@ import java.util.Optional;
 public class ServizioDatiUtenteImpl implements UserDetailsService {
 
     private final BCryptPasswordEncoder bcryptEncoder = new BCryptPasswordEncoder(4);
+
     @Autowired
     private UtenteDAO utenteDAO;
 
