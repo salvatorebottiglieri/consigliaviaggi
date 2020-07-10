@@ -6,31 +6,35 @@ import com.ingsw.consigliaviaggi.dao.UtenteDAO;
 import com.ingsw.consigliaviaggi.model.Recensione;
 import com.ingsw.consigliaviaggi.model.Struttura;
 import com.ingsw.consigliaviaggi.model.Utente;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
 import java.util.*;
 
 @RestController
 public class ControllerAggiungiRecensione {
 
-    @Autowired
-    private InterfacciaAutenticazione interfacciaAutenticazione;
 
-    @Autowired
-    private StrutturaDAO strutturaDAO;
+    private final InterfacciaAutenticazione interfacciaAutenticazione;
 
-    @Autowired
-    private UtenteDAO utenteDAO;
 
-    @Autowired
-    private RecensioneDAO recensioneDAO;
+    private final StrutturaDAO strutturaDAO;
 
-    private ControllerValidazioneInput controllerValidazioneInput;
+
+    private final UtenteDAO utenteDAO;
+
+
+    private final RecensioneDAO recensioneDAO;
+
+    private final ControllerValidazioneInput controllerValidazioneInput;
+
+    public ControllerAggiungiRecensione(InterfacciaAutenticazione interfacciaAutenticazione, StrutturaDAO strutturaDAO, UtenteDAO utenteDAO, RecensioneDAO recensioneDAO, ControllerValidazioneInput controllerValidazioneInput) {
+        this.interfacciaAutenticazione = interfacciaAutenticazione;
+        this.strutturaDAO = strutturaDAO;
+        this.utenteDAO = utenteDAO;
+        this.recensioneDAO = recensioneDAO;
+        this.controllerValidazioneInput = controllerValidazioneInput;
+    }
 
     @PostMapping("/user/{strutturaId}/aggiungirecensione")
     public Recensione aggiungiRecensione(@RequestBody Recensione recensione, @PathVariable String strutturaId){

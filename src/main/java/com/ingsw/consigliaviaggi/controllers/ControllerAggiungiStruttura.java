@@ -14,15 +14,17 @@ public class ControllerAggiungiStruttura {
 
     private final StrutturaDAO strutturaDAO;
 
-    private ControllerValidazioneInput controllerValidazioneInput;
+    private final ControllerValidazioneInput controllerValidazioneInput;
 
-    public ControllerAggiungiStruttura(StrutturaDAO strutturaDAO) {
+    public ControllerAggiungiStruttura(StrutturaDAO strutturaDAO, ControllerValidazioneInput controllerValidazioneInput) {
         this.strutturaDAO = strutturaDAO;
+        this.controllerValidazioneInput = controllerValidazioneInput;
     }
 
     @RolesAllowed("ADMIN")
     @PostMapping(path = "/admin/aggiungistruttura", consumes = "application/json", produces = "application/json")
     public Struttura creaStruttura(@RequestBody Struttura nuovaStruttura) {
+
 
         if(controllerValidazioneInput.isValidStruttura(nuovaStruttura) ) {
 

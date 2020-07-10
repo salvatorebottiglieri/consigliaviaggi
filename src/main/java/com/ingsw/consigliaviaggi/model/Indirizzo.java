@@ -8,12 +8,12 @@ public class Indirizzo {
 
     private String id;
     private String via;
-    private int civico;
+    private Integer civico;
     private String city;
 
     public Indirizzo(){}
 
-    public Indirizzo(String via, int civico, String city){
+    public Indirizzo(String via, Integer civico, String city){
         this.via = via;
         this.civico = civico;
         this.city = city;
@@ -37,15 +37,13 @@ public class Indirizzo {
         this.via = via;
     }
 
-
-    public int getCivico() {
+    public Integer getCivico() {
         return civico;
     }
 
-    public void setCivico(int civico) {
+    public void setCivico(Integer civico) {
         this.civico = civico;
     }
-
 
     public String getCity() {
         return city;
@@ -70,8 +68,8 @@ public class Indirizzo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Indirizzo indirizzo = (Indirizzo) o;
-        return civico == indirizzo.civico &&
-                via.equals(indirizzo.via) &&
+        return via.equals(indirizzo.via) &&
+                civico.equals(indirizzo.civico) &&
                 city.equals(indirizzo.city);
     }
 

@@ -5,17 +5,22 @@ import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Recensione;
 import com.ingsw.consigliaviaggi.model.Struttura;
 import com.ingsw.consigliaviaggi.model.Utente;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.regex.Pattern;
 
+
+
 @Component
 public class ControllerValidazioneInput {
 
-    @Autowired
-    private UtenteDAO utenteDAO;
+
+    private final UtenteDAO utenteDAO;
+
+    public ControllerValidazioneInput(UtenteDAO utenteDAO) {
+        this.utenteDAO = utenteDAO;
+    }
 
 
     public boolean isValidRecensione(Recensione recensione){
@@ -58,13 +63,18 @@ public class ControllerValidazioneInput {
         return descrizione.length() <= maxDescrizione && !descrizione.isEmpty();
     }
     public boolean isValidAddressStruttura(Indirizzo indirizzo){
+
         String via = indirizzo.getVia();
         int civico = indirizzo.getCivico();
         String city = indirizzo.getCity();
-        int maxVia = 20;
-        int maxCity = 15;
-        return (via.length() <= maxVia && !via.isEmpty()) && (city.length() <= maxCity && !city.isEmpty()) && (civico > 0);
+        int maxVia = 50;
+        int maxCity = 50;
+
+        return via.length() <= maxVia && !(via.isEmpty()) && city.length() <= maxCity && !(city.isEmpty()) && civico > 0;
+
     }
+
+
     private boolean isValidPriceStruttura(int prezzo){return prezzo>=0 && prezzo<=5;}
 
     public boolean isValidNome(String nome){
