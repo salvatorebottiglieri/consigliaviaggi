@@ -14,11 +14,14 @@ import java.util.List;
 @Component
 public class ControllerCheckRank {
 
-    @Autowired
-    UtenteDAO utenteDAO;
 
-    @Autowired
-    RecensioneDAO recensioneDAO;
+    private final UtenteDAO utenteDAO;
+    private final RecensioneDAO recensioneDAO;
+
+    public ControllerCheckRank(UtenteDAO utenteDAO, RecensioneDAO recensioneDAO) {
+        this.utenteDAO = utenteDAO;
+        this.recensioneDAO = recensioneDAO;
+    }
 
     @Scheduled(cron = "0 0 12 * * ?")//il metodo parte ogni giorno a mezzanotte
     public void checkRankUtenti() {
