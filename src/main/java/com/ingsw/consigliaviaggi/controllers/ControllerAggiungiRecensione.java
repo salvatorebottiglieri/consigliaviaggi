@@ -3,12 +3,17 @@ package com.ingsw.consigliaviaggi.controllers;
 import com.ingsw.consigliaviaggi.dao.RecensioneDAO;
 import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
 import com.ingsw.consigliaviaggi.dao.UtenteDAO;
+import com.ingsw.consigliaviaggi.exception.NoValidInputException;
 import com.ingsw.consigliaviaggi.model.Recensione;
 import com.ingsw.consigliaviaggi.model.Struttura;
 import com.ingsw.consigliaviaggi.model.Utente;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+
+import javax.annotation.security.RolesAllowed;
 import java.util.*;
 
 @RestController
@@ -36,8 +41,9 @@ public class ControllerAggiungiRecensione {
         this.controllerValidazioneInput = controllerValidazioneInput;
     }
 
+    @RolesAllowed("USER")
     @PostMapping("/user/{strutturaId}/aggiungirecensione")
-    public Recensione aggiungiRecensione(@RequestBody Recensione recensione, @PathVariable String strutturaId){
+    public ResponseEntity<Object> aggiungiRecensione(@RequestBody Recensione recensione, @PathVariable String strutturaId){
 
         if(controllerValidazioneInput.isValidRecensione(recensione)) {
 
@@ -55,12 +61,10 @@ public class ControllerAggiungiRecensione {
 
             recensioneDAO.save(recensione);
 
-            return recensione;
+            return new ResponseEntity<>("La recensione è stata aggiunta con successo", HttpStatus.OK);
 
         }
-
-        else{return null;//lancia un'eccezione
-             }
+        else{throw new NoValidInputException("Input non valido");}
 
 
     }

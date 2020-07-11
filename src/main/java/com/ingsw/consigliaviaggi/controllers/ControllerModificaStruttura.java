@@ -1,13 +1,16 @@
 package com.ingsw.consigliaviaggi.controllers;
 
 import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
+import com.ingsw.consigliaviaggi.exception.NoValidInputException;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
 import com.ingsw.consigliaviaggi.model.TipoStruttura;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
+import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
 @RestController
@@ -15,16 +18,17 @@ public class ControllerModificaStruttura {
 
     private final StrutturaDAO strutturaDAO;
 
-    @Autowired
-    private ControllerValidazioneInput controllerValidazioneInput;
 
-    public ControllerModificaStruttura(StrutturaDAO strutturaDAO) {
+    private final ControllerValidazioneInput controllerValidazioneInput;
+
+    public ControllerModificaStruttura(StrutturaDAO strutturaDAO, ControllerValidazioneInput controllerValidazioneInput) {
         this.strutturaDAO = strutturaDAO;
+        this.controllerValidazioneInput = controllerValidazioneInput;
     }
 
     @RolesAllowed("ADMIN")
     @PutMapping("/struttura/nome/{id}")  //url che richiama questo metodo
-    public boolean modificaNome(@RequestBody String nome, @PathVariable String id) {
+    public ResponseEntity<Object> modificaNome(@RequestBody String nome, @PathVariable String id) {
 
 
         if(controllerValidazioneInput.isValidNome(nome)) {
@@ -34,18 +38,17 @@ public class ControllerModificaStruttura {
                 Struttura struttura = strutturaOptional.get();
                 struttura.setNome(nome);
                 strutturaDAO.save(struttura);
-                return true;
+                return new ResponseEntity<>("Il nome è stato modificato con successo", HttpStatus.OK);
             }
-        }else{
+            else{ throw new EntityNotFoundException(); }
 
-            return false;//lancia un'eccezione
-        }
-        return false;
+        }else{ throw new NoValidInputException("Input non valido: nome non valido"); }
+
     }
 
     @RolesAllowed("ADMIN")
     @PutMapping("/struttura/descrizione/{id}")  //url che richiama questo metodo
-    public boolean modificaDescrizione(@RequestBody String descrizione, @PathVariable String id) {
+    public ResponseEntity<Object> modificaDescrizione(@RequestBody String descrizione, @PathVariable String id) {
 
 
         if(controllerValidazioneInput.isValidDescriptionStruttura(descrizione)) {
@@ -56,15 +59,19 @@ public class ControllerModificaStruttura {
                 struttura = strutturaOptional.get();
                 struttura.setDescrizione(descrizione);
                 strutturaDAO.save(struttura);
-                return true;
+                return new ResponseEntity<>("La descrizione è stata modificata con successo", HttpStatus.OK);
             }
+            else{ throw new EntityNotFoundException(); }
         }
-        return false;//lancia eccezzione
+        else{ throw new NoValidInputException("Input non valido: Descrizione non valida"); }
+
+
+
     }
 
     @RolesAllowed("ADMIN")
     @PutMapping("/struttura/indirizzo/{id}")  //url che richiama questo metodo
-    public boolean modificaIndirizzo(@RequestBody Indirizzo indirizzo, @PathVariable String id){
+    public ResponseEntity<Object> modificaIndirizzo(@RequestBody Indirizzo indirizzo, @PathVariable String id){
 
         if (controllerValidazioneInput.isValidAddressStruttura(indirizzo)) {
 
@@ -75,15 +82,17 @@ public class ControllerModificaStruttura {
                 struttura = strutturaOptional.get();
                 struttura.setIndirizzo(indirizzo);
                 strutturaDAO.save(struttura);
-                return true;
+                return new ResponseEntity<>("l'indirizzo è stato modificato con successo", HttpStatus.OK);
             }
-        }
-        return false;//lancia eccezione
+            else{ throw new EntityNotFoundException();}
+
+        }else{ throw new NoValidInputException("Input non valido: Indirizzo non valido"); }
+
     }
 
     @RolesAllowed("ADMIN")
     @PutMapping("/struttura/categoria/{id}")  //url che richiama questo metodo
-    public boolean modificaCategoria(@RequestBody TipoStruttura categoria, @PathVariable String id)
+    public ResponseEntity<Object> modificaCategoria(@RequestBody TipoStruttura nuovaCategoria, @PathVariable String id)
     {
         Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
         Struttura struttura;
@@ -91,16 +100,19 @@ public class ControllerModificaStruttura {
         if(strutturaOptional.isPresent())
         {
             struttura=strutturaOptional.get();
-            struttura.setCategoria(categoria);
+            struttura.setCategoria(nuovaCategoria);
+            if( struttura.freeOfCharge() ){
+                struttura.setPrezzo(0);
+            }
             strutturaDAO.save(struttura);
-            return true;
+            return new ResponseEntity<>("la categoria è stata modificata con successo", HttpStatus.OK);
         }
-        return false;
+        else{throw new EntityNotFoundException();}
     }
 
     @RolesAllowed("ADMIN")
     @PutMapping("/struttura/prezzo/{id}")  //url che richiama questo metodo
-    public boolean modificaPrezzo(@RequestBody int prezzo, @PathVariable String id) {
+    public ResponseEntity<Object> modificaPrezzo(@RequestBody int prezzo, @PathVariable String id) {
 
             Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
             Struttura struttura;
@@ -109,29 +121,31 @@ public class ControllerModificaStruttura {
                 struttura = strutturaOptional.get();
                 struttura.setPrezzo(prezzo);
                 strutturaDAO.save(struttura);
-                return true;
+                return new ResponseEntity<>("Il prezzo è stato modificato con successo", HttpStatus.OK);
             }
+            else{throw new EntityNotFoundException();}
 
-        return false;//lancia eccezione
+
     }
 
     @RolesAllowed("ADMIN")
     @DeleteMapping("/struttura/{id}")  //url che richiama questo metodo
-    public boolean eliminaStruttura(@PathVariable String id)
+    public ResponseEntity<Object> eliminaStruttura(@PathVariable String id)
     {
         Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
 
         if(strutturaOptional.isPresent())
         {
             strutturaDAO.deleteById(id);
-            return true;
+            return new ResponseEntity<>("la struttura è stata eliminata con successo", HttpStatus.OK);
         }
-        return false;
+        else{throw new EntityNotFoundException();}
+
     }
 
     @RolesAllowed("ADMIN")
     @PutMapping("/struttura/foto/{id}")  //url che richiama questo metodo
-    public boolean aggiungiFoto(@RequestBody String foto, @PathVariable String id)
+    public ResponseEntity<Object> aggiungiFoto(@RequestBody String foto, @PathVariable String id)
     {
         Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
         Struttura struttura;
@@ -141,14 +155,15 @@ public class ControllerModificaStruttura {
             struttura=strutturaOptional.get();
             struttura.setFoto(foto);
             strutturaDAO.save(struttura);
-            return true;
+            return new ResponseEntity<>("la foto è stata aggiunta con successo", HttpStatus.OK);
         }
-        return false;
+        else{throw new EntityNotFoundException();}
+
     }
 
     @RolesAllowed("ADMIN")
     @DeleteMapping("/struttura/foto/{id}")  //url che richiama questo metodo
-    public boolean eliminaFoto(@PathVariable String id)
+    public ResponseEntity<Object> eliminaFoto(@PathVariable String id)
     {
         Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
         Struttura struttura;
@@ -158,9 +173,12 @@ public class ControllerModificaStruttura {
             struttura=strutturaOptional.get();
             struttura.deleteFoto();
             strutturaDAO.save(struttura);
-            return true;
+            return new ResponseEntity<>("la foto è stata eliminata con successo", HttpStatus.OK);
         }
-        return false;
+        else{throw new EntityNotFoundException();}
+
     }
+
+
 
 }

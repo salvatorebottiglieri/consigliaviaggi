@@ -29,7 +29,14 @@ public class ControllerValidazioneInput {
 
         String descrizione = recensione.getDescrizione();
 
-        return descrizione.length() <= MAXLENGTH && !descrizione.isEmpty();
+        if( descrizione.length() <= MAXLENGTH && !descrizione.isEmpty() ){
+
+            return true;
+        }
+        else{
+            return false;
+        }
+
     }
 
     public boolean isValidStruttura(Struttura struttura){

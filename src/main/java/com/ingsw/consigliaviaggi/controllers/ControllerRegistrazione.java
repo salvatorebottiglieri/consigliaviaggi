@@ -2,14 +2,14 @@ package com.ingsw.consigliaviaggi.controllers;
 
 
 import com.ingsw.consigliaviaggi.dao.UtenteDAO;
+import com.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion;
+import com.ingsw.consigliaviaggi.exception.NoValidInputException;
 import com.ingsw.consigliaviaggi.model.Utente;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Date;
-import java.util.regex.Pattern;
 
 import static com.ingsw.consigliaviaggi.model.VisibilitaRecensori.NOMEUTENTE;
 
@@ -18,15 +18,16 @@ public class ControllerRegistrazione {
 
     private final UtenteDAO utenteDAO;
 
-    @Autowired
-    private ControllerValidazioneInput controllerValidazioneInput;
 
-    public ControllerRegistrazione(UtenteDAO utenteDAO) {
+    private final ControllerValidazioneInput controllerValidazioneInput;
+
+    public ControllerRegistrazione(UtenteDAO utenteDAO, ControllerValidazioneInput controllerValidazioneInput) {
         this.utenteDAO = utenteDAO;
+        this.controllerValidazioneInput = controllerValidazioneInput;
     }
 
     @PostMapping(path = "/all/registrazione", consumes = "application/json", produces = "application/json")
-    public Utente aggiungiUtente(@RequestBody Utente nuovoUtente){
+    public ResponseEntity<Object> aggiungiUtente(@RequestBody Utente nuovoUtente){
 
         if(controllerValidazioneInput.isValidRegistrazione(nuovoUtente)) {
 
@@ -35,10 +36,14 @@ public class ControllerRegistrazione {
                 nuovoUtente.setActive(true);
                 nuovoUtente.setMostraCome(NOMEUTENTE);
                 utenteDAO.save(nuovoUtente);
-                return nuovoUtente;
+                return new ResponseEntity<>("La registrazione è avvenuta con successo", HttpStatus.OK);
+            }
+            else{
+                throw new ElementIsAlreadyPresentExcetpion("Utente già presente");
             }
         }
-        return null;//lancia eccezione
+        else{ throw new NoValidInputException("Input non valido"); }
+
 
 
     }

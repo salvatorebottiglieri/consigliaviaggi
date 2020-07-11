@@ -3,7 +3,6 @@ package com.ingsw.consigliaviaggi.controllers;
 import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
 import com.ingsw.consigliaviaggi.model.Recensione;
 import com.ingsw.consigliaviaggi.model.Struttura;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,8 +12,12 @@ import java.util.*;
 @RestController
 public class ControllerVisualizzaRecensioni {
 
-    @Autowired
-    private StrutturaDAO strutturaDAO;
+
+    private final StrutturaDAO strutturaDAO;
+
+    public ControllerVisualizzaRecensioni(StrutturaDAO strutturaDAO) {
+        this.strutturaDAO = strutturaDAO;
+    }
 
     @GetMapping("/all/{strutturaId}/recenti")
     public List<Recensione> getRecensioniRecenti(@PathVariable String strutturaId){

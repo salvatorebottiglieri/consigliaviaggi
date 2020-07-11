@@ -1,12 +1,17 @@
 package com.ingsw.consigliaviaggi.controllers;
 
 import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
+import com.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion;
+import com.ingsw.consigliaviaggi.exception.NoValidInputException;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
+import javax.xml.bind.Element;
 
 
 @RestController
@@ -23,7 +28,7 @@ public class ControllerAggiungiStruttura {
 
     @RolesAllowed("ADMIN")
     @PostMapping(path = "/admin/aggiungistruttura", consumes = "application/json", produces = "application/json")
-    public Struttura creaStruttura(@RequestBody Struttura nuovaStruttura) {
+    public ResponseEntity<Object> creaStruttura(@RequestBody Struttura nuovaStruttura) {
 
 
         if(controllerValidazioneInput.isValidStruttura(nuovaStruttura) ) {
@@ -32,15 +37,18 @@ public class ControllerAggiungiStruttura {
             Struttura struttura = new Struttura(nuovaStruttura.getNome(), nuovaStruttura.getDescrizione(), indirizzo, nuovaStruttura.getCategoria(), nuovaStruttura.getPrezzo(), nuovaStruttura.getFoto());
 
             if (!strutturaDAO.existsStrutturaByIdEquals(struttura.getId())) {
-                return strutturaDAO.save(struttura);
+
+                strutturaDAO.save(struttura);
+                return new ResponseEntity<>("La struttura è stata aggiunta con successo", HttpStatus.OK);
 
             }
             else{
-                return null;//lancia eccezione
+
+                throw new ElementIsAlreadyPresentExcetpion("Struttura già presente");
             }
         }else{
 
-            return null;//lancia eccezione
+            throw new NoValidInputException("Input non valido");
         }
 
     }

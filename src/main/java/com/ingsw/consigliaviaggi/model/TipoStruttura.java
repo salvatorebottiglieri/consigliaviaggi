@@ -3,5 +3,24 @@ package com.ingsw.consigliaviaggi.model;
 public enum TipoStruttura {
 
     hotel,
-    agriturismo
+    museo,
+    discoteca,
+    badandbreakfast,
+    tour,
+    ristorante,
+    negozio,
+    palestra,
+    parcotematico,
+    agriturismo,
+    bar,
+
+    piazza,
+    spiaggia,
+    riservanaturale,
+    borgo,
+    luogodiculto,
+    lago,
+    parconaturale,
+    monumentostorico,
+    stazioneferroviaria
 }
