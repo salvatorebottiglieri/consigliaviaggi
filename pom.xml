@@ -42,7 +42,7 @@
 		<dependency>
 			<groupId>com.byteowls</groupId>
 			<artifactId>jopencage</artifactId>
-			<version>1.1.0</version>
+			<version>1.2.1</version>
 		</dependency>
 
 		<dependency>
@@ -74,12 +74,7 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.byteowls/jopencage -->
-		<dependency>
-			<groupId>com.byteowls</groupId>
-			<artifactId>jopencage</artifactId>
-			<version>1.1.0</version>
-		</dependency>
+
 		<dependency>
 			   <groupId>org.glassfish.jersey.core</groupId>
 			   <artifactId>jersey-client</artifactId>
