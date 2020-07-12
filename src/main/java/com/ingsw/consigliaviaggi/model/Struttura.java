@@ -15,20 +15,19 @@ public class Struttura {
     private Indirizzo indirizzo;
     private TipoStruttura categoria;
     private int prezzo;
-    private String foto;
+    private List<Immagine> foto;
     private List<Recensione> recensioni;
 
     public Struttura(){}
 
-    public Struttura( String nome, String descrizione, Indirizzo indirizzo, TipoStruttura categoria, int prezzo, String foto){
+    public Struttura( String nome, String descrizione, Indirizzo indirizzo, TipoStruttura categoria, int prezzo){
         this.nome = nome;
         this.descrizione = descrizione;
         this.indirizzo = indirizzo;
         this.categoria = categoria;
         this.prezzo = prezzo;
-        this.foto = foto;
+        this.foto = new LinkedList<>();
         this.id = nome+"-"+indirizzo.getVia()+"-"+indirizzo.getCivico()+"-"+indirizzo.getCity();
-
     }
 
     @Id
@@ -65,16 +64,28 @@ public class Struttura {
         this.categoria = categoria;
     }
 
-    public String getFoto() {
+    @OneToMany(mappedBy = "strutturaFoto")
+    @JsonIgnore
+    public List<Immagine> getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
-        this.foto=foto;
+    public void setFoto(List<Immagine> foto) {}
+
+    public void setImmagine(Immagine immagine){
+        this.foto.add(immagine);
     }
 
-    public void deleteFoto(){
-        this.foto=null;
+    public void deleteFoto(Immagine immagine){
+
+        for (Immagine immagineCorrente:this.foto){
+
+            if(immagineCorrente.equals(immagine)){
+
+            }
+
+
+        }
     }
 
     @OneToOne(cascade=CascadeType.ALL)

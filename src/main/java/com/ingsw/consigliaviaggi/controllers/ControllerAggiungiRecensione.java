@@ -21,16 +21,9 @@ public class ControllerAggiungiRecensione {
 
 
     private final InterfacciaAutenticazione interfacciaAutenticazione;
-
-
     private final StrutturaDAO strutturaDAO;
-
-
     private final UtenteDAO utenteDAO;
-
-
     private final RecensioneDAO recensioneDAO;
-
     private final ControllerValidazioneInput controllerValidazioneInput;
 
     public ControllerAggiungiRecensione(InterfacciaAutenticazione interfacciaAutenticazione, StrutturaDAO strutturaDAO, UtenteDAO utenteDAO, RecensioneDAO recensioneDAO, ControllerValidazioneInput controllerValidazioneInput) {
