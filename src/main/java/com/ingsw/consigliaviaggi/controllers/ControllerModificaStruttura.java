@@ -1,33 +1,39 @@
 package com.ingsw.consigliaviaggi.controllers;
 
+import com.ingsw.consigliaviaggi.dao.ImmagineDAO;
 import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
 import com.ingsw.consigliaviaggi.exception.NoValidInputException;
+import com.ingsw.consigliaviaggi.model.Immagine;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
 import com.ingsw.consigliaviaggi.model.TipoStruttura;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityNotFoundException;
+import java.io.IOException;
+import java.util.LinkedList;
 import java.util.Optional;
 
 @RestController
 public class ControllerModificaStruttura {
 
     private final StrutturaDAO strutturaDAO;
-
-
+    private final ImmagineDAO immagineDAO;
     private final ControllerValidazioneInput controllerValidazioneInput;
 
-    public ControllerModificaStruttura(StrutturaDAO strutturaDAO, ControllerValidazioneInput controllerValidazioneInput) {
+    public ControllerModificaStruttura(StrutturaDAO strutturaDAO, ImmagineDAO immagineDAO, ControllerValidazioneInput controllerValidazioneInput) {
         this.strutturaDAO = strutturaDAO;
+        this.immagineDAO = immagineDAO;
         this.controllerValidazioneInput = controllerValidazioneInput;
     }
 
     @RolesAllowed("ADMIN")
-    @PutMapping("/struttura/nome/{id}")  //url che richiama questo metodo
+    @PutMapping("/admin/struttura/nome/{id}")  //url che richiama questo metodo
     public ResponseEntity<Object> modificaNome(@RequestBody String nome, @PathVariable String id) {
 
 
@@ -47,7 +53,7 @@ public class ControllerModificaStruttura {
     }
 
     @RolesAllowed("ADMIN")
-    @PutMapping("/struttura/descrizione/{id}")  //url che richiama questo metodo
+    @PutMapping("/admin/struttura/descrizione/{id}")  //url che richiama questo metodo
     public ResponseEntity<Object> modificaDescrizione(@RequestBody String descrizione, @PathVariable String id) {
 
 
@@ -70,7 +76,7 @@ public class ControllerModificaStruttura {
     }
 
     @RolesAllowed("ADMIN")
-    @PutMapping("/struttura/indirizzo/{id}")  //url che richiama questo metodo
+    @PutMapping("/admin/struttura/indirizzo/{id}")  //url che richiama questo metodo
     public ResponseEntity<Object> modificaIndirizzo(@RequestBody Indirizzo indirizzo, @PathVariable String id){
 
         if (controllerValidazioneInput.isValidAddressStruttura(indirizzo)) {
@@ -91,7 +97,7 @@ public class ControllerModificaStruttura {
     }
 
     @RolesAllowed("ADMIN")
-    @PutMapping("/struttura/categoria/{id}")  //url che richiama questo metodo
+    @PutMapping("/admin/struttura/categoria/{id}")  //url che richiama questo metodo
     public ResponseEntity<Object> modificaCategoria(@RequestBody TipoStruttura nuovaCategoria, @PathVariable String id)
     {
         Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
@@ -111,7 +117,7 @@ public class ControllerModificaStruttura {
     }
 
     @RolesAllowed("ADMIN")
-    @PutMapping("/struttura/prezzo/{id}")  //url che richiama questo metodo
+    @PutMapping("/admin/struttura/prezzo/{id}")  //url che richiama questo metodo
     public ResponseEntity<Object> modificaPrezzo(@RequestBody int prezzo, @PathVariable String id) {
 
             Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
@@ -129,7 +135,7 @@ public class ControllerModificaStruttura {
     }
 
     @RolesAllowed("ADMIN")
-    @DeleteMapping("/struttura/{id}")  //url che richiama questo metodo
+    @DeleteMapping("/admin/struttura/{id}")  //url che richiama questo metodo
     public ResponseEntity<Object> eliminaStruttura(@PathVariable String id)
     {
         Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
@@ -144,35 +150,40 @@ public class ControllerModificaStruttura {
     }
 
     @RolesAllowed("ADMIN")
-    @PutMapping("/struttura/foto/{id}")  //url che richiama questo metodo
-    public ResponseEntity<Object> aggiungiFoto(@RequestBody String foto, @PathVariable String id)
-    {
+    @PutMapping("/admin/struttura/foto/{id}")  //url che richiama questo metodo
+    public ResponseEntity<Object> aggiungiFoto(@RequestParam("file") MultipartFile foto, @PathVariable String id) throws IOException {
+
         Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
         Struttura struttura;
 
         if(strutturaOptional.isPresent())
         {
             struttura=strutturaOptional.get();
-            struttura.setFoto(foto);
-            strutturaDAO.save(struttura);
-            return new ResponseEntity<>("la foto è stata aggiunta con successo", HttpStatus.OK);
+
+            Immagine immagine = salvaImmagine(foto,struttura);
+
+
+            return new ResponseEntity<>("La foto è stata aggiunta con successo", HttpStatus.OK);
         }
         else{throw new EntityNotFoundException();}
 
     }
 
     @RolesAllowed("ADMIN")
-    @DeleteMapping("/struttura/foto/{id}")  //url che richiama questo metodo
-    public ResponseEntity<Object> eliminaFoto(@PathVariable String id)
+    @DeleteMapping("/admin/struttura/foto/{idFoto}")  //url che richiama questo metodo
+    public ResponseEntity<Object> eliminaFoto(@PathVariable String idFoto)
     {
-        Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
+        Optional<Immagine> immagineOptional = immagineDAO.findById(idFoto);
         Struttura struttura;
 
-        if(strutturaOptional.isPresent())
+        if(immagineOptional.isPresent())
         {
-            struttura=strutturaOptional.get();
-            struttura.deleteFoto();
+            struttura = immagineOptional.get().getStruttura();
+            struttura.deleteFoto(immagineOptional.get());
             strutturaDAO.save(struttura);
+
+            immagineDAO.delete(immagineOptional.get());
+
             return new ResponseEntity<>("la foto è stata eliminata con successo", HttpStatus.OK);
         }
         else{throw new EntityNotFoundException();}
@@ -180,5 +191,16 @@ public class ControllerModificaStruttura {
     }
 
 
+    private Immagine salvaImmagine(MultipartFile file, Struttura struttura) throws IOException {
+
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+
+        Immagine immagine = new Immagine(fileName, file.getContentType(), file.getBytes(), struttura);
+
+        immagineDAO.save(immagine);
+
+        return immagine;
+
+    }
 
 }
