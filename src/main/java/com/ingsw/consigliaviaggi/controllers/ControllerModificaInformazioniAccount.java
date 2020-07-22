@@ -7,10 +7,7 @@ import com.ingsw.consigliaviaggi.model.Utente;
 import com.ingsw.consigliaviaggi.model.VisibilitaRecensori;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityNotFoundException;
@@ -30,7 +27,21 @@ public class ControllerModificaInformazioniAccount {
     }
 
     @RolesAllowed("USER")
-    @PutMapping("/utente/nome/{id}")
+    @GetMapping("/user/{nomeUtente}")
+    public Utente getUtente(@PathVariable String nomeUtente)
+    {
+            Optional<Utente> utenteOptional = utenteDAO.findByNomeUtente(nomeUtente);
+
+            if (utenteOptional.isPresent()) {
+
+                return utenteOptional.get();
+            }
+            else{throw new EntityNotFoundException();}
+
+    }
+
+    @RolesAllowed("USER")
+    @PutMapping("/user/nome/{id}")
     public ResponseEntity<Object> modificaNome(@RequestBody String nome, @PathVariable String id)
     {
         if(controllerValidazioneInput.isValidNome(nome)) {
@@ -48,7 +59,7 @@ public class ControllerModificaInformazioniAccount {
     }
 
     @RolesAllowed("USER")
-    @PutMapping("/utente/cognome/{id}")
+    @PutMapping("/user/cognome/{id}")
     public ResponseEntity<Object> modificaCognome(@RequestBody String cognome, @PathVariable String id)
     {
         if(controllerValidazioneInput.isValidCognome(cognome)) {
@@ -66,7 +77,7 @@ public class ControllerModificaInformazioniAccount {
     }
 
     @RolesAllowed("USER")
-    @PutMapping("/utente/indirizzoEmail/{id}")
+    @PutMapping("/user/indirizzoEmail/{id}")
     public ResponseEntity<Object> modificaIndirizzoEmail(@RequestBody String indirizzoEmail, @PathVariable String id)
     {
         if(controllerValidazioneInput.isValidIndirizzoEmail(indirizzoEmail)) {
@@ -84,7 +95,7 @@ public class ControllerModificaInformazioniAccount {
     }
 
     @RolesAllowed("USER")
-    @PutMapping("/utente/password/{id}")
+    @PutMapping("/user/password/{id}")
     public ResponseEntity<Object> modificaPassword(@RequestBody String password, @PathVariable String id)
     {
         if(controllerValidazioneInput.isValidPassword(password)) {
@@ -102,7 +113,7 @@ public class ControllerModificaInformazioniAccount {
     }
 
     @RolesAllowed("USER")
-    @PutMapping("/utente/sesso/{id}")
+    @PutMapping("/user/sesso/{id}")
     public boolean modificaSesso(@RequestBody Gender sesso, @PathVariable String id)
     {
         Optional<Utente> utenteOptional = utenteDAO.findById(id);
@@ -119,7 +130,7 @@ public class ControllerModificaInformazioniAccount {
     }
 
     @RolesAllowed("USER")
-    @PutMapping("/utente/city/{id}")
+    @PutMapping("/user/city/{id}")
     public ResponseEntity<Object> modificaCity(@RequestBody String city, @PathVariable String id)
     {
         if(controllerValidazioneInput.isValidCity(city)) {
@@ -137,7 +148,7 @@ public class ControllerModificaInformazioniAccount {
     }
 
     @RolesAllowed("USER")
-    @PutMapping("/utente/dataDiNascita/{id}")
+    @PutMapping("/user/dataDiNascita/{id}")
     public ResponseEntity<Object> modificaDataDiNascita(@RequestBody Date dataDiNascita, @PathVariable String id)
     {
         if(controllerValidazioneInput.isValidDataDiNascita(dataDiNascita)) {
@@ -155,7 +166,7 @@ public class ControllerModificaInformazioniAccount {
     }
 
     @RolesAllowed("USER")
-    @PutMapping("/utente/mostraCome/{id}")
+    @PutMapping("/user/mostraCome/{id}")
     public ResponseEntity<Object> modificaMostraCome(@RequestBody VisibilitaRecensori mostraCome, @PathVariable String id)
     {
         Optional<Utente> utenteOptional = utenteDAO.findById(id);

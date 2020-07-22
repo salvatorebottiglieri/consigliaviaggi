@@ -90,14 +90,7 @@ public class ControllerValidazioneInput {
     }
     public boolean isValidNomeUtente(String nomeUtente){
 
-        if(isValidNome(nomeUtente)){
-
-            return !utenteDAO.existsByNomeUtente(nomeUtente);
-
-        }else{
-
-            return false;
-        }
+        return isValidNome(nomeUtente);
 
     }
 

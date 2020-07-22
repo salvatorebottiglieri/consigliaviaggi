@@ -71,6 +71,4 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
 
 
-    //other exception handlers below
-
 }
