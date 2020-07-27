@@ -19,9 +19,7 @@ public class Immagine {
     @Column(columnDefinition="BLOB")
     private byte[] data;
 
-    public Immagine() {
-
-    }
+    public Immagine() { }
 
     public Immagine(String fileName, String fileType, byte[] data, Struttura struttura) {
 

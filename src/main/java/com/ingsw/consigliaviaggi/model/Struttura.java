@@ -78,14 +78,6 @@ public class Struttura {
 
     public void deleteFoto(Immagine immagine){
 
-        for (Immagine immagineCorrente:this.foto){
-
-            if(immagineCorrente.equals(immagine)){
-
-            }
-
-
-        }
     }
 
     @OneToOne(cascade=CascadeType.ALL)

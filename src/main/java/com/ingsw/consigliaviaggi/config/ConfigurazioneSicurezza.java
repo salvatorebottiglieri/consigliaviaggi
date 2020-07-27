@@ -31,8 +31,6 @@ public class ConfigurazioneSicurezza extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(servizioDatiUtente);
         auth.inMemoryAuthentication().withUser("admin").password(getPasswordEncoder().encode("admin")).roles(ADMIN);
-
-
     }
 
     @Override
@@ -54,7 +52,6 @@ public class ConfigurazioneSicurezza extends WebSecurityConfigurerAdapter {
         http.headers()
                 .frameOptions()
                 .sameOrigin();
-
         http.logout()
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID");
