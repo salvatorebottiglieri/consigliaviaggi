@@ -12,6 +12,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 
 @EnableWebSecurity
@@ -50,8 +53,8 @@ public class ConfigurazioneSicurezza extends WebSecurityConfigurerAdapter {
         http.csrf()
                 .disable();
         http.headers()
-                .frameOptions()
-                .sameOrigin();
+                .frameOptions();
+
         http.logout()
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID");
@@ -66,6 +69,10 @@ public class ConfigurazioneSicurezza extends WebSecurityConfigurerAdapter {
     public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+
+
+
 
 
 }

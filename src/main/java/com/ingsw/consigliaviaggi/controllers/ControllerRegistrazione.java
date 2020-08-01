@@ -7,11 +7,13 @@ import com.ingsw.consigliaviaggi.exception.NoValidInputException;
 import com.ingsw.consigliaviaggi.model.Utente;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import static com.ingsw.consigliaviaggi.model.VisibilitaRecensori.NOMEUTENTE;
+
 
 @RestController
 public class ControllerRegistrazione {
@@ -25,6 +27,7 @@ public class ControllerRegistrazione {
         this.utenteDAO = utenteDAO;
         this.controllerValidazioneInput = controllerValidazioneInput;
     }
+
 
     @PostMapping(path = "/all/registrazione", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Object> aggiungiUtente(@RequestBody Utente nuovoUtente){
