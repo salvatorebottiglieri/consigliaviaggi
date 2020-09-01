@@ -129,23 +129,7 @@ public class ControllerModificaInformazioniAccount {
 
     }
 
-    @RolesAllowed("USER")
-    @PutMapping("/user/city/{id}")
-    public ResponseEntity<Object> modificaCity(@RequestBody String city, @PathVariable String id)
-    {
-        if(controllerValidazioneInput.isValidCity(city)) {
-            Optional<Utente> utenteOptional = utenteDAO.findById(id);
 
-            if (utenteOptional.isPresent()) {
-                Utente utente = utenteOptional.get();
-                utente.setCity(city);
-                utenteDAO.save(utente);
-                return new ResponseEntity<>("La città è stata modificata con successo", HttpStatus.OK);
-            }
-            else{throw new EntityNotFoundException();}
-        }
-        else{ throw new NoValidInputException("Input non valido: città non valida");}
-    }
 
     @RolesAllowed("USER")
     @PutMapping("/user/dataDiNascita/{id}")

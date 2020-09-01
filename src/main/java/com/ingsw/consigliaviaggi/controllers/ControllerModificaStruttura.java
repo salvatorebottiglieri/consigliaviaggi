@@ -169,27 +169,6 @@ public class ControllerModificaStruttura {
 
     }
 
-    @RolesAllowed("ADMIN")
-    @DeleteMapping("/admin/struttura/foto/{idFoto}")  //url che richiama questo metodo
-    public ResponseEntity<Object> eliminaFoto(@PathVariable String idFoto)
-    {
-        Optional<Immagine> immagineOptional = immagineDAO.findById(idFoto);
-        Struttura struttura;
-
-        if(immagineOptional.isPresent())
-        {
-            struttura = immagineOptional.get().getStruttura();
-            struttura.deleteFoto(immagineOptional.get());
-            strutturaDAO.save(struttura);
-
-            immagineDAO.delete(immagineOptional.get());
-
-            return new ResponseEntity<>("la foto è stata eliminata con successo", HttpStatus.OK);
-        }
-        else{throw new EntityNotFoundException();}
-
-    }
-
 
     private Immagine salvaImmagine(MultipartFile file, Struttura struttura) throws IOException {
 

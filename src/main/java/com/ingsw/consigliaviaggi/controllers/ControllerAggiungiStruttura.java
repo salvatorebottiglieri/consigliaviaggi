@@ -3,6 +3,7 @@ package com.ingsw.consigliaviaggi.controllers;
 import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
 import com.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion;
 import com.ingsw.consigliaviaggi.exception.NoValidInputException;
+import com.ingsw.consigliaviaggi.model.Immagine;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
 
@@ -14,6 +15,7 @@ import javax.annotation.security.RolesAllowed;
 
 
 @RestController
+
 public class ControllerAggiungiStruttura {
 
     private final StrutturaDAO strutturaDAO;
@@ -25,7 +27,7 @@ public class ControllerAggiungiStruttura {
         this.controllerValidazioneInput = controllerValidazioneInput;
     }
 
-    @RolesAllowed("ADMIN")
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(path = "/admin/aggiungistruttura", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Object> creaStruttura(@RequestBody Struttura nuovaStruttura) {
 
@@ -33,7 +35,7 @@ public class ControllerAggiungiStruttura {
         if(controllerValidazioneInput.isValidStruttura(nuovaStruttura) ) {
 
             Indirizzo indirizzo = new Indirizzo(nuovaStruttura.getIndirizzo().getVia(), nuovaStruttura.getIndirizzo().getCivico(), nuovaStruttura.getIndirizzo().getCity());
-            Struttura struttura = new Struttura(nuovaStruttura.getNome(), nuovaStruttura.getDescrizione(), indirizzo, nuovaStruttura.getCategoria(), nuovaStruttura.getPrezzo());
+            Struttura struttura = new Struttura(nuovaStruttura.getNome(), nuovaStruttura.getDescrizione(), indirizzo, nuovaStruttura.getCategoria(), nuovaStruttura.getPrezzo(),nuovaStruttura.getFoto());
 
             if (!strutturaDAO.existsStrutturaByIdEquals(struttura.getId())) {
 

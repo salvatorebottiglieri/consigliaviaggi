@@ -12,7 +12,7 @@ public class Immagine {
 
     private String fileName;
     private String fileType;
-    @ManyToOne
+    @OneToOne
     @JoinColumn
     private Struttura strutturaFoto;
     @Lob

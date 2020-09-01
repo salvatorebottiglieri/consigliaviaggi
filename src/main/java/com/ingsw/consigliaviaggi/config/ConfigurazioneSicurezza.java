@@ -12,9 +12,16 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import java.util.Arrays;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 
 
 @EnableWebSecurity
@@ -41,6 +48,8 @@ public class ConfigurazioneSicurezza extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers(HttpMethod.POST, "/all/**");
     }
 
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -54,10 +63,10 @@ public class ConfigurazioneSicurezza extends WebSecurityConfigurerAdapter {
                 .disable();
         http.headers()
                 .frameOptions();
-
         http.logout()
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID");
+
     }
 
     @Bean
@@ -69,6 +78,8 @@ public class ConfigurazioneSicurezza extends WebSecurityConfigurerAdapter {
     public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+
 
 
 

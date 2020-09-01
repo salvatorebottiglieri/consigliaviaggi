@@ -28,6 +28,8 @@ public class ServizioDatiUtenteImpl implements UserDetailsService {
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
+
+
         if ( utenteDAO.existsByNomeUtente(username) ) {
 
             List<GrantedAuthority> authorities = new ArrayList<>();

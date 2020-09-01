@@ -16,7 +16,18 @@ public class ConsigliaviaggiApplication {
 	}
 
 
-
-
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/admin/aggiungistruttura").allowedOrigins("http://localhost:3000");
+			}
+		};
+	}
 
 }
+
+
+
+
