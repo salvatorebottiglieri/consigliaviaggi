@@ -7,15 +7,15 @@ import com.byteowls.jopencage.model.JOpenCageLatLng;
 import com.byteowls.jopencage.model.JOpenCageResponse;
 import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
+import com.ingsw.consigliaviaggi.model.Recensione;
 import com.ingsw.consigliaviaggi.model.Struttura;
 import com.ingsw.consigliaviaggi.model.TipoStruttura;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ControllerRicercaStruttura {
@@ -24,6 +24,19 @@ public class ControllerRicercaStruttura {
 
     public ControllerRicercaStruttura(StrutturaDAO strutturaDAO) {
         this.strutturaDAO = strutturaDAO;
+    }
+
+    @GetMapping("/all/{strutturaID}")
+    public Struttura getRecensioniRecenti(@PathVariable String strutturaID){
+
+        Optional<Struttura> strutturaOptional = strutturaDAO.findById(strutturaID);
+        if(strutturaOptional.isPresent()) {
+            return strutturaOptional.get();
+        }
+        else{
+            return null;
+        }
+
     }
 
     @PostMapping("/all/ricerca")

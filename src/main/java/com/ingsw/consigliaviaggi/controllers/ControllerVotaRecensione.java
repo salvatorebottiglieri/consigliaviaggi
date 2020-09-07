@@ -9,6 +9,7 @@ import com.ingsw.consigliaviaggi.model.Recensione;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,6 +43,7 @@ public class ControllerVotaRecensione {
     }
 
     @RolesAllowed("USER")
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/user/{recensioneId}/addLike")
     public ResponseEntity<Object> aggiungiLike(@PathVariable Long recensioneId){
 
@@ -85,6 +87,7 @@ public class ControllerVotaRecensione {
     }
 
     @RolesAllowed("USER")
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/user/{recensioneId}/addDislike")
     public ResponseEntity<Object> aggiungiDislike(@PathVariable Long recensioneId){
 
@@ -115,6 +118,7 @@ public class ControllerVotaRecensione {
                 if (utente.getNomeUtente().equals(nomeUtenteAutoreDislike)) {
 
                     likeUtenteDAO.delete(utente);
+
                 }
             }
 

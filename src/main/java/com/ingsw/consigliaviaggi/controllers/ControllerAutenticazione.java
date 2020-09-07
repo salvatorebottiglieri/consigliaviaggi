@@ -32,6 +32,15 @@ public class ControllerAutenticazione implements InterfacciaAutenticazione{
 
     }
 
+    @RolesAllowed("ADMIN")
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping(path = "/admin/autenticazione", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Object> loginAdmin(@RequestBody CredenzialiUtente credenzialiUtente){
+
+        return new ResponseEntity<>(credenzialiUtente, HttpStatus.OK);
+
+    }
+
 
     private static class CredenzialiUtente{
         private String username;
