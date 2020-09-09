@@ -3,15 +3,12 @@ package com.ingsw.consigliaviaggi.controllers;
 import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
 import com.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion;
 import com.ingsw.consigliaviaggi.exception.NoValidInputException;
-import com.ingsw.consigliaviaggi.model.Immagine;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.security.RolesAllowed;
 
 
 @RestController

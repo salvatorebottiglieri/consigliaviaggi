@@ -15,12 +15,12 @@ public class Struttura {
     private Indirizzo indirizzo;
     private TipoStruttura categoria;
     private int prezzo;
-    private Immagine foto;
+    private String foto;
     private List<Recensione> recensioni;
 
     public Struttura(){}
 
-    public Struttura( String nome, String descrizione, Indirizzo indirizzo, TipoStruttura categoria, int prezzo, Immagine immagine){
+    public Struttura( String nome, String descrizione, Indirizzo indirizzo, TipoStruttura categoria, int prezzo, String immagine){
         this.nome = nome;
         this.descrizione = descrizione;
         this.indirizzo = indirizzo;
@@ -64,13 +64,12 @@ public class Struttura {
         this.categoria = categoria;
     }
 
-    @OneToOne(mappedBy = "strutturaFoto")
-    @JsonIgnore
-    public Immagine getFoto() {
+
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(Immagine foto) {
+    public void setFoto(String foto) {
         this.foto = foto;}
 
 

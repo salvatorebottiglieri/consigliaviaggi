@@ -1,34 +1,29 @@
 package com.ingsw.consigliaviaggi.controllers;
 
-import com.ingsw.consigliaviaggi.dao.ImmagineDAO;
 import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
 import com.ingsw.consigliaviaggi.exception.NoValidInputException;
-import com.ingsw.consigliaviaggi.model.Immagine;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
 import com.ingsw.consigliaviaggi.model.TipoStruttura;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityNotFoundException;
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.Optional;
 
 @RestController
 public class ControllerModificaStruttura {
 
     private final StrutturaDAO strutturaDAO;
-    private final ImmagineDAO immagineDAO;
+
     private final ControllerValidazioneInput controllerValidazioneInput;
 
-    public ControllerModificaStruttura(StrutturaDAO strutturaDAO, ImmagineDAO immagineDAO, ControllerValidazioneInput controllerValidazioneInput) {
+    public ControllerModificaStruttura(StrutturaDAO strutturaDAO, ControllerValidazioneInput controllerValidazioneInput) {
         this.strutturaDAO = strutturaDAO;
-        this.immagineDAO = immagineDAO;
         this.controllerValidazioneInput = controllerValidazioneInput;
     }
 
@@ -151,7 +146,7 @@ public class ControllerModificaStruttura {
 
     @RolesAllowed("ADMIN")
     @PutMapping("/admin/struttura/foto/{id}")  //url che richiama questo metodo
-    public ResponseEntity<Object> aggiungiFoto(@RequestParam("file") MultipartFile foto, @PathVariable String id) throws IOException {
+    public ResponseEntity<Object> aggiungiFoto(@RequestBody String foto, @PathVariable String id)  {
 
         Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
         Struttura struttura;
@@ -159,10 +154,8 @@ public class ControllerModificaStruttura {
         if(strutturaOptional.isPresent())
         {
             struttura=strutturaOptional.get();
-
-            Immagine immagine = salvaImmagine(foto,struttura);
-
-
+            struttura.setFoto(foto);
+            strutturaDAO.save(struttura);
             return new ResponseEntity<>("La foto è stata aggiunta con successo", HttpStatus.OK);
         }
         else{throw new EntityNotFoundException();}
@@ -170,16 +163,6 @@ public class ControllerModificaStruttura {
     }
 
 
-    private Immagine salvaImmagine(MultipartFile file, Struttura struttura) throws IOException {
 
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-
-        Immagine immagine = new Immagine(fileName, file.getContentType(), file.getBytes(), struttura);
-
-        immagineDAO.save(immagine);
-
-        return immagine;
-
-    }
 
 }
