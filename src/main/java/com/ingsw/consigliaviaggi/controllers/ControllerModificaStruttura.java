@@ -81,7 +81,8 @@ public class ControllerModificaStruttura {
 
             if (strutturaOptional.isPresent()) {
                 struttura = strutturaOptional.get();
-                struttura.setIndirizzo(indirizzo);
+                Indirizzo indirizzo1 = new Indirizzo(indirizzo.getVia(),indirizzo.getCivico(),indirizzo.getCity());
+                struttura.setIndirizzo(indirizzo1);
                 strutturaDAO.save(struttura);
                 return new ResponseEntity<>("l'indirizzo è stato modificato con successo", HttpStatus.OK);
             }

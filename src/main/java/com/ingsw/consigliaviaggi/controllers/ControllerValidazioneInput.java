@@ -66,7 +66,7 @@ public class ControllerValidazioneInput {
         return nome.length() <= maxNome && !nome.isEmpty();
     }
     public boolean isValidDescriptionStruttura(String descrizione){
-        int maxDescrizione = 100;
+        int maxDescrizione = 500;
         return descrizione.length() <= maxDescrizione && !descrizione.isEmpty();
     }
     public boolean isValidAddressStruttura(Indirizzo indirizzo){
