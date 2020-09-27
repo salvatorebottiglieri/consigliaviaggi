@@ -98,12 +98,12 @@ public class ControllerValidazioneInput {
     public boolean isValidDataDiNascita(Date dataDiNascita){return dataDiNascita.before(new Date());}
     public boolean isValidCity(String city){return isValidNome(city);}
     /*
-    Password should not contain any space.
-    Password should contain at least one digit(0-9).
-    Password length should be between 8 to 15 characters.
-    Password should contain at least one lowercase letter(a-z).
-    Password should contain at least one uppercase letter(A-Z).
-    Password should contain at least one special character ( @, #, %, &, !, $, etc….).
+    La Password  non deve contenere spazi.
+     deve contenere almeno un numero.
+    deve essere lunga tra gli 8 e i 15 caratteri.
+    deve contenere almeno una lettera minuscola.
+    deve contenere almeno una lettera maiuscola.
+    deve contenere almeno un carattere speciale.
     */
     public boolean isValidPassword(String password){
 

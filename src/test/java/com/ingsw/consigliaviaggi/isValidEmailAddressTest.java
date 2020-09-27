@@ -1,0 +1,92 @@
+package com.ingsw.consigliaviaggi;
+
+
+import com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput;
+import com.ingsw.consigliaviaggi.dao.UtenteDAO;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class isValidEmailAddressTest {
+
+
+    private ControllerValidazioneInput controllerValidazioneInput;
+    @MockBean
+    private UtenteDAO utenteDAO;
+
+    @BeforeEach
+    public void Init(){
+        controllerValidazioneInput = new ControllerValidazioneInput(utenteDAO);
+    }
+
+
+    @Test
+    public void testEmailConStringaVuota(){
+
+        String email= "";
+        assertFalse(controllerValidazioneInput.isValidIndirizzoEmail(email));
+
+    }
+
+    @Test
+    public void testEmailConStringaSenzaChiocciola(){
+
+        String email= "provagmail.com";
+        assertFalse(controllerValidazioneInput.isValidIndirizzoEmail(email));
+
+    }
+
+    @Test
+    public void testEmailConStringaConUnaChiocciola(){
+
+        String email= "prova@gmail.com";
+        assertTrue(controllerValidazioneInput.isValidIndirizzoEmail(email));
+
+    }
+
+    @Test
+    public void testEmailConPiùDiUnaChiocciola(){
+
+        String email= "prova@@gmail.com";
+        assertFalse(controllerValidazioneInput.isValidIndirizzoEmail(email));
+
+    }
+
+    @Test
+    public void testEmailConUnPuntoDopoLaChiocciola(){
+
+        String email= "prova@gmail.com";
+        assertTrue(controllerValidazioneInput.isValidIndirizzoEmail(email));
+
+    }
+
+    @Test
+    public void testEmailConPiùDiUnPuntoDopoLaChiocciola(){
+
+        String email= "prova@gma.il.com";
+        assertTrue(controllerValidazioneInput.isValidIndirizzoEmail(email));
+
+    }
+
+    @Test
+    public void testEmailConNessunPuntoDopoLaChiocciola(){
+
+        String email= "prova@gmailcom";
+        assertFalse(controllerValidazioneInput.isValidIndirizzoEmail(email));
+
+    }
+    @Test
+    public void testEmailConRiferimentoANull(){
+
+        String email= null;
+        assertFalse(controllerValidazioneInput.isValidIndirizzoEmail(email));
+
+    }
+
+
+
+
+}
