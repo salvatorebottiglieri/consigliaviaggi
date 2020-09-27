@@ -23,7 +23,9 @@ public class Utente {
     @OneToMany(mappedBy = "autore")
     @JsonIgnore
     private List<Recensione> recensioni;
+    @JsonIgnore
     private boolean isActive;
+    @JsonIgnore
     private final String ruolo = "USER";
 
     public Utente(){}

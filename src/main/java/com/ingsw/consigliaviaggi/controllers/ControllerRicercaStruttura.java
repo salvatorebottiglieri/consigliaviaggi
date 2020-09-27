@@ -26,18 +26,6 @@ public class ControllerRicercaStruttura {
         this.strutturaDAO = strutturaDAO;
     }
 
-    @GetMapping("/all/{strutturaID}")
-    public Struttura getRecensioniRecenti(@PathVariable String strutturaID){
-
-        Optional<Struttura> strutturaOptional = strutturaDAO.findById(strutturaID);
-        if(strutturaOptional.isPresent()) {
-            return strutturaOptional.get();
-        }
-        else{
-            return null;
-        }
-
-    }
 
     @PostMapping("/all/ricerca")
     public List<Struttura> ricercaStruttura(@RequestBody Filtri filtri){
