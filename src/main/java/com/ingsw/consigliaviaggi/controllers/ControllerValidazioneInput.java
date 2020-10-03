@@ -108,8 +108,7 @@ public class ControllerValidazioneInput {
     public boolean isValidPassword(String password){
 
         //controllo di lunghezza
-        if (!((password.length() >= 8)
-                && (password.length() <= 15))) {
+        if (!((password.length() >= 8) && (password.length() <= 15))) {
             return false;
         }
         //controllo di eventuali elementi vuoti
@@ -173,7 +172,7 @@ public class ControllerValidazioneInput {
 
         count = 0;
 
-        // controllo la presenza di lettere maiuscole
+        // controllo la presenza di lettere minuscole
         for (int i = 90; i <= 122; i++) {
 
             // type casting

@@ -21,6 +21,7 @@ public class isValidPasswordTest {
         controllerValidazioneInput = new ControllerValidazioneInput(utenteDAO);
     }
 
+    //test con strategia Black Box
     @Test
     public void testPasswordConStringaVuota(){
 
@@ -189,6 +190,54 @@ public class isValidPasswordTest {
 
     }
 
+
+    //test con strategia white box
+
+    @Test
+    public void testPasswordPath_111_112(){
+        String password = "aaaa";
+        assertFalse(controllerValidazioneInput.isValidPassword(password));
+    }
+
+    @Test
+    public void testPasswordPath_111_115_116(){
+        String password = "Abc123495@ ";
+        assertFalse(controllerValidazioneInput.isValidPassword(password));
+    }
+
+    @Test
+    public void testPasswordPath_111_115_120_123_125_127_132_133(){
+        String password = "Abcfgrmg@s";
+        assertFalse(controllerValidazioneInput.isValidPassword(password));
+    }
+
+
+
+    @Test
+    public void testPasswordPath_111_115_120_123_125_127_128_129_132_138_149(){
+        String password = "Abcfgrmgu5s";
+        assertFalse(controllerValidazioneInput.isValidPassword(password));
+    }
+
+    @Test void testPasswordPath_111_115_120_123_125_127_128_129_132_138_153_156_159_161_162_167_168(){
+        String password = "abf#dj23md";
+        assertFalse(controllerValidazioneInput.isValidPassword(password));
+
+
+    }
+
+
+    @Test void testPasswordPath_111_115_120_123_125_127_128_129_132_138_153_156_159_161_162_163_164_167_173_176_179_180_182_187_188(){
+        String password = "HABD@28FN3";
+        assertFalse(controllerValidazioneInput.isValidPassword(password));
+
+
+    }
+
+    @Test void testPasswordPath_111_115_120_123_125_127_128_129_132_138_153_156_159_161_162_163_164_167_173_176_179_180_182_183_184_187_193() {
+        String password = "Ingegneria12@";
+        assertTrue(controllerValidazioneInput.isValidPassword(password));
+    }
 
 
 

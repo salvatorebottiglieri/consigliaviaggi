@@ -88,5 +88,27 @@ public class isValidEmailAddressTest {
 
 
 
+    //test con strategia white box
+
+
+    @Test
+    public void testEmailConPath1_2_3_5_FALSE(){
+        String email= "ds3i4la.cls4";
+        assertFalse(controllerValidazioneInput.isValidIndirizzoEmail(email));
+
+    }
+
+    @Test
+    public void testEmailConPath1_2_3_5_TRUE(){
+        String email= "prova@tiscali.it";
+        assertTrue(controllerValidazioneInput.isValidIndirizzoEmail(email));
+
+    }
+
+
+
+
+
+
 
 }
