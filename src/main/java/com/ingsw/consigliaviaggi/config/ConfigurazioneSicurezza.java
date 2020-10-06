@@ -44,7 +44,7 @@ public class ConfigurazioneSicurezza extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
+    public void configure(WebSecurity web)  {
         web.ignoring().antMatchers(HttpMethod.POST, "/all/**");
     }
 
@@ -62,7 +62,7 @@ public class ConfigurazioneSicurezza extends WebSecurityConfigurerAdapter {
         http.csrf()
                 .disable();
         http.headers()
-                .frameOptions();
+                .frameOptions().disable();
         http.logout()
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID");
