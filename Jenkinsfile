@@ -26,8 +26,6 @@ pipeline {
         stage('Deliver') { 
             steps {
                 sh 'mvn package' 
-            }
-            steps {
                 sh 'java -jar target/consigliaviaggi-0.0.1-SNAPSHOT.jar' 
             }
         }
