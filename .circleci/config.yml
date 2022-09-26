@@ -29,14 +29,14 @@ jobs:
           name: Test
           command: mvn test
   quality-check:
-    
     docker:
       # replace with your preferred image
       - image:  cimg/openjdk:11.0
     steps:
+      - checkout
       - run:
           name: Verify-SonarCloud
-          command: pwd#mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=consigliaviaggi
+          command: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=consigliaviaggi
 
 
 
