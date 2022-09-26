@@ -32,7 +32,7 @@ jobs:
     
     docker:
       # replace with your preferred image
-      - image: cimg/base:stable
+      - image:  cimg/openjdk:11.0
     steps:
       - run:
           name: Verify
