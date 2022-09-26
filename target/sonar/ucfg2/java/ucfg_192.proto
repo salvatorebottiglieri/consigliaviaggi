@@ -1,105 +1,0 @@
-
-Ãcom.ingsw.consigliaviaggi.exception.RestExceptionHandler#handleHttpMessageNotReadable(Lorg/springframework/http/converter/HttpMessageNotReadableException;Lorg/springframework/http/HttpHeaders;Lorg/springframework/http/HttpStatus;Lorg/springframework/web/context/request/WebRequest;)Lorg/springframework/http/ResponseEntity;u
-k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java!% !(A"startingBlock*Ò
-startingBlockv
-k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java!A !(¡ð
-í
-u
-k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java   (
-%4"
-__annotate*
-java.lang.Override*J
-H
-exBorg.springframework.http.converter.HttpMessageNotReadableExceptionÚ
-×
-u
-k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java!b !(dH
-exBorg.springframework.http.converter.HttpMessageNotReadableException"__annotation*
-
-%4×
-Ô
-u
-k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java   (
-%5"
-__annotate*
-java.lang.Override*1
-/
-headers$org.springframework.http.HttpHeadersÁ
-¾
-u
-k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java!r !(y/
-headers$org.springframework.http.HttpHeaders"__annotation*
-
-%5Õ
-Ò
-u
-k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java   (
-%6"
-__annotate*
-java.lang.Override*/
--
-status#org.springframework.http.HttpStatusÁ
-¾
-w
-k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java!† !(Œ-
-status#org.springframework.http.HttpStatus"__annotation*
-
-%6å
-â
-u
-k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java   (
-%7"
-__annotate*
-java.lang.Override*?
-=
-request2org.springframework.web.context.request.WebRequestÑ
-Î
-w
-k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java!™ !( =
-request2org.springframework.web.context.request.WebRequest"__annotation*
-
-%7*
-1*˜
-1u
-k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java" "(7¿
-¼
-u
-k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java" "(8
-errorjava.lang.String"__id*" 
-Richiesta JSON non ben formata³
-°
-u
-k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java#0 #(F)
-%0#org.springframework.http.HttpStatus"__id*
-""ÜÙ
-u
-k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java#' #(/2
-%1,com.ingsw.consigliaviaggi.exception.ApiError",com.ingsw.consigliaviaggi.exception.ApiErrorÑ
-Î
-u
-k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java## #(R
-%2"‚com.ingsw.consigliaviaggi.exception.ApiError#<init>(Lorg/springframework/http/HttpStatus;Ljava/lang/String;Ljava/lang/Throwable;)V*4
-2
-%1,com.ingsw.consigliaviaggi.exception.ApiError*+
-)
-%0#org.springframework.http.HttpStatus*
-
-errorjava.lang.String*J
-H
-exBorg.springframework.http.converter.HttpMessageNotReadableExceptionÅ
-Â
-u
-k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java# #(S-
-%3'org.springframework.http.ResponseEntity"¥com.ingsw.consigliaviaggi.exception.RestExceptionHandler#buildResponseEntity(Lcom/ingsw/consigliaviaggi/exception/ApiError;)Lorg/springframework/http/ResponseEntity;*<:
-8com.ingsw.consigliaviaggi.exception.RestExceptionHandler*4
-2
-%1,com.ingsw.consigliaviaggi.exception.ApiError"¨
-u
-k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java# #(T/
--
-%3'org.springframework.http.ResponseEntity:H
-exBorg.springframework.http.converter.HttpMessageNotReadableException:/
-headers$org.springframework.http.HttpHeaders:-
-status#org.springframework.http.HttpStatus:=
-request2org.springframework.web.context.request.WebRequestB<:
-8com.ingsw.consigliaviaggi.exception.RestExceptionHandler

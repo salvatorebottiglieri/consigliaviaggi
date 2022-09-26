@@ -1,4 +1,0 @@
-com.ingsw.consigliaviaggi.exception.RestExceptionHandler#handleHttpMessageNotReadable(Lorg/springframework/http/converter/HttpMessageNotReadableException;Lorg/springframework/http/HttpHeaders;Lorg/springframework/http/HttpStatus;Lorg/springframework/web/context/request/WebRequest;)Lorg/springframework/http/ResponseEntity;
-com.ingsw.consigliaviaggi.exception.RestExceptionHandler#buildResponseEntity(Lcom/ingsw/consigliaviaggi/exception/ApiError;)Lorg/springframework/http/ResponseEntity;
-com.ingsw.consigliaviaggi.exception.ApiError#<init>(Lorg/springframework/http/HttpStatus;Ljava/lang/String;Ljava/lang/Throwable;)V
-com.ingsw.consigliaviaggi.exception.ApiError#instance-init#

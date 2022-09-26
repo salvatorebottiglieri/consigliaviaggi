@@ -1,3 +1,4 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "circleci-vscode.apiToken": "bd05c7f879d198bcfedd90ae2c1a3acf59738b48"
 }
