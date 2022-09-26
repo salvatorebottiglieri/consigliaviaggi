@@ -1,0 +1,80 @@
+
+úcom.ingsw.consigliaviaggi.model.Recensione$VoteComparator#compare(Lcom/ingsw/consigliaviaggi/model/Recensione;Lcom/ingsw/consigliaviaggi/model/Recensione;)Ii
+]/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/model/Recensione.javaè è("startingBlock*„
+2i
+]/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/model/Recensione.javaï ï("s
+i
+]/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/model/Recensione.javaï ï(
+""*⁄
+3i
+]/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/model/Recensione.javaî î(ÔÏ
+i
+]/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/model/Recensione.javaî î( 	
+%2int"5com.ingsw.consigliaviaggi.model.Recensione#getVoto()I*2
+0
+o1*com.ingsw.consigliaviaggi.model.Recensione2	getVoto()ÔÏ
+i
+]/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/model/Recensione.javaî" î(.	
+%3int"5com.ingsw.consigliaviaggi.model.Recensione#getVoto()I*2
+0
+o2*com.ingsw.consigliaviaggi.model.Recensione2	getVoto()*
+2
+1*è
+startingBlocki
+]/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/model/Recensione.javaè è(8Ã
+…
+i
+]/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/model/Recensione.javaé é(
+%4"
+__annotate*
+java.lang.Override*2
+0
+o1*com.ingsw.consigliaviaggi.model.Recensione∂
+≥
+i
+]/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/model/Recensione.javaè& è((0
+o1*com.ingsw.consigliaviaggi.model.Recensione"__annotation*
+
+%4Ã
+…
+i
+]/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/model/Recensione.javaé é(
+%5"
+__annotate*
+java.lang.Override*2
+0
+o2*com.ingsw.consigliaviaggi.model.Recensione∂
+≥
+i
+]/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/model/Recensione.javaè5 è(70
+o2*com.ingsw.consigliaviaggi.model.Recensione"__annotation*
+
+%5*
+5*„
+4i
+]/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/model/Recensione.javaí í("s
+i
+]/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/model/Recensione.javaí í(
+""*⁄
+5i
+]/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/model/Recensione.javaë ë(ÔÏ
+i
+]/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/model/Recensione.javaë ë(	
+%0int"5com.ingsw.consigliaviaggi.model.Recensione#getVoto()I*2
+0
+o1*com.ingsw.consigliaviaggi.model.Recensione2	getVoto()ÔÏ
+i
+]/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/model/Recensione.javaë ë()	
+%1int"5com.ingsw.consigliaviaggi.model.Recensione#getVoto()I*2
+0
+o2*com.ingsw.consigliaviaggi.model.Recensione2	getVoto()*
+3
+4*„
+1i
+]/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/model/Recensione.javaó ó("s
+i
+]/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/model/Recensione.javaó ó(
+"":0
+o1*com.ingsw.consigliaviaggi.model.Recensione:0
+o2*com.ingsw.consigliaviaggi.model.RecensioneB=;
+9com.ingsw.consigliaviaggi.model.Recensione$VoteComparator

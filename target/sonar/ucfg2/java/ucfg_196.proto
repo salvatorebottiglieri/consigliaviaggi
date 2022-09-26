@@ -1,0 +1,70 @@
+
+½com.ingsw.consigliaviaggi.exception.RestExceptionHandler#handleInputNotValid(Lcom/ingsw/consigliaviaggi/exception/ElementIsAlreadyPresentExcetpion;)Lorg/springframework/http/ResponseEntity;u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.javaB% B(8"startingBlock*Å
+startingBlocku
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.javaB8 B(}¸
+µ
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.javaA A(E
+%6"
+__annotate*<:
+8org.springframework.web.bind.annotation.ExceptionHandler*l
+j
+"structureIsAlreadyPresentExcetpionDcom.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpionü
+ù
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.javaBZ B(|j
+"structureIsAlreadyPresentExcetpionDcom.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion"__annotation*
+
+%6*
+1*
+1u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.javaC) C(7³
+°
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.javaC) C(7)
+%0#org.springframework.http.HttpStatus"__id*
+""ÜÙ
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.javaC  C((2
+%1,com.ingsw.consigliaviaggi.exception.ApiError",com.ingsw.consigliaviaggi.exception.ApiErrorÀ
+½
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.javaC C(8
+%2"[com.ingsw.consigliaviaggi.exception.ApiError#<init>(Lorg/springframework/http/HttpStatus;)V*4
+2
+%1,com.ingsw.consigliaviaggi.exception.ApiError*+
+)
+%0#org.springframework.http.HttpStatusð
+í
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.javaC C(98
+apiError,com.ingsw.consigliaviaggi.exception.ApiError"__id*4
+2
+%1,com.ingsw.consigliaviaggi.exception.ApiErroróð
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.javaD D(K
+%3java.lang.String"ccom.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion#getMessage()Ljava/lang/String;*l
+j
+"structureIsAlreadyPresentExcetpionDcom.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion2getMessage()ÊÇ
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.javaD D(L
+
+%4void"Lcom.ingsw.consigliaviaggi.exception.ApiError#setMessage(Ljava/lang/String;)V*:
+8
+apiError,com.ingsw.consigliaviaggi.exception.ApiError*
+
+%3java.lang.String2setMessage(Ljava/lang/String;)Ë
+È
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.javaE E(,-
+%5'org.springframework.http.ResponseEntity"¥com.ingsw.consigliaviaggi.exception.RestExceptionHandler#buildResponseEntity(Lcom/ingsw/consigliaviaggi/exception/ApiError;)Lorg/springframework/http/ResponseEntity;*<:
+8com.ingsw.consigliaviaggi.exception.RestExceptionHandler*:
+8
+apiError,com.ingsw.consigliaviaggi.exception.ApiError"¨
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.javaE E(-/
+-
+%5'org.springframework.http.ResponseEntity:j
+"structureIsAlreadyPresentExcetpionDcom.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpionB<:
+8com.ingsw.consigliaviaggi.exception.RestExceptionHandler

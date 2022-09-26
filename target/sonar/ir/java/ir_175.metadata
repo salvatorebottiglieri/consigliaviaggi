@@ -1,0 +1,6 @@
+com.ingsw.consigliaviaggi.exception.RestExceptionHandler#handleMethodArgumentNotValid(Lorg/springframework/web/bind/MethodArgumentNotValidException;Lorg/springframework/http/HttpHeaders;Lorg/springframework/http/HttpStatus;Lorg/springframework/web/context/request/WebRequest;)Lorg/springframework/http/ResponseEntity;
+java.util.ArrayList#<init>()V
+java.util.ArrayList#instance-init#
+com.ingsw.consigliaviaggi.exception.RestExceptionHandler#buildResponseEntity(Lcom/ingsw/consigliaviaggi/exception/ApiError;)Lorg/springframework/http/ResponseEntity;
+com.ingsw.consigliaviaggi.exception.ApiError#instance-init#
+com.ingsw.consigliaviaggi.exception.ApiError#<init>(Lorg/springframework/http/HttpStatus;)V

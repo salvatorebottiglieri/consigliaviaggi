@@ -1,0 +1,122 @@
+
+∆com.ingsw.consigliaviaggi.controllers.ControllerAutenticazione#loginAdmin(Lcom/ingsw/consigliaviaggi/controllers/ControllerAutenticazione$CredenzialiUtente;)Lorg/springframework/http/ResponseEntity;{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java&" &(,"startingBlock*ˇ
+startingBlock{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java&, &(^†
+ù
+
+__unknown_file (
+%3"__id*u*s
+e
+credenzialiUtentePcom.ingsw.consigliaviaggi.controllers.ControllerAutenticazione$CredenzialiUtente"
+
+password†
+ù
+
+__unknown_file (
+%4"__id*u*s
+e
+credenzialiUtentePcom.ingsw.consigliaviaggi.controllers.ControllerAutenticazione$CredenzialiUtente"
+
+username∆
+√
+{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java# #(
+%5"
+__annotate**(
+&javax.annotation.security.RolesAllowed*
+
+%3”
+–
+{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java$ $(3
+%6"
+__annotate*75
+3org.springframework.web.bind.annotation.CrossOrigin*
+
+%3”
+–
+{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java&- &(9
+%7"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%3õ
+ò
+{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java&L &(]s
+e
+credenzialiUtentePcom.ingsw.consigliaviaggi.controllers.ControllerAutenticazione$CredenzialiUtente"
+
+password"__annotation*
+
+%5*
+
+%6*
+
+%7∆
+√
+{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java# #(
+%8"
+__annotate**(
+&javax.annotation.security.RolesAllowed*
+
+%4”
+–
+{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java$ $(3
+%9"
+__annotate*75
+3org.springframework.web.bind.annotation.CrossOrigin*
+
+%4‘
+—
+{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java&- &(9
+%10"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%4ú
+ô
+{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java&L &(]s
+e
+credenzialiUtentePcom.ingsw.consigliaviaggi.controllers.ControllerAutenticazione$CredenzialiUtente"
+
+username"__annotation*
+
+%8*
+
+%9*
+
+%10*
+1*Ç	
+1{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java($ ((5π
+∂
+{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java(7 ((D)
+%0#org.springframework.http.HttpStatus"__id*
+""ÿ’
+{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java( ((#-
+%1'org.springframework.http.ResponseEntity"'org.springframework.http.ResponseEntity∑
+¥
+{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java( ((E
+%2"horg.springframework.http.ResponseEntity#<init>(Ljava/lang/Object;Lorg/springframework/http/HttpStatus;)V*/
+-
+%1'org.springframework.http.ResponseEntity*g
+e
+credenzialiUtentePcom.ingsw.consigliaviaggi.controllers.ControllerAutenticazione$CredenzialiUtente*+
+)
+%0#org.springframework.http.HttpStatus"Æ
+{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java( ((F/
+-
+%1'org.springframework.http.ResponseEntity:e
+credenzialiUtentePcom.ingsw.consigliaviaggi.controllers.ControllerAutenticazione$CredenzialiUtenteBB@
+>com.ingsw.consigliaviaggi.controllers.ControllerAutenticazione

@@ -1,0 +1,4 @@
+com.ingsw.consigliaviaggi.exception.RestExceptionHandler#handleInputNotValid(Lcom/ingsw/consigliaviaggi/exception/NoValidInputException;)Lorg/springframework/http/ResponseEntity;
+com.ingsw.consigliaviaggi.exception.RestExceptionHandler#buildResponseEntity(Lcom/ingsw/consigliaviaggi/exception/ApiError;)Lorg/springframework/http/ResponseEntity;
+com.ingsw.consigliaviaggi.exception.ApiError#instance-init#
+com.ingsw.consigliaviaggi.exception.ApiError#<init>(Lorg/springframework/http/HttpStatus;)V

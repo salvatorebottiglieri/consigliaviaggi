@@ -1,0 +1,3 @@
+com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput#isValidNome(Ljava/lang/String;)Z
+java.lang.String#length()I
+java.lang.String#isEmpty()Z

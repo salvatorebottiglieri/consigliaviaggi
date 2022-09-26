@@ -1,0 +1,9 @@
+com.ingsw.consigliaviaggi.controllers.ControllerModificaStruttura#modificaDescrizione(Ljava/lang/String;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
+java.util.Optional#isPresent()Z
+javax.persistence.EntityNotFoundException#<init>()V
+com.ingsw.consigliaviaggi.exception.NoValidInputException#instance-init#
+com.ingsw.consigliaviaggi.exception.NoValidInputException#<init>(Ljava/lang/String;)V
+javax.persistence.EntityNotFoundException#instance-init#
+org.springframework.http.ResponseEntity#instance-init#
+java.util.Optional#get()Ljava/lang/Object;
+org.springframework.http.ResponseEntity#<init>(Ljava/lang/Object;Lorg/springframework/http/HttpStatus;)V

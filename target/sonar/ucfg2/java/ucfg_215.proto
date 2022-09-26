@@ -1,0 +1,432 @@
+
+æcom.ingsw.consigliaviaggi.controllers.ControllerAggiungiRecensione#aggiungiRecensione(Lcom/ingsw/consigliaviaggi/model/Recensione;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java'" '(4"startingBlock*ñ:
+2
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java+, +(E∏
+µ
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java+, +(EE
+%2?com.ingsw.consigliaviaggi.controllers.InterfacciaAutenticazione"__id*e*cD
+Bcom.ingsw.consigliaviaggi.controllers.ControllerAggiungiRecensione"
+interfacciaAutenticazione¢ü
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java+, +(Y6
+%30org.springframework.security.core.Authentication"Öcom.ingsw.consigliaviaggi.controllers.InterfacciaAutenticazione#getAuthentication()Lorg/springframework/security/core/Authentication;*G
+E
+%2?com.ingsw.consigliaviaggi.controllers.InterfacciaAutenticazione2getAuthentication()à
+Ö
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java+ +(ZB
+authentication0org.springframework.security.core.Authentication"__id*8
+6
+%30org.springframework.security.core.Authentication™ß
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java-- -(1
+%4java.util.Date"java.util.Dateº
+π
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java-) -(3
+%5"java.util.Date#<init>()V*
+
+%4java.util.Date⁄◊
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java- -(4
+
+%6void"Ocom.ingsw.consigliaviaggi.model.Recensione#setDataDiAggiunta(Ljava/util/Date;)V*:
+8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione*
+
+%4java.util.Date2#setDataDiAggiunta(Ljava/util/Date;)ê
+ç
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java/. /(7-
+%7'com.ingsw.consigliaviaggi.dao.UtenteDAO"__id*U*SD
+Bcom.ingsw.consigliaviaggi.controllers.ControllerAggiungiRecensione"
+	utenteDAO¢ü
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java/I /(a
+%8java.lang.String"3java.security.Principal#getName()Ljava/lang/String;*D
+B
+authentication0org.springframework.security.core.Authentication2	getName()ÒÓ
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java/. /(b
+%9java.util.Optional"`com.ingsw.consigliaviaggi.dao.UtenteDAO#findByNomeUtente(Ljava/lang/String;)Ljava/util/Optional;*/
+-
+%7'com.ingsw.consigliaviaggi.dao.UtenteDAO*
+
+%8java.lang.String2$findByNomeUtente(Ljava/lang/String;)Ã
+…
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java/ /(c$
+utenteOptionaljava.util.Optional"__id*
+
+%9java.util.Optionaléã
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java0 0(0-
+%10&com.ingsw.consigliaviaggi.model.Utente"*java.util.Optional#get()Ljava/lang/Object;*&
+$
+utenteOptionaljava.util.Optional2get()Ì
+Í
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java0 0(10
+utente&com.ingsw.consigliaviaggi.model.Utente"__id*/
+-
+%10&com.ingsw.consigliaviaggi.model.Utenteóî
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java1 1((
+%11void"_com.ingsw.consigliaviaggi.model.Recensione#setAutore(Lcom/ingsw/consigliaviaggi/model/Utente;)V*:
+8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione*2
+0
+utente&com.ingsw.consigliaviaggi.model.Utente23setAutore(Lcom/ingsw/consigliaviaggi/model/Utente;)ó
+î
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java34 3(@1
+%12*com.ingsw.consigliaviaggi.dao.StrutturaDAO"__id*X*VD
+Bcom.ingsw.consigliaviaggi.controllers.ControllerAggiungiRecensione"
+strutturaDAO˙˜
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java34 3(V
+%13java.util.Optional"corg.springframework.data.repository.CrudRepository#findById(Ljava/lang/Object;)Ljava/util/Optional;*3
+1
+%12*com.ingsw.consigliaviaggi.dao.StrutturaDAO*!
+
+strutturaIdjava.lang.String2findById(Ljava/lang/Object;)–
+Õ
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java3 3(W'
+strutturaOptionaljava.util.Optional"__id*
+
+%13java.util.Optionalîë
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java4" 4(90
+%14)com.ingsw.consigliaviaggi.model.Struttura"*java.util.Optional#get()Ljava/lang/Object;*)
+'
+strutturaOptionaljava.util.Optional2get()ˆ
+Û
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java4 4(:6
+	struttura)com.ingsw.consigliaviaggi.model.Struttura"__id*2
+0
+%14)com.ingsw.consigliaviaggi.model.Struttura©¶
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java5 5(.
+%15void"ecom.ingsw.consigliaviaggi.model.Recensione#setStruttura(Lcom/ingsw/consigliaviaggi/model/Struttura;)V*:
+8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione*8
+6
+	struttura)com.ingsw.consigliaviaggi.model.Struttura29setStruttura(Lcom/ingsw/consigliaviaggi/model/Struttura;)ô
+ñ
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java7 7(2
+%16+com.ingsw.consigliaviaggi.dao.RecensioneDAO"__id*Y*WD
+Bcom.ingsw.consigliaviaggi.controllers.ControllerAggiungiRecensione"
+recensioneDAO¢ü
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java7 7(*1
+%17*com.ingsw.consigliaviaggi.model.Recensione"]org.springframework.data.repository.CrudRepository#save(Ljava/lang/Object;)Ljava/lang/Object;*4
+2
+%16+com.ingsw.consigliaviaggi.dao.RecensioneDAO*:
+8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione2save(Ljava/lang/Object;)æ
+ª
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java9W 9(d*
+%18#org.springframework.http.HttpStatus"__id*
+""›⁄
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java9 9('.
+%19'org.springframework.http.ResponseEntity"'org.springframework.http.ResponseEntityá
+Ñ
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java9 9(e
+%20"horg.springframework.http.ResponseEntity#<init>(Ljava/lang/Object;Lorg/springframework/http/HttpStatus;)V*0
+.
+%19'org.springframework.http.ResponseEntity*0.
+,La recensione √® stata aggiunta con successo*,
+*
+%18#org.springframework.http.HttpStatus"≥
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java9 9(f0
+.
+%19'org.springframework.http.ResponseEntity*™
+3
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java) )(%∫
+∑
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java) )(%F
+%0@com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput"__id*f*dD
+Bcom.ingsw.consigliaviaggi.controllers.ControllerAggiungiRecensione"
+controllerValidazioneInputﬁ€
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java) )(C
+%1boolean"Åcom.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput#isValidRecensione(Lcom/ingsw/consigliaviaggi/model/Recensione;)Z*H
+F
+%0@com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput*:
+8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione2?isValidRecensione(Lcom/ingsw/consigliaviaggi/model/Recensione;)*
+2
+1*π+
+startingBlock
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java'4 '(zq
+o
+
+__unknown_file (
+%23"__id*F*D
+8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione"
+autorey
+w
+
+__unknown_file (
+%24"__id*N*L
+8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione"
+dataDiAggiuntav
+t
+
+__unknown_file (
+%25"__id*K*I
+8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione"
+descrizioney
+w
+
+__unknown_file (
+%26"__id*N*L
+8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione"
+dislikesUtentiv
+t
+
+__unknown_file (
+%27"__id*K*I
+8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione"
+likesUtentit
+r
+
+__unknown_file (
+%28"__id*I*G
+8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione"
+	strutturaÃ
+…
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java% %(
+%29"
+__annotate**(
+&javax.annotation.security.RolesAllowed*
+
+%28Ÿ
+÷
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java'5 '(A
+%30"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%28Ì
+Í
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java'M '(WG
+8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione"
+	struttura"__annotation*
+
+%29*
+
+%30Ã
+…
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java% %(
+%31"
+__annotate**(
+&javax.annotation.security.RolesAllowed*
+
+%25Ÿ
+÷
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java'5 '(A
+%32"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%25Ô
+Ï
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java'M '(WI
+8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione"
+descrizione"__annotation*
+
+%31*
+
+%32Ã
+…
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java% %(
+%33"
+__annotate**(
+&javax.annotation.security.RolesAllowed*
+
+%27Ÿ
+÷
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java'5 '(A
+%34"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%27Ô
+Ï
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java'M '(WI
+8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione"
+likesUtenti"__annotation*
+
+%33*
+
+%34Ã
+…
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java% %(
+%35"
+__annotate**(
+&javax.annotation.security.RolesAllowed*
+
+%23Ÿ
+÷
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java'5 '(A
+%36"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%23Í
+Á
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java'M '(WD
+8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione"
+autore"__annotation*
+
+%35*
+
+%36Ã
+…
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java% %(
+%37"
+__annotate**(
+&javax.annotation.security.RolesAllowed*
+
+%26Ÿ
+÷
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java'5 '(A
+%38"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%26Ú
+Ô
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java'M '(WL
+8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione"
+dislikesUtenti"__annotation*
+
+%37*
+
+%38Ã
+…
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java% %(
+%39"
+__annotate**(
+&javax.annotation.security.RolesAllowed*
+
+%24Ÿ
+÷
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java'5 '(A
+%40"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%24Ú
+Ô
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java'M '(WL
+8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione"
+dataDiAggiunta"__annotation*
+
+%39*
+
+%40Ê
+„
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java% %(
+%41"
+__annotate**(
+&javax.annotation.security.RolesAllowed*!
+
+strutturaIdjava.lang.StringÙ
+Ò
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java'Y '(f
+%42"
+__annotate*86
+4org.springframework.web.bind.annotation.PathVariable*!
+
+strutturaIdjava.lang.String≈
+¬
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java'n '(y
+strutturaIdjava.lang.String"__annotation*
+
+%41*
+
+%42*
+3*û
+0 "ñ
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java? ?(
+implicit return*Ã
+1
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java<- <(?Å˛
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java< <(,@
+%219com.ingsw.consigliaviaggi.exception.NoValidInputException"9com.ingsw.consigliaviaggi.exception.NoValidInputExceptionº
+π
+
+u/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiRecensione.java< <(@
+%22"Ucom.ingsw.consigliaviaggi.exception.NoValidInputException#<init>(Ljava/lang/String;)V*B
+@
+%219com.ingsw.consigliaviaggi.exception.NoValidInputException*
+Input non valido*
+0:8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione:
+strutturaIdjava.lang.StringBFD
+Bcom.ingsw.consigliaviaggi.controllers.ControllerAggiungiRecensione

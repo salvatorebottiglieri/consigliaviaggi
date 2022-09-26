@@ -1,0 +1,70 @@
+
+≤com.ingsw.consigliaviaggi.exception.RestExceptionHandler#handleInputNotValid(Lcom/ingsw/consigliaviaggi/exception/NoValidInputException;)Lorg/springframework/http/ResponseEntity;u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java:% :(8"startingBlock*ï
+startingBlocku
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java:8 :(e†
+ù
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java9 9(:
+%6"
+__annotate*<:
+8org.springframework.web.bind.annotation.ExceptionHandler*T
+R
+noValidInputException9com.ingsw.consigliaviaggi.exception.NoValidInputException‰
+·
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java:O :(dR
+noValidInputException9com.ingsw.consigliaviaggi.exception.NoValidInputException"__annotation*
+
+%6*
+1*ﬁ
+1u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java;) ;(7≥
+∞
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java;) ;(7)
+%0#org.springframework.http.HttpStatus"__id*
+""‹Ÿ
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java;  ;((2
+%1,com.ingsw.consigliaviaggi.exception.ApiError",com.ingsw.consigliaviaggi.exception.ApiError¿
+Ω
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java; ;(8
+%2"[com.ingsw.consigliaviaggi.exception.ApiError#<init>(Lorg/springframework/http/HttpStatus;)V*4
+2
+%1,com.ingsw.consigliaviaggi.exception.ApiError*+
+)
+%0#org.springframework.http.HttpStatus
+Ì
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java; ;(98
+apiError,com.ingsw.consigliaviaggi.exception.ApiError"__id*4
+2
+%1,com.ingsw.consigliaviaggi.exception.ApiError–Õ
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java< <(>
+%3java.lang.String"Xcom.ingsw.consigliaviaggi.exception.NoValidInputException#getMessage()Ljava/lang/String;*T
+R
+noValidInputException9com.ingsw.consigliaviaggi.exception.NoValidInputException2getMessage() «
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java< <(?
+
+%4void"Lcom.ingsw.consigliaviaggi.exception.ApiError#setMessage(Ljava/lang/String;)V*:
+8
+apiError,com.ingsw.consigliaviaggi.exception.ApiError*
+
+%3java.lang.String2setMessage(Ljava/lang/String;)À
+»
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java= =(,-
+%5'org.springframework.http.ResponseEntity"•com.ingsw.consigliaviaggi.exception.RestExceptionHandler#buildResponseEntity(Lcom/ingsw/consigliaviaggi/exception/ApiError;)Lorg/springframework/http/ResponseEntity;*<:
+8com.ingsw.consigliaviaggi.exception.RestExceptionHandler*:
+8
+apiError,com.ingsw.consigliaviaggi.exception.ApiError"®
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java= =(-/
+-
+%5'org.springframework.http.ResponseEntity:R
+noValidInputException9com.ingsw.consigliaviaggi.exception.NoValidInputExceptionB<:
+8com.ingsw.consigliaviaggi.exception.RestExceptionHandler

@@ -1,0 +1,5 @@
+com.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura#getStruttureVicine(Ljava/util/List;Lcom/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura$Filtri;)Ljava/util/List;
+java.util.LinkedList#<init>()V
+com.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura#getLatitudineAndLongitudineFromIndirizzo(Lcom/ingsw/consigliaviaggi/model/Indirizzo;)Lcom/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura$CoppiaDiCoordinate;
+java.util.LinkedList#instance-init#
+com.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura#distanceBetweenLatLong(DDDD)D

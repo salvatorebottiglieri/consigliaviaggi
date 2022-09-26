@@ -10,12 +10,15 @@
 	</parent>
 	<groupId>com.ingsw</groupId>
 	<artifactId>consigliaviaggi</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>consigliaviaggi</name>
 	<description>Progetto Ingegneria del Software</description>
 
 	<properties>
 		<java.version>1.8</java.version>
+			<sonar.organization>salvatorebottiglieri</sonar.organization>
+			<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		  
 	</properties>
 	<repositories>
 		<!-- ... other repository elements ... -->
@@ -43,6 +46,13 @@
 			<groupId>com.byteowls</groupId>
 			<artifactId>jopencage</artifactId>
 			<version>1.2.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
+		<dependency>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.8.8</version>
 		</dependency>
 
 
@@ -130,7 +140,9 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
+	<profiles>
+		<profile>
+			<id>doc</id>
 	<build>
 		<plugins>
 			<plugin>
@@ -164,5 +176,39 @@
 			</plugin>
 		</plugins>
 	</build>
+</profile>
+
+	<profile>
+  <id>coverage</id>
+  <build>
+   <plugins>
+    <plugin>
+      <groupId>org.jacoco</groupId>
+     <artifactId>jacoco-maven-plugin</artifactId>
+      <version>0.8.7</version>
+      <executions>
+        <execution>
+          <id>prepare-agent</id>
+          <goals>
+            <goal>prepare-agent</goal>
+          </goals>
+        </execution>
+        <execution>
+          <id>report</id>
+          <goals>
+            <goal>report</goal>
+          </goals>
+          <configuration>
+            <formats>
+              <format>XML</format>
+            </formats>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+   </plugins>
+  </build>
+</profile>
+</profiles>
 
 </project>

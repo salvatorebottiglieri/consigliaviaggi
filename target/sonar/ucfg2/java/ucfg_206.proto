@@ -1,0 +1,20 @@
+
+„com.ingsw.consigliaviaggi.controllers.ControllerAutenticazione#getAuthentication()Lorg/springframework/security/core/Authentication;{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java (+"1*á
+1{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java ($
+
+{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java (1?
+%09org.springframework.security.core.context.SecurityContext"‡org.springframework.security.core.context.SecurityContextHolder#getContext()Lorg/springframework/security/core/context/SecurityContext;*C"A
+?org.springframework.security.core.context.SecurityContextHolder‘Ž
+{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java (E6
+%10org.springframework.security.core.Authentication"org.springframework.security.core.context.SecurityContext#getAuthentication()Lorg/springframework/security/core/Authentication;*A
+?
+%09org.springframework.security.core.context.SecurityContext2getAuthentication()"·
+{
+q/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAutenticazione.java (F8
+6
+%10org.springframework.security.core.AuthenticationBB@
+>com.ingsw.consigliaviaggi.controllers.ControllerAutenticazione
