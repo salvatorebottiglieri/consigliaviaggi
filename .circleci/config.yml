@@ -2,6 +2,8 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.1.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -26,11 +28,19 @@ jobs:
       - run:
           name: Test
           command: mvn test
+  quality-check:
+    docker:
+      # replace with your preferred image
+      - image: cimg/base:stable
+    steps:
+      -  sonarcloud/scan
+
+
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  CI: # This is the name of the workflow, feel free to change it to better match your workflow.
+  CICD: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - build-and-test
+      - quality-check
