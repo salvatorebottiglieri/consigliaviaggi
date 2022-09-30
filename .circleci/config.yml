@@ -30,14 +30,15 @@ jobs:
           command: mvn test
   quality-check:
     docker:
-      # replace with your preferred image
       - image:  cimg/openjdk:11.0
     steps:
       - checkout
       #- run:
           #name: Verify-SonarCloud
           #command: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=consigliaviaggi
-      - sonarcloud/scan
+      - sonarcloud/scan:
+          sonar_token_variable_name: "SONAR_TOKEN"
+
 
 
 
