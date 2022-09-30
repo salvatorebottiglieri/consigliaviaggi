@@ -33,9 +33,6 @@ jobs:
       - image:  cimg/openjdk:11.0
     steps:
       - checkout
-      #- run:
-          #name: Verify-SonarCloud
-          #command: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=consigliaviaggi
       - sonarcloud/scan:
           sonar_token_variable_name: SONAR_TOKEN
 
@@ -48,5 +45,6 @@ workflows:
   CICD: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
+      - build-and-test
       - quality-check:
           context: sonarcloud
