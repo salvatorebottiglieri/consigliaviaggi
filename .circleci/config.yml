@@ -34,10 +34,10 @@ jobs:
       - image:  cimg/openjdk:11.0
     steps:
       - checkout
-      - run:
-          name: Verify-SonarCloud
-          command: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=consigliaviaggi
-
+      #- run:
+          #name: Verify-SonarCloud
+          #command: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=consigliaviaggi
+      - sonarcloud/scan
 
 
 
