@@ -20,6 +20,9 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
+      # run sonarcloud analisys
+      - sonarcloud/scan:
+          sonar_token_variable_name: SONAR_TOKEN
       # Use mvn clean and package as the standard maven build phase
       - run:
           name: Build
@@ -28,17 +31,6 @@ jobs:
       - run:
           name: Test
           command: mvn test
-      # Then run sonarcloud analisys
-      - sonarcloud/scan:
-          sonar_token_variable_name: SONAR_TOKEN
-#  quality-check:
-#    docker:
-#      - image:  cimg/openjdk:11.0
-#    steps:
-#      - checkout
-#      - sonarcloud/scan:
-#          sonar_token_variable_name: SONAR_TOKEN
-
 
 
 
