@@ -1,0 +1,4 @@
+com.ingsw.consigliaviaggi.CORSFilter#doFilter(Ljavax/servlet/ServletRequest;Ljavax/servlet/ServletResponse;Ljavax/servlet/FilterChain;)V
+org.springframework.http.HttpStatus#value()I
+java.lang.String#equals(Ljava/lang/Object;)Z
+java.lang.Enum#name()Ljava/lang/String;

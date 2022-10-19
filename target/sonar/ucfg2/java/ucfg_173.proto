@@ -1,0 +1,418 @@
+
+•com.ingsw.consigliaviaggi.controllers.ControllerAggiungiStruttura#creaStruttura(Lcom/ingsw/consigliaviaggi/model/Struttura;)Lorg/springframework/http/ResponseEntity;~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java" (/"startingBlock*¸
+2~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java-; -(Sñì
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java- -(:K
+%25Dcom.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion"Dcom.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpionÿ
+’
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java- -(T
+%26"`com.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion#<init>(Ljava/lang/String;)V*M
+K
+%25Dcom.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion*
+Struttura gi√† presente*
+0*ó
+3~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java' '(ï
+í
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java' '(1
+%20*com.ingsw.consigliaviaggi.dao.StrutturaDAO"__id*W*UC
+Acom.ingsw.consigliaviaggi.controllers.ControllerAggiungiStruttura"
+strutturaDAOùö
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java' '(,0
+%21)com.ingsw.consigliaviaggi.model.Struttura"]org.springframework.data.repository.CrudRepository#save(Ljava/lang/Object;)Ljava/lang/Object;*3
+1
+%20*com.ingsw.consigliaviaggi.dao.StrutturaDAO*8
+6
+	struttura)com.ingsw.consigliaviaggi.model.Struttura2save(Ljava/lang/Object;)Ω
+∫
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java(Z ((g*
+%22#org.springframework.http.HttpStatus"__id*
+""‹Ÿ
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java( ((+.
+%23'org.springframework.http.ResponseEntity"'org.springframework.http.ResponseEntityÖ
+Ç
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java( ((h
+%24"horg.springframework.http.ResponseEntity#<init>(Ljava/lang/Object;Lorg/springframework/http/HttpStatus;)V*0
+.
+%23'org.springframework.http.ResponseEntity*/-
++La struttura √® stata aggiunta con successo*,
+*
+%22#org.springframework.http.HttpStatus"≤
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java( ((i0
+.
+%23'org.springframework.http.ResponseEntity*æ&
+startingBlock~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java/ (Vy
+w
+
+__unknown_file (
+%29"__id*N*L
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura"
+descrizioner
+p
+
+__unknown_file (
+%30"__id*G*E
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura"
+fotop
+n
+
+__unknown_file (
+%31"__id*E*C
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura"
+idw
+u
+
+__unknown_file (
+%32"__id*L*J
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura"
+	indirizzor
+p
+
+__unknown_file (
+%33"__id*G*E
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura"
+nomex
+v
+
+__unknown_file (
+%34"__id*M*K
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura"
+
+recensioniÿ
+’
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java (3
+%35"
+__annotate*75
+3org.springframework.web.bind.annotation.CrossOrigin*
+
+%32ÿ
+’
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java0 (<
+%36"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%32Ô
+Ï
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.javaG (UJ
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura"
+	indirizzo"__annotation*
+
+%35*
+
+%36ÿ
+’
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java (3
+%37"
+__annotate*75
+3org.springframework.web.bind.annotation.CrossOrigin*
+
+%31ÿ
+’
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java0 (<
+%38"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%31Ë
+Â
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.javaG (UC
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura"
+id"__annotation*
+
+%37*
+
+%38ÿ
+’
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java (3
+%39"
+__annotate*75
+3org.springframework.web.bind.annotation.CrossOrigin*
+
+%30ÿ
+’
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java0 (<
+%40"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%30Í
+Á
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.javaG (UE
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura"
+foto"__annotation*
+
+%39*
+
+%40ÿ
+’
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java (3
+%41"
+__annotate*75
+3org.springframework.web.bind.annotation.CrossOrigin*
+
+%34ÿ
+’
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java0 (<
+%42"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%34
+Ì
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.javaG (UK
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura"
+
+recensioni"__annotation*
+
+%41*
+
+%42ÿ
+’
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java (3
+%43"
+__annotate*75
+3org.springframework.web.bind.annotation.CrossOrigin*
+
+%33ÿ
+’
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java0 (<
+%44"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%33Í
+Á
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.javaG (UE
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura"
+nome"__annotation*
+
+%43*
+
+%44ÿ
+’
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java (3
+%45"
+__annotate*75
+3org.springframework.web.bind.annotation.CrossOrigin*
+
+%29ÿ
+’
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java0 (<
+%46"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%29Ò
+Ó
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.javaG (UL
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura"
+descrizione"__annotation*
+
+%45*
+
+%46*
+5*©3
+4~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java"0 "(>ËÂ
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java"0 "(M/
+%2)com.ingsw.consigliaviaggi.model.Indirizzo"ccom.ingsw.consigliaviaggi.model.Struttura#getIndirizzo()Lcom/ingsw/consigliaviaggi/model/Indirizzo;*=
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura2getIndirizzo()ûõ
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java"0 "(V
+%3java.lang.String"Dcom.ingsw.consigliaviaggi.model.Indirizzo#getVia()Ljava/lang/String;*1
+/
+%2)com.ingsw.consigliaviaggi.model.Indirizzo2getVia()ËÂ
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java"X "(u/
+%4)com.ingsw.consigliaviaggi.model.Indirizzo"ccom.ingsw.consigliaviaggi.model.Struttura#getIndirizzo()Lcom/ingsw/consigliaviaggi/model/Indirizzo;*=
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura2getIndirizzo()ß§
+
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java"X "(Å
+%5java.lang.Integer"Hcom.ingsw.consigliaviaggi.model.Indirizzo#getCivico()Ljava/lang/Integer;*1
+/
+%4)com.ingsw.consigliaviaggi.model.Indirizzo2getCivico()ÎË
+Ä
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java"É "(†/
+%6)com.ingsw.consigliaviaggi.model.Indirizzo"ccom.ingsw.consigliaviaggi.model.Struttura#getIndirizzo()Lcom/ingsw/consigliaviaggi/model/Indirizzo;*=
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura2getIndirizzo()£†
+Ä
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java"É "(™
+%7java.lang.String"Ecom.ingsw.consigliaviaggi.model.Indirizzo#getCity()Ljava/lang/String;*1
+/
+%6)com.ingsw.consigliaviaggi.model.Indirizzo2	getCity()ﬂ‹
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java"& "(//
+%8)com.ingsw.consigliaviaggi.model.Indirizzo")com.ingsw.consigliaviaggi.model.Indirizzo¯
+ı
+
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java"" "(´
+%9"jcom.ingsw.consigliaviaggi.model.Indirizzo#<init>(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;)V*1
+/
+%8)com.ingsw.consigliaviaggi.model.Indirizzo*
+
+%3java.lang.String*
+
+%5java.lang.Integer*
+
+%7java.lang.Stringı
+Ú
+
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java" "(¨6
+	indirizzo)com.ingsw.consigliaviaggi.model.Indirizzo"__id*1
+/
+%8)com.ingsw.consigliaviaggi.model.Indirizzo≠™
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java#0 #(H
+%10java.lang.String"Ecom.ingsw.consigliaviaggi.model.Struttura#getNome()Ljava/lang/String;*=
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura2	getNome()ª∏
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java#J #(i
+%11java.lang.String"Lcom.ingsw.consigliaviaggi.model.Struttura#getDescrizione()Ljava/lang/String;*=
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura2getDescrizione()ÚÔ
+
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java#v #(ì4
+%12-com.ingsw.consigliaviaggi.model.TipoStruttura"gcom.ingsw.consigliaviaggi.model.Struttura#getCategoria()Lcom/ingsw/consigliaviaggi/model/TipoStruttura;*=
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura2getCategoria()ñì
+Ä
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java#ï #(Ø
+
+%13int"6com.ingsw.consigliaviaggi.model.Struttura#getPrezzo()I*=
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura2getPrezzo()∞≠
+Ä
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java#∞ #(»
+%14java.lang.String"Ecom.ingsw.consigliaviaggi.model.Struttura#getFoto()Ljava/lang/String;*=
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura2	getFoto()‡›
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java#& #(/0
+%15)com.ingsw.consigliaviaggi.model.Struttura")com.ingsw.consigliaviaggi.model.Struttura◊
+‘
+
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java#" #(…
+%16"ƒcom.ingsw.consigliaviaggi.model.Struttura#<init>(Ljava/lang/String;Ljava/lang/String;Lcom/ingsw/consigliaviaggi/model/Indirizzo;Lcom/ingsw/consigliaviaggi/model/TipoStruttura;ILjava/lang/String;)V*2
+0
+%15)com.ingsw.consigliaviaggi.model.Struttura*
+
+%10java.lang.String*
+
+%11java.lang.String*8
+6
+	indirizzo)com.ingsw.consigliaviaggi.model.Indirizzo*6
+4
+%12-com.ingsw.consigliaviaggi.model.TipoStruttura*
+
+
+%13int*
+
+%14java.lang.Stringˆ
+Û
+
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java# #( 6
+	struttura)com.ingsw.consigliaviaggi.model.Struttura"__id*2
+0
+%15)com.ingsw.consigliaviaggi.model.Strutturaï
+í
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java% %(1
+%17*com.ingsw.consigliaviaggi.dao.StrutturaDAO"__id*W*UC
+Acom.ingsw.consigliaviaggi.controllers.ControllerAggiungiStruttura"
+strutturaDAO§°
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java%8 %(I
+%18java.lang.String"Ccom.ingsw.consigliaviaggi.model.Struttura#getId()Ljava/lang/String;*8
+6
+	struttura)com.ingsw.consigliaviaggi.model.Struttura2getId()ÌÍ
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java% %(J
+%19boolean"Ycom.ingsw.consigliaviaggi.dao.StrutturaDAO#existsStrutturaByIdEquals(Ljava/lang/String;)Z*3
+1
+%17*com.ingsw.consigliaviaggi.dao.StrutturaDAO*
+
+%18java.lang.String2-existsStrutturaByIdEquals(Ljava/lang/String;)*
+2
+3*§
+5~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java   (%∏
+µ
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java   (%F
+%0@com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput"__id*e*cC
+Acom.ingsw.consigliaviaggi.controllers.ControllerAggiungiStruttura"
+controllerValidazioneInput€ÿ
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java   (F
+%1boolean"com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput#isValidStruttura(Lcom/ingsw/consigliaviaggi/model/Struttura;)Z*H
+F
+%0@com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput*=
+;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.Struttura2=isValidStruttura(Lcom/ingsw/consigliaviaggi/model/Struttura;)*
+4
+1*ù
+0 "ï
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java4 4(
+implicit return*…
+1~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java1, 1(>Ä˝
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java1 1(+@
+%279com.ingsw.consigliaviaggi.exception.NoValidInputException"9com.ingsw.consigliaviaggi.exception.NoValidInputExceptionª
+∏
+~
+t/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerAggiungiStruttura.java1 1(?
+%28"Ucom.ingsw.consigliaviaggi.exception.NoValidInputException#<init>(Ljava/lang/String;)V*B
+@
+%279com.ingsw.consigliaviaggi.exception.NoValidInputException*
+Input non valido*
+0:;
+nuovaStruttura)com.ingsw.consigliaviaggi.model.StrutturaBEC
+Acom.ingsw.consigliaviaggi.controllers.ControllerAggiungiStruttura

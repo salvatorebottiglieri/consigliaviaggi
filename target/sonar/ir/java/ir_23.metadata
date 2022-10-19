@@ -1,0 +1,2 @@
+com.ingsw.consigliaviaggi.config.ConfigurazioneSicurezza#configure(Lorg/springframework/security/config/annotation/web/builders/WebSecurity;)V
+org.springframework.security.config.annotation.web.builders.WebSecurity#ignoring()Lorg/springframework/security/config/annotation/web/builders/WebSecurity$IgnoredRequestConfigurer;

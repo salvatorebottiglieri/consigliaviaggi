@@ -1,0 +1,11 @@
+com.ingsw.consigliaviaggi.config.ConfigurazioneSicurezza#configure(Lorg/springframework/security/config/annotation/web/builders/HttpSecurity;)V
+org.springframework.security.config.annotation.web.configurers.LogoutConfigurer#invalidateHttpSession(Z)Lorg/springframework/security/config/annotation/web/configurers/LogoutConfigurer;
+org.springframework.security.config.annotation.web.builders.HttpSecurity#authorizeRequests()Lorg/springframework/security/config/annotation/web/configurers/ExpressionUrlAuthorizationConfigurer$ExpressionInterceptUrlRegistry;
+org.springframework.security.config.annotation.web.configurers.HeadersConfigurer$FrameOptionsConfig#disable()Lorg/springframework/security/config/annotation/web/configurers/HeadersConfigurer;
+org.springframework.security.config.annotation.web.builders.HttpSecurity#httpBasic()Lorg/springframework/security/config/annotation/web/configurers/HttpBasicConfigurer;
+org.springframework.security.config.annotation.web.builders.HttpSecurity#logout()Lorg/springframework/security/config/annotation/web/configurers/LogoutConfigurer;
+org.springframework.security.config.annotation.web.builders.HttpSecurity#csrf()Lorg/springframework/security/config/annotation/web/configurers/CsrfConfigurer;
+org.springframework.security.config.annotation.web.configurers.HttpBasicConfigurer#authenticationEntryPoint(Lorg/springframework/security/web/AuthenticationEntryPoint;)Lorg/springframework/security/config/annotation/web/configurers/HttpBasicConfigurer;
+org.springframework.security.config.annotation.web.configurers.HttpBasicConfigurer#realmName(Ljava/lang/String;)Lorg/springframework/security/config/annotation/web/configurers/HttpBasicConfigurer;
+org.springframework.security.config.annotation.web.configurers.LogoutConfigurer#deleteCookies([Ljava/lang/String;)Lorg/springframework/security/config/annotation/web/configurers/LogoutConfigurer;
+org.springframework.security.config.annotation.web.builders.HttpSecurity#headers()Lorg/springframework/security/config/annotation/web/configurers/HeadersConfigurer;

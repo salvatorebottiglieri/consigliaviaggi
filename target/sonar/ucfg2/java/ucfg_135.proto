@@ -1,0 +1,109 @@
+
+¤com.ingsw.consigliaviaggi.controllers.ControllerCheckRank#calcolaRankUtente(Lcom/ingsw/consigliaviaggi/model/Utente;)Lcom/ingsw/consigliaviaggi/model/TipoRecensore;v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.java0 0(*"11*î
+2v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.javaB B( ¾
+»
+v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.javaB B(&3
+%6-com.ingsw.consigliaviaggi.model.TipoRecensore"__id*
+"""¯
+v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.javaB B('5
+3
+%6-com.ingsw.consigliaviaggi.model.TipoRecensore*î
+4v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.java@ @( ¾
+»
+v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.java@ @('3
+%5-com.ingsw.consigliaviaggi.model.TipoRecensore"__id*
+"""¯
+v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.java@ @((5
+3
+%5-com.ingsw.consigliaviaggi.model.TipoRecensore*î
+6v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.java> >( ¾
+»
+v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.java> >(+3
+%4-com.ingsw.consigliaviaggi.model.TipoRecensore"__id*
+"""¯
+v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.java> >(,5
+3
+%4-com.ingsw.consigliaviaggi.model.TipoRecensore*Ä
+8v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.java6 6("Ã
+À
+v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.java6 6("8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione"__id*
+""ï
+ì
+v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.java6 6("8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione"
+__arrayGet*$
+"
+recensioniUtentejava.util.List*
+""*
+2
+4
+6
+9
+1*˜
+9v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.java8 8(#†ƒ
+v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.java8& 8(;	
+%2int"6com.ingsw.consigliaviaggi.model.Recensione#getLikes()I*:
+8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione2
+getLikes()Œ‰
+v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.java9, 9(D	
+%3int"9com.ingsw.consigliaviaggi.model.Recensione#getDislikes()I*:
+8
+
+recensione*com.ingsw.consigliaviaggi.model.Recensione2getDislikes()*
+8*…
+11v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.java2, 2(9†
+ƒ
+v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.java2, 2(91
+%0+com.ingsw.consigliaviaggi.dao.RecensioneDAO"__id*P*N;
+9com.ingsw.consigliaviaggi.controllers.ControllerCheckRank"
+recensioneDAO¸µ
+v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.java2, 2(W
+%1java.util.List"{com.ingsw.consigliaviaggi.dao.RecensioneDAO#findAllByAutoreEquals(Lcom/ingsw/consigliaviaggi/model/Utente;)Ljava/util/List;*3
+1
+%0+com.ingsw.consigliaviaggi.dao.RecensioneDAO*2
+0
+utente&com.ingsw.consigliaviaggi.model.Utente2?findAllByAutoreEquals(Lcom/ingsw/consigliaviaggi/model/Utente;)½
+º
+v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.java2 2(X"
+recensioniUtentejava.util.List"__id*
+
+%1java.util.List*
+8*î
+1v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.javaD D( ¾
+»
+v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.javaD D((3
+%7-com.ingsw.consigliaviaggi.model.TipoRecensore"__id*
+"""¯
+v
+l/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerCheckRank.javaD D()5
+3
+%7-com.ingsw.consigliaviaggi.model.TipoRecensore:0
+utente&com.ingsw.consigliaviaggi.model.UtenteB=;
+9com.ingsw.consigliaviaggi.controllers.ControllerCheckRank

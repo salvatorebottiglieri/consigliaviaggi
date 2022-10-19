@@ -1,0 +1,4 @@
+com.ingsw.consigliaviaggi.controllers.ControllerVisualizzaRecensioni#getRecensioniNegative(Ljava/lang/String;)Ljava/util/List;
+com.ingsw.consigliaviaggi.model.Recensione$VoteComparator#<init>()V
+java.util.Optional#get()Ljava/lang/Object;
+com.ingsw.consigliaviaggi.model.Recensione$VoteComparator#instance-init#

@@ -1,0 +1,435 @@
+
+ücom.ingsw.consigliaviaggi.controllers.ControllerRegistrazione#aggiungiUtente(Lcom/ingsw/consigliaviaggi/model/Utente;)Lorg/springframework/http/ResponseEntity;z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"" "(0"startingBlock*Ì
+2z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java.; .(Píè
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java. .(:K
+%13Dcom.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion"Dcom.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion—
+Œ
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java. .(Q
+%14"`com.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion#<init>(Ljava/lang/String;)V*M
+K
+%13Dcom.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion*
+Utente gi√† presente*
+0*˘
+3z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java( ((éã
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java( ((+
+
+%5void"4com.ingsw.consigliaviaggi.model.Utente#setActive(Z)V*7
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente*22setActive(Z)»
+≈
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java)* )(49
+%63com.ingsw.consigliaviaggi.model.VisibilitaRecensori"__id*
+""µ≤
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java) )(5
+
+%7void"lcom.ingsw.consigliaviaggi.model.Utente#setMostraCome(Lcom/ingsw/consigliaviaggi/model/VisibilitaRecensori;)V*7
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente*;
+9
+%63com.ingsw.consigliaviaggi.model.VisibilitaRecensori2DsetMostraCome(Lcom/ingsw/consigliaviaggi/model/VisibilitaRecensori;)Ü
+É
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java* *(-
+%8'com.ingsw.consigliaviaggi.dao.UtenteDAO"__id*P*N?
+=com.ingsw.consigliaviaggi.controllers.ControllerRegistrazione"
+	utenteDAOêç
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java* *(+,
+%9&com.ingsw.consigliaviaggi.model.Utente"]org.springframework.data.repository.CrudRepository#save(Ljava/lang/Object;)Ljava/lang/Object;*/
+-
+%8'com.ingsw.consigliaviaggi.dao.UtenteDAO*7
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente2save(Ljava/lang/Object;)π
+∂
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java+X +(e*
+%10#org.springframework.http.HttpStatus"__id*
+""ÿ’
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java+ +(+.
+%11'org.springframework.http.ResponseEntity"'org.springframework.http.ResponseEntityˇ
+¸
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java+ +(f
+%12"horg.springframework.http.ResponseEntity#<init>(Ljava/lang/Object;Lorg/springframework/http/HttpStatus;)V*0
+.
+%11'org.springframework.http.ResponseEntity*-+
+)La registrazione √® avvenuta con successo*,
+*
+%10#org.springframework.http.HttpStatus"Æ
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java+ +(g0
+.
+%11'org.springframework.http.ResponseEntity*’7
+startingBlockz
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"0 "(Ql
+j
+
+__unknown_file (
+%17"__id*A*?
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente"
+cityo
+m
+
+__unknown_file (
+%18"__id*D*B
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente"	
+cognomeu
+s
+
+__unknown_file (
+%19"__id*J*H
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente"
+dataDiNascitav
+t
+
+__unknown_file (
+%20"__id*K*I
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente"
+indirizzoEmaill
+j
+
+__unknown_file (
+%21"__id*A*?
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente"
+nomer
+p
+
+__unknown_file (
+%22"__id*G*E
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente"
+
+nomeUtentep
+n
+
+__unknown_file (
+%23"__id*E*C
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente"
+
+passwordr
+p
+
+__unknown_file (
+%24"__id*G*E
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente"
+
+recensionim
+k
+
+__unknown_file (
+%25"__id*B*@
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente"
+ruolo‘
+—
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java! !(3
+%26"
+__annotate*75
+3org.springframework.web.bind.annotation.CrossOrigin*
+
+%17‘
+—
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"1 "(=
+%27"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%17‡
+›
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"E "(P?
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente"
+city"__annotation*
+
+%26*
+
+%27‘
+—
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java! !(3
+%28"
+__annotate*75
+3org.springframework.web.bind.annotation.CrossOrigin*
+
+%20‘
+—
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"1 "(=
+%29"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%20Í
+Á
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"E "(PI
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente"
+indirizzoEmail"__annotation*
+
+%28*
+
+%29‘
+—
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java! !(3
+%30"
+__annotate*75
+3org.springframework.web.bind.annotation.CrossOrigin*
+
+%25‘
+—
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"1 "(=
+%31"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%25·
+ﬁ
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"E "(P@
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente"
+ruolo"__annotation*
+
+%30*
+
+%31‘
+—
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java! !(3
+%32"
+__annotate*75
+3org.springframework.web.bind.annotation.CrossOrigin*
+
+%22‘
+—
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"1 "(=
+%33"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%22Ê
+„
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"E "(PE
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente"
+
+nomeUtente"__annotation*
+
+%32*
+
+%33‘
+—
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java! !(3
+%34"
+__annotate*75
+3org.springframework.web.bind.annotation.CrossOrigin*
+
+%18‘
+—
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"1 "(=
+%35"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%18„
+‡
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"E "(PB
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente"	
+cognome"__annotation*
+
+%34*
+
+%35‘
+—
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java! !(3
+%36"
+__annotate*75
+3org.springframework.web.bind.annotation.CrossOrigin*
+
+%21‘
+—
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"1 "(=
+%37"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%21‡
+›
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"E "(P?
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente"
+nome"__annotation*
+
+%36*
+
+%37‘
+—
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java! !(3
+%38"
+__annotate*75
+3org.springframework.web.bind.annotation.CrossOrigin*
+
+%23‘
+—
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"1 "(=
+%39"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%23‰
+·
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"E "(PC
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente"
+
+password"__annotation*
+
+%38*
+
+%39‘
+—
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java! !(3
+%40"
+__annotate*75
+3org.springframework.web.bind.annotation.CrossOrigin*
+
+%19‘
+—
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"1 "(=
+%41"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%19È
+Ê
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"E "(PH
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente"
+dataDiNascita"__annotation*
+
+%40*
+
+%41‘
+—
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java! !(3
+%42"
+__annotate*75
+3org.springframework.web.bind.annotation.CrossOrigin*
+
+%24‘
+—
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"1 "(=
+%43"
+__annotate*75
+3org.springframework.web.bind.annotation.RequestBody*
+
+%24Ê
+„
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java"E "(PE
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente"
+
+recensioni"__annotation*
+
+%42*
+
+%43*
+5*ì
+4z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java& &(Ü
+É
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java& &(-
+%2'com.ingsw.consigliaviaggi.dao.UtenteDAO"__id*P*N?
+=com.ingsw.consigliaviaggi.controllers.ControllerRegistrazione"
+	utenteDAO´®
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java&. &(I
+%3java.lang.String"Hcom.ingsw.consigliaviaggi.model.Utente#getNomeUtente()Ljava/lang/String;*7
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente2getNomeUtente()“œ
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java& &(J
+%4boolean"Ocom.ingsw.consigliaviaggi.dao.UtenteDAO#existsByNomeUtente(Ljava/lang/String;)Z*/
+-
+%2'com.ingsw.consigliaviaggi.dao.UtenteDAO*
+
+%3java.lang.String2&existsByNomeUtente(Ljava/lang/String;)*
+2
+3*ë
+5z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java$ $(%∞
+≠
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java$ $(%F
+%0@com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput"__id*a*_?
+=com.ingsw.consigliaviaggi.controllers.ControllerRegistrazione"
+controllerValidazioneInput‘—
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java$ $(G
+%1boolean"Äcom.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput#isValidRegistrazione(Lcom/ingsw/consigliaviaggi/model/Utente;)Z*H
+F
+%0@com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput*7
+5
+nuovoUtente&com.ingsw.consigliaviaggi.model.Utente2>isValidRegistrazione(Lcom/ingsw/consigliaviaggi/model/Utente;)*
+4
+1*ô
+0 "ë
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java5 5(
+implicit return*Ω
+1z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java1. 1(@¸˘
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java1 1(-@
+%159com.ingsw.consigliaviaggi.exception.NoValidInputException"9com.ingsw.consigliaviaggi.exception.NoValidInputException∑
+¥
+z
+p/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRegistrazione.java1 1(A
+%16"Ucom.ingsw.consigliaviaggi.exception.NoValidInputException#<init>(Ljava/lang/String;)V*B
+@
+%159com.ingsw.consigliaviaggi.exception.NoValidInputException*
+Input non valido*
+0:5
+nuovoUtente&com.ingsw.consigliaviaggi.model.UtenteBA?
+=com.ingsw.consigliaviaggi.controllers.ControllerRegistrazione

@@ -1,0 +1,5 @@
+com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput#isValidPassword(Ljava/lang/String;)Z
+java.lang.Character#toString(C)Ljava/lang/String;
+java.lang.String#length()I
+java.lang.Integer#toString(I)Ljava/lang/String;
+java.lang.String#contains(Ljava/lang/CharSequence;)Z

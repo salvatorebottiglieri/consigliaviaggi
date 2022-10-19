@@ -1,0 +1,73 @@
+
+^com.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura#distanceBetweenLatLong(DDDD)D
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaî î(0"1*ƒ
+1
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaï ï(Ì
+É
+
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaï ï(#
+%0double"java.lang.Math#toRadians(D)D*"
+java.lang.Math*
+""Ì
+É
+
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javað ð(#
+%1double"java.lang.Math#toRadians(D)D*"
+java.lang.Math*
+""Ì
+É
+
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javañ ñ(#
+%2double"java.lang.Math#toRadians(D)D*"
+java.lang.Math*
+""Ì
+É
+
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaò ò(#
+%3double"java.lang.Math#toRadians(D)D*"
+java.lang.Math*
+""Æ
+Ã
+
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaõ' õ(5
+%4double"java.lang.Math#sin(D)D*"
+java.lang.Math*
+""Æ
+Ã
+
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaõ6 õ(D
+%5double"java.lang.Math#sin(D)D*"
+java.lang.Math*
+""Æ
+Ã
+
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaõG õ(U
+%6double"java.lang.Math#cos(D)D*"
+java.lang.Math*
+""Æ
+Ã
+
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaõV õ(d
+%7double"java.lang.Math#cos(D)D*"
+java.lang.Math*
+""Æ
+Ã
+
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaõe õ(z
+%8double"java.lang.Math#cos(D)D*"
+java.lang.Math*
+""Ç
+Ä
+
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaõ õ({
+%9double"java.lang.Math#acos(D)D*"
+java.lang.Math*
+"""‰
+
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaõ õ(|
+"":
+"":
+"":
+"":
+""BD"B
+@com.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura

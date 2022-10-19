@@ -1,0 +1,8 @@
+com.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura#getLatitudineAndLongitudineFromIndirizzo(Lcom/ingsw/consigliaviaggi/model/Indirizzo;)Lcom/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura$CoppiaDiCoordinate;
+java.lang.Integer#toString()Ljava/lang/String;
+com.byteowls.jopencage.model.JOpenCageForwardRequest#<init>([Ljava/lang/String;)V
+com.byteowls.jopencage.JOpenCageGeocoder#instance-init#
+com.byteowls.jopencage.JOpenCageGeocoder#<init>(Ljava/lang/String;)V
+com.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura$CoppiaDiCoordinate#<init>(Ljava/lang/Double;Ljava/lang/Double;)V
+com.byteowls.jopencage.model.JOpenCageForwardRequest#instance-init#
+com.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura$CoppiaDiCoordinate#instance-init#

@@ -1,0 +1,70 @@
+
+£com.ingsw.consigliaviaggi.exception.RestExceptionHandler#handleEntityNotFound(Ljavax/persistence/EntityNotFoundException;)Lorg/springframework/http/ResponseEntity;u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java(% ((9"startingBlock*Ï
+startingBlocku
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java(9 ((Uý
+ú
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java' '(4
+%6"
+__annotate*<:
+8org.springframework.web.bind.annotation.ExceptionHandler*1
+/
+ex)javax.persistence.EntityNotFoundExceptionÁ
+¾
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java(R ((T/
+ex)javax.persistence.EntityNotFoundException"__annotation*
+
+%6*
+1*•
+1u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java)) )(2³
+°
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java)) )(2)
+%0#org.springframework.http.HttpStatus"__id*
+""ÜÙ
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java)  )((2
+%1,com.ingsw.consigliaviaggi.exception.ApiError",com.ingsw.consigliaviaggi.exception.ApiErrorÀ
+½
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java) )(3
+%2"[com.ingsw.consigliaviaggi.exception.ApiError#<init>(Lorg/springframework/http/HttpStatus;)V*4
+2
+%1,com.ingsw.consigliaviaggi.exception.ApiError*+
+)
+%0#org.springframework.http.HttpStatusð
+í
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java) )(48
+apiError,com.ingsw.consigliaviaggi.exception.ApiError"__id*4
+2
+%1,com.ingsw.consigliaviaggi.exception.ApiError‡„
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java* *(+
+%3java.lang.String"2java.lang.Throwable#getMessage()Ljava/lang/String;*1
+/
+ex)javax.persistence.EntityNotFoundException2getMessage()ÊÇ
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java* *(,
+
+%4void"Lcom.ingsw.consigliaviaggi.exception.ApiError#setMessage(Ljava/lang/String;)V*:
+8
+apiError,com.ingsw.consigliaviaggi.exception.ApiError*
+
+%3java.lang.String2setMessage(Ljava/lang/String;)Ë
+È
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java+ +(,-
+%5'org.springframework.http.ResponseEntity"¥com.ingsw.consigliaviaggi.exception.RestExceptionHandler#buildResponseEntity(Lcom/ingsw/consigliaviaggi/exception/ApiError;)Lorg/springframework/http/ResponseEntity;*<:
+8com.ingsw.consigliaviaggi.exception.RestExceptionHandler*:
+8
+apiError,com.ingsw.consigliaviaggi.exception.ApiError"¨
+u
+k/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/RestExceptionHandler.java+ +(-/
+-
+%5'org.springframework.http.ResponseEntity:/
+ex)javax.persistence.EntityNotFoundExceptionB<:
+8com.ingsw.consigliaviaggi.exception.RestExceptionHandler

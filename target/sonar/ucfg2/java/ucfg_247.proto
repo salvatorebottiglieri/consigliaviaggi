@@ -1,0 +1,16 @@
+
+Tcom.ingsw.consigliaviaggi.exception.ApiError#getTimestamp()Ljava/time/LocalDateTime;i
+_/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/ApiError.java0 0(%"1*Ô
+1i
+_/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/ApiError.java1 1(Ô
+Ñ
+i
+_/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/ApiError.java1 1(
+%0java.time.LocalDateTime"__id*?*=.
+,com.ingsw.consigliaviaggi.exception.ApiError"
+	timestamp"Œ
+i
+_/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/ApiError.java1 1(
+
+%0java.time.LocalDateTimeB0.
+,com.ingsw.consigliaviaggi.exception.ApiError

@@ -1,0 +1,66 @@
+
+Œcom.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura#getStruttura(Ljava/lang/String;)Lcom/ingsw/consigliaviaggi/model/Struttura;}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.java (!"startingBlock*Ë
+2}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.java! !($‘Ž
+}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.java! !(*/
+%3)com.ingsw.consigliaviaggi.model.Struttura"*java.util.Optional#get()Ljava/lang/Object;*)
+'
+strutturaOptionaljava.util.Optional2get()"²
+}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.java! !(+1
+/
+%3)com.ingsw.consigliaviaggi.model.Struttura*Õ	
+3}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.java0 (<’
+
+}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.java0 (<0
+%0*com.ingsw.consigliaviaggi.dao.StrutturaDAO"__id*V*TB
+@com.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura"
+strutturaDAOöó
+}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.java0 (R
+%1java.util.Optional"corg.springframework.data.repository.CrudRepository#findById(Ljava/lang/Object;)Ljava/util/Optional;*2
+0
+%0*com.ingsw.consigliaviaggi.dao.StrutturaDAO*!
+
+strutturaIDjava.lang.String2findById(Ljava/lang/Object;)Í
+Ê
+}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.java (S'
+strutturaOptionaljava.util.Optional"__id*
+
+%1java.util.Optionalêç
+}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.java   ((
+%2boolean"java.util.Optional#isPresent()Z*)
+'
+strutturaOptionaljava.util.Optional2isPresent()*
+2
+1*Ã
+startingBlock}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.java! (Cñ
+î
+}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.java" (/
+%4"
+__annotate*86
+4org.springframework.web.bind.annotation.PathVariable*!
+
+strutturaIDjava.lang.String¹
+¶
+}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.java7 (B
+strutturaIDjava.lang.String"__annotation*
+
+%4*
+3*Œ
+1}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.java$ $("‡
+}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.java$ $(
+"":
+strutturaIDjava.lang.StringBDB
+@com.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura

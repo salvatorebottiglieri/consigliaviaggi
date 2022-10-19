@@ -1,0 +1,2 @@
+com.ingsw.consigliaviaggi.config.ConfigurazioneSicurezza#configureGlobal(Lorg/springframework/security/config/annotation/authentication/builders/AuthenticationManagerBuilder;)V
+org.springframework.security.config.annotation.authentication.configurers.provisioning.UserDetailsManagerConfigurer#withUser(Ljava/lang/String;)Lorg/springframework/security/config/annotation/authentication/configurers/provisioning/UserDetailsManagerConfigurer$UserDetailsBuilder;

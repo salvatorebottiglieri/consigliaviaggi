@@ -1,0 +1,7 @@
+com.ingsw.consigliaviaggi.controllers.ControllerRegistrazione#aggiungiUtente(Lcom/ingsw/consigliaviaggi/model/Utente;)Lorg/springframework/http/ResponseEntity;
+com.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion#instance-init#
+com.ingsw.consigliaviaggi.exception.NoValidInputException#instance-init#
+com.ingsw.consigliaviaggi.exception.NoValidInputException#<init>(Ljava/lang/String;)V
+com.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion#<init>(Ljava/lang/String;)V
+org.springframework.http.ResponseEntity#instance-init#
+org.springframework.http.ResponseEntity#<init>(Ljava/lang/Object;Lorg/springframework/http/HttpStatus;)V

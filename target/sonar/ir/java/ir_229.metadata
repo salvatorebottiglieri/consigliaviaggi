@@ -1,0 +1,1 @@
+com.ingsw.consigliaviaggi.exception.ApiError#getStatus()Lorg/springframework/http/HttpStatus;

@@ -1,0 +1,27 @@
+
+acom.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput#isValidNome(Ljava/lang/String;)Z}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.javaW W("3*ß
+2}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.javaY1 Y(5ÕÒ
+}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.javaY1 Y(?
+%1boolean"java.lang.String#isEmpty()Z*
+
+nomejava.lang.String2	isEmpty()*
+1*Ü
+3}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.javaX X(ÏÌ
+}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.javaY Y(	
+%0int"java.lang.String#length()I*
+
+nomejava.lang.String2length()*
+2
+1*Œ
+1}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.javaY Y(A"‡
+}
+s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.javaY Y(A
+"":
+nomejava.lang.StringBDB
+@com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput
