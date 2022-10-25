@@ -12,11 +12,10 @@ jobs:
     runs-on: self-hosted
     
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
       - name: Packaging of code 
         run: mvn clean package spring-boot:repackage
         
       - name: Code execution
-        run: java -jar ./target/consigliaviaggi-1.1.jar
+        run: nohup java -jar ./target/consigliaviaggi-1.1.jar &
