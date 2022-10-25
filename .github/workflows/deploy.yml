@@ -1,0 +1,22 @@
+name: Deploy to Raspberry Pi
+
+# Controls when the workflow will run
+on:
+  workflow_run:
+    workflows: ["BuildAndTest"]
+    types:
+      - completed
+      
+jobs:
+  deploy:
+    runs-on: self-hosted
+    
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - name: Packaging of code 
+        run: mvn clean package spring-boot:repackage
+        
+      - name: Code execution
+        run: java -jar ./target/consigliaviaggi-1.1.jar
