@@ -1,2 +1,0 @@
-com.ingsw.consigliaviaggi.exception.ApiError#<init>(Lorg/springframework/http/HttpStatus;Ljava/lang/String;Ljava/lang/Throwable;)V
-com.ingsw.consigliaviaggi.exception.ApiError#<init>()V

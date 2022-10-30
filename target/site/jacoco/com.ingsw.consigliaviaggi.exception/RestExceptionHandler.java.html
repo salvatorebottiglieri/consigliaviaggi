@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RestExceptionHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">consigliaviaggi</a> &gt; <a href="index.source.html" class="el_package">com.ingsw.consigliaviaggi.exception</a> &gt; <span class="el_source">RestExceptionHandler.java</span></div><h1>RestExceptionHandler.java</h1><pre class="source lang-java linenums">package com.ingsw.consigliaviaggi.exception;
+
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import javax.persistence.EntityNotFoundException;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.springframework.http.HttpStatus.NOT_ACCEPTABLE;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+
+@Order(Ordered.HIGHEST_PRECEDENCE)
+@ControllerAdvice
+<span class="fc" id="L26">public class RestExceptionHandler extends ResponseEntityExceptionHandler {</span>
+
+    private ResponseEntity&lt;Object&gt; buildResponseEntity(ApiError apiError) {
+<span class="nc" id="L29">        return new ResponseEntity&lt;&gt;(apiError, apiError.getStatus());</span>
+    }
+
+    @Override
+    protected ResponseEntity&lt;Object&gt; handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+<span class="nc" id="L34">        String error = &quot;Richiesta JSON non ben formata&quot;;</span>
+<span class="nc" id="L35">        return buildResponseEntity(new ApiError(HttpStatus.BAD_REQUEST, error, ex));</span>
+    }
+
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    protected ResponseEntity&lt;Object&gt; handleEntityNotFound(EntityNotFoundException ex) {
+<span class="nc" id="L41">        ApiError apiError = new ApiError(NOT_FOUND);</span>
+<span class="nc" id="L42">        apiError.setMessage(ex.getMessage());</span>
+<span class="nc" id="L43">        return buildResponseEntity(apiError);</span>
+    }
+
+    @Override
+
+    protected ResponseEntity&lt;Object&gt; handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+<span class="nc" id="L49">        List&lt;String&gt; details = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">        for(ObjectError error : ex.getBindingResult().getAllErrors()) {</span>
+<span class="nc" id="L51">            details.add(error.getDefaultMessage());</span>
+<span class="nc" id="L52">        }</span>
+<span class="nc" id="L53">        ApiError error = new ApiError(HttpStatus.BAD_REQUEST);</span>
+<span class="nc" id="L54">        return buildResponseEntity(error);</span>
+    }
+
+    @ExceptionHandler(value = NoValidInputException.class)
+    protected ResponseEntity&lt;Object&gt; handleInputNotValid(NoValidInputException noValidInputException){
+<span class="nc" id="L59">        ApiError apiError = new ApiError(NOT_ACCEPTABLE);</span>
+<span class="nc" id="L60">        apiError.setMessage(noValidInputException.getMessage());</span>
+<span class="nc" id="L61">        return buildResponseEntity(apiError);</span>
+
+    }
+
+    @ExceptionHandler(value = ElementIsAlreadyPresentExcetpion.class)
+    protected ResponseEntity&lt;Object&gt; handleInputNotValid(ElementIsAlreadyPresentExcetpion structureIsAlreadyPresentExcetpion){
+<span class="nc" id="L67">        ApiError apiError = new ApiError(NOT_ACCEPTABLE);</span>
+<span class="nc" id="L68">        apiError.setMessage(structureIsAlreadyPresentExcetpion.getMessage());</span>
+<span class="nc" id="L69">        return buildResponseEntity(apiError);</span>
+    }
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

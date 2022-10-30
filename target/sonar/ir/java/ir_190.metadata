@@ -1,3 +1,0 @@
-com.ingsw.consigliaviaggi.controllers.ControllerAutenticazione#login(Lcom/ingsw/consigliaviaggi/controllers/ControllerAutenticazione$CredenzialiUtente;)Lorg/springframework/http/ResponseEntity;
-org.springframework.http.ResponseEntity#instance-init#
-org.springframework.http.ResponseEntity#<init>(Ljava/lang/Object;Lorg/springframework/http/HttpStatus;)V

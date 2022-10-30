@@ -1,16 +1,0 @@
-
-dcom.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput#isValidCognome(Ljava/lang/String;)Z}
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.javaa a(!"1*‰
-1}
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.javaa9 a(Dú÷
-}
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.javaa9 a(M
-%0boolean"acom.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput#isValidNome(Ljava/lang/String;)Z*DB
-@com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput*
-
-cognomejava.lang.String2isValidNome(Ljava/lang/String;)"‡
-}
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.javaa2 a(N
-"":
-cognomejava.lang.StringBDB
-@com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput

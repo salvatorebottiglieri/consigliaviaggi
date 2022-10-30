@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerValidazioneInput.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">consigliaviaggi</a> &gt; <a href="index.source.html" class="el_package">com.ingsw.consigliaviaggi.controllers</a> &gt; <span class="el_source">ControllerValidazioneInput.java</span></div><h1>ControllerValidazioneInput.java</h1><pre class="source lang-java linenums">package com.ingsw.consigliaviaggi.controllers;
+
+import com.ingsw.consigliaviaggi.dao.UtenteDAO;
+import com.ingsw.consigliaviaggi.model.Indirizzo;
+import com.ingsw.consigliaviaggi.model.Recensione;
+import com.ingsw.consigliaviaggi.model.Struttura;
+import com.ingsw.consigliaviaggi.model.Utente;
+import org.springframework.stereotype.Component;
+
+import java.util.Date;
+import java.util.regex.Pattern;
+
+
+
+@Component
+public class ControllerValidazioneInput {
+
+
+    private final UtenteDAO utenteDAO;
+
+<span class="fc" id="L21">    public ControllerValidazioneInput(UtenteDAO utenteDAO) {</span>
+<span class="fc" id="L22">        this.utenteDAO = utenteDAO;</span>
+<span class="fc" id="L23">    }</span>
+
+
+    public boolean isValidRecensione(Recensione recensione){
+
+<span class="nc" id="L28">        int MAXLENGTH = 250;</span>
+
+<span class="nc" id="L30">        String descrizione = recensione.getDescrizione();</span>
+
+<span class="nc bnc" id="L32" title="All 4 branches missed.">        if( descrizione.length() &lt;= MAXLENGTH &amp;&amp; !descrizione.isEmpty() ){</span>
+
+<span class="nc" id="L34">            return true;</span>
+        }
+        else{
+<span class="nc" id="L37">            return false;</span>
+        }
+
+    }
+
+    public boolean isValidStruttura(Struttura struttura){
+
+<span class="nc bnc" id="L44" title="All 2 branches missed.">        return isValidNameStruttura(struttura.getNome())</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">                &amp;&amp; isValidDescriptionStruttura(struttura.getDescrizione())</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">                &amp;&amp; isValidAddressStruttura(struttura.getIndirizzo())</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">                &amp;&amp; isValidPriceStruttura(struttura.getPrezzo());</span>
+
+
+    }
+
+    public boolean isValidRegistrazione(Utente utente){
+
+<span class="nc bnc" id="L54" title="All 2 branches missed.">        return isValidNome(utente.getNome())</span>
+<span class="nc bnc" id="L55" title="All 2 branches missed.">                &amp;&amp; isValidCognome(utente.getCognome())</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">                &amp;&amp; isValidNomeUtente(utente.getNomeUtente())</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">                &amp;&amp; isValidIndirizzoEmail(utente.getIndirizzoEmail())</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">                &amp;&amp; isValidPassword(utente.getPassword())</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">                &amp;&amp; isValidCity(utente.getCity())</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">                &amp;&amp; isValidDataDiNascita(utente.getDataDiNascita());</span>
+    }
+
+
+    private boolean isValidNameStruttura(String nome){
+<span class="nc" id="L65">        int maxNome = 20;</span>
+<span class="nc bnc" id="L66" title="All 4 branches missed.">        return nome.length() &lt;= maxNome &amp;&amp; !nome.isEmpty();</span>
+    }
+    public boolean isValidDescriptionStruttura(String descrizione){
+<span class="nc" id="L69">        int maxDescrizione = 500;</span>
+<span class="nc bnc" id="L70" title="All 4 branches missed.">        return descrizione.length() &lt;= maxDescrizione &amp;&amp; !descrizione.isEmpty();</span>
+    }
+    public boolean isValidAddressStruttura(Indirizzo indirizzo){
+
+<span class="nc" id="L74">        String via = indirizzo.getVia();</span>
+<span class="nc" id="L75">        int civico = indirizzo.getCivico();</span>
+<span class="nc" id="L76">        String city = indirizzo.getCity();</span>
+<span class="nc" id="L77">        int maxVia = 50;</span>
+<span class="nc" id="L78">        int maxCity = 50;</span>
+
+<span class="nc bnc" id="L80" title="All 10 branches missed.">        return via.length() &lt;= maxVia &amp;&amp; !(via.isEmpty()) &amp;&amp; city.length() &lt;= maxCity &amp;&amp; !(city.isEmpty()) &amp;&amp; civico &gt; 0;</span>
+
+    }
+
+
+<span class="nc bnc" id="L85" title="All 4 branches missed.">    private boolean isValidPriceStruttura(int prezzo){return prezzo&gt;=0 &amp;&amp; prezzo&lt;=5;}</span>
+
+    public boolean isValidNome(String nome){
+<span class="nc" id="L88">        int maxNomeUtente = 20;</span>
+<span class="nc bnc" id="L89" title="All 4 branches missed.">        return (nome.length()&lt;=maxNomeUtente &amp;&amp; !nome.isEmpty());</span>
+    }
+    public boolean isValidNomeUtente(String nomeUtente){
+
+<span class="nc" id="L93">        return isValidNome(nomeUtente);</span>
+
+    }
+
+<span class="nc" id="L97">    public boolean isValidCognome(String cognome){return isValidNome(cognome);}</span>
+<span class="nc" id="L98">    public boolean isValidDataDiNascita(Date dataDiNascita){return dataDiNascita.before(new Date());}</span>
+<span class="nc" id="L99">    public boolean isValidCity(String city){return isValidNome(city);}</span>
+    /*
+    La Password  non deve contenere spazi.
+     deve contenere almeno un numero.
+    deve essere lunga tra gli 8 e i 15 caratteri.
+    deve contenere almeno una lettera minuscola.
+    deve contenere almeno una lettera maiuscola.
+    deve contenere almeno un carattere speciale.
+    */
+    public boolean isValidPassword(String password){
+
+        //controllo di lunghezza
+<span class="fc bfc" id="L111" title="All 4 branches covered.">        if (!((password.length() &gt;= 8) &amp;&amp; (password.length() &lt;= 15))) {</span>
+<span class="fc" id="L112">            return false;</span>
+        }
+        //controllo di eventuali elementi vuoti
+<span class="fc bfc" id="L115" title="All 2 branches covered.">        if (password.contains(&quot; &quot;)) {</span>
+<span class="fc" id="L116">            return false;</span>
+        }
+        //controllo presenza di numeri
+
+<span class="fc" id="L120">        int count = 0;</span>
+
+
+<span class="fc bfc" id="L123" title="All 2 branches covered.">        for (int i = 0; i &lt;= 9; i++) {</span>
+
+<span class="fc" id="L125">            String str1 = Integer.toString(i);</span>
+
+<span class="fc bfc" id="L127" title="All 2 branches covered.">            if (password.contains(str1)) {</span>
+<span class="fc" id="L128">                count = 1;</span>
+<span class="fc" id="L129">                break;</span>
+            }
+        }
+<span class="fc bfc" id="L132" title="All 2 branches covered.">        if (count == 0) {</span>
+<span class="fc" id="L133">            return false;</span>
+        }
+
+
+        // controllo la presenza di caratteri speciali
+<span class="fc bfc" id="L138" title="All 4 branches covered.">        if (!(password.contains(&quot;@&quot;) || password.contains(&quot;#&quot;)</span>
+<span class="pc bpc" id="L139" title="2 of 4 branches missed.">                || password.contains(&quot;!&quot;) || password.contains(&quot;~&quot;)</span>
+<span class="pc bpc" id="L140" title="2 of 4 branches missed.">                || password.contains(&quot;$&quot;) || password.contains(&quot;%&quot;)</span>
+<span class="pc bpc" id="L141" title="2 of 4 branches missed.">                || password.contains(&quot;^&quot;) || password.contains(&quot;&amp;&quot;)</span>
+<span class="pc bpc" id="L142" title="2 of 4 branches missed.">                || password.contains(&quot;*&quot;) || password.contains(&quot;(&quot;)</span>
+<span class="pc bpc" id="L143" title="2 of 4 branches missed.">                || password.contains(&quot;)&quot;) || password.contains(&quot;-&quot;)</span>
+<span class="pc bpc" id="L144" title="2 of 4 branches missed.">                || password.contains(&quot;+&quot;) || password.contains(&quot;/&quot;)</span>
+<span class="pc bpc" id="L145" title="2 of 4 branches missed.">                || password.contains(&quot;:&quot;) || password.contains(&quot;.&quot;)</span>
+<span class="pc bpc" id="L146" title="2 of 4 branches missed.">                || password.contains(&quot;, &quot;) || password.contains(&quot;&lt;&quot;)</span>
+<span class="pc bpc" id="L147" title="2 of 4 branches missed.">                || password.contains(&quot;&gt;&quot;) || password.contains(&quot;?&quot;)</span>
+<span class="pc bpc" id="L148" title="1 of 2 branches missed.">                || password.contains(&quot;|&quot;))) {</span>
+<span class="fc" id="L149">            return false;</span>
+        }
+
+
+<span class="fc" id="L153">        count = 0;</span>
+
+        // controllo la presenza di lettere maiuscole
+<span class="fc bfc" id="L156" title="All 2 branches covered.">        for (int i = 65; i &lt;= 90; i++) {</span>
+
+            // type casting
+<span class="fc" id="L159">            char c = (char)i;</span>
+
+<span class="fc" id="L161">            String str1 = Character.toString(c);</span>
+<span class="fc bfc" id="L162" title="All 2 branches covered.">            if (password.contains(str1)) {</span>
+<span class="fc" id="L163">                count = 1;</span>
+<span class="fc" id="L164">                break;</span>
+            }
+        }
+<span class="fc bfc" id="L167" title="All 2 branches covered.">        if (count == 0) {</span>
+<span class="fc" id="L168">            return false;</span>
+        }
+
+
+
+<span class="fc" id="L173">        count = 0;</span>
+
+        // controllo la presenza di lettere minuscole
+<span class="fc bfc" id="L176" title="All 2 branches covered.">        for (int i = 90; i &lt;= 122; i++) {</span>
+
+            // type casting
+<span class="fc" id="L179">            char c = (char)i;</span>
+<span class="fc" id="L180">            String str1 = Character.toString(c);</span>
+
+<span class="fc bfc" id="L182" title="All 2 branches covered.">            if (password.contains(str1)) {</span>
+<span class="fc" id="L183">                count = 1;</span>
+<span class="fc" id="L184">                break;</span>
+            }
+        }
+<span class="fc bfc" id="L187" title="All 2 branches covered.">        if (count == 0) {</span>
+<span class="fc" id="L188">            return false;</span>
+        }
+
+
+
+<span class="fc" id="L193">        return true;</span>
+    }
+    public boolean isValidIndirizzoEmail(String indirizzoEmail){
+
+<span class="fc" id="L197">        String emailRegex = &quot;^[a-zA-Z0-9_+&amp;*-]+(?:\\.&quot;+</span>
+                &quot;[a-zA-Z0-9_+&amp;*-]+)*@&quot; +
+                &quot;(?:[a-zA-Z0-9-]+\\.)+[a-z&quot; +
+                &quot;A-Z]{2,7}$&quot;;
+
+<span class="fc" id="L202">        Pattern pat = Pattern.compile(emailRegex);</span>
+<span class="fc bfc" id="L203" title="All 2 branches covered.">        if (indirizzoEmail == null)</span>
+<span class="fc" id="L204">            return false;</span>
+<span class="fc" id="L205">        return pat.matcher(indirizzoEmail).matches();</span>
+
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

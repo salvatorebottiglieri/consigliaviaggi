@@ -1,46 +1,0 @@
-
-Åcom.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput#isValidRecensione(Lcom/ingsw/consigliaviaggi/model/Recensione;)Z}
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.java ($"4*å
-2}
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.java" "("á
-}
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.java" "(
-""*È
-3}
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.java 2  (=‹Ÿ
-}
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.java 2  (G
-%2boolean"java.lang.String#isEmpty()Z*!
-
-descrizionejava.lang.String2	isEmpty()*
-2
-1*„
-4}
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.java (∑¥
-}
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.java (8
-%0java.lang.String"Mcom.ingsw.consigliaviaggi.model.Recensione#getDescrizione()Ljava/lang/String;*:
-8
-
-recensione*com.ingsw.consigliaviaggi.model.Recensione2getDescrizione()√
-¿
-}
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.java (9
-descrizionejava.lang.String"__id*
-
-%0java.lang.String÷”
-}
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.java   ( 	
-%1int"java.lang.String#length()I*!
-
-descrizionejava.lang.String2length()*
-3
-1*å
-1}
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.java% %("á
-}
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerValidazioneInput.java% %(
-"":8
-
-recensione*com.ingsw.consigliaviaggi.model.RecensioneBDB
-@com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput
