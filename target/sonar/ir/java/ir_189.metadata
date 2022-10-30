@@ -1,2 +1,0 @@
-com.ingsw.consigliaviaggi.controllers.ControllerAutenticazione#getAuthentication()Lorg/springframework/security/core/Authentication;
-org.springframework.security.core.context.SecurityContextHolder#getContext()Lorg/springframework/security/core/context/SecurityContext;

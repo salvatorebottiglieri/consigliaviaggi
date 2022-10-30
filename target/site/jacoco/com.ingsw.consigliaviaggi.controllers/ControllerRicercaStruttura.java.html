@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerRicercaStruttura.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">consigliaviaggi</a> &gt; <a href="index.source.html" class="el_package">com.ingsw.consigliaviaggi.controllers</a> &gt; <span class="el_source">ControllerRicercaStruttura.java</span></div><h1>ControllerRicercaStruttura.java</h1><pre class="source lang-java linenums">package com.ingsw.consigliaviaggi.controllers;
+
+
+import com.byteowls.jopencage.JOpenCageGeocoder;
+import com.byteowls.jopencage.model.JOpenCageForwardRequest;
+import com.byteowls.jopencage.model.JOpenCageLatLng;
+import com.byteowls.jopencage.model.JOpenCageResponse;
+import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
+import com.ingsw.consigliaviaggi.model.Indirizzo;
+import com.ingsw.consigliaviaggi.model.Struttura;
+import com.ingsw.consigliaviaggi.model.TipoStruttura;
+import org.springframework.web.bind.annotation.*;
+
+import javax.persistence.EntityNotFoundException;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+public class ControllerRicercaStruttura {
+
+    private final StrutturaDAO strutturaDAO;
+
+<span class="fc" id="L24">    public ControllerRicercaStruttura(StrutturaDAO strutturaDAO) {</span>
+<span class="fc" id="L25">        this.strutturaDAO = strutturaDAO;</span>
+<span class="fc" id="L26">    }</span>
+
+    @GetMapping(&quot;/all/{strutturaID}&quot;)
+    public Struttura getStruttura(@PathVariable String strutturaID){
+
+<span class="nc" id="L31">        Optional&lt;Struttura&gt; strutturaOptional = strutturaDAO.findById(strutturaID);</span>
+<span class="nc bnc" id="L32" title="All 2 branches missed.">        if(strutturaOptional.isPresent()) {</span>
+<span class="nc" id="L33">            return strutturaOptional.get();</span>
+        }
+        else{
+<span class="nc" id="L36">            return null;</span>
+        }
+
+    }
+
+
+    @PostMapping(&quot;/all/ricerca&quot;)
+    public List&lt;Struttura&gt; ricercaStruttura(@RequestBody Filtri filtri){
+
+<span class="nc bnc" id="L45" title="All 2 branches missed.">       if(filtri.searchOnlyByNome(filtri)){ return strutturaDAO.findByNome(filtri.getNome());}</span>
+
+<span class="nc bnc" id="L47" title="All 2 branches missed.">       if(filtri.searchOnlyByCategoria(filtri)){return strutturaDAO.findByCategoria(filtri.getCategoria());}</span>
+
+<span class="nc bnc" id="L49" title="All 2 branches missed.">       if(filtri.searchOnlyByCity(filtri)){return strutturaDAO.findByCity(filtri.getCity());}</span>
+
+<span class="nc bnc" id="L51" title="All 2 branches missed.">       if(filtri.searchOnlyByCoordinate(filtri)){</span>
+
+<span class="nc" id="L53">           List&lt;Struttura&gt; strutture = (List&lt;Struttura&gt;) strutturaDAO.findAll();</span>
+
+<span class="nc" id="L55">           return getStruttureVicine(strutture,filtri);</span>
+
+       }
+
+<span class="nc bnc" id="L59" title="All 2 branches missed.">       if(filtri.searchOnlyByPrezzo(filtri)){return strutturaDAO.findByPrezzo(filtri.getPrezzo());}</span>
+
+
+<span class="nc bnc" id="L62" title="All 2 branches missed.">       if(filtri.searchOnlyByNomeAndCity(filtri)){return strutturaDAO.findByNomeAndCity(filtri.getNome(),filtri.getCity());}</span>
+
+<span class="nc bnc" id="L64" title="All 2 branches missed.">       if(filtri.searchOnlyByNomeAndCategoria(filtri)){return strutturaDAO.findByNomeAndCategoria(filtri.getNome(),filtri.getCategoria());}</span>
+
+<span class="nc bnc" id="L66" title="All 2 branches missed.">       if(filtri.searchOnlyByNomeAndCoordinate(filtri)){</span>
+
+<span class="nc" id="L68">           List&lt;Struttura&gt; struttureTrovatePerNome = strutturaDAO.findByNome(filtri.getNome());</span>
+
+<span class="nc" id="L70">           return getStruttureVicine(struttureTrovatePerNome,filtri);</span>
+
+       }
+
+<span class="nc bnc" id="L74" title="All 2 branches missed.">       if(filtri.searchOnlyByNomeAndPrezzo(filtri)){return strutturaDAO.findByNomeAndPrezzo(filtri.getNome(),filtri.getPrezzo());}</span>
+
+<span class="nc bnc" id="L76" title="All 2 branches missed.">       if(filtri.searchOnlyByCityAndCategoria(filtri)){return strutturaDAO.findByCityAndCategoria(filtri.getCity(),filtri.getCategoria().toString());}</span>
+
+<span class="nc bnc" id="L78" title="All 2 branches missed.">       if(filtri.searchOnlyByCityAndCoordinate(filtri)){</span>
+
+<span class="nc" id="L80">           List&lt;Struttura&gt; struttureTrovatePerCity = strutturaDAO.findByCity(filtri.getCity());</span>
+
+<span class="nc" id="L82">           return getStruttureVicine(struttureTrovatePerCity,filtri);</span>
+       }
+
+<span class="nc bnc" id="L85" title="All 2 branches missed.">       if(filtri.searchOnlyByCityAndPrezzo(filtri)){return strutturaDAO.findByCityAndPrezzo(filtri.getCity(),filtri.getPrezzo());}</span>
+
+<span class="nc bnc" id="L87" title="All 2 branches missed.">       if(filtri.searchOnlyByCategoriaAndCoordinate(filtri)){</span>
+
+<span class="nc" id="L89">           List&lt;Struttura&gt; struttureTrovatePerCategoria = strutturaDAO.findByCategoria(filtri.getCategoria());</span>
+
+<span class="nc" id="L91">           return getStruttureVicine(struttureTrovatePerCategoria,filtri);</span>
+       }
+
+<span class="nc bnc" id="L94" title="All 2 branches missed.">       if(filtri.searchOnlyByCategoriaAndPrezzo(filtri)){return strutturaDAO.findByCategoriaAndPrezzo(filtri.getCategoria(),filtri.getPrezzo());}</span>
+
+<span class="nc bnc" id="L96" title="All 2 branches missed.">       if(filtri.searchOnlyByCoordinateAndPrezzo(filtri)){</span>
+
+<span class="nc" id="L98">           List&lt;Struttura&gt; struttureTrovatePerPrezzo = strutturaDAO.findByPrezzo(filtri.getPrezzo());</span>
+
+<span class="nc" id="L100">           return getStruttureVicine(struttureTrovatePerPrezzo,filtri);</span>
+       }
+
+
+
+<span class="nc bnc" id="L105" title="All 2 branches missed.">       if(filtri.searchOnlyByNomeAndCityAndCategoria(filtri)){return strutturaDAO.findByNomeAndCityAndCategoria(filtri.getNome(),filtri.getCity(),filtri.getCategoria().toString());}</span>
+
+<span class="nc bnc" id="L107" title="All 2 branches missed.">       if(filtri.searchOnlyByNomeAndCityAndCoordinate(filtri)) {</span>
+
+<span class="nc" id="L109">           List&lt;Struttura&gt; struttureTrovatePerNomeAndCity = strutturaDAO.findByNomeAndCity(filtri.getNome(),filtri.getCity());</span>
+
+<span class="nc" id="L111">           return getStruttureVicine(struttureTrovatePerNomeAndCity,filtri);</span>
+       }
+
+<span class="nc bnc" id="L114" title="All 2 branches missed.">       if(filtri.searchOnlyByNomeAndCityAndPrezzo(filtri)){return strutturaDAO.findByNomeAndCityAndPrezzo(filtri.getNome(),filtri.getCity(),filtri.getPrezzo());}</span>
+
+<span class="nc bnc" id="L116" title="All 2 branches missed.">       if(filtri.searchOnlyByCityAndCategoriaAndCoordinate(filtri)){</span>
+
+<span class="nc" id="L118">           List&lt;Struttura&gt; struttureTrovatePerCityAndCategoria = strutturaDAO.findByCityAndCategoria(filtri.getCity(),filtri.getCategoria().toString());</span>
+
+<span class="nc" id="L120">           return getStruttureVicine(struttureTrovatePerCityAndCategoria,filtri);</span>
+       }
+
+
+<span class="nc bnc" id="L124" title="All 2 branches missed.">       if(filtri.searchOnlyByCityAndCategoriaAndPrezzo(filtri)){return strutturaDAO.findByCityAndCategoriaAndPrezzo(filtri.getCity(),filtri.getCategoria().toString(),filtri.getPrezzo());}</span>
+
+<span class="nc bnc" id="L126" title="All 2 branches missed.">       if(filtri.searchOnlyByCategoriaAndCoordinateAndPrezzo(filtri)){</span>
+
+<span class="nc" id="L128">           List&lt;Struttura&gt; struttureTrovatePerCategoriaAndPrezzo = strutturaDAO.findByCategoriaAndPrezzo(filtri.getCategoria(),filtri.getPrezzo());</span>
+
+<span class="nc" id="L130">           return getStruttureVicine(struttureTrovatePerCategoriaAndPrezzo,filtri);</span>
+       }
+
+<span class="nc bnc" id="L133" title="All 2 branches missed.">       if(filtri.searchOnlyByCategoriaAndNomeAndPrezzo(filtri)){return strutturaDAO.findByCategoriaAndNomeAndPrezzo(filtri.getCategoria(),filtri.getNome(),filtri.getPrezzo());}</span>
+
+<span class="nc bnc" id="L135" title="All 2 branches missed.">       if(filtri.searchOnlyByCoordinateAndPrezzoAndNome(filtri)){</span>
+
+<span class="nc" id="L137">           List&lt;Struttura&gt; struttureTrovatePerPrezzoAndNome = strutturaDAO.findByNomeAndPrezzo(filtri.getNome(),filtri.getPrezzo());</span>
+
+<span class="nc" id="L139">           return getStruttureVicine(struttureTrovatePerPrezzoAndNome,filtri);</span>
+       }
+
+<span class="nc bnc" id="L142" title="All 2 branches missed.">       if(filtri.searchOnlyByCoordinateAndCityAndPrezzo(filtri)){</span>
+
+<span class="nc" id="L144">           List&lt;Struttura&gt; struttureTrovatePerPrezzoAndCity = strutturaDAO.findByCityAndPrezzo(filtri.getCity(),filtri.getPrezzo());</span>
+
+<span class="nc" id="L146">           return getStruttureVicine(struttureTrovatePerPrezzoAndCity,filtri);</span>
+
+       }
+
+<span class="nc bnc" id="L150" title="All 2 branches missed.">       if(filtri.searchOnlyByNomeAndCategoriaAndCoordinate(filtri)){</span>
+
+<span class="nc" id="L152">           List&lt;Struttura&gt; struttureTrovatePerNomeAndCategoria = strutturaDAO.findByNomeAndCategoria(filtri.getNome(),filtri.getCategoria());</span>
+
+<span class="nc" id="L154">           return getStruttureVicine(struttureTrovatePerNomeAndCategoria,filtri);</span>
+       }
+
+
+
+<span class="nc bnc" id="L159" title="All 2 branches missed.">       if(filtri.searchOnlyByNomeAndCityAndCategoriaAndCoordinate(filtri)){</span>
+
+<span class="nc" id="L161">           List&lt;Struttura&gt; struttureTrovatePerNomeAndCityAndCategoria = strutturaDAO.findByNomeAndCityAndCategoria(filtri.getNome(),filtri.getCity(),filtri.getCategoria().toString());</span>
+
+<span class="nc" id="L163">           return getStruttureVicine(struttureTrovatePerNomeAndCityAndCategoria,filtri);</span>
+       }
+
+<span class="nc bnc" id="L166" title="All 2 branches missed.">       if(filtri.searchOnlyByNomeAndCityAndCategoriaAndPrezzo(filtri)){return strutturaDAO.findByNomeAndCityAndCategoriaAndPrezzo(filtri.getNome(),filtri.getCity(),filtri.getCategoria().toString(),filtri.getPrezzo());}</span>
+
+<span class="nc bnc" id="L168" title="All 2 branches missed.">       if(filtri.searchOnlyByNomeAndCityAndPrezzoAndCoordinate(filtri)){</span>
+
+<span class="nc" id="L170">           List&lt;Struttura&gt; struttureTrovatePerNomeAndCityAndPrezzo= strutturaDAO.findByNomeAndCityAndPrezzo(filtri.getNome(),filtri.getCity(),filtri.getPrezzo());</span>
+
+<span class="nc" id="L172">           return getStruttureVicine(struttureTrovatePerNomeAndCityAndPrezzo,filtri);</span>
+       }
+
+<span class="nc bnc" id="L175" title="All 2 branches missed.">       if(filtri.searchOnlyByNomeAndPrezzoAndCoordinateAndCategoria(filtri)){</span>
+
+<span class="nc" id="L177">           List&lt;Struttura&gt; struttureTrovatePerNomeAndPrezzoAndCategoria = strutturaDAO.findByCategoriaAndNomeAndPrezzo(filtri.getCategoria(),filtri.getNome(),filtri.getPrezzo());</span>
+
+<span class="nc" id="L179">           return getStruttureVicine(struttureTrovatePerNomeAndPrezzoAndCategoria,filtri);</span>
+       }
+
+<span class="nc bnc" id="L182" title="All 2 branches missed.">       if(filtri.searchOnlyByPrezzoAndCoordinateAndCategoriaAndCity(filtri)){</span>
+
+<span class="nc" id="L184">           List&lt;Struttura&gt; struttureTrovatePerPrezzoAndCategoriaAndCity = strutturaDAO.findByCityAndCategoriaAndPrezzo(filtri.getCity(),filtri.getCategoria().toString(),filtri.getPrezzo());</span>
+
+<span class="nc" id="L186">           return getStruttureVicine(struttureTrovatePerPrezzoAndCategoriaAndCity,filtri);</span>
+       }
+
+
+
+<span class="nc bnc" id="L191" title="All 2 branches missed.">       if(filtri.searchOnlyByNomeAndPrezzoAndCoordinateAndCategoriaAndCity(filtri)){</span>
+
+<span class="nc" id="L193">           List&lt;Struttura&gt; struttureTrovatePerNomeAndPrezzoAndCategoriaAndCity = strutturaDAO.findByNomeAndCityAndCategoriaAndPrezzo(filtri.getNome(),filtri.getCity(),filtri.getCategoria().toString(),filtri.getPrezzo());</span>
+
+<span class="nc" id="L195">           return getStruttureVicine(struttureTrovatePerNomeAndPrezzoAndCategoriaAndCity,filtri);</span>
+       }
+
+<span class="nc" id="L198">       throw new EntityNotFoundException(&quot;Nessuna struttura trovata&quot;);</span>
+    }
+
+    private List&lt;Struttura&gt; getStruttureVicine(List&lt;Struttura&gt; strutture, Filtri filtri){
+
+<span class="nc" id="L203">        List&lt;Struttura&gt; struttureAccettate = new LinkedList&lt;&gt;();</span>
+
+<span class="nc bnc" id="L205" title="All 2 branches missed.">        for (Struttura struttura: strutture) {</span>
+
+<span class="nc" id="L207">            CoppiaDiCoordinate coppiaDiCoordinate = getLatitudineAndLongitudineFromIndirizzo(struttura.getIndirizzo());</span>
+
+<span class="nc" id="L209">            double distanzaTraUtenteEStruttura = distanceBetweenLatLong(filtri.latitudine,filtri.longitudine,coppiaDiCoordinate.getLatitudine(),coppiaDiCoordinate.getLongitudine());</span>
+
+<span class="nc bnc" id="L211" title="All 2 branches missed.">            if(distanzaTraUtenteEStruttura &lt;= filtri.getDistanza()){</span>
+
+<span class="nc" id="L213">                struttureAccettate.add(struttura);</span>
+
+            }
+
+<span class="nc" id="L217">        }</span>
+
+<span class="nc" id="L219">        return struttureAccettate;</span>
+
+    }
+
+
+    private CoppiaDiCoordinate getLatitudineAndLongitudineFromIndirizzo(Indirizzo indirizzo){
+
+<span class="nc" id="L226">        JOpenCageGeocoder jOpenCageGeocoder = new JOpenCageGeocoder(&quot;cba750317df0437c8e39383df2284191&quot;);</span>
+<span class="nc" id="L227">        JOpenCageForwardRequest request = new JOpenCageForwardRequest(indirizzo.getVia(),indirizzo.getCivico().toString(),indirizzo.getCity());</span>
+
+<span class="nc" id="L229">        JOpenCageResponse response = jOpenCageGeocoder.forward(request);</span>
+<span class="nc" id="L230">        JOpenCageLatLng firstResultLatLng = response.getFirstPosition(); // get the coordinate pair of the first result</span>
+
+<span class="nc" id="L232">        Double latitudine = firstResultLatLng.getLat();</span>
+<span class="nc" id="L233">        Double longitudine  =firstResultLatLng.getLng();</span>
+
+<span class="nc" id="L235">        return new CoppiaDiCoordinate(latitudine,longitudine);</span>
+    }
+
+    private static double distanceBetweenLatLong(double lat1, double lon1, double lat2, double lon2) {
+<span class="nc" id="L239">        lat1 = Math.toRadians(lat1);</span>
+<span class="nc" id="L240">        lon1 = Math.toRadians(lon1);</span>
+<span class="nc" id="L241">        lat2 = Math.toRadians(lat2);</span>
+<span class="nc" id="L242">        lon2 = Math.toRadians(lon2);</span>
+
+<span class="nc" id="L244">        double earthRadius = 6371.01; //Kilometers</span>
+<span class="nc" id="L245">        return earthRadius * Math.acos(Math.sin(lat1)*Math.sin(lat2) + Math.cos(lat1)*Math.cos(lat2)*Math.cos(lon1 - lon2));</span>
+    }
+
+    private static class CoppiaDiCoordinate{
+
+        private Double latitudine;
+        private Double longitudine;
+
+<span class="nc" id="L253">        public CoppiaDiCoordinate(Double latitudine, Double longitudine) {</span>
+<span class="nc" id="L254">            this.latitudine = latitudine;</span>
+<span class="nc" id="L255">            this.longitudine = longitudine;</span>
+<span class="nc" id="L256">        }</span>
+
+        public Double getLatitudine() {
+<span class="nc" id="L259">            return latitudine;</span>
+        }
+
+        public void setLatitudine(Double latitudine) {
+<span class="nc" id="L263">            this.latitudine = latitudine;</span>
+<span class="nc" id="L264">        }</span>
+
+        public Double getLongitudine() {
+<span class="nc" id="L267">            return longitudine;</span>
+        }
+
+        public void setLongitudine(Double longitudine) {
+<span class="nc" id="L271">            this.longitudine = longitudine;</span>
+<span class="nc" id="L272">        }</span>
+    }
+
+
+
+    private static class Filtri{
+
+        private String nome;
+        private String city;
+        private TipoStruttura categoria;
+        private Double latitudine;
+        private Double longitudine;
+        private int distanza;
+        private int prezzo;
+
+        public int getDistanza() {
+<span class="nc" id="L288">            return distanza;</span>
+        }
+
+        public void setDistanza(int distanza) {
+<span class="nc" id="L292">            this.distanza = distanza;</span>
+<span class="nc" id="L293">        }</span>
+
+        public String getNome() {
+<span class="nc" id="L296">            return nome;</span>
+        }
+
+        public String getCity() {
+<span class="nc" id="L300">            return city;</span>
+        }
+
+        public TipoStruttura getCategoria() {
+<span class="nc" id="L304">            return categoria;</span>
+        }
+
+        public Double getLatitudine() {
+<span class="nc" id="L308">            return latitudine;</span>
+        }
+
+        public void setLatitudine(Double latitudine) {
+<span class="nc" id="L312">            this.latitudine = latitudine;</span>
+<span class="nc" id="L313">        }</span>
+
+        public Double getLongitudine() {
+<span class="nc" id="L316">            return longitudine;</span>
+        }
+
+        public void setLongitudine(Double longitudine) {
+<span class="nc" id="L320">            this.longitudine = longitudine;</span>
+<span class="nc" id="L321">        }</span>
+
+        public int getPrezzo() {
+<span class="nc" id="L324">            return prezzo;</span>
+        }
+
+        private boolean searchOnlyByNome(Filtri filtri){
+
+<span class="nc bnc" id="L329" title="All 12 branches missed.">            return filtri.nome != null &amp;&amp; (filtri.city == null) &amp;&amp; (filtri.categoria == null) &amp;&amp; (filtri.latitudine == -1 &amp;&amp; filtri.longitudine == -1) &amp;&amp; (filtri.prezzo == -1);</span>
+        }
+        private boolean searchOnlyByCity(Filtri filtri){
+
+<span class="nc bnc" id="L333" title="All 12 branches missed.">            return filtri.nome == null &amp;&amp; (filtri.city != null) &amp;&amp; (filtri.categoria == null) &amp;&amp; (filtri.latitudine == -1 &amp;&amp; filtri.longitudine == -1) &amp;&amp; (filtri.prezzo == -1);</span>
+        }
+        private boolean searchOnlyByCategoria(Filtri filtri){
+
+<span class="nc bnc" id="L337" title="All 12 branches missed.">            return filtri.nome == null &amp;&amp; (filtri.city == null) &amp;&amp; (filtri.categoria != null) &amp;&amp; (filtri.latitudine == -1 &amp;&amp; filtri.longitudine == -1) &amp;&amp; (filtri.prezzo == -1);</span>
+        }
+        private boolean searchOnlyByCoordinate(Filtri filtri){
+
+<span class="nc bnc" id="L341" title="All 12 branches missed.">            return filtri.nome == null &amp;&amp; (filtri.city == null) &amp;&amp; (filtri.categoria == null) &amp;&amp; (filtri.latitudine != -1 &amp;&amp; filtri.longitudine != -1) &amp;&amp; (filtri.prezzo == -1);</span>
+        }
+        private boolean searchOnlyByPrezzo(Filtri filtri){
+
+<span class="nc bnc" id="L345" title="All 12 branches missed.">            return filtri.nome == null &amp;&amp; (filtri.city == null) &amp;&amp; (filtri.categoria == null) &amp;&amp; (filtri.latitudine == -1 &amp;&amp; filtri.longitudine == -1) &amp;&amp; (filtri.prezzo != -1);</span>
+        }
+
+        //--------------------------------------------------------------------------------------------------------------------------
+
+        private boolean searchOnlyByNomeAndCity(Filtri filtri){
+
+<span class="nc bnc" id="L352" title="All 12 branches missed.">            return filtri.nome != null &amp;&amp; (filtri.city != null) &amp;&amp; (filtri.categoria == null) &amp;&amp; (filtri.latitudine == -1 &amp;&amp; filtri.longitudine == -1) &amp;&amp; (filtri.prezzo == -1);</span>
+        }
+        private boolean searchOnlyByNomeAndCategoria(Filtri filtri){
+
+<span class="nc bnc" id="L356" title="All 12 branches missed.">            return filtri.nome != null &amp;&amp; (filtri.city == null) &amp;&amp; (filtri.categoria != null) &amp;&amp; (filtri.latitudine == -1 &amp;&amp; filtri.longitudine == -1) &amp;&amp; (filtri.prezzo == -1);</span>
+        }
+        private boolean searchOnlyByNomeAndCoordinate(Filtri filtri){
+
+<span class="nc bnc" id="L360" title="All 12 branches missed.">            return filtri.nome != null &amp;&amp; (filtri.city == null) &amp;&amp; (filtri.categoria == null) &amp;&amp; (filtri.latitudine != -1 &amp;&amp; filtri.longitudine != -1) &amp;&amp; (filtri.prezzo == -1);</span>
+        }
+        private boolean searchOnlyByNomeAndPrezzo(Filtri filtri){
+
+<span class="nc bnc" id="L364" title="All 12 branches missed.">            return filtri.nome != null &amp;&amp; (filtri.city == null) &amp;&amp; (filtri.categoria == null) &amp;&amp; (filtri.latitudine == -1 &amp;&amp; filtri.longitudine == -1) &amp;&amp; (filtri.prezzo != -1);</span>
+        }
+        private boolean searchOnlyByCityAndCategoria(Filtri filtri){
+
+<span class="nc bnc" id="L368" title="All 12 branches missed.">            return filtri.nome == null &amp;&amp; (filtri.city != null) &amp;&amp; (filtri.categoria != null) &amp;&amp; (filtri.latitudine == -1 &amp;&amp; filtri.longitudine == -1) &amp;&amp; (filtri.prezzo == -1);</span>
+        }
+        private boolean searchOnlyByCityAndCoordinate(Filtri filtri){
+
+<span class="nc bnc" id="L372" title="All 12 branches missed.">            return filtri.nome == null &amp;&amp; (filtri.city != null) &amp;&amp; (filtri.categoria == null) &amp;&amp; (filtri.latitudine != -1 &amp;&amp; filtri.longitudine != -1) &amp;&amp; (filtri.prezzo == -1);</span>
+        }
+        private boolean searchOnlyByCityAndPrezzo(Filtri filtri){
+
+<span class="nc bnc" id="L376" title="All 12 branches missed.">            return filtri.nome == null &amp;&amp; (filtri.city != null) &amp;&amp; (filtri.categoria == null) &amp;&amp; (filtri.latitudine == -1 &amp;&amp; filtri.longitudine == -1) &amp;&amp; (filtri.prezzo != -1);</span>
+        }
+        private boolean searchOnlyByCategoriaAndCoordinate(Filtri filtri){
+
+<span class="nc bnc" id="L380" title="All 12 branches missed.">            return filtri.nome == null &amp;&amp; (filtri.city == null) &amp;&amp; (filtri.categoria != null) &amp;&amp; (filtri.latitudine != -1 &amp;&amp; filtri.longitudine != -1) &amp;&amp; (filtri.prezzo == -1);</span>
+        }
+        private boolean searchOnlyByCategoriaAndPrezzo(Filtri filtri){
+
+<span class="nc bnc" id="L384" title="All 12 branches missed.">            return filtri.nome == null &amp;&amp; (filtri.city == null) &amp;&amp; (filtri.categoria != null) &amp;&amp; (filtri.latitudine == -1 &amp;&amp; filtri.longitudine == -1) &amp;&amp; (filtri.prezzo != -1);</span>
+        }
+        private boolean searchOnlyByCoordinateAndPrezzo(Filtri filtri){
+
+<span class="nc bnc" id="L388" title="All 12 branches missed.">            return filtri.nome == null &amp;&amp; (filtri.city == null) &amp;&amp; (filtri.categoria == null) &amp;&amp; (filtri.latitudine != -1 &amp;&amp; filtri.longitudine != -1) &amp;&amp; (filtri.prezzo != -1);</span>
+        }
+
+        //---------------------------------------------------------------------------------------------------------------------------------
+
+        private boolean searchOnlyByNomeAndCityAndCategoria(Filtri filtri){
+
+<span class="nc bnc" id="L395" title="All 12 branches missed.">            return filtri.nome != null &amp;&amp; (filtri.city != null) &amp;&amp; (filtri.categoria != null) &amp;&amp; (filtri.latitudine == -1 &amp;&amp; filtri.longitudine == -1) &amp;&amp; (filtri.prezzo == -1);</span>
+        }
+        private boolean searchOnlyByNomeAndCityAndCoordinate(Filtri filtri){
+
+<span class="nc bnc" id="L399" title="All 12 branches missed.">            return filtri.nome != null &amp;&amp; (filtri.city != null) &amp;&amp; (filtri.categoria == null) &amp;&amp; (filtri.latitudine != -1 &amp;&amp; filtri.longitudine != -1) &amp;&amp; (filtri.prezzo == -1);</span>
+        }
+        private boolean searchOnlyByNomeAndCityAndPrezzo(Filtri filtri){
+
+<span class="nc bnc" id="L403" title="All 12 branches missed.">            return filtri.nome != null &amp;&amp; (filtri.city != null) &amp;&amp; (filtri.categoria == null) &amp;&amp; (filtri.latitudine == -1 &amp;&amp; filtri.longitudine == -1) &amp;&amp; (filtri.prezzo != -1);</span>
+        }
+        private boolean searchOnlyByCityAndCategoriaAndCoordinate(Filtri filtri){
+
+<span class="nc bnc" id="L407" title="All 12 branches missed.">            return filtri.nome == null &amp;&amp; (filtri.city != null) &amp;&amp; (filtri.categoria != null) &amp;&amp; (filtri.latitudine != -1 &amp;&amp; filtri.longitudine != -1) &amp;&amp; (filtri.prezzo == -1);</span>
+        }
+        private boolean searchOnlyByCityAndCategoriaAndPrezzo(Filtri filtri){
+
+<span class="nc bnc" id="L411" title="All 12 branches missed.">            return filtri.nome == null &amp;&amp; (filtri.city != null) &amp;&amp; (filtri.categoria != null) &amp;&amp; (filtri.latitudine == -1 &amp;&amp; filtri.longitudine == -1) &amp;&amp; (filtri.prezzo != -1);</span>
+        }
+        private boolean searchOnlyByCategoriaAndCoordinateAndPrezzo(Filtri filtri){
+
+<span class="nc bnc" id="L415" title="All 12 branches missed.">            return filtri.nome == null &amp;&amp; (filtri.city == null) &amp;&amp; (filtri.categoria != null) &amp;&amp; (filtri.latitudine != -1 &amp;&amp; filtri.longitudine != -1) &amp;&amp; (filtri.prezzo != -1);</span>
+        }
+        private boolean searchOnlyByCategoriaAndNomeAndPrezzo(Filtri filtri){
+
+<span class="nc bnc" id="L419" title="All 12 branches missed.">            return filtri.nome != null &amp;&amp; (filtri.city == null) &amp;&amp; (filtri.categoria != null) &amp;&amp; (filtri.latitudine == -1 &amp;&amp; filtri.longitudine == -1) &amp;&amp; (filtri.prezzo != -1);</span>
+        }
+        private boolean searchOnlyByCoordinateAndPrezzoAndNome(Filtri filtri){
+
+<span class="nc bnc" id="L423" title="All 12 branches missed.">            return filtri.nome != null &amp;&amp; (filtri.city == null) &amp;&amp; (filtri.categoria == null) &amp;&amp; (filtri.latitudine != -1 &amp;&amp; filtri.longitudine != -1) &amp;&amp; (filtri.prezzo != -1);</span>
+        }
+        private boolean searchOnlyByCoordinateAndCityAndPrezzo(Filtri filtri){
+
+<span class="nc bnc" id="L427" title="All 12 branches missed.">            return filtri.nome == null &amp;&amp; (filtri.city != null) &amp;&amp; (filtri.categoria == null) &amp;&amp; (filtri.latitudine != -1 &amp;&amp; filtri.longitudine != -1) &amp;&amp; (filtri.prezzo != -1);</span>
+        }
+        private boolean searchOnlyByNomeAndCategoriaAndCoordinate(Filtri filtri){
+
+<span class="nc bnc" id="L431" title="All 12 branches missed.">            return filtri.nome != null &amp;&amp; (filtri.city == null) &amp;&amp; (filtri.categoria != null) &amp;&amp; (filtri.latitudine != -1 &amp;&amp; filtri.longitudine != -1) &amp;&amp; (filtri.prezzo == -1);</span>
+        }
+
+        //---------------------------------------------------------------------------------------------------------------------------------
+
+        private boolean searchOnlyByNomeAndCityAndCategoriaAndCoordinate(Filtri filtri){
+
+<span class="nc bnc" id="L438" title="All 12 branches missed.">            return filtri.nome != null &amp;&amp; (filtri.city != null) &amp;&amp; (filtri.categoria != null) &amp;&amp; (filtri.latitudine != -1 &amp;&amp; filtri.longitudine != -1) &amp;&amp; (filtri.prezzo == -1);</span>
+        }
+        private boolean searchOnlyByNomeAndCityAndCategoriaAndPrezzo(Filtri filtri){
+
+<span class="nc bnc" id="L442" title="All 12 branches missed.">            return filtri.nome != null &amp;&amp; (filtri.city != null) &amp;&amp; (filtri.categoria != null) &amp;&amp; (filtri.latitudine == -1 &amp;&amp; filtri.longitudine == -1) &amp;&amp; (filtri.prezzo != -1);</span>
+        }
+        private boolean searchOnlyByNomeAndCityAndPrezzoAndCoordinate(Filtri filtri){
+
+<span class="nc bnc" id="L446" title="All 12 branches missed.">            return filtri.nome != null &amp;&amp; (filtri.city != null) &amp;&amp; (filtri.categoria == null) &amp;&amp; (filtri.latitudine != -1 &amp;&amp; filtri.longitudine != -1) &amp;&amp; (filtri.prezzo != -1);</span>
+        }
+        private boolean searchOnlyByNomeAndPrezzoAndCoordinateAndCategoria(Filtri filtri){
+
+<span class="nc bnc" id="L450" title="All 12 branches missed.">            return filtri.nome != null &amp;&amp; (filtri.city == null) &amp;&amp; (filtri.categoria != null) &amp;&amp; (filtri.latitudine != -1 &amp;&amp; filtri.longitudine != -1) &amp;&amp; (filtri.prezzo == -1);</span>
+        }
+        private boolean searchOnlyByPrezzoAndCoordinateAndCategoriaAndCity(Filtri filtri){
+
+<span class="nc bnc" id="L454" title="All 12 branches missed.">            return filtri.nome == null &amp;&amp; (filtri.city != null) &amp;&amp; (filtri.categoria != null) &amp;&amp; (filtri.latitudine != -1 &amp;&amp; filtri.longitudine != -1) &amp;&amp; (filtri.prezzo != -1);</span>
+        }
+
+        //---------------------------------------------------------------------------------------------------------------------------------
+
+        private boolean searchOnlyByNomeAndPrezzoAndCoordinateAndCategoriaAndCity(Filtri filtri){
+
+<span class="nc bnc" id="L461" title="All 12 branches missed.">            return filtri.nome != null &amp;&amp; (filtri.city != null) &amp;&amp; (filtri.categoria != null) &amp;&amp; (filtri.latitudine != -1 &amp;&amp; filtri.longitudine != -1) &amp;&amp; (filtri.prezzo != -1);</span>
+        }
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

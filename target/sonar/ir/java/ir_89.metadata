@@ -1,3 +1,0 @@
-com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput#isValidDescriptionStruttura(Ljava/lang/String;)Z
-java.lang.String#length()I
-java.lang.String#isEmpty()Z

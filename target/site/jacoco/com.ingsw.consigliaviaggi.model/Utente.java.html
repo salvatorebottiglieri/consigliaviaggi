@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Utente.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">consigliaviaggi</a> &gt; <a href="index.source.html" class="el_package">com.ingsw.consigliaviaggi.model</a> &gt; <span class="el_source">Utente.java</span></div><h1>Utente.java</h1><pre class="source lang-java linenums">package com.ingsw.consigliaviaggi.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
+
+@Entity
+public class Utente {
+
+    @Id
+    private String nomeUtente;
+    private String nome;
+    private String cognome;
+    private String indirizzoEmail;
+    private String password;
+    private Gender sesso;
+    private String city;
+    private Date dataDiNascita;
+    private TipoRecensore rank;
+    private VisibilitaRecensori mostraCome;
+    @OneToMany(mappedBy = &quot;autore&quot;)
+    @JsonIgnore
+    private List&lt;Recensione&gt; recensioni;
+    @JsonIgnore
+    private boolean isActive;
+<span class="nc" id="L28">    @JsonIgnore</span>
+    private final String ruolo = &quot;USER&quot;;
+
+<span class="nc" id="L31">    public Utente(){}</span>
+
+<span class="nc" id="L33">    public Utente(String nomeUtente, String nome, String cognome, String indirizzoEmail, String password, Gender sesso, String city, Date dataDiNascita) {</span>
+<span class="nc" id="L34">        this.nomeUtente = nomeUtente;</span>
+<span class="nc" id="L35">        this.nome = nome;</span>
+<span class="nc" id="L36">        this.cognome = cognome;</span>
+<span class="nc" id="L37">        this.indirizzoEmail = indirizzoEmail;</span>
+<span class="nc" id="L38">        this.password = password;</span>
+<span class="nc" id="L39">        this.sesso = sesso;</span>
+<span class="nc" id="L40">        this.city = city;</span>
+<span class="nc" id="L41">        this.dataDiNascita = dataDiNascita;</span>
+
+<span class="nc" id="L43">    }</span>
+
+
+    public String getNomeUtente() {
+<span class="nc" id="L47">        return nomeUtente;</span>
+    }
+
+    public void setNomeUtente(String nomeUtente) {
+<span class="nc" id="L51">        this.nomeUtente = nomeUtente;</span>
+<span class="nc" id="L52">    }</span>
+
+    public String getNome() {
+<span class="nc" id="L55">        return nome;</span>
+    }
+
+    public void setNome(String nome) {
+<span class="nc" id="L59">        this.nome = nome;</span>
+<span class="nc" id="L60">    }</span>
+
+    public String getCognome() {
+<span class="nc" id="L63">        return cognome;</span>
+    }
+
+    public void setCognome(String cognome) {
+<span class="nc" id="L67">        this.cognome = cognome;</span>
+<span class="nc" id="L68">    }</span>
+
+    public String getIndirizzoEmail() {
+<span class="nc" id="L71">        return indirizzoEmail;</span>
+    }
+
+    public void setIndirizzoEmail(String indirizzoEmail) {
+<span class="nc" id="L75">        this.indirizzoEmail = indirizzoEmail;</span>
+<span class="nc" id="L76">    }</span>
+
+    public String getPassword() {
+<span class="nc" id="L79">        return password;</span>
+    }
+
+    public void setPassword(String password) {
+<span class="nc" id="L83">        this.password = password;</span>
+<span class="nc" id="L84">    }</span>
+
+    @Enumerated(EnumType.STRING)
+    public Gender getSesso() {
+<span class="nc" id="L88">        return sesso;</span>
+    }
+
+    public void setSesso(Gender sesso) {
+<span class="nc" id="L92">        this.sesso = sesso;</span>
+<span class="nc" id="L93">    }</span>
+
+    public String getCity() {
+<span class="nc" id="L96">        return city;</span>
+    }
+
+    public void setCity(String city) {
+<span class="nc" id="L100">        this.city = city;</span>
+<span class="nc" id="L101">    }</span>
+
+    public Date getDataDiNascita() {
+<span class="nc" id="L104">        return dataDiNascita;</span>
+    }
+
+    public void setDataDiNascita(Date dataDiNascita) {
+<span class="nc" id="L108">        this.dataDiNascita = dataDiNascita;</span>
+<span class="nc" id="L109">    }</span>
+
+    @Enumerated(EnumType.STRING)
+    public TipoRecensore getRank() {
+<span class="nc" id="L113">        return rank;</span>
+    }
+
+    public void setRank(TipoRecensore rank) {
+<span class="nc" id="L117">        this.rank = rank;</span>
+<span class="nc" id="L118">    }</span>
+
+    @Enumerated(EnumType.STRING)
+    public VisibilitaRecensori getMostraCome() {
+<span class="nc" id="L122">        return mostraCome;</span>
+    }
+
+    public void setMostraCome(VisibilitaRecensori mostraCome) {
+<span class="nc" id="L126">        this.mostraCome = mostraCome;</span>
+<span class="nc" id="L127">    }</span>
+
+
+    public List&lt;Recensione&gt; getRecensioni() {
+<span class="nc" id="L131">        return recensioni;</span>
+    }
+
+    public void setRecensioni(List&lt;Recensione&gt; recensioni) {
+<span class="nc" id="L135">        this.recensioni.addAll(recensioni);</span>
+<span class="nc" id="L136">    }</span>
+
+<span class="nc" id="L138">    public Utente(String nomeUtente) {</span>
+<span class="nc" id="L139">        this.nomeUtente = nomeUtente;</span>
+<span class="nc" id="L140">    }</span>
+
+<span class="nc" id="L142">    public boolean isUtente(){return true;}</span>
+
+
+
+    public boolean isActive() {
+<span class="nc" id="L147">        return isActive;</span>
+    }
+
+    public void setActive(boolean active) {
+<span class="nc" id="L151">        isActive = active;</span>
+<span class="nc" id="L152">    }</span>
+
+    public String getRuolo() {
+<span class="nc" id="L155">        return ruolo;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

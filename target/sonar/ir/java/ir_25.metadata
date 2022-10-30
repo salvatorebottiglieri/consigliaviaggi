@@ -1,3 +1,0 @@
-com.ingsw.consigliaviaggi.config.ConfigurazioneSicurezza#getBasicAuthEntryPoint()Lcom/ingsw/consigliaviaggi/config/CustomBasicAuthenticationEntryPoint;
-com.ingsw.consigliaviaggi.config.CustomBasicAuthenticationEntryPoint#instance-init#
-com.ingsw.consigliaviaggi.config.CustomBasicAuthenticationEntryPoint#<init>()V

@@ -1,16 +1,0 @@
-
-Kcom.ingsw.consigliaviaggi.exception.ApiError#getMessage()Ljava/lang/String;i
-_/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/ApiError.java8 8("1*Ä
-1i
-_/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/ApiError.java9 9(Ë
-È
-i
-_/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/ApiError.java9 9(
-%0java.lang.String"__id*=*;.
-,com.ingsw.consigliaviaggi.exception.ApiError"	
-message"…
-i
-_/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/exception/ApiError.java9 9(
-
-%0java.lang.StringB0.
-,com.ingsw.consigliaviaggi.exception.ApiError
