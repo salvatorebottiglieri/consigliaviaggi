@@ -14,6 +14,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
+      - name: Update codebase
+        run: git pull
+        
+      - name: Kill server # kill process if already running
+        run: kill $(ps -ef | grep -v grep | grep java | awk '{print $2}')
+      
       - name: Packaging of code 
         run: mvn clean package spring-boot:repackage
         
