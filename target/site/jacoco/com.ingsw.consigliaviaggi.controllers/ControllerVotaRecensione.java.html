@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerVotaRecensione.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">consigliaviaggi</a> &gt; <a href="index.source.html" class="el_package">com.ingsw.consigliaviaggi.controllers</a> &gt; <span class="el_source">ControllerVotaRecensione.java</span></div><h1>ControllerVotaRecensione.java</h1><pre class="source lang-java linenums">package com.ingsw.consigliaviaggi.controllers;
+
+import com.ingsw.consigliaviaggi.dao.DislikeUtenteDAO;
+import com.ingsw.consigliaviaggi.dao.LikeUtenteDAO;
+import com.ingsw.consigliaviaggi.dao.RecensioneDAO;
+import com.ingsw.consigliaviaggi.model.DislikesUtenti;
+import com.ingsw.consigliaviaggi.model.LikesUtenti;
+import com.ingsw.consigliaviaggi.model.Recensione;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.security.RolesAllowed;
+import javax.persistence.EntityNotFoundException;
+import java.util.List;
+import java.util.Optional;
+
+
+@RestController
+public class ControllerVotaRecensione {
+
+
+    private final RecensioneDAO recensioneDAO;
+
+
+    private final InterfacciaAutenticazione interfacciaAutenticazione;
+
+
+    private final LikeUtenteDAO likeUtenteDAO;
+
+
+    private final DislikeUtenteDAO dislikeUtenteDAO;
+
+<span class="fc" id="L38">    public ControllerVotaRecensione(RecensioneDAO recensioneDAO, InterfacciaAutenticazione interfacciaAutenticazione, LikeUtenteDAO likeUtenteDAO, DislikeUtenteDAO dislikeUtenteDAO) {</span>
+<span class="fc" id="L39">        this.recensioneDAO = recensioneDAO;</span>
+<span class="fc" id="L40">        this.interfacciaAutenticazione = interfacciaAutenticazione;</span>
+<span class="fc" id="L41">        this.likeUtenteDAO = likeUtenteDAO;</span>
+<span class="fc" id="L42">        this.dislikeUtenteDAO = dislikeUtenteDAO;</span>
+<span class="fc" id="L43">    }</span>
+
+    @RolesAllowed(&quot;USER&quot;)
+    @CrossOrigin(origins = &quot;http://localhost:3000&quot;)
+    @PutMapping(&quot;/user/{recensioneId}/addLike&quot;)
+    public ResponseEntity&lt;Object&gt; aggiungiLike(@PathVariable Long recensioneId){
+
+<span class="nc" id="L50">        Optional&lt;Recensione&gt; recensioneOptional = recensioneDAO.findById(recensioneId);</span>
+
+<span class="nc bnc" id="L52" title="All 2 branches missed.">        if (recensioneOptional.isPresent()) {</span>
+<span class="nc" id="L53">            Recensione recensione = recensioneOptional.get();</span>
+
+
+<span class="nc" id="L56">            Authentication authentication = interfacciaAutenticazione.getAuthentication();</span>
+<span class="nc" id="L57">            String nomeUtenteAutoreLike = authentication.getName();</span>
+
+<span class="nc" id="L59">            List&lt;LikesUtenti&gt; likesUtenti = likeUtenteDAO.findALLByRecensione(recensione);</span>
+<span class="nc" id="L60">            List&lt;DislikesUtenti&gt; dislikesUtenti = dislikeUtenteDAO.findALLByRecensione(recensione);</span>
+
+<span class="nc bnc" id="L62" title="All 2 branches missed.">            for (LikesUtenti utente : likesUtenti) {</span>
+
+<span class="nc bnc" id="L64" title="All 2 branches missed.">                if (utente.getNomeUtente().equals(nomeUtenteAutoreLike)) {</span>
+
+<span class="nc" id="L66">                    return new ResponseEntity&lt;&gt;(&quot;Il like è stato già aggiunto&quot;, HttpStatus.NOT_ACCEPTABLE);</span>
+                }
+
+<span class="nc" id="L69">            }</span>
+
+
+<span class="nc bnc" id="L72" title="All 2 branches missed.">            for (DislikesUtenti utente : dislikesUtenti) {</span>
+
+<span class="nc bnc" id="L74" title="All 2 branches missed.">                if (utente.getNomeUtente().equals(nomeUtenteAutoreLike)) {</span>
+
+<span class="nc" id="L76">                    dislikeUtenteDAO.delete(utente);</span>
+                }
+<span class="nc" id="L78">            }</span>
+
+<span class="nc" id="L80">            likeUtenteDAO.save(new LikesUtenti(nomeUtenteAutoreLike, recensione));</span>
+<span class="nc" id="L81">            recensione.addLike();</span>
+<span class="nc" id="L82">            recensioneDAO.save(recensione);</span>
+<span class="nc" id="L83">            return new ResponseEntity&lt;&gt;(&quot;Il like è stato aggiunto con successo&quot;, HttpStatus.OK);</span>
+
+<span class="nc" id="L85">        }else{ throw new EntityNotFoundException(); }</span>
+
+    }
+
+    @RolesAllowed(&quot;USER&quot;)
+    @CrossOrigin(origins = &quot;http://localhost:3000&quot;)
+    @PutMapping(&quot;/user/{recensioneId}/addDislike&quot;)
+    public ResponseEntity&lt;Object&gt; aggiungiDislike(@PathVariable Long recensioneId){
+
+<span class="nc" id="L94">        Optional&lt;Recensione&gt; recensioneOptional = recensioneDAO.findById(recensioneId);</span>
+
+<span class="nc bnc" id="L96" title="All 2 branches missed.">        if(recensioneOptional.isPresent()) {</span>
+
+
+<span class="nc" id="L99">            Recensione recensione = recensioneOptional.get();</span>
+
+<span class="nc" id="L101">            Authentication authentication = interfacciaAutenticazione.getAuthentication();</span>
+<span class="nc" id="L102">            String nomeUtenteAutoreDislike = authentication.getName();</span>
+
+<span class="nc" id="L104">            List&lt;LikesUtenti&gt; likesUtenti = likeUtenteDAO.findALLByRecensione(recensione);</span>
+<span class="nc" id="L105">            List&lt;DislikesUtenti&gt; dislikesUtenti = dislikeUtenteDAO.findALLByRecensione(recensione);</span>
+
+<span class="nc bnc" id="L107" title="All 2 branches missed.">            for (DislikesUtenti utente : dislikesUtenti) {</span>
+
+<span class="nc bnc" id="L109" title="All 2 branches missed.">                if (utente.getNomeUtente().equals(nomeUtenteAutoreDislike)) {</span>
+
+<span class="nc" id="L111">                    return new ResponseEntity&lt;&gt;(&quot;Il dislike è stato già aggiunto&quot;, HttpStatus.NOT_ACCEPTABLE);</span>
+                }
+
+<span class="nc" id="L114">            }</span>
+
+<span class="nc bnc" id="L116" title="All 2 branches missed.">            for (LikesUtenti utente : likesUtenti) {</span>
+
+<span class="nc bnc" id="L118" title="All 2 branches missed.">                if (utente.getNomeUtente().equals(nomeUtenteAutoreDislike)) {</span>
+
+<span class="nc" id="L120">                    likeUtenteDAO.delete(utente);</span>
+
+                }
+<span class="nc" id="L123">            }</span>
+
+<span class="nc" id="L125">            dislikeUtenteDAO.save(new DislikesUtenti(nomeUtenteAutoreDislike, recensione));</span>
+<span class="nc" id="L126">            recensione.addDislike();</span>
+<span class="nc" id="L127">            recensioneDAO.save(recensione);</span>
+<span class="nc" id="L128">            return new ResponseEntity&lt;&gt;(&quot;Il dislike è stato aggiunto con successo&quot;, HttpStatus.OK);</span>
+
+<span class="nc" id="L130">        }else{throw new EntityNotFoundException(); }</span>
+
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

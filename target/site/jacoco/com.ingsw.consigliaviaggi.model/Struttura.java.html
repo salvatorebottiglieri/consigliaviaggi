@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Struttura.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">consigliaviaggi</a> &gt; <a href="index.source.html" class="el_package">com.ingsw.consigliaviaggi.model</a> &gt; <span class="el_source">Struttura.java</span></div><h1>Struttura.java</h1><pre class="source lang-java linenums">package com.ingsw.consigliaviaggi.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import java.util.*;
+
+@Entity
+public class Struttura {
+
+    private String id;
+    private String nome;
+    private String descrizione;
+    private Indirizzo indirizzo;
+    private TipoStruttura categoria;
+    private int prezzo;
+    private String foto;
+    private List&lt;Recensione&gt; recensioni;
+
+<span class="fc" id="L21">    public Struttura(){}</span>
+
+<span class="fc" id="L23">    public Struttura( String nome, String descrizione, Indirizzo indirizzo, TipoStruttura categoria, int prezzo, String immagine){</span>
+<span class="fc" id="L24">        this.nome = nome;</span>
+<span class="fc" id="L25">        this.descrizione = descrizione;</span>
+<span class="fc" id="L26">        this.indirizzo = indirizzo;</span>
+<span class="fc" id="L27">        this.categoria = categoria;</span>
+<span class="fc" id="L28">        this.prezzo = prezzo;</span>
+<span class="fc" id="L29">        this.foto = immagine;</span>
+<span class="fc" id="L30">        this.id = nome+&quot;-&quot;+indirizzo.getVia()+&quot;-&quot;+indirizzo.getCivico()+&quot;-&quot;+indirizzo.getCity();</span>
+<span class="fc" id="L31">    }</span>
+
+    @Id
+    public String getId() {
+<span class="fc" id="L35">        return id;</span>
+    }
+
+    private void setId(String id) {
+<span class="fc" id="L39">        this.id = id;</span>
+<span class="fc" id="L40">    }</span>
+
+    public String getNome() {
+<span class="fc" id="L43">        return nome;</span>
+    }
+
+    public void setNome(String nome) {
+<span class="fc" id="L47">        this.nome = nome;</span>
+<span class="fc" id="L48">    }</span>
+
+    public String getDescrizione() {
+<span class="fc" id="L51">        return descrizione;</span>
+    }
+
+    public void setDescrizione(String descrizione) {
+<span class="fc" id="L55">        this.descrizione = descrizione;</span>
+<span class="fc" id="L56">    }</span>
+
+    @Enumerated(EnumType.STRING)
+    public TipoStruttura getCategoria() {
+<span class="fc" id="L60">        return categoria;</span>
+    }
+
+    public void setCategoria(TipoStruttura categoria) {
+<span class="fc" id="L64">        this.categoria = categoria;</span>
+<span class="fc" id="L65">    }</span>
+
+
+    public String getFoto() {
+<span class="fc" id="L69">        return foto;</span>
+    }
+
+    public void setFoto(String foto) {
+<span class="fc" id="L73">        this.foto = foto;}</span>
+
+
+    @OneToOne(cascade=CascadeType.ALL)
+    public Indirizzo getIndirizzo() {
+<span class="fc" id="L78">        return indirizzo;</span>
+    }
+
+    public void setIndirizzo(Indirizzo indirizzo) {
+<span class="fc" id="L82">        this.indirizzo = indirizzo;</span>
+<span class="fc" id="L83">    }</span>
+
+
+    @OneToMany(mappedBy = &quot;struttura&quot;)
+    @JsonIgnore
+    public List&lt;Recensione&gt; getRecensioni() {
+<span class="fc" id="L89">        return recensioni;</span>
+    }
+
+    public void setRecensioni(List&lt;Recensione&gt; recensioni) {
+<span class="fc" id="L93">        this.recensioni = recensioni;</span>
+<span class="fc" id="L94">    }</span>
+
+    public int getPrezzo() {
+<span class="fc" id="L97">        return prezzo;</span>
+    }
+
+    public void setPrezzo(int prezzo) {
+<span class="fc" id="L101">        this.prezzo = prezzo;</span>
+<span class="fc" id="L102">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L106">        return &quot;Struttura{&quot; +</span>
+                &quot;id=&quot; + id +
+                &quot;, nome='&quot; + nome + '\'' +
+                &quot;, descrizione='&quot; + descrizione + '\'' +
+                &quot;, indirizzo=&quot; + indirizzo +
+                &quot;, categoria=&quot; + categoria +
+                &quot;, prezzo=&quot; + prezzo +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+<span class="nc bnc" id="L118" title="All 2 branches missed.">        if (this == o) return true;</span>
+<span class="nc bnc" id="L119" title="All 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="nc" id="L120">        Struttura struttura = (Struttura) o;</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">        return nome.equals(struttura.nome) &amp;&amp;</span>
+<span class="nc bnc" id="L122" title="All 2 branches missed.">                indirizzo.equals(struttura.indirizzo);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L127">        return Objects.hash(nome, indirizzo);</span>
+    }
+
+    public boolean freeOfCharge(){
+
+<span class="nc bnc" id="L132" title="All 22 branches missed.">        return  categoria != TipoStruttura.hotel &amp;&amp;</span>
+                categoria != TipoStruttura.museo &amp;&amp;
+                categoria != TipoStruttura.discoteca &amp;&amp;
+                categoria != TipoStruttura.badandbreakfast &amp;&amp;
+                categoria != TipoStruttura.tour &amp;&amp;
+                categoria != TipoStruttura.ristorante &amp;&amp;
+                categoria != TipoStruttura.negozio &amp;&amp;
+                categoria != TipoStruttura.palestra &amp;&amp;
+                categoria != TipoStruttura.parcotematico &amp;&amp;
+                categoria != TipoStruttura.agriturismo &amp;&amp;
+                categoria != TipoStruttura.bar;
+    }
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

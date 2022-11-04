@@ -1,3 +1,0 @@
-com.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura#getStruttura(Ljava/lang/String;)Lcom/ingsw/consigliaviaggi/model/Struttura;
-java.util.Optional#isPresent()Z
-java.util.Optional#get()Ljava/lang/Object;

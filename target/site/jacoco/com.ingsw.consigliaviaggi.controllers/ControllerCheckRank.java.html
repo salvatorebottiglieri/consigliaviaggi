@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerCheckRank.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">consigliaviaggi</a> &gt; <a href="index.source.html" class="el_package">com.ingsw.consigliaviaggi.controllers</a> &gt; <span class="el_source">ControllerCheckRank.java</span></div><h1>ControllerCheckRank.java</h1><pre class="source lang-java linenums">package com.ingsw.consigliaviaggi.controllers;
+
+import com.ingsw.consigliaviaggi.dao.RecensioneDAO;
+import com.ingsw.consigliaviaggi.dao.UtenteDAO;
+import com.ingsw.consigliaviaggi.model.Recensione;
+import com.ingsw.consigliaviaggi.model.TipoRecensore;
+import com.ingsw.consigliaviaggi.model.Utente;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+@Component
+public class ControllerCheckRank {
+
+
+    private final UtenteDAO utenteDAO;
+    private final RecensioneDAO recensioneDAO;
+
+<span class="fc" id="L21">    public ControllerCheckRank(UtenteDAO utenteDAO, RecensioneDAO recensioneDAO) {</span>
+<span class="fc" id="L22">        this.utenteDAO = utenteDAO;</span>
+<span class="fc" id="L23">        this.recensioneDAO = recensioneDAO;</span>
+<span class="fc" id="L24">    }</span>
+
+    @Scheduled(cron = &quot;0 0 12 * * ?&quot;)//il metodo parte ogni giorno a mezzanotte
+    public void checkRankUtenti() {
+
+<span class="nc" id="L29">        Iterable&lt;Utente&gt; utentiDelSistema = utenteDAO.findAll();</span>
+
+<span class="nc bnc" id="L31" title="All 2 branches missed.">        for (Utente utente : utentiDelSistema) {</span>
+
+<span class="nc" id="L33">            TipoRecensore tipoRecensoreVecchio = utente.getRank();</span>
+
+<span class="nc" id="L35">            TipoRecensore tipoRecensoreAppenaCalcolato = calcolaRankUtente(utente);</span>
+
+<span class="nc bnc" id="L37" title="All 2 branches missed.">            if (tipoRecensoreAppenaCalcolato != tipoRecensoreVecchio) {</span>
+
+<span class="nc" id="L39">                utente.setRank(tipoRecensoreAppenaCalcolato);</span>
+<span class="nc" id="L40">                utenteDAO.save(utente);</span>
+            }
+
+
+<span class="nc" id="L44">        }</span>
+
+<span class="nc" id="L46">    }</span>
+
+    public TipoRecensore calcolaRankUtente(Utente utente) {
+
+<span class="nc" id="L50">        List&lt;Recensione&gt; recensioniUtente = recensioneDAO.findAllByAutoreEquals(utente);</span>
+<span class="nc" id="L51">        int sommaLikes = 0;</span>
+<span class="nc" id="L52">        int sommaDislikes = 0;</span>
+
+<span class="nc bnc" id="L54" title="All 2 branches missed.">        for (Recensione recensione : recensioniUtente) {</span>
+
+<span class="nc" id="L56">            sommaLikes = sommaLikes + recensione.getLikes();</span>
+<span class="nc" id="L57">            sommaDislikes = sommaDislikes + recensione.getDislikes();</span>
+
+<span class="nc" id="L59">        }</span>
+
+<span class="nc bnc" id="L61" title="All 2 branches missed.">        if (sommaLikes &gt;= (sommaDislikes * 5)) {</span>
+<span class="nc" id="L62">            return TipoRecensore.eccellente;</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">        } else if (sommaLikes &gt;= (sommaDislikes * 2)) {</span>
+<span class="nc" id="L64">            return TipoRecensore.ottimo;</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">        } else if (sommaLikes &gt;= sommaDislikes) {</span>
+<span class="nc" id="L66">            return TipoRecensore.buono;</span>
+        } else {
+<span class="nc" id="L68">            return TipoRecensore.pessimo;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

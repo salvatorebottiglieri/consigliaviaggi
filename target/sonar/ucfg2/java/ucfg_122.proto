@@ -1,68 +1,0 @@
-
-øcom.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura$Filtri#searchOnlyByCategoriaAndCoordinateAndPrezzo(Lcom/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura$Filtri;)Z
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaù ù(C"10*ò
-4Ä
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaü} ü(Éä
-á
-Ä
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaü} ü(è
-%4java.lang.Double"__id*d*b
-Q
-filtriGcom.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura$Filtri"
-longitudine*
-1*ñ
-5
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaüb ü(há
-Ñ
-
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaüb ü(s
-%3java.lang.Double"__id*c*a
-Q
-filtriGcom.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura$Filtri"
-
-latitudine*
-4
-1*≤
-7
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaüD ü(J£
-†
-
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaüD ü(T3
-%2-com.ingsw.consigliaviaggi.model.TipoStruttura"__id*b*`
-Q
-filtriGcom.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura$Filtri"
-	categoria*
-5
-1*ì
-9
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaü+ ü(1Å
-˛
-
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaü+ ü(6
-%1java.lang.String"__id*]*[
-Q
-filtriGcom.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura$Filtri"
-city*	
-5
-7
-1*ó
-10
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaü ü(Å
-˛
-
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaü ü(
-%0java.lang.String"__id*]*[
-Q
-filtriGcom.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura$Filtri"
-nome*
-5
-7
-9
-1*î
-1Ä
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaü ü(∞"ã
-Ä
-s/home/salvatore/consigliaviaggi/src/main/java/com/ingsw/consigliaviaggi/controllers/ControllerRicercaStruttura.javaü ü(∞
-"":Q
-filtriGcom.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura$FiltriBKI
-Gcom.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura$Filtri

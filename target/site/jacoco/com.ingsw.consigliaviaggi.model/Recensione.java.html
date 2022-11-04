@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Recensione.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">consigliaviaggi</a> &gt; <a href="index.source.html" class="el_package">com.ingsw.consigliaviaggi.model</a> &gt; <span class="el_source">Recensione.java</span></div><h1>Recensione.java</h1><pre class="source lang-java linenums">package com.ingsw.consigliaviaggi.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.List;
+
+@Entity
+public class Recensione {
+
+    private long id;
+    private int voto;
+    private String descrizione;
+<span class="pc" id="L16">    private int likes =0;</span>
+<span class="pc" id="L17">    private int dislikes= 0;</span>
+    private Date dataDiAggiunta;
+    private Utente autore;
+    private Struttura struttura;
+    private List&lt;LikesUtenti&gt; likesUtenti;
+    private List&lt;DislikesUtenti&gt; dislikesUtenti;
+
+
+<span class="fc" id="L25">    public Recensione() {}</span>
+
+<span class="nc" id="L27">    public Recensione(int voto, String descrizione) {</span>
+<span class="nc" id="L28">        this.voto = voto;</span>
+<span class="nc" id="L29">        this.descrizione = descrizione;</span>
+
+<span class="nc" id="L31">    }</span>
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public long getId() {
+        return id;
+    }
+
+    private void setId(long id) {
+<span class="nc" id="L40">        this.id = id;</span>
+<span class="nc" id="L41">    }</span>
+
+    public int getVoto() {
+<span class="nc" id="L44">        return voto;</span>
+    }
+
+    public void setVoto(int voto) {
+<span class="nc" id="L48">        this.voto = voto;</span>
+<span class="nc" id="L49">    }</span>
+
+    public String getDescrizione() {
+<span class="nc" id="L52">        return descrizione;</span>
+    }
+
+    public void setDescrizione(String descrizione) {
+<span class="nc" id="L56">        this.descrizione = descrizione;</span>
+<span class="nc" id="L57">    }</span>
+
+    public int getLikes() {
+<span class="nc" id="L60">        return likes;</span>
+    }
+
+    public void setLikes(int like) {
+<span class="nc" id="L64">        this.likes = like;</span>
+<span class="nc" id="L65">    }</span>
+
+<span class="nc" id="L67">    public void addLike(){ this.likes++;}</span>
+
+    public int getDislikes() {
+<span class="nc" id="L70">        return dislikes;</span>
+    }
+
+    public void setDislikes(int dislike) {
+<span class="nc" id="L74">        this.dislikes = dislike;</span>
+<span class="nc" id="L75">    }</span>
+
+<span class="nc" id="L77">    public void addDislike(){ this.dislikes++;}</span>
+
+    public Date getDataDiAggiunta() {
+<span class="nc" id="L80">        return dataDiAggiunta;</span>
+    }
+
+    public void setDataDiAggiunta(Date dataDiAggiunta) {
+<span class="nc" id="L84">        this.dataDiAggiunta = dataDiAggiunta;</span>
+<span class="nc" id="L85">    }</span>
+
+    @ManyToOne
+    @JoinColumn
+    public Utente getAutore() {
+<span class="nc" id="L90">        return autore;</span>
+    }
+
+    public void setAutore(Utente autore) {
+<span class="nc" id="L94">        this.autore = autore;</span>
+<span class="nc" id="L95">    }</span>
+
+    @ManyToOne
+    @JoinColumn
+    public Struttura getStruttura() {
+<span class="nc" id="L100">        return struttura;</span>
+    }
+
+    public void setStruttura(Struttura struttura) {
+<span class="nc" id="L104">        this.struttura = struttura;</span>
+<span class="nc" id="L105">    }</span>
+
+    @OneToMany(mappedBy = &quot;recensione&quot;)
+    @JsonIgnore
+<span class="nc" id="L109">    public List&lt;LikesUtenti&gt; getLikesUtenti() {return likesUtenti;}</span>
+
+<span class="nc" id="L111">    public void setLikesUtenti(List&lt;LikesUtenti&gt; likesUtenti) { }</span>
+    @OneToMany(mappedBy = &quot;recensione&quot;)
+    @JsonIgnore
+
+    public List&lt;DislikesUtenti&gt; getDislikesUtenti() {
+<span class="nc" id="L116">        return dislikesUtenti;</span>
+    }
+
+    public void setDislikesUtenti(List&lt;DislikesUtenti&gt; dislikesUtenti) {
+
+<span class="nc" id="L121">    }</span>
+
+<span class="nc" id="L123">    public static class DataComparator implements Comparator&lt;Recensione&gt; {</span>
+
+
+        @Override
+        public int compare(Recensione o1, Recensione o2) {
+
+<span class="nc bnc" id="L129" title="All 2 branches missed.">            if(o1.getDataDiAggiunta().before(o2.getDataDiAggiunta())){</span>
+<span class="nc" id="L130">                return -1;</span>
+            }
+<span class="nc bnc" id="L132" title="All 2 branches missed.">            else if(o1.getDataDiAggiunta().after(o2.getDataDiAggiunta())){</span>
+<span class="nc" id="L133">                return 1;</span>
+            }
+<span class="nc" id="L135">            else{ return 0;}</span>
+        }
+    }
+
+<span class="nc" id="L139">    public static class VoteComparator implements Comparator&lt;Recensione&gt; {</span>
+
+
+        @Override
+        public int compare(Recensione o1, Recensione o2) {
+
+<span class="nc bnc" id="L145" title="All 2 branches missed.">            if(o1.getVoto() &lt;o2.getVoto()){</span>
+<span class="nc" id="L146">                return -1;</span>
+            }
+<span class="nc bnc" id="L148" title="All 2 branches missed.">            else if(o1.getVoto() &gt;o2.getVoto()){</span>
+<span class="nc" id="L149">                return 1;</span>
+            }
+<span class="nc" id="L151">            else{ return 0;}</span>
+        }
+    }
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
