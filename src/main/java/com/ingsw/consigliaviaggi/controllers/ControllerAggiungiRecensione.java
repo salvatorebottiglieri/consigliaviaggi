@@ -9,7 +9,6 @@ import com.ingsw.consigliaviaggi.model.Struttura;
 import com.ingsw.consigliaviaggi.model.Utente;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -40,11 +39,11 @@ public class ControllerAggiungiRecensione {
 
         if(controllerValidazioneInput.isValidRecensione(recensione)) {
 
-            Authentication authentication = interfacciaAutenticazione.getAuthentication();
+            String nomeUtente = interfacciaAutenticazione.getAuthentication().getName();
 
             recensione.setDataDiAggiunta(new Date());
 
-            Optional<Utente> utenteOptional = utenteDAO.findByNomeUtente(authentication.getName());
+            Optional<Utente> utenteOptional = utenteDAO.findByNomeUtente(nomeUtente);
             Utente utente = utenteOptional.get();
             recensione.setAutore(utente);
 
@@ -58,7 +57,5 @@ public class ControllerAggiungiRecensione {
 
         }
         else{throw new NoValidInputException("Input non valido");}
-
-
     }
 }

@@ -39,7 +39,6 @@ public class Utente {
         this.sesso = sesso;
         this.city = city;
         this.dataDiNascita = dataDiNascita;
-
     }
 
 

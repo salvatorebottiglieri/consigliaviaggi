@@ -45,7 +45,5 @@ public class DbInit {
         struttura = new Struttura("Hotel Toledo","Hotel nel centro di Napoli",indirizzo, TipoStruttura.hotel,3,"https://res.cloudinary.com/sasi46/image/upload/v1601983398/hotel-toledo_jptaxd.jpg");
         strutturaDAO.save(struttura);
 
-
-
     }
 }
