@@ -112,9 +112,8 @@ public class ControllerAggiungiRecensioneTest {
         when(controllerValidazioneInput.isValidRecensione(any())).thenReturn(false);
         String expected = "Input non valido";
 
-        NoValidInputException exception = Assertions.assertThrows(NoValidInputException.class, () -> {
-            controllerAggiungiRecensione.aggiungiRecensione(recensione,structureId);
-        });
+        NoValidInputException exception = Assertions.assertThrows(NoValidInputException.class, () ->
+                controllerAggiungiRecensione.aggiungiRecensione(recensione,structureId));
 
         assertThat(expected,is(equalTo(exception.getMessage())));
 
