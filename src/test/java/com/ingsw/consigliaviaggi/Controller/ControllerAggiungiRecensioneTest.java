@@ -116,7 +116,5 @@ public class ControllerAggiungiRecensioneTest {
                 controllerAggiungiRecensione.aggiungiRecensione(recensione,structureId));
 
         assertThat(expected,is(equalTo(exception.getMessage())));
-
-
     }
 }
