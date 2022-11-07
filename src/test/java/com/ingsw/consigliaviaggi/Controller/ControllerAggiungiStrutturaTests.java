@@ -22,13 +22,13 @@ import static org.hamcrest.core.Is.is;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
-public class ControllerAggiungiStrutturaTests {
-    ControllerAggiungiStruttura controllerAggiungiStruttura;
+class ControllerAggiungiStrutturaTests {
+    private ControllerAggiungiStruttura controllerAggiungiStruttura;
     @Mock
-    StrutturaDAO strutturaDAO;
+    private StrutturaDAO strutturaDAO;
     @Mock
-    ControllerValidazioneInput controllerValidazioneInput;
-    Struttura struttura;
+    private ControllerValidazioneInput controllerValidazioneInput;
+    private Struttura struttura;
 
     @BeforeEach
     void init(){

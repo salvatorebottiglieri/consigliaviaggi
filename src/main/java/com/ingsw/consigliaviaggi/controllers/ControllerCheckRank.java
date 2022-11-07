@@ -39,10 +39,7 @@ public class ControllerCheckRank {
                 utente.setRank(tipoRecensoreAppenaCalcolato);
                 utenteDAO.save(utente);
             }
-
-
         }
-
     }
 
     public TipoRecensore calcolaRankUtente(Utente utente) {

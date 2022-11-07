@@ -21,15 +21,11 @@ public class ControllerAutenticazione implements InterfacciaAutenticazione{
         return SecurityContextHolder.getContext().getAuthentication();
     }
 
-
-
     @RolesAllowed("USER")
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(path = "/user/autenticazioneUtente", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Object> login(@RequestBody CredenzialiUtente credenzialiUtente){
-
        return new ResponseEntity<>(credenzialiUtente, HttpStatus.OK);
-
     }
 
     @RolesAllowed("ADMIN")

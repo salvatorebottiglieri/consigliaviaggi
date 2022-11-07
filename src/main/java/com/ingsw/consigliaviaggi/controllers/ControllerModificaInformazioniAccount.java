@@ -36,7 +36,7 @@ public class ControllerModificaInformazioniAccount {
 
                 return utenteOptional.get();
             }
-            else{throw new EntityNotFoundException();}
+            else{throw new EntityNotFoundException("User not found");}
 
     }
 
@@ -53,7 +53,7 @@ public class ControllerModificaInformazioniAccount {
                 utenteDAO.save(utente);
                 return new ResponseEntity<>("Il nome è stato modificato con successo", HttpStatus.OK);
             }
-            else{throw new EntityNotFoundException();}
+            else{throw new EntityNotFoundException("User not found");}
         }
         throw new NoValidInputException("Input non valido: nome non valido");
     }
@@ -71,7 +71,7 @@ public class ControllerModificaInformazioniAccount {
                 utenteDAO.save(utente);
                 return new ResponseEntity<>("Il cognome è stato modificato con successo", HttpStatus.OK);
 
-            }else{throw new EntityNotFoundException();}
+            }else{throw new EntityNotFoundException("User not found");}
         }
         throw new NoValidInputException("Input non valido: cognome non valido");
     }
@@ -89,7 +89,7 @@ public class ControllerModificaInformazioniAccount {
                 utenteDAO.save(utente);
                 return new ResponseEntity<>("L'indirizzo email è stato modificato con successo", HttpStatus.OK);
             }
-            else{throw new EntityNotFoundException();}
+            else{throw new EntityNotFoundException("User not found");}
         }
         throw new NoValidInputException("Input non valido: indirizzo email non valido");
     }
@@ -107,14 +107,14 @@ public class ControllerModificaInformazioniAccount {
                 utenteDAO.save(utente);
                 return new ResponseEntity<>("La password è stata modificata con successo", HttpStatus.OK);
             }
-            else{throw new EntityNotFoundException();}
+            else{throw new EntityNotFoundException("User not found");}
         }
         throw new NoValidInputException("Input non valido: password non valida");
     }
 
     @RolesAllowed("USER")
     @PutMapping("/user/sesso/{id}")
-    public boolean modificaSesso(@RequestBody Gender sesso, @PathVariable String id)
+    public ResponseEntity<Object> modificaSesso(@RequestBody Gender sesso, @PathVariable String id)
     {
         Optional<Utente> utenteOptional = utenteDAO.findById(id);
 
@@ -123,9 +123,9 @@ public class ControllerModificaInformazioniAccount {
             Utente utente=utenteOptional.get();
             utente.setSesso(sesso);
             utenteDAO.save(utente);
-            return true;
+            return new ResponseEntity<>("Il sesso è stato modificato con successo", HttpStatus.OK);
         }
-        else{throw new EntityNotFoundException();}
+        else{throw new EntityNotFoundException("User not found");}
 
     }
 
@@ -144,7 +144,7 @@ public class ControllerModificaInformazioniAccount {
                 utenteDAO.save(utente);
                 return new ResponseEntity<>("La data di nascita è stata modificata con successo", HttpStatus.OK);
             }
-            else{throw new EntityNotFoundException();}
+            else{throw new EntityNotFoundException("User not found");}
         }
         else{ throw new NoValidInputException("Input non valido: data di nascita non valida");}
     }
@@ -162,7 +162,7 @@ public class ControllerModificaInformazioniAccount {
             utenteDAO.save(utente);
             return new ResponseEntity<>("La privacy è stata modificata con successo", HttpStatus.OK);
         }
-        else{throw new EntityNotFoundException();}
+        else{throw new EntityNotFoundException("User not found");}
 
     }
 

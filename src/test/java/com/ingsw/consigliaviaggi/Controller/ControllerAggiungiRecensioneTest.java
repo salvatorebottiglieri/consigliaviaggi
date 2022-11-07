@@ -32,23 +32,23 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
-public class ControllerAggiungiRecensioneTest {
+class ControllerAggiungiRecensioneTest {
 
-    ControllerAggiungiRecensione controllerAggiungiRecensione;
+    private ControllerAggiungiRecensione controllerAggiungiRecensione;
 
     @Mock
-    InterfacciaAutenticazione interfacciaAutenticazione;
+    private InterfacciaAutenticazione interfacciaAutenticazione;
     @Mock
-    StrutturaDAO strutturaDAO;
+    private StrutturaDAO strutturaDAO;
     @Mock
-    UtenteDAO utenteDAO;
+    private UtenteDAO utenteDAO;
     @Mock
-    RecensioneDAO recensioneDAO;
+    private RecensioneDAO recensioneDAO;
     @Mock
-    ControllerValidazioneInput controllerValidazioneInput;
+    private ControllerValidazioneInput controllerValidazioneInput;
     @Mock
-    Recensione recensione;
-    String structureId;
+    private Recensione recensione;
+    private String structureId;
 
 
     @BeforeEach
