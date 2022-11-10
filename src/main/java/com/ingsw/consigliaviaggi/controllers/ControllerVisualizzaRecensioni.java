@@ -31,8 +31,6 @@ public class ControllerVisualizzaRecensioni {
         Collections.reverse( recensioni );
 
         return recensioni;
-
-
     }
 
     @GetMapping("/all/{strutturaId}/menorecenti")
@@ -62,10 +60,7 @@ public class ControllerVisualizzaRecensioni {
         recensioni.sort(new Recensione.VoteComparator());
         Collections.reverse( recensioni );
 
-
         return recensioni;
-
-
     }
 
     @GetMapping("/all/{strutturaId}/negative")
@@ -78,10 +73,6 @@ public class ControllerVisualizzaRecensioni {
 
         recensioni.sort(new Recensione.VoteComparator());
 
-
-
         return recensioni;
-
-
     }
 }

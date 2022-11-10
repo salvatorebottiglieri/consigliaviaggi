@@ -41,7 +41,7 @@ public class ControllerModificaStruttura {
                 strutturaDAO.save(struttura);
                 return new ResponseEntity<>("Il nome è stato modificato con successo", HttpStatus.OK);
             }
-            else{ throw new EntityNotFoundException(); }
+            else{ throw new EntityNotFoundException("User not found"); }
 
         }else{ throw new NoValidInputException("Input non valido: nome non valido"); }
 
@@ -62,7 +62,7 @@ public class ControllerModificaStruttura {
                 strutturaDAO.save(struttura);
                 return new ResponseEntity<>("La descrizione è stata modificata con successo", HttpStatus.OK);
             }
-            else{ throw new EntityNotFoundException(); }
+            else{ throw new EntityNotFoundException("User not found"); }
         }
         else{ throw new NoValidInputException("Input non valido: Descrizione non valida"); }
 
@@ -86,7 +86,7 @@ public class ControllerModificaStruttura {
                 strutturaDAO.save(struttura);
                 return new ResponseEntity<>("l'indirizzo è stato modificato con successo", HttpStatus.OK);
             }
-            else{ throw new EntityNotFoundException();}
+            else{ throw new EntityNotFoundException("User not found");}
 
         }else{ throw new NoValidInputException("Input non valido: Indirizzo non valido"); }
 
@@ -109,7 +109,7 @@ public class ControllerModificaStruttura {
             strutturaDAO.save(struttura);
             return new ResponseEntity<>("la categoria è stata modificata con successo", HttpStatus.OK);
         }
-        else{throw new EntityNotFoundException();}
+        else{throw new EntityNotFoundException("User not found");}
     }
 
     @RolesAllowed("ADMIN")
@@ -125,7 +125,7 @@ public class ControllerModificaStruttura {
                 strutturaDAO.save(struttura);
                 return new ResponseEntity<>("Il prezzo è stato modificato con successo", HttpStatus.OK);
             }
-            else{throw new EntityNotFoundException();}
+            else{throw new EntityNotFoundException("User not found");}
 
 
     }
@@ -141,7 +141,7 @@ public class ControllerModificaStruttura {
             strutturaDAO.deleteById(id);
             return new ResponseEntity<>("la struttura è stata eliminata con successo", HttpStatus.OK);
         }
-        else{throw new EntityNotFoundException();}
+        else{throw new EntityNotFoundException("User not found");}
 
     }
 
@@ -159,7 +159,7 @@ public class ControllerModificaStruttura {
             strutturaDAO.save(struttura);
             return new ResponseEntity<>("La foto è stata aggiunta con successo", HttpStatus.OK);
         }
-        else{throw new EntityNotFoundException();}
+        else{throw new EntityNotFoundException("User not found");}
 
     }
 

@@ -1,6 +1,5 @@
 package com.ingsw.consigliaviaggi.controllers;
 
-import com.ingsw.consigliaviaggi.dao.UtenteDAO;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Recensione;
 import com.ingsw.consigliaviaggi.model.Struttura;
@@ -15,27 +14,13 @@ import java.util.regex.Pattern;
 @Component
 public class ControllerValidazioneInput {
 
-
-    private final UtenteDAO utenteDAO;
-
-    public ControllerValidazioneInput(UtenteDAO utenteDAO) {
-        this.utenteDAO = utenteDAO;
-    }
-
-
     public boolean isValidRecensione(Recensione recensione){
 
         int MAXLENGTH = 250;
 
         String descrizione = recensione.getDescrizione();
 
-        if( descrizione.length() <= MAXLENGTH && !descrizione.isEmpty() ){
-
-            return true;
-        }
-        else{
-            return false;
-        }
+        return descrizione.length() <= MAXLENGTH && !descrizione.isEmpty();
 
     }
 
@@ -45,8 +30,6 @@ public class ControllerValidazioneInput {
                 && isValidDescriptionStruttura(struttura.getDescrizione())
                 && isValidAddressStruttura(struttura.getIndirizzo())
                 && isValidPriceStruttura(struttura.getPrezzo());
-
-
     }
 
     public boolean isValidRegistrazione(Utente utente){
@@ -78,7 +61,6 @@ public class ControllerValidazioneInput {
         int maxCity = 50;
 
         return via.length() <= maxVia && !(via.isEmpty()) && city.length() <= maxCity && !(city.isEmpty()) && civico > 0;
-
     }
 
 

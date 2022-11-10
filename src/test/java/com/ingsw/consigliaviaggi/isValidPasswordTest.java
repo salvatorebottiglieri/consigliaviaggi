@@ -13,12 +13,11 @@ public class isValidPasswordTest {
 
 
     private ControllerValidazioneInput controllerValidazioneInput;
-    @MockBean
-    private UtenteDAO utenteDAO;
+
 
     @BeforeEach
     public void Init(){
-        controllerValidazioneInput = new ControllerValidazioneInput(utenteDAO);
+        controllerValidazioneInput = new ControllerValidazioneInput();
     }
 
     //test con strategia Black Box

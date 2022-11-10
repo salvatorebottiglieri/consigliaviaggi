@@ -2,10 +2,8 @@ package com.ingsw.consigliaviaggi;
 
 
 import com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput;
-import com.ingsw.consigliaviaggi.dao.UtenteDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,12 +12,11 @@ public class isValidEmailAddressTest {
 
 
     private ControllerValidazioneInput controllerValidazioneInput;
-    @MockBean
-    private UtenteDAO utenteDAO;
+
 
     @BeforeEach
     public void Init(){
-        controllerValidazioneInput = new ControllerValidazioneInput(utenteDAO);
+        controllerValidazioneInput = new ControllerValidazioneInput();
     }
 
 

@@ -96,7 +96,6 @@ public class ControllerVotaRecensione {
 
         if(recensioneOptional.isPresent()) {
 
-
             Recensione recensione = recensioneOptional.get();
 
             Authentication authentication = interfacciaAutenticazione.getAuthentication();

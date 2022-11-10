@@ -122,7 +122,6 @@ public class Recensione {
 
     public static class DataComparator implements Comparator<Recensione> {
 
-
         @Override
         public int compare(Recensione o1, Recensione o2) {
 
