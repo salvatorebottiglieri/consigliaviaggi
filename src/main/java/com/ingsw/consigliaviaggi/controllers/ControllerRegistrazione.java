@@ -47,10 +47,5 @@ public class ControllerRegistrazione {
             }
         }
         else{ throw new NoValidInputException("Input non valido"); }
-
-
-
     }
-
-
 }

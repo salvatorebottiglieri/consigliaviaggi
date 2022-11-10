@@ -35,7 +35,8 @@ public class ControllerVotaRecensione {
 
     private final DislikeUtenteDAO dislikeUtenteDAO;
 
-    public ControllerVotaRecensione(RecensioneDAO recensioneDAO, InterfacciaAutenticazione interfacciaAutenticazione, LikeUtenteDAO likeUtenteDAO, DislikeUtenteDAO dislikeUtenteDAO) {
+    public ControllerVotaRecensione(RecensioneDAO recensioneDAO, InterfacciaAutenticazione interfacciaAutenticazione,
+                                    LikeUtenteDAO likeUtenteDAO, DislikeUtenteDAO dislikeUtenteDAO) {
         this.recensioneDAO = recensioneDAO;
         this.interfacciaAutenticazione = interfacciaAutenticazione;
         this.likeUtenteDAO = likeUtenteDAO;
@@ -82,7 +83,7 @@ public class ControllerVotaRecensione {
             recensioneDAO.save(recensione);
             return new ResponseEntity<>("Il like è stato aggiunto con successo", HttpStatus.OK);
 
-        }else{ throw new EntityNotFoundException(); }
+        }else{ throw new EntityNotFoundException("User not found"); }
 
     }
 
@@ -127,7 +128,7 @@ public class ControllerVotaRecensione {
             recensioneDAO.save(recensione);
             return new ResponseEntity<>("Il dislike è stato aggiunto con successo", HttpStatus.OK);
 
-        }else{throw new EntityNotFoundException(); }
+        }else{throw new EntityNotFoundException("User not found"); }
 
     }
 

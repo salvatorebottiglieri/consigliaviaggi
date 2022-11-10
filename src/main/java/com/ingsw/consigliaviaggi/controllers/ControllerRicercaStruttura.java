@@ -325,7 +325,6 @@ public class ControllerRicercaStruttura {
         }
 
         private boolean searchOnlyByNome(Filtri filtri){
-
             return filtri.nome != null && (filtri.city == null) && (filtri.categoria == null) && (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo == -1);
         }
         private boolean searchOnlyByCity(Filtri filtri){
