@@ -27,15 +27,8 @@ public class ControllerRicercaStruttura {
 
     @GetMapping("/all/{strutturaID}")
     public Struttura getStruttura(@PathVariable String strutturaID){
-
         Optional<Struttura> strutturaOptional = strutturaDAO.findById(strutturaID);
-        if(strutturaOptional.isPresent()) {
-            return strutturaOptional.get();
-        }
-        else{
-            return null;
-        }
-
+        return strutturaOptional.orElse(null);
     }
 
 
@@ -53,7 +46,6 @@ public class ControllerRicercaStruttura {
            List<Struttura> strutture = (List<Struttura>) strutturaDAO.findAll();
 
            return getStruttureVicine(strutture,filtri);
-
        }
 
        if(filtri.searchOnlyByPrezzo(filtri)){return strutturaDAO.findByPrezzo(filtri.getPrezzo());}
