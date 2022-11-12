@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DbInit.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">consigliaviaggi</a> &gt; <a href="index.source.html" class="el_package">com.ingsw.consigliaviaggi.config</a> &gt; <span class="el_source">DbInit.java</span></div><h1>DbInit.java</h1><pre class="source lang-java linenums">package com.ingsw.consigliaviaggi.config;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DbInit.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">consigliaviaggi</a> &gt; <a href="index.source.html" class="el_package">com.ingsw.consigliaviaggi.config</a> &gt; <span class="el_source">DbInit.java</span></div><h1>DbInit.java</h1><pre class="source lang-java linenums">package com.ingsw.consigliaviaggi.config;
 
 import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 @Component
-<span class="fc" id="L13">public class DbInit {</span>
+<span class="nc" id="L13">public class DbInit {</span>
 
     @Autowired
     private StrutturaDAO strutturaDAO;
@@ -19,34 +19,32 @@ import javax.annotation.PostConstruct;
     private void postConstruct() {
 
         //ristoranti
-<span class="fc" id="L22">        Indirizzo indirizzo = new Indirizzo(&quot;Via Toledo&quot;,20,&quot;Napoli&quot;);</span>
-<span class="fc" id="L23">        Struttura struttura = new Struttura(&quot;Pizza e Babà&quot;,&quot;Antica pizzeria napoletana&quot;,indirizzo, TipoStruttura.ristorante,2,&quot;https://res.cloudinary.com/sasi46/image/upload/v1601982463/getlstd-property-photo_rotated_90_hwqnoz.jpg&quot;);</span>
-<span class="fc" id="L24">        strutturaDAO.save(struttura);</span>
+<span class="nc" id="L22">        Indirizzo indirizzo = new Indirizzo(&quot;Via Toledo&quot;,20,&quot;Napoli&quot;);</span>
+<span class="nc" id="L23">        Struttura struttura = new Struttura(&quot;Pizza e Babà&quot;,&quot;Antica pizzeria napoletana&quot;,indirizzo, TipoStruttura.ristorante,2,&quot;https://res.cloudinary.com/sasi46/image/upload/v1601982463/getlstd-property-photo_rotated_90_hwqnoz.jpg&quot;);</span>
+<span class="nc" id="L24">        strutturaDAO.save(struttura);</span>
 
-<span class="fc" id="L26">         indirizzo = new Indirizzo(&quot;Vico Lungo Teatro Nuovo&quot;,103,&quot;Napoli&quot;);</span>
-<span class="fc" id="L27">         struttura = new Struttura(&quot;Trattoria Nennella&quot;,&quot;Trattoria storica nel cuore di Napoli&quot;,indirizzo, TipoStruttura.ristorante,2,&quot;https://res.cloudinary.com/sasi46/image/upload/v1601982682/asmegv7rqlxhwzdqm4jr.jpg&quot;);</span>
-<span class="fc" id="L28">        strutturaDAO.save(struttura);</span>
+<span class="nc" id="L26">         indirizzo = new Indirizzo(&quot;Vico Lungo Teatro Nuovo&quot;,103,&quot;Napoli&quot;);</span>
+<span class="nc" id="L27">         struttura = new Struttura(&quot;Trattoria Nennella&quot;,&quot;Trattoria storica nel cuore di Napoli&quot;,indirizzo, TipoStruttura.ristorante,2,&quot;https://res.cloudinary.com/sasi46/image/upload/v1601982682/asmegv7rqlxhwzdqm4jr.jpg&quot;);</span>
+<span class="nc" id="L28">        strutturaDAO.save(struttura);</span>
 
-<span class="fc" id="L30">        indirizzo = new Indirizzo(&quot;Piazza Vittoria&quot;,1,&quot;Napoli&quot;);</span>
-<span class="fc" id="L31">        struttura = new Struttura(&quot;Terrazza Calabritto&quot;,&quot;Ristorante nel cuore del salotto di Napoli&quot;,indirizzo, TipoStruttura.ristorante,5,&quot;https://res.cloudinary.com/sasi46/image/upload/v1601982861/Terrazza-Calabritto-gioiosa-mediterraneita-1800x600_kftbh5.jpg&quot;);</span>
-<span class="fc" id="L32">        strutturaDAO.save(struttura);</span>
+<span class="nc" id="L30">        indirizzo = new Indirizzo(&quot;Piazza Vittoria&quot;,1,&quot;Napoli&quot;);</span>
+<span class="nc" id="L31">        struttura = new Struttura(&quot;Terrazza Calabritto&quot;,&quot;Ristorante nel cuore del salotto di Napoli&quot;,indirizzo, TipoStruttura.ristorante,5,&quot;https://res.cloudinary.com/sasi46/image/upload/v1601982861/Terrazza-Calabritto-gioiosa-mediterraneita-1800x600_kftbh5.jpg&quot;);</span>
+<span class="nc" id="L32">        strutturaDAO.save(struttura);</span>
 
         //hotel
 
-<span class="fc" id="L36">        indirizzo = new Indirizzo(&quot;Via Partenope&quot;,41,&quot;Napoli&quot;);</span>
-<span class="fc" id="L37">        struttura = new Struttura(&quot;Hotel Excelsior&quot;,&quot;Tra i migliori hotel della città&quot;,indirizzo, TipoStruttura.hotel,5,&quot;https://res.cloudinary.com/sasi46/image/upload/v1601983048/cr_foto-1-eurostars_hotel_excelsior_135879_jzqzkk.jpg&quot;);</span>
-<span class="fc" id="L38">        strutturaDAO.save(struttura);</span>
+<span class="nc" id="L36">        indirizzo = new Indirizzo(&quot;Via Partenope&quot;,41,&quot;Napoli&quot;);</span>
+<span class="nc" id="L37">        struttura = new Struttura(&quot;Hotel Excelsior&quot;,&quot;Tra i migliori hotel della città&quot;,indirizzo, TipoStruttura.hotel,5,&quot;https://res.cloudinary.com/sasi46/image/upload/v1601983048/cr_foto-1-eurostars_hotel_excelsior_135879_jzqzkk.jpg&quot;);</span>
+<span class="nc" id="L38">        strutturaDAO.save(struttura);</span>
 
-<span class="fc" id="L40">        indirizzo = new Indirizzo(&quot;Via Partenope&quot;,46,&quot;Napoli&quot;);</span>
-<span class="fc" id="L41">        struttura = new Struttura(&quot;Grand Hotel Santa Lucia&quot;,&quot;Hotel sul lungomare di Napoli&quot;,indirizzo, TipoStruttura.hotel,5,&quot;https://res.cloudinary.com/sasi46/image/upload/v1601983215/20444083_b3b7rs.jpg&quot;);</span>
-<span class="fc" id="L42">        strutturaDAO.save(struttura);</span>
+<span class="nc" id="L40">        indirizzo = new Indirizzo(&quot;Via Partenope&quot;,46,&quot;Napoli&quot;);</span>
+<span class="nc" id="L41">        struttura = new Struttura(&quot;Grand Hotel Santa Lucia&quot;,&quot;Hotel sul lungomare di Napoli&quot;,indirizzo, TipoStruttura.hotel,5,&quot;https://res.cloudinary.com/sasi46/image/upload/v1601983215/20444083_b3b7rs.jpg&quot;);</span>
+<span class="nc" id="L42">        strutturaDAO.save(struttura);</span>
 
-<span class="fc" id="L44">        indirizzo = new Indirizzo(&quot;Via Montecalvario&quot;,15,&quot;Napoli&quot;);</span>
-<span class="fc" id="L45">        struttura = new Struttura(&quot;Hotel Toledo&quot;,&quot;Hotel nel centro di Napoli&quot;,indirizzo, TipoStruttura.hotel,3,&quot;https://res.cloudinary.com/sasi46/image/upload/v1601983398/hotel-toledo_jptaxd.jpg&quot;);</span>
-<span class="fc" id="L46">        strutturaDAO.save(struttura);</span>
+<span class="nc" id="L44">        indirizzo = new Indirizzo(&quot;Via Montecalvario&quot;,15,&quot;Napoli&quot;);</span>
+<span class="nc" id="L45">        struttura = new Struttura(&quot;Hotel Toledo&quot;,&quot;Hotel nel centro di Napoli&quot;,indirizzo, TipoStruttura.hotel,3,&quot;https://res.cloudinary.com/sasi46/image/upload/v1601983398/hotel-toledo_jptaxd.jpg&quot;);</span>
+<span class="nc" id="L46">        strutturaDAO.save(struttura);</span>
 
-
-
-<span class="fc" id="L50">    }</span>
+<span class="nc" id="L48">    }</span>
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

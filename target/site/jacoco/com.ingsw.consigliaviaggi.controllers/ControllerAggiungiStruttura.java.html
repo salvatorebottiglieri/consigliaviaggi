@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerAggiungiStruttura.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">consigliaviaggi</a> &gt; <a href="index.source.html" class="el_package">com.ingsw.consigliaviaggi.controllers</a> &gt; <span class="el_source">ControllerAggiungiStruttura.java</span></div><h1>ControllerAggiungiStruttura.java</h1><pre class="source lang-java linenums">package com.ingsw.consigliaviaggi.controllers;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerAggiungiStruttura.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">consigliaviaggi</a> &gt; <a href="index.source.html" class="el_package">com.ingsw.consigliaviaggi.controllers</a> &gt; <span class="el_source">ControllerAggiungiStruttura.java</span></div><h1>ControllerAggiungiStruttura.java</h1><pre class="source lang-java linenums">package com.ingsw.consigliaviaggi.controllers;
 
 import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
 import com.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion;
@@ -12,48 +12,44 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-
 public class ControllerAggiungiStruttura {
 
     private final StrutturaDAO strutturaDAO;
 
     private final ControllerValidazioneInput controllerValidazioneInput;
 
-<span class="fc" id="L22">    public ControllerAggiungiStruttura(StrutturaDAO strutturaDAO, ControllerValidazioneInput controllerValidazioneInput) {</span>
-<span class="fc" id="L23">        this.strutturaDAO = strutturaDAO;</span>
-<span class="fc" id="L24">        this.controllerValidazioneInput = controllerValidazioneInput;</span>
-<span class="fc" id="L25">    }</span>
+<span class="fc" id="L21">    public ControllerAggiungiStruttura(StrutturaDAO strutturaDAO, ControllerValidazioneInput controllerValidazioneInput) {</span>
+<span class="fc" id="L22">        this.strutturaDAO = strutturaDAO;</span>
+<span class="fc" id="L23">        this.controllerValidazioneInput = controllerValidazioneInput;</span>
+<span class="fc" id="L24">    }</span>
 
     @CrossOrigin(origins = &quot;http://localhost:3000&quot;)
     @PostMapping(path = &quot;/admin/aggiungistruttura&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
     public ResponseEntity&lt;Object&gt; creaStruttura(@RequestBody Struttura nuovaStruttura) {
 
 
-<span class="nc bnc" id="L32" title="All 2 branches missed.">        if(controllerValidazioneInput.isValidStruttura(nuovaStruttura) ) {</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        if(controllerValidazioneInput.isValidStruttura(nuovaStruttura) ) {</span>
 
-<span class="nc" id="L34">            Indirizzo indirizzo = new Indirizzo(nuovaStruttura.getIndirizzo().getVia(), nuovaStruttura.getIndirizzo().getCivico(), nuovaStruttura.getIndirizzo().getCity());</span>
-<span class="nc" id="L35">            Struttura struttura = new Struttura(nuovaStruttura.getNome(), nuovaStruttura.getDescrizione(), indirizzo, nuovaStruttura.getCategoria(), nuovaStruttura.getPrezzo(),nuovaStruttura.getFoto());</span>
+<span class="fc" id="L33">            Indirizzo indirizzo = new Indirizzo(nuovaStruttura.getIndirizzo().getVia(), nuovaStruttura.getIndirizzo().</span>
+<span class="fc" id="L34">                    getCivico(), nuovaStruttura.getIndirizzo().getCity());</span>
+<span class="fc" id="L35">            Struttura struttura = new Struttura(nuovaStruttura.getNome(), nuovaStruttura.getDescrizione(),</span>
+<span class="fc" id="L36">                    indirizzo, nuovaStruttura.getCategoria(), nuovaStruttura.getPrezzo(),nuovaStruttura.getFoto());</span>
 
-<span class="nc bnc" id="L37" title="All 2 branches missed.">            if (!strutturaDAO.existsStrutturaByIdEquals(struttura.getId())) {</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">            if (!strutturaDAO.existsStrutturaByIdEquals(struttura.getId())) {</span>
 
-<span class="nc" id="L39">                strutturaDAO.save(struttura);</span>
-<span class="nc" id="L40">                return new ResponseEntity&lt;&gt;(&quot;La struttura è stata aggiunta con successo&quot;, HttpStatus.OK);</span>
+<span class="fc" id="L40">                strutturaDAO.save(struttura);</span>
+<span class="fc" id="L41">                return new ResponseEntity&lt;&gt;(&quot;La struttura è stata aggiunta con successo&quot;, HttpStatus.OK);</span>
 
             }
             else{
 
-<span class="nc" id="L45">                throw new ElementIsAlreadyPresentExcetpion(&quot;Struttura già presente&quot;);</span>
+<span class="fc" id="L46">                throw new ElementIsAlreadyPresentExcetpion(&quot;Struttura già presente&quot;);</span>
             }
         }else{
 
-<span class="nc" id="L49">            throw new NoValidInputException(&quot;Input non valido&quot;);</span>
+<span class="fc" id="L50">            throw new NoValidInputException(&quot;Input non valido&quot;);</span>
         }
 
     }
-
-
-
-
-
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

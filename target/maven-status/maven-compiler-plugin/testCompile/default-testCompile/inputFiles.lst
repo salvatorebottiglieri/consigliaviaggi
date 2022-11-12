@@ -1,3 +1,9 @@
-/home/salvatore/consigliaviaggi/src/test/java/com/ingsw/consigliaviaggi/ConsigliaviaggiApplicationTests.java
-/home/salvatore/consigliaviaggi/src/test/java/com/ingsw/consigliaviaggi/isValidEmailAddressTest.java
-/home/salvatore/consigliaviaggi/src/test/java/com/ingsw/consigliaviaggi/isValidPasswordTest.java
+C:\Users\Salvatore\IdeaProjects\consigliaviaggi\src\test\java\com\ingsw\consigliaviaggi\Controller\ControllerModificaInformazioniAccountTests.java
+C:\Users\Salvatore\IdeaProjects\consigliaviaggi\src\test\java\com\ingsw\consigliaviaggi\Controller\ControllerModificaStrutturaTests.java
+C:\Users\Salvatore\IdeaProjects\consigliaviaggi\src\test\java\com\ingsw\consigliaviaggi\isValidEmailAddressTest.java
+C:\Users\Salvatore\IdeaProjects\consigliaviaggi\src\test\java\com\ingsw\consigliaviaggi\Controller\ControllerRegistrazioneTests.java
+C:\Users\Salvatore\IdeaProjects\consigliaviaggi\src\test\java\com\ingsw\consigliaviaggi\Controller\ControllerAggiungiRecensioneTest.java
+C:\Users\Salvatore\IdeaProjects\consigliaviaggi\src\test\java\com\ingsw\consigliaviaggi\Controller\ControllerCheckRankTests.java
+C:\Users\Salvatore\IdeaProjects\consigliaviaggi\src\test\java\com\ingsw\consigliaviaggi\Controller\ControllerVotaRecensioneTests.java
+C:\Users\Salvatore\IdeaProjects\consigliaviaggi\src\test\java\com\ingsw\consigliaviaggi\Controller\ControllerAggiungiStrutturaTests.java
+C:\Users\Salvatore\IdeaProjects\consigliaviaggi\src\test\java\com\ingsw\consigliaviaggi\Controller\ControllerValidazioneInputTests.java

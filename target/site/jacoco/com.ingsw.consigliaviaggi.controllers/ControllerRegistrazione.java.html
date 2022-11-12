@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerRegistrazione.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">consigliaviaggi</a> &gt; <a href="index.source.html" class="el_package">com.ingsw.consigliaviaggi.controllers</a> &gt; <span class="el_source">ControllerRegistrazione.java</span></div><h1>ControllerRegistrazione.java</h1><pre class="source lang-java linenums">package com.ingsw.consigliaviaggi.controllers;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerRegistrazione.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">consigliaviaggi</a> &gt; <a href="index.source.html" class="el_package">com.ingsw.consigliaviaggi.controllers</a> &gt; <span class="el_source">ControllerRegistrazione.java</span></div><h1>ControllerRegistrazione.java</h1><pre class="source lang-java linenums">package com.ingsw.consigliaviaggi.controllers;
 
 
 import com.ingsw.consigliaviaggi.dao.UtenteDAO;
@@ -33,25 +33,20 @@ public class ControllerRegistrazione {
     @CrossOrigin(origins = &quot;http://localhost:3000&quot;)
     public ResponseEntity&lt;Object&gt; aggiungiUtente(@RequestBody Utente nuovoUtente){
 
-<span class="nc bnc" id="L36" title="All 2 branches missed.">        if(controllerValidazioneInput.isValidRegistrazione(nuovoUtente)) {</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        if(controllerValidazioneInput.isValidRegistrazione(nuovoUtente)) {</span>
 
-<span class="nc bnc" id="L38" title="All 2 branches missed.">            if (!utenteDAO.existsByNomeUtente(nuovoUtente.getNomeUtente())) {</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">            if (!utenteDAO.existsByNomeUtente(nuovoUtente.getNomeUtente())) {</span>
 
-<span class="nc" id="L40">                nuovoUtente.setActive(true);</span>
-<span class="nc" id="L41">                nuovoUtente.setMostraCome(NOMEUTENTE);</span>
-<span class="nc" id="L42">                utenteDAO.save(nuovoUtente);</span>
-<span class="nc" id="L43">                return new ResponseEntity&lt;&gt;(&quot;La registrazione è avvenuta con successo&quot;, HttpStatus.OK);</span>
+<span class="fc" id="L40">                nuovoUtente.setActive(true);</span>
+<span class="fc" id="L41">                nuovoUtente.setMostraCome(NOMEUTENTE);</span>
+<span class="fc" id="L42">                utenteDAO.save(nuovoUtente);</span>
+<span class="fc" id="L43">                return new ResponseEntity&lt;&gt;(&quot;La registrazione è avvenuta con successo&quot;, HttpStatus.OK);</span>
             }
             else{
-<span class="nc" id="L46">                throw new ElementIsAlreadyPresentExcetpion(&quot;Utente già presente&quot;);</span>
+<span class="fc" id="L46">                throw new ElementIsAlreadyPresentExcetpion(&quot;Utente già presente&quot;);</span>
             }
         }
-<span class="nc" id="L49">        else{ throw new NoValidInputException(&quot;Input non valido&quot;); }</span>
-
-
-
+<span class="fc" id="L49">        else{ throw new NoValidInputException(&quot;Input non valido&quot;); }</span>
     }
-
-
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

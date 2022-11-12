@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerAutenticazione.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">consigliaviaggi</a> &gt; <a href="index.source.html" class="el_package">com.ingsw.consigliaviaggi.controllers</a> &gt; <span class="el_source">ControllerAutenticazione.java</span></div><h1>ControllerAutenticazione.java</h1><pre class="source lang-java linenums">package com.ingsw.consigliaviaggi.controllers;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerAutenticazione.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">consigliaviaggi</a> &gt; <a href="index.source.html" class="el_package">com.ingsw.consigliaviaggi.controllers</a> &gt; <span class="el_source">ControllerAutenticazione.java</span></div><h1>ControllerAutenticazione.java</h1><pre class="source lang-java linenums">package com.ingsw.consigliaviaggi.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,22 +14,18 @@ import javax.annotation.security.RolesAllowed;
 
 @RestController
 @Component
-<span class="fc" id="L17">public class ControllerAutenticazione implements InterfacciaAutenticazione{</span>
+<span class="nc" id="L17">public class ControllerAutenticazione implements InterfacciaAutenticazione{</span>
 
     @Override
     public Authentication getAuthentication() {
 <span class="nc" id="L21">        return SecurityContextHolder.getContext().getAuthentication();</span>
     }
 
-
-
     @RolesAllowed(&quot;USER&quot;)
     @CrossOrigin(origins = &quot;http://localhost:3000&quot;)
     @PostMapping(path = &quot;/user/autenticazioneUtente&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
     public ResponseEntity&lt;Object&gt; login(@RequestBody CredenzialiUtente credenzialiUtente){
-
-<span class="nc" id="L31">       return new ResponseEntity&lt;&gt;(credenzialiUtente, HttpStatus.OK);</span>
-
+<span class="nc" id="L28">       return new ResponseEntity&lt;&gt;(credenzialiUtente, HttpStatus.OK);</span>
     }
 
     @RolesAllowed(&quot;ADMIN&quot;)
@@ -37,7 +33,7 @@ import javax.annotation.security.RolesAllowed;
     @PostMapping(path = &quot;/admin/autenticazione&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
     public ResponseEntity&lt;Object&gt; loginAdmin(@RequestBody CredenzialiUtente credenzialiUtente){
 
-<span class="nc" id="L40">        return new ResponseEntity&lt;&gt;(credenzialiUtente, HttpStatus.OK);</span>
+<span class="nc" id="L36">        return new ResponseEntity&lt;&gt;(credenzialiUtente, HttpStatus.OK);</span>
 
     }
 
@@ -46,28 +42,28 @@ import javax.annotation.security.RolesAllowed;
         private String username;
         private String password;
 
-<span class="nc" id="L49">        CredenzialiUtente(String username, String password){</span>
-<span class="nc" id="L50">            this.username = username;</span>
-<span class="nc" id="L51">            this.password = password;</span>
+<span class="nc" id="L45">        CredenzialiUtente(String username, String password){</span>
+<span class="nc" id="L46">            this.username = username;</span>
+<span class="nc" id="L47">            this.password = password;</span>
 
-<span class="nc" id="L53">        }</span>
+<span class="nc" id="L49">        }</span>
 
         public String getUsername() {
-<span class="nc" id="L56">            return username;</span>
+<span class="nc" id="L52">            return username;</span>
         }
 
         public void setUsername(String username) {
-<span class="nc" id="L60">            this.username = username;</span>
-<span class="nc" id="L61">        }</span>
+<span class="nc" id="L56">            this.username = username;</span>
+<span class="nc" id="L57">        }</span>
 
         public String getPassword() {
-<span class="nc" id="L64">            return password;</span>
+<span class="nc" id="L60">            return password;</span>
         }
 
         public void setPassword(String password) {
-<span class="nc" id="L68">            this.password = password;</span>
-<span class="nc" id="L69">        }</span>
+<span class="nc" id="L64">            this.password = password;</span>
+<span class="nc" id="L65">        }</span>
     }
 
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

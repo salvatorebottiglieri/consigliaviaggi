@@ -40,7 +40,6 @@ public class ControllerRicercaStruttura {
        if(filtri.searchOnlyByCategoria(filtri)){return strutturaDAO.findByCategoria(filtri.getCategoria());}
 
        if(filtri.searchOnlyByCity(filtri)){return strutturaDAO.findByCity(filtri.getCity());}
-
        if(filtri.searchOnlyByCoordinate(filtri)){
 
            List<Struttura> strutture = (List<Struttura>) strutturaDAO.findAll();

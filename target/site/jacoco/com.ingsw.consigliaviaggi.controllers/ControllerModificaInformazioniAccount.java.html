@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerModificaInformazioniAccount.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">consigliaviaggi</a> &gt; <a href="index.source.html" class="el_package">com.ingsw.consigliaviaggi.controllers</a> &gt; <span class="el_source">ControllerModificaInformazioniAccount.java</span></div><h1>ControllerModificaInformazioniAccount.java</h1><pre class="source lang-java linenums">package com.ingsw.consigliaviaggi.controllers;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerModificaInformazioniAccount.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">consigliaviaggi</a> &gt; <a href="index.source.html" class="el_package">com.ingsw.consigliaviaggi.controllers</a> &gt; <span class="el_source">ControllerModificaInformazioniAccount.java</span></div><h1>ControllerModificaInformazioniAccount.java</h1><pre class="source lang-java linenums">package com.ingsw.consigliaviaggi.controllers;
 
 import com.ingsw.consigliaviaggi.dao.UtenteDAO;
 import com.ingsw.consigliaviaggi.exception.NoValidInputException;
@@ -30,13 +30,13 @@ public class ControllerModificaInformazioniAccount {
     @GetMapping(&quot;/user/{nomeUtente}&quot;)
     public Utente getUtente(@PathVariable String nomeUtente)
     {
-<span class="nc" id="L33">            Optional&lt;Utente&gt; utenteOptional = utenteDAO.findByNomeUtente(nomeUtente);</span>
+<span class="fc" id="L33">            Optional&lt;Utente&gt; utenteOptional = utenteDAO.findByNomeUtente(nomeUtente);</span>
 
-<span class="nc bnc" id="L35" title="All 2 branches missed.">            if (utenteOptional.isPresent()) {</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">            if (utenteOptional.isPresent()) {</span>
 
-<span class="nc" id="L37">                return utenteOptional.get();</span>
+<span class="fc" id="L37">                return utenteOptional.get();</span>
             }
-<span class="nc" id="L39">            else{throw new EntityNotFoundException();}</span>
+<span class="fc" id="L39">            else{throw new EntityNotFoundException(&quot;User not found&quot;);}</span>
 
     }
 
@@ -44,88 +44,88 @@ public class ControllerModificaInformazioniAccount {
     @PutMapping(&quot;/user/nome/{id}&quot;)
     public ResponseEntity&lt;Object&gt; modificaNome(@RequestBody String nome, @PathVariable String id)
     {
-<span class="nc bnc" id="L47" title="All 2 branches missed.">        if(controllerValidazioneInput.isValidNome(nome)) {</span>
-<span class="nc" id="L48">            Optional&lt;Utente&gt; utenteOptional = utenteDAO.findById(id);</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if(controllerValidazioneInput.isValidNome(nome)) {</span>
+<span class="fc" id="L48">            Optional&lt;Utente&gt; utenteOptional = utenteDAO.findById(id);</span>
 
-<span class="nc bnc" id="L50" title="All 2 branches missed.">            if (utenteOptional.isPresent()) {</span>
-<span class="nc" id="L51">                Utente utente = utenteOptional.get();</span>
-<span class="nc" id="L52">                utente.setNome(nome);</span>
-<span class="nc" id="L53">                utenteDAO.save(utente);</span>
-<span class="nc" id="L54">                return new ResponseEntity&lt;&gt;(&quot;Il nome è stato modificato con successo&quot;, HttpStatus.OK);</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">            if (utenteOptional.isPresent()) {</span>
+<span class="fc" id="L51">                Utente utente = utenteOptional.get();</span>
+<span class="fc" id="L52">                utente.setNome(nome);</span>
+<span class="fc" id="L53">                utenteDAO.save(utente);</span>
+<span class="fc" id="L54">                return new ResponseEntity&lt;&gt;(&quot;Il nome è stato modificato con successo&quot;, HttpStatus.OK);</span>
             }
-<span class="nc" id="L56">            else{throw new EntityNotFoundException();}</span>
+<span class="fc" id="L56">            else{throw new EntityNotFoundException(&quot;User not found&quot;);}</span>
         }
-<span class="nc" id="L58">        throw new NoValidInputException(&quot;Input non valido: nome non valido&quot;);</span>
+<span class="fc" id="L58">        throw new NoValidInputException(&quot;Input non valido: nome non valido&quot;);</span>
     }
 
     @RolesAllowed(&quot;USER&quot;)
     @PutMapping(&quot;/user/cognome/{id}&quot;)
     public ResponseEntity&lt;Object&gt; modificaCognome(@RequestBody String cognome, @PathVariable String id)
     {
-<span class="nc bnc" id="L65" title="All 2 branches missed.">        if(controllerValidazioneInput.isValidCognome(cognome)) {</span>
-<span class="nc" id="L66">            Optional&lt;Utente&gt; utenteOptional = utenteDAO.findById(id);</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">        if(controllerValidazioneInput.isValidCognome(cognome)) {</span>
+<span class="fc" id="L66">            Optional&lt;Utente&gt; utenteOptional = utenteDAO.findById(id);</span>
 
-<span class="nc bnc" id="L68" title="All 2 branches missed.">            if (utenteOptional.isPresent()) {</span>
-<span class="nc" id="L69">                Utente utente = utenteOptional.get();</span>
-<span class="nc" id="L70">                utente.setCognome(cognome);</span>
-<span class="nc" id="L71">                utenteDAO.save(utente);</span>
-<span class="nc" id="L72">                return new ResponseEntity&lt;&gt;(&quot;Il cognome è stato modificato con successo&quot;, HttpStatus.OK);</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">            if (utenteOptional.isPresent()) {</span>
+<span class="fc" id="L69">                Utente utente = utenteOptional.get();</span>
+<span class="fc" id="L70">                utente.setCognome(cognome);</span>
+<span class="fc" id="L71">                utenteDAO.save(utente);</span>
+<span class="fc" id="L72">                return new ResponseEntity&lt;&gt;(&quot;Il cognome è stato modificato con successo&quot;, HttpStatus.OK);</span>
 
-<span class="nc" id="L74">            }else{throw new EntityNotFoundException();}</span>
+<span class="fc" id="L74">            }else{throw new EntityNotFoundException(&quot;User not found&quot;);}</span>
         }
-<span class="nc" id="L76">        throw new NoValidInputException(&quot;Input non valido: cognome non valido&quot;);</span>
+<span class="fc" id="L76">        throw new NoValidInputException(&quot;Input non valido: cognome non valido&quot;);</span>
     }
 
     @RolesAllowed(&quot;USER&quot;)
     @PutMapping(&quot;/user/indirizzoEmail/{id}&quot;)
     public ResponseEntity&lt;Object&gt; modificaIndirizzoEmail(@RequestBody String indirizzoEmail, @PathVariable String id)
     {
-<span class="nc bnc" id="L83" title="All 2 branches missed.">        if(controllerValidazioneInput.isValidIndirizzoEmail(indirizzoEmail)) {</span>
-<span class="nc" id="L84">            Optional&lt;Utente&gt; utenteOptional = utenteDAO.findById(id);</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">        if(controllerValidazioneInput.isValidIndirizzoEmail(indirizzoEmail)) {</span>
+<span class="fc" id="L84">            Optional&lt;Utente&gt; utenteOptional = utenteDAO.findById(id);</span>
 
-<span class="nc bnc" id="L86" title="All 2 branches missed.">            if (utenteOptional.isPresent()) {</span>
-<span class="nc" id="L87">                Utente utente = utenteOptional.get();</span>
-<span class="nc" id="L88">                utente.setIndirizzoEmail(indirizzoEmail);</span>
-<span class="nc" id="L89">                utenteDAO.save(utente);</span>
-<span class="nc" id="L90">                return new ResponseEntity&lt;&gt;(&quot;L'indirizzo email è stato modificato con successo&quot;, HttpStatus.OK);</span>
+<span class="fc bfc" id="L86" title="All 2 branches covered.">            if (utenteOptional.isPresent()) {</span>
+<span class="fc" id="L87">                Utente utente = utenteOptional.get();</span>
+<span class="fc" id="L88">                utente.setIndirizzoEmail(indirizzoEmail);</span>
+<span class="fc" id="L89">                utenteDAO.save(utente);</span>
+<span class="fc" id="L90">                return new ResponseEntity&lt;&gt;(&quot;L'indirizzo email è stato modificato con successo&quot;, HttpStatus.OK);</span>
             }
-<span class="nc" id="L92">            else{throw new EntityNotFoundException();}</span>
+<span class="fc" id="L92">            else{throw new EntityNotFoundException(&quot;User not found&quot;);}</span>
         }
-<span class="nc" id="L94">        throw new NoValidInputException(&quot;Input non valido: indirizzo email non valido&quot;);</span>
+<span class="fc" id="L94">        throw new NoValidInputException(&quot;Input non valido: indirizzo email non valido&quot;);</span>
     }
 
     @RolesAllowed(&quot;USER&quot;)
     @PutMapping(&quot;/user/password/{id}&quot;)
     public ResponseEntity&lt;Object&gt; modificaPassword(@RequestBody String password, @PathVariable String id)
     {
-<span class="nc bnc" id="L101" title="All 2 branches missed.">        if(controllerValidazioneInput.isValidPassword(password)) {</span>
-<span class="nc" id="L102">            Optional&lt;Utente&gt; utenteOptional = utenteDAO.findById(id);</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        if(controllerValidazioneInput.isValidPassword(password)) {</span>
+<span class="fc" id="L102">            Optional&lt;Utente&gt; utenteOptional = utenteDAO.findById(id);</span>
 
-<span class="nc bnc" id="L104" title="All 2 branches missed.">            if (utenteOptional.isPresent()) {</span>
-<span class="nc" id="L105">                Utente utente = utenteOptional.get();</span>
-<span class="nc" id="L106">                utente.setPassword(password);</span>
-<span class="nc" id="L107">                utenteDAO.save(utente);</span>
-<span class="nc" id="L108">                return new ResponseEntity&lt;&gt;(&quot;La password è stata modificata con successo&quot;, HttpStatus.OK);</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">            if (utenteOptional.isPresent()) {</span>
+<span class="fc" id="L105">                Utente utente = utenteOptional.get();</span>
+<span class="fc" id="L106">                utente.setPassword(password);</span>
+<span class="fc" id="L107">                utenteDAO.save(utente);</span>
+<span class="fc" id="L108">                return new ResponseEntity&lt;&gt;(&quot;La password è stata modificata con successo&quot;, HttpStatus.OK);</span>
             }
-<span class="nc" id="L110">            else{throw new EntityNotFoundException();}</span>
+<span class="fc" id="L110">            else{throw new EntityNotFoundException(&quot;User not found&quot;);}</span>
         }
-<span class="nc" id="L112">        throw new NoValidInputException(&quot;Input non valido: password non valida&quot;);</span>
+<span class="fc" id="L112">        throw new NoValidInputException(&quot;Input non valido: password non valida&quot;);</span>
     }
 
     @RolesAllowed(&quot;USER&quot;)
     @PutMapping(&quot;/user/sesso/{id}&quot;)
-    public boolean modificaSesso(@RequestBody Gender sesso, @PathVariable String id)
+    public ResponseEntity&lt;Object&gt; modificaSesso(@RequestBody Gender sesso, @PathVariable String id)
     {
-<span class="nc" id="L119">        Optional&lt;Utente&gt; utenteOptional = utenteDAO.findById(id);</span>
+<span class="fc" id="L119">        Optional&lt;Utente&gt; utenteOptional = utenteDAO.findById(id);</span>
 
-<span class="nc bnc" id="L121" title="All 2 branches missed.">        if(utenteOptional.isPresent())</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">        if(utenteOptional.isPresent())</span>
         {
-<span class="nc" id="L123">            Utente utente=utenteOptional.get();</span>
-<span class="nc" id="L124">            utente.setSesso(sesso);</span>
-<span class="nc" id="L125">            utenteDAO.save(utente);</span>
-<span class="nc" id="L126">            return true;</span>
+<span class="fc" id="L123">            Utente utente=utenteOptional.get();</span>
+<span class="fc" id="L124">            utente.setSesso(sesso);</span>
+<span class="fc" id="L125">            utenteDAO.save(utente);</span>
+<span class="fc" id="L126">            return new ResponseEntity&lt;&gt;(&quot;Il sesso è stato modificato con successo&quot;, HttpStatus.OK);</span>
         }
-<span class="nc" id="L128">        else{throw new EntityNotFoundException();}</span>
+<span class="fc" id="L128">        else{throw new EntityNotFoundException(&quot;User not found&quot;);}</span>
 
     }
 
@@ -135,36 +135,36 @@ public class ControllerModificaInformazioniAccount {
     @PutMapping(&quot;/user/dataDiNascita/{id}&quot;)
     public ResponseEntity&lt;Object&gt; modificaDataDiNascita(@RequestBody Date dataDiNascita, @PathVariable String id)
     {
-<span class="nc bnc" id="L138" title="All 2 branches missed.">        if(controllerValidazioneInput.isValidDataDiNascita(dataDiNascita)) {</span>
-<span class="nc" id="L139">            Optional&lt;Utente&gt; utenteOptional = utenteDAO.findById(id);</span>
+<span class="fc bfc" id="L138" title="All 2 branches covered.">        if(controllerValidazioneInput.isValidDataDiNascita(dataDiNascita)) {</span>
+<span class="fc" id="L139">            Optional&lt;Utente&gt; utenteOptional = utenteDAO.findById(id);</span>
 
-<span class="nc bnc" id="L141" title="All 2 branches missed.">            if (utenteOptional.isPresent()) {</span>
-<span class="nc" id="L142">                Utente utente = utenteOptional.get();</span>
-<span class="nc" id="L143">                utente.setDataDiNascita(dataDiNascita);</span>
-<span class="nc" id="L144">                utenteDAO.save(utente);</span>
-<span class="nc" id="L145">                return new ResponseEntity&lt;&gt;(&quot;La data di nascita è stata modificata con successo&quot;, HttpStatus.OK);</span>
+<span class="fc bfc" id="L141" title="All 2 branches covered.">            if (utenteOptional.isPresent()) {</span>
+<span class="fc" id="L142">                Utente utente = utenteOptional.get();</span>
+<span class="fc" id="L143">                utente.setDataDiNascita(dataDiNascita);</span>
+<span class="fc" id="L144">                utenteDAO.save(utente);</span>
+<span class="fc" id="L145">                return new ResponseEntity&lt;&gt;(&quot;La data di nascita è stata modificata con successo&quot;, HttpStatus.OK);</span>
             }
-<span class="nc" id="L147">            else{throw new EntityNotFoundException();}</span>
+<span class="fc" id="L147">            else{throw new EntityNotFoundException(&quot;User not found&quot;);}</span>
         }
-<span class="nc" id="L149">        else{ throw new NoValidInputException(&quot;Input non valido: data di nascita non valida&quot;);}</span>
+<span class="fc" id="L149">        else{ throw new NoValidInputException(&quot;Input non valido: data di nascita non valida&quot;);}</span>
     }
 
     @RolesAllowed(&quot;USER&quot;)
     @PutMapping(&quot;/user/mostraCome/{id}&quot;)
     public ResponseEntity&lt;Object&gt; modificaMostraCome(@RequestBody VisibilitaRecensori mostraCome, @PathVariable String id)
     {
-<span class="nc" id="L156">        Optional&lt;Utente&gt; utenteOptional = utenteDAO.findById(id);</span>
+<span class="fc" id="L156">        Optional&lt;Utente&gt; utenteOptional = utenteDAO.findById(id);</span>
 
-<span class="nc bnc" id="L158" title="All 2 branches missed.">        if(utenteOptional.isPresent())</span>
+<span class="fc bfc" id="L158" title="All 2 branches covered.">        if(utenteOptional.isPresent())</span>
         {
-<span class="nc" id="L160">            Utente utente=utenteOptional.get();</span>
-<span class="nc" id="L161">            utente.setMostraCome(mostraCome);</span>
-<span class="nc" id="L162">            utenteDAO.save(utente);</span>
-<span class="nc" id="L163">            return new ResponseEntity&lt;&gt;(&quot;La privacy è stata modificata con successo&quot;, HttpStatus.OK);</span>
+<span class="fc" id="L160">            Utente utente=utenteOptional.get();</span>
+<span class="fc" id="L161">            utente.setMostraCome(mostraCome);</span>
+<span class="fc" id="L162">            utenteDAO.save(utente);</span>
+<span class="fc" id="L163">            return new ResponseEntity&lt;&gt;(&quot;La privacy è stata modificata con successo&quot;, HttpStatus.OK);</span>
         }
-<span class="nc" id="L165">        else{throw new EntityNotFoundException();}</span>
+<span class="fc" id="L165">        else{throw new EntityNotFoundException(&quot;User not found&quot;);}</span>
 
     }
 
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
