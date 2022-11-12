@@ -44,7 +44,7 @@ public class ControllerValidazioneInput {
     }
 
 
-    private boolean isValidNameStruttura(String nome){
+    public boolean isValidNameStruttura(String nome){
         int maxNome = 20;
         return nome.length() <= maxNome && !nome.isEmpty();
     }
