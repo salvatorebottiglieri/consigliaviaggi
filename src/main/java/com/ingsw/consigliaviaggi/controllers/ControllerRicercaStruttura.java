@@ -50,9 +50,11 @@ public class ControllerRicercaStruttura {
        if(filtri.searchOnlyByPrezzo(filtri)){return strutturaDAO.findByPrezzo(filtri.getPrezzo());}
 
 
-       if(filtri.searchOnlyByNomeAndCity(filtri)){return strutturaDAO.findByNomeAndCity(filtri.getNome(),filtri.getCity());}
+       if(filtri.searchOnlyByNomeAndCity(filtri)){return strutturaDAO.
+               findByNomeAndCity(filtri.getNome(),filtri.getCity());}
 
-       if(filtri.searchOnlyByNomeAndCategoria(filtri)){return strutturaDAO.findByNomeAndCategoria(filtri.getNome(),filtri.getCategoria());}
+       if(filtri.searchOnlyByNomeAndCategoria(filtri)){return strutturaDAO.
+               findByNomeAndCategoria(filtri.getNome(),filtri.getCategoria());}
 
        if(filtri.searchOnlyByNomeAndCoordinate(filtri)){
 
@@ -62,9 +64,11 @@ public class ControllerRicercaStruttura {
 
        }
 
-       if(filtri.searchOnlyByNomeAndPrezzo(filtri)){return strutturaDAO.findByNomeAndPrezzo(filtri.getNome(),filtri.getPrezzo());}
+       if(filtri.searchOnlyByNomeAndPrezzo(filtri)){return strutturaDAO.
+               findByNomeAndPrezzo(filtri.getNome(),filtri.getPrezzo());}
 
-       if(filtri.searchOnlyByCityAndCategoria(filtri)){return strutturaDAO.findByCityAndCategoria(filtri.getCity(),filtri.getCategoria().toString());}
+       if(filtri.searchOnlyByCityAndCategoria(filtri)){return strutturaDAO.
+               findByCityAndCategoria(filtri.getCity(),filtri.getCategoria().toString());}
 
        if(filtri.searchOnlyByCityAndCoordinate(filtri)){
 
@@ -73,7 +77,8 @@ public class ControllerRicercaStruttura {
            return getStruttureVicine(struttureTrovatePerCity,filtri);
        }
 
-       if(filtri.searchOnlyByCityAndPrezzo(filtri)){return strutturaDAO.findByCityAndPrezzo(filtri.getCity(),filtri.getPrezzo());}
+       if(filtri.searchOnlyByCityAndPrezzo(filtri)){return strutturaDAO.
+               findByCityAndPrezzo(filtri.getCity(),filtri.getPrezzo());}
 
        if(filtri.searchOnlyByCategoriaAndCoordinate(filtri)){
 
@@ -82,7 +87,8 @@ public class ControllerRicercaStruttura {
            return getStruttureVicine(struttureTrovatePerCategoria,filtri);
        }
 
-       if(filtri.searchOnlyByCategoriaAndPrezzo(filtri)){return strutturaDAO.findByCategoriaAndPrezzo(filtri.getCategoria(),filtri.getPrezzo());}
+       if(filtri.searchOnlyByCategoriaAndPrezzo(filtri)){return strutturaDAO.
+               findByCategoriaAndPrezzo(filtri.getCategoria(),filtri.getPrezzo());}
 
        if(filtri.searchOnlyByCoordinateAndPrezzo(filtri)){
 
@@ -93,46 +99,57 @@ public class ControllerRicercaStruttura {
 
 
 
-       if(filtri.searchOnlyByNomeAndCityAndCategoria(filtri)){return strutturaDAO.findByNomeAndCityAndCategoria(filtri.getNome(),filtri.getCity(),filtri.getCategoria().toString());}
+       if(filtri.searchOnlyByNomeAndCityAndCategoria(filtri)){return strutturaDAO.
+               findByNomeAndCityAndCategoria(filtri.getNome(),filtri.getCity(),filtri.getCategoria().toString());}
 
        if(filtri.searchOnlyByNomeAndCityAndCoordinate(filtri)) {
 
-           List<Struttura> struttureTrovatePerNomeAndCity = strutturaDAO.findByNomeAndCity(filtri.getNome(),filtri.getCity());
+           List<Struttura> struttureTrovatePerNomeAndCity = strutturaDAO.
+                   findByNomeAndCity(filtri.getNome(),filtri.getCity());
 
            return getStruttureVicine(struttureTrovatePerNomeAndCity,filtri);
        }
 
-       if(filtri.searchOnlyByNomeAndCityAndPrezzo(filtri)){return strutturaDAO.findByNomeAndCityAndPrezzo(filtri.getNome(),filtri.getCity(),filtri.getPrezzo());}
+       if(filtri.searchOnlyByNomeAndCityAndPrezzo(filtri)){
+           return strutturaDAO.findByNomeAndCityAndPrezzo(filtri.getNome(),filtri.getCity(),filtri.getPrezzo());}
 
        if(filtri.searchOnlyByCityAndCategoriaAndCoordinate(filtri)){
 
-           List<Struttura> struttureTrovatePerCityAndCategoria = strutturaDAO.findByCityAndCategoria(filtri.getCity(),filtri.getCategoria().toString());
+           List<Struttura> struttureTrovatePerCityAndCategoria =
+                   strutturaDAO.findByCityAndCategoria(filtri.getCity(),filtri.getCategoria().toString());
 
            return getStruttureVicine(struttureTrovatePerCityAndCategoria,filtri);
        }
 
 
-       if(filtri.searchOnlyByCityAndCategoriaAndPrezzo(filtri)){return strutturaDAO.findByCityAndCategoriaAndPrezzo(filtri.getCity(),filtri.getCategoria().toString(),filtri.getPrezzo());}
+       if(filtri.searchOnlyByCityAndCategoriaAndPrezzo(filtri)){
+           return strutturaDAO.findByCityAndCategoriaAndPrezzo(filtri.getCity(),filtri.getCategoria().toString(),
+                   filtri.getPrezzo());}
 
        if(filtri.searchOnlyByCategoriaAndCoordinateAndPrezzo(filtri)){
 
-           List<Struttura> struttureTrovatePerCategoriaAndPrezzo = strutturaDAO.findByCategoriaAndPrezzo(filtri.getCategoria(),filtri.getPrezzo());
+           List<Struttura> struttureTrovatePerCategoriaAndPrezzo =
+                   strutturaDAO.findByCategoriaAndPrezzo(filtri.getCategoria(),filtri.getPrezzo());
 
            return getStruttureVicine(struttureTrovatePerCategoriaAndPrezzo,filtri);
        }
 
-       if(filtri.searchOnlyByCategoriaAndNomeAndPrezzo(filtri)){return strutturaDAO.findByCategoriaAndNomeAndPrezzo(filtri.getCategoria(),filtri.getNome(),filtri.getPrezzo());}
+       if(filtri.searchOnlyByCategoriaAndNomeAndPrezzo(filtri)){
+           return strutturaDAO.findByCategoriaAndNomeAndPrezzo(filtri.getCategoria(),filtri.getNome(),
+                   filtri.getPrezzo());}
 
        if(filtri.searchOnlyByCoordinateAndPrezzoAndNome(filtri)){
 
-           List<Struttura> struttureTrovatePerPrezzoAndNome = strutturaDAO.findByNomeAndPrezzo(filtri.getNome(),filtri.getPrezzo());
+           List<Struttura> struttureTrovatePerPrezzoAndNome =
+                   strutturaDAO.findByNomeAndPrezzo(filtri.getNome(),filtri.getPrezzo());
 
            return getStruttureVicine(struttureTrovatePerPrezzoAndNome,filtri);
        }
 
        if(filtri.searchOnlyByCoordinateAndCityAndPrezzo(filtri)){
 
-           List<Struttura> struttureTrovatePerPrezzoAndCity = strutturaDAO.findByCityAndPrezzo(filtri.getCity(),filtri.getPrezzo());
+           List<Struttura> struttureTrovatePerPrezzoAndCity =
+                   strutturaDAO.findByCityAndPrezzo(filtri.getCity(),filtri.getPrezzo());
 
            return getStruttureVicine(struttureTrovatePerPrezzoAndCity,filtri);
 
@@ -140,7 +157,8 @@ public class ControllerRicercaStruttura {
 
        if(filtri.searchOnlyByNomeAndCategoriaAndCoordinate(filtri)){
 
-           List<Struttura> struttureTrovatePerNomeAndCategoria = strutturaDAO.findByNomeAndCategoria(filtri.getNome(),filtri.getCategoria());
+           List<Struttura> struttureTrovatePerNomeAndCategoria =
+                   strutturaDAO.findByNomeAndCategoria(filtri.getNome(),filtri.getCategoria());
 
            return getStruttureVicine(struttureTrovatePerNomeAndCategoria,filtri);
        }
@@ -149,30 +167,38 @@ public class ControllerRicercaStruttura {
 
        if(filtri.searchOnlyByNomeAndCityAndCategoriaAndCoordinate(filtri)){
 
-           List<Struttura> struttureTrovatePerNomeAndCityAndCategoria = strutturaDAO.findByNomeAndCityAndCategoria(filtri.getNome(),filtri.getCity(),filtri.getCategoria().toString());
+           List<Struttura> struttureTrovatePerNomeAndCityAndCategoria =
+                   strutturaDAO.findByNomeAndCityAndCategoria(filtri.getNome(),filtri.getCity(),filtri.getCategoria().toString());
 
            return getStruttureVicine(struttureTrovatePerNomeAndCityAndCategoria,filtri);
        }
 
-       if(filtri.searchOnlyByNomeAndCityAndCategoriaAndPrezzo(filtri)){return strutturaDAO.findByNomeAndCityAndCategoriaAndPrezzo(filtri.getNome(),filtri.getCity(),filtri.getCategoria().toString(),filtri.getPrezzo());}
+       if(filtri.searchOnlyByNomeAndCityAndCategoriaAndPrezzo(filtri)){
+           return strutturaDAO.findByNomeAndCityAndCategoriaAndPrezzo(filtri.getNome(),filtri.getCity(),
+                   filtri.getCategoria().toString(),filtri.getPrezzo());}
 
        if(filtri.searchOnlyByNomeAndCityAndPrezzoAndCoordinate(filtri)){
 
-           List<Struttura> struttureTrovatePerNomeAndCityAndPrezzo= strutturaDAO.findByNomeAndCityAndPrezzo(filtri.getNome(),filtri.getCity(),filtri.getPrezzo());
+           List<Struttura> struttureTrovatePerNomeAndCityAndPrezzo=
+                   strutturaDAO.findByNomeAndCityAndPrezzo(filtri.getNome(),filtri.getCity(),filtri.getPrezzo());
 
            return getStruttureVicine(struttureTrovatePerNomeAndCityAndPrezzo,filtri);
        }
 
        if(filtri.searchOnlyByNomeAndPrezzoAndCoordinateAndCategoria(filtri)){
 
-           List<Struttura> struttureTrovatePerNomeAndPrezzoAndCategoria = strutturaDAO.findByCategoriaAndNomeAndPrezzo(filtri.getCategoria(),filtri.getNome(),filtri.getPrezzo());
+           List<Struttura> struttureTrovatePerNomeAndPrezzoAndCategoria =
+                   strutturaDAO.findByCategoriaAndNomeAndPrezzo(filtri.getCategoria(),
+                           filtri.getNome(),filtri.getPrezzo());
 
            return getStruttureVicine(struttureTrovatePerNomeAndPrezzoAndCategoria,filtri);
        }
 
        if(filtri.searchOnlyByPrezzoAndCoordinateAndCategoriaAndCity(filtri)){
 
-           List<Struttura> struttureTrovatePerPrezzoAndCategoriaAndCity = strutturaDAO.findByCityAndCategoriaAndPrezzo(filtri.getCity(),filtri.getCategoria().toString(),filtri.getPrezzo());
+           List<Struttura> struttureTrovatePerPrezzoAndCategoriaAndCity =
+                   strutturaDAO.findByCityAndCategoriaAndPrezzo(filtri.getCity(),filtri.getCategoria().toString(),
+                           filtri.getPrezzo());
 
            return getStruttureVicine(struttureTrovatePerPrezzoAndCategoriaAndCity,filtri);
        }
@@ -181,7 +207,9 @@ public class ControllerRicercaStruttura {
 
        if(filtri.searchOnlyByNomeAndPrezzoAndCoordinateAndCategoriaAndCity(filtri)){
 
-           List<Struttura> struttureTrovatePerNomeAndPrezzoAndCategoriaAndCity = strutturaDAO.findByNomeAndCityAndCategoriaAndPrezzo(filtri.getNome(),filtri.getCity(),filtri.getCategoria().toString(),filtri.getPrezzo());
+           List<Struttura> struttureTrovatePerNomeAndPrezzoAndCategoriaAndCity
+                   = strutturaDAO.findByNomeAndCityAndCategoriaAndPrezzo(filtri.getNome(),
+                   filtri.getCity(),filtri.getCategoria().toString(),filtri.getPrezzo());
 
            return getStruttureVicine(struttureTrovatePerNomeAndPrezzoAndCategoriaAndCity,filtri);
        }
@@ -197,16 +225,14 @@ public class ControllerRicercaStruttura {
 
             CoppiaDiCoordinate coppiaDiCoordinate = getLatitudineAndLongitudineFromIndirizzo(struttura.getIndirizzo());
 
-            double distanzaTraUtenteEStruttura = distanceBetweenLatLong(filtri.latitudine,filtri.longitudine,coppiaDiCoordinate.getLatitudine(),coppiaDiCoordinate.getLongitudine());
+            double distanzaTraUtenteEStruttura =
+                    distanceBetweenLatLong(filtri.latitudine,filtri.longitudine,coppiaDiCoordinate.getLatitudine(),
+                            coppiaDiCoordinate.getLongitudine());
 
             if(distanzaTraUtenteEStruttura <= filtri.getDistanza()){
-
                 struttureAccettate.add(struttura);
-
             }
-
         }
-
         return struttureAccettate;
 
     }
@@ -215,7 +241,8 @@ public class ControllerRicercaStruttura {
     private CoppiaDiCoordinate getLatitudineAndLongitudineFromIndirizzo(Indirizzo indirizzo){
 
         JOpenCageGeocoder jOpenCageGeocoder = new JOpenCageGeocoder("cba750317df0437c8e39383df2284191");
-        JOpenCageForwardRequest request = new JOpenCageForwardRequest(indirizzo.getVia(),indirizzo.getCivico().toString(),indirizzo.getCity());
+        JOpenCageForwardRequest request =
+                new JOpenCageForwardRequest(indirizzo.getVia(),indirizzo.getCivico().toString(),indirizzo.getCity());
 
         JOpenCageResponse response = jOpenCageGeocoder.forward(request);
         JOpenCageLatLng firstResultLatLng = response.getFirstPosition(); // get the coordinate pair of the first result
@@ -233,7 +260,8 @@ public class ControllerRicercaStruttura {
         lon2 = Math.toRadians(lon2);
 
         double earthRadius = 6371.01; //Kilometers
-        return earthRadius * Math.acos(Math.sin(lat1)*Math.sin(lat2) + Math.cos(lat1)*Math.cos(lat2)*Math.cos(lon1 - lon2));
+        return earthRadius * Math.acos(Math.sin(lat1)*Math.sin(lat2) +
+                Math.cos(lat1)*Math.cos(lat2)*Math.cos(lon1 - lon2));
     }
 
     private static class CoppiaDiCoordinate{
@@ -316,152 +344,170 @@ public class ControllerRicercaStruttura {
         }
 
         private boolean searchOnlyByNome(Filtri filtri){
-            return filtri.nome != null && (filtri.city == null) && (filtri.categoria == null) && (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo == -1);
+            return filtri.nome != null && (filtri.city == null) && (filtri.categoria == null) &&
+                    (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo == -1);
         }
         private boolean searchOnlyByCity(Filtri filtri){
 
-            return filtri.nome == null && (filtri.city != null) && (filtri.categoria == null) && (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo == -1);
+            return filtri.nome == null && (filtri.city != null) && (filtri.categoria == null) &&
+                    (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo == -1);
         }
         private boolean searchOnlyByCategoria(Filtri filtri){
 
-            return filtri.nome == null && (filtri.city == null) && (filtri.categoria != null) && (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo == -1);
+            return filtri.nome == null && (filtri.city == null) && (filtri.categoria != null) &&
+                    (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo == -1);
         }
         private boolean searchOnlyByCoordinate(Filtri filtri){
 
-            return filtri.nome == null && (filtri.city == null) && (filtri.categoria == null) && (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo == -1);
+            return filtri.nome == null && (filtri.city == null) && (filtri.categoria == null) &&
+                    (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo == -1);
         }
         private boolean searchOnlyByPrezzo(Filtri filtri){
 
-            return filtri.nome == null && (filtri.city == null) && (filtri.categoria == null) && (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo != -1);
+            return filtri.nome == null && (filtri.city == null) && (filtri.categoria == null) &&
+                    (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo != -1);
         }
 
         //--------------------------------------------------------------------------------------------------------------------------
 
         private boolean searchOnlyByNomeAndCity(Filtri filtri){
 
-            return filtri.nome != null && (filtri.city != null) && (filtri.categoria == null) && (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo == -1);
+            return filtri.nome != null && (filtri.city != null) && (filtri.categoria == null) &&
+                    (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo == -1);
         }
         private boolean searchOnlyByNomeAndCategoria(Filtri filtri){
 
-            return filtri.nome != null && (filtri.city == null) && (filtri.categoria != null) && (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo == -1);
+            return filtri.nome != null && (filtri.city == null) && (filtri.categoria != null) &&
+                    (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo == -1);
         }
         private boolean searchOnlyByNomeAndCoordinate(Filtri filtri){
 
-            return filtri.nome != null && (filtri.city == null) && (filtri.categoria == null) && (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo == -1);
+            return filtri.nome != null && (filtri.city == null) && (filtri.categoria == null) &&
+                    (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo == -1);
         }
         private boolean searchOnlyByNomeAndPrezzo(Filtri filtri){
 
-            return filtri.nome != null && (filtri.city == null) && (filtri.categoria == null) && (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo != -1);
+            return filtri.nome != null && (filtri.city == null) && (filtri.categoria == null) &&
+                    (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo != -1);
         }
         private boolean searchOnlyByCityAndCategoria(Filtri filtri){
 
-            return filtri.nome == null && (filtri.city != null) && (filtri.categoria != null) && (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo == -1);
+            return filtri.nome == null && (filtri.city != null) && (filtri.categoria != null) &&
+                    (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo == -1);
         }
         private boolean searchOnlyByCityAndCoordinate(Filtri filtri){
 
-            return filtri.nome == null && (filtri.city != null) && (filtri.categoria == null) && (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo == -1);
+            return filtri.nome == null && (filtri.city != null) && (filtri.categoria == null) &&
+                    (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo == -1);
         }
         private boolean searchOnlyByCityAndPrezzo(Filtri filtri){
 
-            return filtri.nome == null && (filtri.city != null) && (filtri.categoria == null) && (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo != -1);
+            return filtri.nome == null && (filtri.city != null) && (filtri.categoria == null) &&
+                    (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo != -1);
         }
         private boolean searchOnlyByCategoriaAndCoordinate(Filtri filtri){
 
-            return filtri.nome == null && (filtri.city == null) && (filtri.categoria != null) && (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo == -1);
+            return filtri.nome == null && (filtri.city == null) && (filtri.categoria != null) &&
+                    (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo == -1);
         }
         private boolean searchOnlyByCategoriaAndPrezzo(Filtri filtri){
 
-            return filtri.nome == null && (filtri.city == null) && (filtri.categoria != null) && (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo != -1);
+            return filtri.nome == null && (filtri.city == null) && (filtri.categoria != null) &&
+                    (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo != -1);
         }
         private boolean searchOnlyByCoordinateAndPrezzo(Filtri filtri){
 
-            return filtri.nome == null && (filtri.city == null) && (filtri.categoria == null) && (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo != -1);
+            return filtri.nome == null && (filtri.city == null) && (filtri.categoria == null) &&
+                    (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo != -1);
         }
 
         //---------------------------------------------------------------------------------------------------------------------------------
 
         private boolean searchOnlyByNomeAndCityAndCategoria(Filtri filtri){
 
-            return filtri.nome != null && (filtri.city != null) && (filtri.categoria != null) && (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo == -1);
+            return filtri.nome != null && (filtri.city != null) && (filtri.categoria != null) &&
+                    (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo == -1);
         }
         private boolean searchOnlyByNomeAndCityAndCoordinate(Filtri filtri){
 
-            return filtri.nome != null && (filtri.city != null) && (filtri.categoria == null) && (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo == -1);
+            return filtri.nome != null && (filtri.city != null) && (filtri.categoria == null) &&
+                    (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo == -1);
         }
         private boolean searchOnlyByNomeAndCityAndPrezzo(Filtri filtri){
 
-            return filtri.nome != null && (filtri.city != null) && (filtri.categoria == null) && (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo != -1);
+            return filtri.nome != null && (filtri.city != null) && (filtri.categoria == null) &&
+                    (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo != -1);
         }
         private boolean searchOnlyByCityAndCategoriaAndCoordinate(Filtri filtri){
 
-            return filtri.nome == null && (filtri.city != null) && (filtri.categoria != null) && (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo == -1);
+            return filtri.nome == null && (filtri.city != null) && (filtri.categoria != null) &&
+                    (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo == -1);
         }
         private boolean searchOnlyByCityAndCategoriaAndPrezzo(Filtri filtri){
 
-            return filtri.nome == null && (filtri.city != null) && (filtri.categoria != null) && (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo != -1);
+            return filtri.nome == null && (filtri.city != null) && (filtri.categoria != null) &&
+                    (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo != -1);
         }
         private boolean searchOnlyByCategoriaAndCoordinateAndPrezzo(Filtri filtri){
 
-            return filtri.nome == null && (filtri.city == null) && (filtri.categoria != null) && (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo != -1);
+            return filtri.nome == null && (filtri.city == null) && (filtri.categoria != null) &&
+                    (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo != -1);
         }
         private boolean searchOnlyByCategoriaAndNomeAndPrezzo(Filtri filtri){
 
-            return filtri.nome != null && (filtri.city == null) && (filtri.categoria != null) && (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo != -1);
+            return filtri.nome != null && (filtri.city == null) && (filtri.categoria != null) &&
+                    (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo != -1);
         }
         private boolean searchOnlyByCoordinateAndPrezzoAndNome(Filtri filtri){
 
-            return filtri.nome != null && (filtri.city == null) && (filtri.categoria == null) && (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo != -1);
+            return filtri.nome != null && (filtri.city == null) && (filtri.categoria == null) &&
+                    (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo != -1);
         }
         private boolean searchOnlyByCoordinateAndCityAndPrezzo(Filtri filtri){
 
-            return filtri.nome == null && (filtri.city != null) && (filtri.categoria == null) && (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo != -1);
+            return filtri.nome == null && (filtri.city != null) && (filtri.categoria == null) &&
+                    (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo != -1);
         }
         private boolean searchOnlyByNomeAndCategoriaAndCoordinate(Filtri filtri){
 
-            return filtri.nome != null && (filtri.city == null) && (filtri.categoria != null) && (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo == -1);
+            return filtri.nome != null && (filtri.city == null) && (filtri.categoria != null) &&
+                    (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo == -1);
         }
 
         //---------------------------------------------------------------------------------------------------------------------------------
 
         private boolean searchOnlyByNomeAndCityAndCategoriaAndCoordinate(Filtri filtri){
 
-            return filtri.nome != null && (filtri.city != null) && (filtri.categoria != null) && (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo == -1);
+            return filtri.nome != null && (filtri.city != null) && (filtri.categoria != null) &&
+                    (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo == -1);
         }
         private boolean searchOnlyByNomeAndCityAndCategoriaAndPrezzo(Filtri filtri){
 
-            return filtri.nome != null && (filtri.city != null) && (filtri.categoria != null) && (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo != -1);
+            return filtri.nome != null && (filtri.city != null) && (filtri.categoria != null) &&
+                    (filtri.latitudine == -1 && filtri.longitudine == -1) && (filtri.prezzo != -1);
         }
         private boolean searchOnlyByNomeAndCityAndPrezzoAndCoordinate(Filtri filtri){
 
-            return filtri.nome != null && (filtri.city != null) && (filtri.categoria == null) && (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo != -1);
+            return filtri.nome != null && (filtri.city != null) && (filtri.categoria == null) &&
+                    (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo != -1);
         }
         private boolean searchOnlyByNomeAndPrezzoAndCoordinateAndCategoria(Filtri filtri){
 
-            return filtri.nome != null && (filtri.city == null) && (filtri.categoria != null) && (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo == -1);
+            return filtri.nome != null && (filtri.city == null) && (filtri.categoria != null) &&
+                    (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo == -1);
         }
         private boolean searchOnlyByPrezzoAndCoordinateAndCategoriaAndCity(Filtri filtri){
 
-            return filtri.nome == null && (filtri.city != null) && (filtri.categoria != null) && (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo != -1);
+            return filtri.nome == null && (filtri.city != null) && (filtri.categoria != null) &&
+                    (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo != -1);
         }
 
         //---------------------------------------------------------------------------------------------------------------------------------
 
         private boolean searchOnlyByNomeAndPrezzoAndCoordinateAndCategoriaAndCity(Filtri filtri){
 
-            return filtri.nome != null && (filtri.city != null) && (filtri.categoria != null) && (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo != -1);
+            return filtri.nome != null && (filtri.city != null) && (filtri.categoria != null) &&
+                    (filtri.latitudine != -1 && filtri.longitudine != -1) && (filtri.prezzo != -1);
         }
-
-
-
-
-
-
-
-
-
-
-
     }
-
-
 }

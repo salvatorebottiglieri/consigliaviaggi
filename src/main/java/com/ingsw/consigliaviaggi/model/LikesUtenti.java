@@ -14,19 +14,15 @@ public class LikesUtenti {
     @JoinColumn
     private Recensione recensione;
 
-    public LikesUtenti() {
-    }
-
+    public LikesUtenti() {}
     public LikesUtenti(String nomeUtente,Recensione recensione) {
 
         this.nomeUtente = nomeUtente;
         this.recensione = recensione;
     }
-
     public String getNomeUtente() {
         return nomeUtente;
     }
-
     public void setNomeUtente(String nomeUtente) {
         this.nomeUtente = nomeUtente;
     }

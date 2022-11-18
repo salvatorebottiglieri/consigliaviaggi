@@ -19,8 +19,6 @@ import static com.ingsw.consigliaviaggi.model.VisibilitaRecensori.NOMEUTENTE;
 public class ControllerRegistrazione {
 
     private final UtenteDAO utenteDAO;
-
-
     private final ControllerValidazioneInput controllerValidazioneInput;
 
     public ControllerRegistrazione(UtenteDAO utenteDAO, ControllerValidazioneInput controllerValidazioneInput) {
@@ -28,15 +26,11 @@ public class ControllerRegistrazione {
         this.controllerValidazioneInput = controllerValidazioneInput;
     }
 
-
     @PostMapping(path = "/all/registrazione", consumes = "application/json", produces = "application/json")
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Object> aggiungiUtente(@RequestBody Utente nuovoUtente){
-
         if(controllerValidazioneInput.isValidRegistrazione(nuovoUtente)) {
-
             if (!utenteDAO.existsByNomeUtente(nuovoUtente.getNomeUtente())) {
-
                 nuovoUtente.setActive(true);
                 nuovoUtente.setMostraCome(NOMEUTENTE);
                 utenteDAO.save(nuovoUtente);

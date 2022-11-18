@@ -24,31 +24,24 @@ public class Indirizzo {
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
-
     public String getVia() {
         return via;
     }
-
     public void setVia(String via) {
         this.via = via;
     }
-
     public Integer getCivico() {
         return civico;
     }
-
     public void setCivico(Integer civico) {
         this.civico = civico;
     }
-
     public String getCity() {
         return city;
     }
-
     public void setCity(String city) {
         this.city = city;
     }

@@ -35,96 +35,72 @@ public class Recensione {
     public long getId() {
         return id;
     }
-
     private void setId(long id) {
         this.id = id;
     }
-
     public int getVoto() {
         return voto;
     }
-
     public void setVoto(int voto) {
         this.voto = voto;
     }
-
     public String getDescrizione() {
         return descrizione;
     }
-
     public void setDescrizione(String descrizione) {
         this.descrizione = descrizione;
     }
-
     public int getLikes() {
         return likes;
     }
-
     public void setLikes(int like) {
         this.likes = like;
     }
-
     public void addLike(){ this.likes++;}
-
     public int getDislikes() {
         return dislikes;
     }
-
     public void setDislikes(int dislike) {
         this.dislikes = dislike;
     }
-
     public void addDislike(){ this.dislikes++;}
-
     public Date getDataDiAggiunta() {
         return dataDiAggiunta;
     }
-
     public void setDataDiAggiunta(Date dataDiAggiunta) {
         this.dataDiAggiunta = dataDiAggiunta;
     }
-
     @ManyToOne
     @JoinColumn
     public Utente getAutore() {
         return autore;
     }
-
     public void setAutore(Utente autore) {
         this.autore = autore;
     }
-
     @ManyToOne
     @JoinColumn
     public Struttura getStruttura() {
         return struttura;
     }
-
     public void setStruttura(Struttura struttura) {
         this.struttura = struttura;
     }
-
     @OneToMany(mappedBy = "recensione")
     @JsonIgnore
     public List<LikesUtenti> getLikesUtenti() {return likesUtenti;}
-
     public void setLikesUtenti(List<LikesUtenti> likesUtenti) { }
     @OneToMany(mappedBy = "recensione")
     @JsonIgnore
-
     public List<DislikesUtenti> getDislikesUtenti() {
         return dislikesUtenti;
     }
-
     public void setDislikesUtenti(List<DislikesUtenti> dislikesUtenti) {
 
     }
-
     public static class DataComparator implements Comparator<Recensione> {
-
         @Override
         public int compare(Recensione o1, Recensione o2) {
-
             if(o1.getDataDiAggiunta().before(o2.getDataDiAggiunta())){
                 return -1;
             }
@@ -134,10 +110,7 @@ public class Recensione {
             else{ return 0;}
         }
     }
-
     public static class VoteComparator implements Comparator<Recensione> {
-
-
         @Override
         public int compare(Recensione o1, Recensione o2) {
 
