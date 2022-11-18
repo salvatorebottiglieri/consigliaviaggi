@@ -1,6 +1,6 @@
 package com.ingsw.consigliaviaggi.controllers;
 
-import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
+import com.ingsw.consigliaviaggi.interfaces.StrutturaDAO;
 import com.ingsw.consigliaviaggi.exception.NoValidInputException;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
@@ -8,11 +8,9 @@ import com.ingsw.consigliaviaggi.model.TipoStruttura;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityNotFoundException;
-import java.io.IOException;
 import java.util.Optional;
 
 @RestController

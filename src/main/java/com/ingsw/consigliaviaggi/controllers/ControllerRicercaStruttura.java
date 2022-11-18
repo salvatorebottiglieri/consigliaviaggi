@@ -5,7 +5,7 @@ import com.byteowls.jopencage.JOpenCageGeocoder;
 import com.byteowls.jopencage.model.JOpenCageForwardRequest;
 import com.byteowls.jopencage.model.JOpenCageLatLng;
 import com.byteowls.jopencage.model.JOpenCageResponse;
-import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
+import com.ingsw.consigliaviaggi.interfaces.StrutturaDAO;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
 import com.ingsw.consigliaviaggi.model.TipoStruttura;

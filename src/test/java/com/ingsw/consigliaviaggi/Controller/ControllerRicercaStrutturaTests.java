@@ -1,11 +1,10 @@
 package com.ingsw.consigliaviaggi.Controller;
 
 import com.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura;
-import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
+import com.ingsw.consigliaviaggi.interfaces.StrutturaDAO;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
 import com.ingsw.consigliaviaggi.model.TipoStruttura;
-import org.junit.experimental.theories.Theories;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

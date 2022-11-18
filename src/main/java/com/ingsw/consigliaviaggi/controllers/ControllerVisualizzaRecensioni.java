@@ -1,6 +1,6 @@
 package com.ingsw.consigliaviaggi.controllers;
 
-import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
+import com.ingsw.consigliaviaggi.interfaces.StrutturaDAO;
 import com.ingsw.consigliaviaggi.model.Recensione;
 import com.ingsw.consigliaviaggi.model.Struttura;
 import org.springframework.web.bind.annotation.GetMapping;

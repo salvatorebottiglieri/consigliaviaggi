@@ -2,7 +2,7 @@ package com.ingsw.consigliaviaggi.Controller;
 
 import com.ingsw.consigliaviaggi.controllers.ControllerRegistrazione;
 import com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput;
-import com.ingsw.consigliaviaggi.dao.UtenteDAO;
+import com.ingsw.consigliaviaggi.interfaces.UtenteDAO;
 import com.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion;
 import com.ingsw.consigliaviaggi.exception.NoValidInputException;
 import com.ingsw.consigliaviaggi.model.Gender;

@@ -1,4 +1,4 @@
-package com.ingsw.consigliaviaggi.dao;
+package com.ingsw.consigliaviaggi.interfaces;
 
 import com.ingsw.consigliaviaggi.model.Recensione;
 import com.ingsw.consigliaviaggi.model.Struttura;

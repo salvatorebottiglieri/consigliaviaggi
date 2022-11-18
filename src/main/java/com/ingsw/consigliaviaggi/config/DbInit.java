@@ -1,6 +1,6 @@
 package com.ingsw.consigliaviaggi.config;
 
-import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
+import com.ingsw.consigliaviaggi.interfaces.StrutturaDAO;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
 import com.ingsw.consigliaviaggi.model.TipoStruttura;

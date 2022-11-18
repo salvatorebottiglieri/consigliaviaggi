@@ -2,9 +2,9 @@ package com.ingsw.consigliaviaggi.Controller;
 
 import com.ingsw.consigliaviaggi.controllers.ControllerVotaRecensione;
 import com.ingsw.consigliaviaggi.controllers.InterfacciaAutenticazione;
-import com.ingsw.consigliaviaggi.dao.DislikeUtenteDAO;
-import com.ingsw.consigliaviaggi.dao.LikeUtenteDAO;
-import com.ingsw.consigliaviaggi.dao.RecensioneDAO;
+import com.ingsw.consigliaviaggi.interfaces.DislikeUtenteDAO;
+import com.ingsw.consigliaviaggi.interfaces.LikeUtenteDAO;
+import com.ingsw.consigliaviaggi.interfaces.RecensioneDAO;
 import com.ingsw.consigliaviaggi.model.DislikesUtenti;
 import com.ingsw.consigliaviaggi.model.LikesUtenti;
 import com.ingsw.consigliaviaggi.model.Recensione;

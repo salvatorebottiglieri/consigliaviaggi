@@ -1,6 +1,6 @@
 package com.ingsw.consigliaviaggi.service;
 
-import com.ingsw.consigliaviaggi.dao.UtenteDAO;
+import com.ingsw.consigliaviaggi.interfaces.UtenteDAO;
 
 
 import com.ingsw.consigliaviaggi.model.Utente;

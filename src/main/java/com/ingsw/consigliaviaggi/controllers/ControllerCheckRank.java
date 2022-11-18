@@ -1,11 +1,10 @@
 package com.ingsw.consigliaviaggi.controllers;
 
-import com.ingsw.consigliaviaggi.dao.RecensioneDAO;
-import com.ingsw.consigliaviaggi.dao.UtenteDAO;
+import com.ingsw.consigliaviaggi.interfaces.RecensioneDAO;
+import com.ingsw.consigliaviaggi.interfaces.UtenteDAO;
 import com.ingsw.consigliaviaggi.model.Recensione;
 import com.ingsw.consigliaviaggi.model.TipoRecensore;
 import com.ingsw.consigliaviaggi.model.Utente;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 

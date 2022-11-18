@@ -1,6 +1,6 @@
 package com.ingsw.consigliaviaggi.controllers;
 
-import com.ingsw.consigliaviaggi.dao.UtenteDAO;
+import com.ingsw.consigliaviaggi.interfaces.UtenteDAO;
 import com.ingsw.consigliaviaggi.exception.NoValidInputException;
 import com.ingsw.consigliaviaggi.model.Gender;
 import com.ingsw.consigliaviaggi.model.Utente;

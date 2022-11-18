@@ -2,7 +2,7 @@ package com.ingsw.consigliaviaggi.Controller;
 
 import com.ingsw.consigliaviaggi.controllers.ControllerModificaStruttura;
 import com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput;
-import com.ingsw.consigliaviaggi.dao.StrutturaDAO;
+import com.ingsw.consigliaviaggi.interfaces.StrutturaDAO;
 import com.ingsw.consigliaviaggi.exception.NoValidInputException;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
