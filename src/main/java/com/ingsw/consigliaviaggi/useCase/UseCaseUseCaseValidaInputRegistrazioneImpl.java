@@ -1,24 +1,28 @@
 package com.ingsw.consigliaviaggi.useCase;
 
 import com.ingsw.consigliaviaggi.interfaces.UseCaseValidaInputRegistrazione;
+import com.ingsw.consigliaviaggi.model.Utente;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.regex.Pattern;
 
+@Component
 public class UseCaseUseCaseValidaInputRegistrazioneImpl implements UseCaseValidaInputRegistrazione {
     @Override
-    public boolean isValidName(String name) {
+    public boolean isValidName(@NotNull String name) {
         int maxNomeUtente = 20;
         return (name.length()<=maxNomeUtente && !name.isEmpty());
     }
 
     @Override
-    public boolean isValidSurname(String surname) {
+    public boolean isValidSurname(@NotNull String surname) {
         return isValidName(surname);
     }
 
     @Override
-    public boolean isValidEmail(String email) {
+    public boolean isValidEmail(@NotNull String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
                 "[a-zA-Z0-9_+&*-]+)*@" +
                 "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
@@ -31,7 +35,7 @@ public class UseCaseUseCaseValidaInputRegistrazioneImpl implements UseCaseValida
     }
 
     @Override
-    public boolean isValidPassword(String password) {
+    public boolean isValidPassword(@NotNull String password) {
 
         //controllo di lunghezza
         if (!((password.length() >= 8) && (password.length() <= 15))) {
@@ -117,12 +121,25 @@ public class UseCaseUseCaseValidaInputRegistrazioneImpl implements UseCaseValida
     }
 
     @Override
-    public boolean isValidCity(String city) {
+    public boolean isValidCity(@NotNull String city) {
         return isValidName(city);
     }
 
+
+
     @Override
-    public boolean isValidDateOfBirth(Date date) {
+    public boolean isValidDateOfBirth(@NotNull Date date) {
         return date.before(new Date());
+    }
+
+    @Override
+    public boolean isValidRegistrazione(Utente utente) {
+        return  isValidName(utente.getNome()) &&
+                isValidCity(utente.getCity()) &&
+                isValidDateOfBirth(utente.getDataDiNascita()) &&
+                isValidEmail(utente.getIndirizzoEmail()) &&
+                isValidSurname(utente.getCognome()) &&
+                isValidPassword(utente.getPassword());
+
     }
 }

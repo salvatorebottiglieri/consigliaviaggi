@@ -1,7 +1,8 @@
 package com.ingsw.consigliaviaggi.Controller;
 
 import com.ingsw.consigliaviaggi.controllers.ControllerModificaInformazioniAccount;
-import com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput;
+import com.ingsw.consigliaviaggi.interfaces.UseCaseValidaInputRegistrazione;
+import com.ingsw.consigliaviaggi.interfaces.UseCaseValidaInputStruttura;
 import com.ingsw.consigliaviaggi.interfaces.UtenteDAO;
 import com.ingsw.consigliaviaggi.exception.NoValidInputException;
 import com.ingsw.consigliaviaggi.model.Gender;
@@ -33,7 +34,7 @@ public class ControllerModificaInformazioniAccountTests {
     UtenteDAO utenteDAO;
 
     @Mock
-    ControllerValidazioneInput controllerValidazioneInput;
+    UseCaseValidaInputRegistrazione useCaseValidaInputRegistrazione;
 
     Utente user;
 
@@ -41,7 +42,7 @@ public class ControllerModificaInformazioniAccountTests {
     void init(){
         MockitoAnnotations.initMocks(this);
         controllerModificaInformazioniAccount =
-                new ControllerModificaInformazioniAccount(utenteDAO,controllerValidazioneInput);
+                new ControllerModificaInformazioniAccount(utenteDAO,useCaseValidaInputRegistrazione);
         user = new Utente("some username","some name","some surname",
                 "some address","some pass", Gender.altro,"some city",
                 new Date());
@@ -70,7 +71,7 @@ public class ControllerModificaInformazioniAccountTests {
 
     @Test
     void shouldModificaNomeReturnOkHttpStatus(){
-        when(controllerValidazioneInput.isValidNome(anyString())).thenReturn(true);
+        when(useCaseValidaInputRegistrazione.isValidName(anyString())).thenReturn(true);
         when(utenteDAO.findById(anyString())).thenReturn(Optional.of(user));
 
         ResponseEntity<Object> response = controllerModificaInformazioniAccount.
@@ -81,7 +82,7 @@ public class ControllerModificaInformazioniAccountTests {
 
     @Test
     void shouldModificaNomeThrowEntityNotFoundException(){
-        when(controllerValidazioneInput.isValidNome(anyString())).thenReturn(true);
+        when(useCaseValidaInputRegistrazione.isValidName(anyString())).thenReturn(true);
         when(utenteDAO.findById(anyString())).thenReturn(Optional.empty());
 
         EntityNotFoundException exception = Assertions.assertThrows(
@@ -93,7 +94,7 @@ public class ControllerModificaInformazioniAccountTests {
 
     @Test
     void shouldModificaNomeThrowNoValidInputException(){
-        when(controllerValidazioneInput.isValidNome(anyString())).thenReturn(false);
+        when(useCaseValidaInputRegistrazione.isValidName(anyString())).thenReturn(false);
 
         NoValidInputException exception = Assertions.assertThrows(
                 NoValidInputException.class,
@@ -103,7 +104,7 @@ public class ControllerModificaInformazioniAccountTests {
     }
     @Test
     void shouldModificaCognomeReturnOkHttpStatus(){
-        when(controllerValidazioneInput.isValidCognome(anyString())).thenReturn(true);
+        when(useCaseValidaInputRegistrazione.isValidSurname(anyString())).thenReturn(true);
         when(utenteDAO.findById(anyString())).thenReturn(Optional.of(user));
 
         ResponseEntity<Object> response = controllerModificaInformazioniAccount.
@@ -114,7 +115,7 @@ public class ControllerModificaInformazioniAccountTests {
 
     @Test
     void shouldModificaCognomeThrowEntityNotFoundException(){
-        when(controllerValidazioneInput.isValidCognome(anyString())).thenReturn(true);
+        when(useCaseValidaInputRegistrazione.isValidSurname(anyString())).thenReturn(true);
         when(utenteDAO.findById(anyString())).thenReturn(Optional.empty());
 
         EntityNotFoundException exception = Assertions.assertThrows(
@@ -126,7 +127,7 @@ public class ControllerModificaInformazioniAccountTests {
 
     @Test
     void shouldModificaCognomeThrowNoValidInputException(){
-        when(controllerValidazioneInput.isValidCognome(anyString())).thenReturn(false);
+        when(useCaseValidaInputRegistrazione.isValidSurname(anyString())).thenReturn(false);
 
         NoValidInputException exception = Assertions.assertThrows(
                 NoValidInputException.class,
@@ -137,7 +138,7 @@ public class ControllerModificaInformazioniAccountTests {
 
     @Test
     void shouldModificaIndirizzoEmailReturnOkHttpStatus(){
-        when(controllerValidazioneInput.isValidIndirizzoEmail(anyString())).thenReturn(true);
+        when(useCaseValidaInputRegistrazione.isValidEmail(anyString())).thenReturn(true);
         when(utenteDAO.findById(anyString())).thenReturn(Optional.of(user));
 
         ResponseEntity<Object> response = controllerModificaInformazioniAccount.
@@ -148,7 +149,7 @@ public class ControllerModificaInformazioniAccountTests {
 
     @Test
     void shouldModificaIndirizzoEmailThrowEntityNotFoundException(){
-        when(controllerValidazioneInput.isValidIndirizzoEmail(anyString())).thenReturn(true);
+        when(useCaseValidaInputRegistrazione.isValidEmail(anyString())).thenReturn(true);
         when(utenteDAO.findById(anyString())).thenReturn(Optional.empty());
 
         EntityNotFoundException exception = Assertions.assertThrows(
@@ -161,7 +162,7 @@ public class ControllerModificaInformazioniAccountTests {
 
     @Test
     void shouldModificaIndirizzoEmailThrowNoValidInputException(){
-        when(controllerValidazioneInput.isValidIndirizzoEmail(anyString())).thenReturn(false);
+        when(useCaseValidaInputRegistrazione.isValidEmail(anyString())).thenReturn(false);
 
         NoValidInputException exception = Assertions.assertThrows(
                 NoValidInputException.class,
@@ -172,7 +173,7 @@ public class ControllerModificaInformazioniAccountTests {
     }
     @Test
     void shouldModificaPasswordReturnOkHttpStatus(){
-        when(controllerValidazioneInput.isValidPassword(anyString())).thenReturn(true);
+        when(useCaseValidaInputRegistrazione.isValidPassword(anyString())).thenReturn(true);
         when(utenteDAO.findById(anyString())).thenReturn(Optional.of(user));
 
         ResponseEntity<Object> response = controllerModificaInformazioniAccount.
@@ -183,7 +184,7 @@ public class ControllerModificaInformazioniAccountTests {
 
     @Test
     void shouldModificaPasswordThrowEntityNotFoundException(){
-        when(controllerValidazioneInput.isValidPassword(anyString())).thenReturn(true);
+        when(useCaseValidaInputRegistrazione.isValidPassword(anyString())).thenReturn(true);
         when(utenteDAO.findById(anyString())).thenReturn(Optional.empty());
 
         EntityNotFoundException exception = Assertions.assertThrows(
@@ -196,7 +197,7 @@ public class ControllerModificaInformazioniAccountTests {
 
     @Test
     void shouldModificaPasswordThrowNoValidInputException(){
-        when(controllerValidazioneInput.isValidPassword(anyString())).thenReturn(false);
+        when(useCaseValidaInputRegistrazione.isValidPassword(anyString())).thenReturn(false);
 
         NoValidInputException exception = Assertions.assertThrows(
                 NoValidInputException.class,
@@ -228,7 +229,7 @@ public class ControllerModificaInformazioniAccountTests {
     }
     @Test
     void shouldModificaDataDiNascitaReturnOkHttpStatus(){
-        when(controllerValidazioneInput.isValidDataDiNascita(any())).thenReturn(true);
+        when(useCaseValidaInputRegistrazione.isValidDateOfBirth(any())).thenReturn(true);
         when(utenteDAO.findById(anyString())).thenReturn(Optional.of(user));
 
         ResponseEntity<Object> response = controllerModificaInformazioniAccount.
@@ -239,7 +240,7 @@ public class ControllerModificaInformazioniAccountTests {
 
     @Test
     void shouldModificaDataDiNascitaThrowEntityNotFoundException(){
-        when(controllerValidazioneInput.isValidDataDiNascita(any())).thenReturn(true);
+        when(useCaseValidaInputRegistrazione.isValidDateOfBirth(any())).thenReturn(true);
         when(utenteDAO.findById(anyString())).thenReturn(Optional.empty());
 
         EntityNotFoundException exception = Assertions.assertThrows(
@@ -252,7 +253,7 @@ public class ControllerModificaInformazioniAccountTests {
 
     @Test
     void shouldModificaDataDiNascitaThrowNoValidInputException(){
-        when(controllerValidazioneInput.isValidDataDiNascita(any())).thenReturn(false);
+        when(useCaseValidaInputRegistrazione.isValidDateOfBirth(any())).thenReturn(false);
 
         NoValidInputException exception = Assertions.assertThrows(
                 NoValidInputException.class,
@@ -282,7 +283,4 @@ public class ControllerModificaInformazioniAccountTests {
 
         assertThat(exception.getMessage(),is("User not found"));
     }
-
-
-
 }

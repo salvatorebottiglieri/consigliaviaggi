@@ -1,5 +1,7 @@
 package com.ingsw.consigliaviaggi.controllers;
 
+import com.ingsw.consigliaviaggi.interfaces.UseCaseValidaInputRegistrazione;
+import com.ingsw.consigliaviaggi.interfaces.UseCaseValidaInputStruttura;
 import com.ingsw.consigliaviaggi.interfaces.UtenteDAO;
 import com.ingsw.consigliaviaggi.exception.NoValidInputException;
 import com.ingsw.consigliaviaggi.model.Gender;
@@ -19,11 +21,11 @@ public class ControllerModificaInformazioniAccount {
 
     private final UtenteDAO utenteDAO;
 
-    private final ControllerValidazioneInput controllerValidazioneInput;
+    private final UseCaseValidaInputRegistrazione useCaseValidaInputRegistrazione;
 
-    public ControllerModificaInformazioniAccount(UtenteDAO utenteDAO, ControllerValidazioneInput controllerValidazioneInput) {
+    public ControllerModificaInformazioniAccount(UtenteDAO utenteDAO, UseCaseValidaInputRegistrazione useCaseValidaInputRegistrazione) {
         this.utenteDAO = utenteDAO;
-        this.controllerValidazioneInput = controllerValidazioneInput;
+        this.useCaseValidaInputRegistrazione = useCaseValidaInputRegistrazione;
     }
 
     @RolesAllowed("USER")
@@ -44,7 +46,7 @@ public class ControllerModificaInformazioniAccount {
     @PutMapping("/user/nome/{id}")
     public ResponseEntity<Object> modificaNome(@RequestBody String nome, @PathVariable String id)
     {
-        if(controllerValidazioneInput.isValidNome(nome)) {
+        if(useCaseValidaInputRegistrazione.isValidName(nome)) {
             Optional<Utente> utenteOptional = utenteDAO.findById(id);
 
             if (utenteOptional.isPresent()) {
@@ -62,7 +64,7 @@ public class ControllerModificaInformazioniAccount {
     @PutMapping("/user/cognome/{id}")
     public ResponseEntity<Object> modificaCognome(@RequestBody String cognome, @PathVariable String id)
     {
-        if(controllerValidazioneInput.isValidCognome(cognome)) {
+        if(useCaseValidaInputRegistrazione.isValidSurname(cognome)) {
             Optional<Utente> utenteOptional = utenteDAO.findById(id);
 
             if (utenteOptional.isPresent()) {
@@ -80,7 +82,7 @@ public class ControllerModificaInformazioniAccount {
     @PutMapping("/user/indirizzoEmail/{id}")
     public ResponseEntity<Object> modificaIndirizzoEmail(@RequestBody String indirizzoEmail, @PathVariable String id)
     {
-        if(controllerValidazioneInput.isValidIndirizzoEmail(indirizzoEmail)) {
+        if(useCaseValidaInputRegistrazione.isValidEmail(indirizzoEmail)) {
             Optional<Utente> utenteOptional = utenteDAO.findById(id);
 
             if (utenteOptional.isPresent()) {
@@ -98,7 +100,7 @@ public class ControllerModificaInformazioniAccount {
     @PutMapping("/user/password/{id}")
     public ResponseEntity<Object> modificaPassword(@RequestBody String password, @PathVariable String id)
     {
-        if(controllerValidazioneInput.isValidPassword(password)) {
+        if(useCaseValidaInputRegistrazione.isValidPassword(password)) {
             Optional<Utente> utenteOptional = utenteDAO.findById(id);
 
             if (utenteOptional.isPresent()) {
@@ -135,7 +137,7 @@ public class ControllerModificaInformazioniAccount {
     @PutMapping("/user/dataDiNascita/{id}")
     public ResponseEntity<Object> modificaDataDiNascita(@RequestBody Date dataDiNascita, @PathVariable String id)
     {
-        if(controllerValidazioneInput.isValidDataDiNascita(dataDiNascita)) {
+        if(useCaseValidaInputRegistrazione.isValidDateOfBirth(dataDiNascita)) {
             Optional<Utente> utenteOptional = utenteDAO.findById(id);
 
             if (utenteOptional.isPresent()) {

@@ -1,6 +1,8 @@
 package com.ingsw.consigliaviaggi.controllers;
 
 
+import com.ingsw.consigliaviaggi.interfaces.UseCaseValidaInputRegistrazione;
+import com.ingsw.consigliaviaggi.interfaces.UseCaseValidaInputStruttura;
 import com.ingsw.consigliaviaggi.interfaces.UtenteDAO;
 import com.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion;
 import com.ingsw.consigliaviaggi.exception.NoValidInputException;
@@ -19,17 +21,18 @@ import static com.ingsw.consigliaviaggi.model.VisibilitaRecensori.NOMEUTENTE;
 public class ControllerRegistrazione {
 
     private final UtenteDAO utenteDAO;
-    private final ControllerValidazioneInput controllerValidazioneInput;
+    private final UseCaseValidaInputRegistrazione useCaseValidaInputRegistrazione;
 
-    public ControllerRegistrazione(UtenteDAO utenteDAO, ControllerValidazioneInput controllerValidazioneInput) {
+    public ControllerRegistrazione(UtenteDAO utenteDAO, UseCaseValidaInputRegistrazione useCaseValidaInputRegistrazione) {
         this.utenteDAO = utenteDAO;
-        this.controllerValidazioneInput = controllerValidazioneInput;
+        this.useCaseValidaInputRegistrazione = useCaseValidaInputRegistrazione;
     }
 
     @PostMapping(path = "/all/registrazione", consumes = "application/json", produces = "application/json")
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Object> aggiungiUtente(@RequestBody Utente nuovoUtente){
-        if(controllerValidazioneInput.isValidRegistrazione(nuovoUtente)) {
+        if(useCaseValidaInputRegistrazione.isValidName(nuovoUtente.getNome())&&
+            useCaseValidaInputRegistrazione.isValidPassword(nuovoUtente.getPassword())) {
             if (!utenteDAO.existsByNomeUtente(nuovoUtente.getNomeUtente())) {
                 nuovoUtente.setActive(true);
                 nuovoUtente.setMostraCome(NOMEUTENTE);

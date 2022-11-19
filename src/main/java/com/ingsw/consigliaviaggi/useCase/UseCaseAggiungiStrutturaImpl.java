@@ -5,6 +5,7 @@ import com.ingsw.consigliaviaggi.interfaces.StrutturaDAO;
 import com.ingsw.consigliaviaggi.interfaces.UseCaseAggiungiStruttura;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +21,7 @@ public class UseCaseAggiungiStrutturaImpl implements UseCaseAggiungiStruttura {
     }
 
     @Override
-    public boolean creaStruttura(Struttura struttura) throws ElementIsAlreadyPresentExcetpion {
+    public boolean creaStruttura(@NotNull Struttura struttura) throws ElementIsAlreadyPresentExcetpion {
         Indirizzo indirizzo = new Indirizzo(struttura.getIndirizzo().getVia(), struttura.getIndirizzo().
                 getCivico(), struttura.getIndirizzo().getCity());
         Struttura nuovaStruttura = new Struttura(struttura.getNome(), struttura.getDescrizione(),

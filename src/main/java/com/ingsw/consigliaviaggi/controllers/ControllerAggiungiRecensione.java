@@ -1,12 +1,7 @@
 package com.ingsw.consigliaviaggi.controllers;
 
-import com.ingsw.consigliaviaggi.interfaces.RecensioneDAO;
-import com.ingsw.consigliaviaggi.interfaces.StrutturaDAO;
-import com.ingsw.consigliaviaggi.interfaces.UtenteDAO;
-import com.ingsw.consigliaviaggi.exception.NoValidInputException;
+import com.ingsw.consigliaviaggi.interfaces.*;
 import com.ingsw.consigliaviaggi.model.Recensione;
-import com.ingsw.consigliaviaggi.model.Struttura;
-import com.ingsw.consigliaviaggi.model.Utente;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,42 +15,32 @@ public class ControllerAggiungiRecensione {
 
 
     private final InterfacciaAutenticazione interfacciaAutenticazione;
-    private final StrutturaDAO strutturaDAO;
-    private final UtenteDAO utenteDAO;
-    private final RecensioneDAO recensioneDAO;
-    private final ControllerValidazioneInput controllerValidazioneInput;
+    private final UseCaseValidaInputStruttura useCaseValidaInputStruttura;
+    private final UseCaseAggiungiRecensione useCaseAggiungiRecensione;
 
-    public ControllerAggiungiRecensione(InterfacciaAutenticazione interfacciaAutenticazione, StrutturaDAO strutturaDAO, UtenteDAO utenteDAO, RecensioneDAO recensioneDAO, ControllerValidazioneInput controllerValidazioneInput) {
+    public ControllerAggiungiRecensione(InterfacciaAutenticazione interfacciaAutenticazione,
+                                        UseCaseValidaInputStruttura useCaseValidaInputStruttura,
+                                        UseCaseAggiungiRecensione useCaseAggiungiRecensione) {
         this.interfacciaAutenticazione = interfacciaAutenticazione;
-        this.strutturaDAO = strutturaDAO;
-        this.utenteDAO = utenteDAO;
-        this.recensioneDAO = recensioneDAO;
-        this.controllerValidazioneInput = controllerValidazioneInput;
+        this.useCaseValidaInputStruttura = useCaseValidaInputStruttura;
+        this.useCaseAggiungiRecensione = useCaseAggiungiRecensione;
     }
 
     @RolesAllowed("USER")
     @PostMapping("/user/{strutturaId}/aggiungirecensione")
-    public ResponseEntity<Object> aggiungiRecensione(@RequestBody Recensione recensione, @PathVariable String strutturaId){
+    public ResponseEntity<Object> aggiungiRecensione(@RequestBody Recensione recensione,
+                                                     @PathVariable String strutturaId){
 
-        if(controllerValidazioneInput.isValidRecensione(recensione)) {
-
+        if(useCaseValidaInputStruttura.isValidRecensione(recensione)) {
             String nomeUtente = interfacciaAutenticazione.getAuthentication().getName();
-
-            recensione.setDataDiAggiunta(new Date());
-
-            Optional<Utente> utenteOptional = utenteDAO.findByNomeUtente(nomeUtente);
-            Utente utente = utenteOptional.get();
-            recensione.setAutore(utente);
-
-            Optional<Struttura> strutturaOptional = strutturaDAO.findById(strutturaId);
-            Struttura struttura = strutturaOptional.get();
-            recensione.setStruttura(struttura);
-
-            recensioneDAO.save(recensione);
-
-            return new ResponseEntity<>("La recensione è stata aggiunta con successo", HttpStatus.OK);
-
+            try {
+                useCaseAggiungiRecensione.aggiungiRecensione(recensione, strutturaId, nomeUtente);
+                return new ResponseEntity<>("La recensione è stata aggiunta con successo", HttpStatus.OK);
+            }
+            catch (NoSuchElementException exception){
+                return new ResponseEntity<>("Impossibile aggiungere la recensione", HttpStatus.BAD_REQUEST);
+            }
         }
-        else{throw new NoValidInputException("Input non valido");}
+        else{ return new ResponseEntity<>("Input non valido",HttpStatus.NOT_ACCEPTABLE);}
     }
 }

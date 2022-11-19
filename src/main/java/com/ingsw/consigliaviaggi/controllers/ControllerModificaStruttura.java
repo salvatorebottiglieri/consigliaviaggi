@@ -2,6 +2,7 @@ package com.ingsw.consigliaviaggi.controllers;
 
 import com.ingsw.consigliaviaggi.interfaces.StrutturaDAO;
 import com.ingsw.consigliaviaggi.exception.NoValidInputException;
+import com.ingsw.consigliaviaggi.interfaces.UseCaseValidaInputStruttura;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
 import com.ingsw.consigliaviaggi.model.TipoStruttura;
@@ -18,11 +19,11 @@ public class ControllerModificaStruttura {
 
     private final StrutturaDAO strutturaDAO;
 
-    private final ControllerValidazioneInput controllerValidazioneInput;
+    private final UseCaseValidaInputStruttura useCaseValidaInputStruttura;
 
-    public ControllerModificaStruttura(StrutturaDAO strutturaDAO, ControllerValidazioneInput controllerValidazioneInput) {
+    public ControllerModificaStruttura(StrutturaDAO strutturaDAO, UseCaseValidaInputStruttura useCaseValidaInputStruttura) {
         this.strutturaDAO = strutturaDAO;
-        this.controllerValidazioneInput = controllerValidazioneInput;
+        this.useCaseValidaInputStruttura = useCaseValidaInputStruttura;
     }
 
     @RolesAllowed("ADMIN")
@@ -30,7 +31,7 @@ public class ControllerModificaStruttura {
     public ResponseEntity<Object> modificaNome(@RequestBody String nome, @PathVariable String id) {
 
 
-        if(controllerValidazioneInput.isValidNome(nome)) {
+        if(useCaseValidaInputStruttura.isValidName(nome)) {
             Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
 
             if (strutturaOptional.isPresent()) {
@@ -50,7 +51,7 @@ public class ControllerModificaStruttura {
     public ResponseEntity<Object> modificaDescrizione(@RequestBody String descrizione, @PathVariable String id) {
 
 
-        if(controllerValidazioneInput.isValidDescriptionStruttura(descrizione)) {
+        if(useCaseValidaInputStruttura.isValidDescription(descrizione)) {
             Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
             Struttura struttura;
 
@@ -72,7 +73,7 @@ public class ControllerModificaStruttura {
     @PutMapping("/admin/struttura/indirizzo/{id}")  //url che richiama questo metodo
     public ResponseEntity<Object> modificaIndirizzo(@RequestBody Indirizzo indirizzo, @PathVariable String id){
 
-        if (controllerValidazioneInput.isValidAddressStruttura(indirizzo)) {
+        if (useCaseValidaInputStruttura.isValidAddress(indirizzo)) {
 
             Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
             Struttura struttura;

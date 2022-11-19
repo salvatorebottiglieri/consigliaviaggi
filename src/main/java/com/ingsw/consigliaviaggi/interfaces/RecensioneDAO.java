@@ -10,6 +10,4 @@ import java.util.List;
 public interface RecensioneDAO extends CrudRepository<Recensione,Long> {
 
     List<Recensione> findAllByAutoreEquals(Utente utente);
-
-    List<Recensione> findAllByStrutturaEquals(Struttura struttura);
 }

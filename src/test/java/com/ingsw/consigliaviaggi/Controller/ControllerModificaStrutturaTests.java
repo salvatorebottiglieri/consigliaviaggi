@@ -1,9 +1,10 @@
 package com.ingsw.consigliaviaggi.Controller;
 
 import com.ingsw.consigliaviaggi.controllers.ControllerModificaStruttura;
-import com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput;
 import com.ingsw.consigliaviaggi.interfaces.StrutturaDAO;
 import com.ingsw.consigliaviaggi.exception.NoValidInputException;
+import com.ingsw.consigliaviaggi.interfaces.UseCaseValidaInputRegistrazione;
+import com.ingsw.consigliaviaggi.interfaces.UseCaseValidaInputStruttura;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
 import com.ingsw.consigliaviaggi.model.TipoStruttura;
@@ -33,7 +34,7 @@ public class ControllerModificaStrutturaTests {
     @Mock
     StrutturaDAO strutturaDAO;
     @Mock
-    ControllerValidazioneInput controllerValidazioneInput;
+    UseCaseValidaInputStruttura useCaseValidaInputStruttura;
     Struttura struttura;
     Indirizzo indirizzo;
 
@@ -44,9 +45,9 @@ public class ControllerModificaStrutturaTests {
         indirizzo = new Indirizzo("some via",0,"some city");
         struttura = new Struttura();
         controllerModificaStruttura =
-                new ControllerModificaStruttura(strutturaDAO,controllerValidazioneInput);
-        when(controllerValidazioneInput.isValidNome("correct name")).thenReturn(true);
-        when(controllerValidazioneInput.isValidNome("incorrect name")).thenReturn(false);
+                new ControllerModificaStruttura(strutturaDAO,useCaseValidaInputStruttura);
+        when(useCaseValidaInputStruttura.isValidName("correct name")).thenReturn(true);
+        when(useCaseValidaInputStruttura.isValidName("incorrect name")).thenReturn(false);
     }
     @Test
     void shouldModificaNomeReturnOkHttpStatus(){
@@ -80,7 +81,7 @@ public class ControllerModificaStrutturaTests {
     }
     @Test
     void shouldModificaIndirizzoReturnOkHttpStatusCode(){
-        when(controllerValidazioneInput.isValidAddressStruttura(any())).thenReturn(true);
+        when(useCaseValidaInputStruttura.isValidAddress(any())).thenReturn(true);
         when(strutturaDAO.findById(anyString())).thenReturn(Optional.of(struttura));
 
         ResponseEntity<Object> response =
@@ -90,7 +91,7 @@ public class ControllerModificaStrutturaTests {
     }
     @Test
     void shouldModificaIndirizzoThrowsEntityNotFoundException(){
-        when(controllerValidazioneInput.isValidAddressStruttura(any())).thenReturn(true);
+        when(useCaseValidaInputStruttura.isValidAddress(any())).thenReturn(true);
         when(strutturaDAO.findById(anyString())).thenReturn(Optional.empty());
 
         EntityNotFoundException exception = Assertions.assertThrows(
@@ -102,7 +103,7 @@ public class ControllerModificaStrutturaTests {
     }
     @Test
     void shouldModificaIndirizzoThrowsNoValidInputException(){
-        when(controllerValidazioneInput.isValidAddressStruttura(any())).thenReturn(false);
+        when(useCaseValidaInputStruttura.isValidAddress(any())).thenReturn(false);
 
         NoValidInputException exception = Assertions.assertThrows(
                 NoValidInputException.class,
@@ -197,7 +198,7 @@ public class ControllerModificaStrutturaTests {
     }
     @Test
     void shouldModificaDescrizioneReturnOkHttpStatusCode(){
-        when(controllerValidazioneInput.isValidDescriptionStruttura(anyString())).thenReturn(true);
+        when(useCaseValidaInputStruttura.isValidDescription(anyString())).thenReturn(true);
         when(strutturaDAO.findById(anyString())).thenReturn(Optional.of(struttura));
 
         ResponseEntity<Object> response =
@@ -207,7 +208,7 @@ public class ControllerModificaStrutturaTests {
     }
     @Test
     void shouldModificaDescrizioneThrowsEntityNotFoundException(){
-        when(controllerValidazioneInput.isValidDescriptionStruttura(anyString())).thenReturn(true);
+        when(useCaseValidaInputStruttura.isValidDescription(anyString())).thenReturn(true);
         when(strutturaDAO.findById(anyString())).thenReturn(Optional.empty());
 
         EntityNotFoundException exception = Assertions.assertThrows(
@@ -219,7 +220,7 @@ public class ControllerModificaStrutturaTests {
     }
     @Test
     void shouldModificaDescrizioneThrowsNoValidInputException(){
-        when(controllerValidazioneInput.isValidDescriptionStruttura(anyString())).thenReturn(false);
+        when(useCaseValidaInputStruttura.isValidDescription(anyString())).thenReturn(false);
 
         NoValidInputException exception = Assertions.assertThrows(
                 NoValidInputException.class,

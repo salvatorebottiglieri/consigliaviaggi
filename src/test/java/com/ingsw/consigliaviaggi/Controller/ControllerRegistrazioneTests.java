@@ -1,7 +1,7 @@
 package com.ingsw.consigliaviaggi.Controller;
 
 import com.ingsw.consigliaviaggi.controllers.ControllerRegistrazione;
-import com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput;
+import com.ingsw.consigliaviaggi.interfaces.UseCaseValidaInputRegistrazione;
 import com.ingsw.consigliaviaggi.interfaces.UtenteDAO;
 import com.ingsw.consigliaviaggi.exception.ElementIsAlreadyPresentExcetpion;
 import com.ingsw.consigliaviaggi.exception.NoValidInputException;
@@ -29,7 +29,7 @@ public class ControllerRegistrazioneTests {
     @Mock
     UtenteDAO utenteDAO;
     @Mock
-    ControllerValidazioneInput controllerValidazioneInput;
+    UseCaseValidaInputRegistrazione useCaseValidaInputRegistrazione;
     Utente utente;
 
     @BeforeEach
@@ -39,13 +39,13 @@ public class ControllerRegistrazioneTests {
                 "some address","some pass", Gender.altro,"some city",
                 new Date());
         controllerRegistrazione =
-                new ControllerRegistrazione(utenteDAO,controllerValidazioneInput);
+                new ControllerRegistrazione(utenteDAO,useCaseValidaInputRegistrazione);
 
     }
 
     @Test
     void shouldIsValidRegistrazioneReturnHttpOkStatus(){
-        when(controllerValidazioneInput.isValidRegistrazione(any())).thenReturn(true);
+        when(useCaseValidaInputRegistrazione.isValidRegistrazione(utente)).thenReturn(true);
         when(utenteDAO.existsByNomeUtente(anyString())).thenReturn(false);
 
         ResponseEntity<Object> response = controllerRegistrazione.aggiungiUtente(utente);
@@ -54,7 +54,7 @@ public class ControllerRegistrazioneTests {
     }
     @Test
     void shouldIsValidRegistrazioneThrowsElementIsAlreadyPresentException(){
-        when(controllerValidazioneInput.isValidRegistrazione(any())).thenReturn(true);
+        when(useCaseValidaInputRegistrazione.isValidRegistrazione(utente)).thenReturn(true);
         when(utenteDAO.existsByNomeUtente(anyString())).thenReturn(true);
 
         ElementIsAlreadyPresentExcetpion exception = Assertions.assertThrows(
@@ -66,7 +66,7 @@ public class ControllerRegistrazioneTests {
     }
     @Test
     void shouldIsValidRegistrazioneThrowsNoValidInputException(){
-        when(controllerValidazioneInput.isValidRegistrazione(any())).thenReturn(false);
+        when(useCaseValidaInputRegistrazione.isValidRegistrazione(any())).thenReturn(false);
 
         NoValidInputException exception = Assertions.assertThrows(
                 NoValidInputException.class,

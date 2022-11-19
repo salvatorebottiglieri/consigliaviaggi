@@ -1,5 +1,7 @@
 package com.ingsw.consigliaviaggi.interfaces;
 
+import com.ingsw.consigliaviaggi.model.Utente;
+
 import java.util.Date;
 
 public interface UseCaseValidaInputRegistrazione {
@@ -10,4 +12,5 @@ public interface UseCaseValidaInputRegistrazione {
     boolean isValidPassword(String password);
     boolean isValidCity(String city);
     boolean isValidDateOfBirth(Date date);
+    boolean isValidRegistrazione(Utente utente);
 }

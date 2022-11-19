@@ -2,11 +2,8 @@ package com.ingsw.consigliaviaggi.Controller;
 
 
 import com.ingsw.consigliaviaggi.controllers.ControllerAggiungiRecensione;
-import com.ingsw.consigliaviaggi.controllers.ControllerValidazioneInput;
 import com.ingsw.consigliaviaggi.controllers.InterfacciaAutenticazione;
-import com.ingsw.consigliaviaggi.interfaces.RecensioneDAO;
-import com.ingsw.consigliaviaggi.interfaces.StrutturaDAO;
-import com.ingsw.consigliaviaggi.interfaces.UtenteDAO;
+import com.ingsw.consigliaviaggi.interfaces.*;
 import com.ingsw.consigliaviaggi.exception.NoValidInputException;
 import com.ingsw.consigliaviaggi.model.Recensione;
 import com.ingsw.consigliaviaggi.model.Struttura;
@@ -23,6 +20,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -35,18 +33,12 @@ import static org.mockito.Mockito.when;
 class ControllerAggiungiRecensioneTest {
 
     private ControllerAggiungiRecensione controllerAggiungiRecensione;
-
     @Mock
     private InterfacciaAutenticazione interfacciaAutenticazione;
     @Mock
-    private StrutturaDAO strutturaDAO;
+    private UseCaseAggiungiRecensione useCaseAggiungiRecensione;
     @Mock
-    private UtenteDAO utenteDAO;
-    @Mock
-    private RecensioneDAO recensioneDAO;
-    @Mock
-    private ControllerValidazioneInput controllerValidazioneInput;
-    @Mock
+    private UseCaseValidaInputStruttura useCaseValidaInputStruttura;
     private Recensione recensione;
     private String structureId;
 
@@ -55,8 +47,11 @@ class ControllerAggiungiRecensioneTest {
     void init(){
         MockitoAnnotations.initMocks(this);
         structureId = "some id";
-        controllerAggiungiRecensione = new ControllerAggiungiRecensione(interfacciaAutenticazione,strutturaDAO,
-                utenteDAO,recensioneDAO,controllerValidazioneInput);
+        recensione = new Recensione(10,"some review");
+        controllerAggiungiRecensione =
+                new ControllerAggiungiRecensione(interfacciaAutenticazione,
+                                                useCaseValidaInputStruttura,
+                                                useCaseAggiungiRecensione);
         when(interfacciaAutenticazione.getAuthentication()).thenReturn(new Authentication() {
             @Override
             public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -79,42 +74,46 @@ class ControllerAggiungiRecensioneTest {
                 return false;
             }
             @Override
-            public void setAuthenticated(boolean b) throws IllegalArgumentException {
-
-            }
+            public void setAuthenticated(boolean b) throws IllegalArgumentException {}
             @Override
             public String getName() {
-                return null;
+                return "some name";
             }
         });
     }
 
     @Test
     void shouldControllerAggiungiRecensioneReturnOkHttpStatus(){
-
         //Arrange
-        when(controllerValidazioneInput.isValidRecensione(any())).thenReturn(true);
-        when(utenteDAO.findByNomeUtente(any())).thenReturn(Optional.of(new Utente()));
-        when(strutturaDAO.findById(anyString())).thenReturn(Optional.of(new Struttura()));
+        when(useCaseValidaInputStruttura.isValidRecensione(recensione)).thenReturn(true);
         HttpStatus expected = new ResponseEntity<Object>("some response",
                 HttpStatus.OK).getStatusCode();
-
         //Act
         ResponseEntity<Object> response = controllerAggiungiRecensione.aggiungiRecensione(recensione,structureId);
-
         //Assert
         assertThat(response.getStatusCode(),is(expected));
     }
 
     @Test
-    void shouldControllerAggiungiRecensioneThrowException(){
+    void shouldControllerAggiungiRecensioneReturnHttpStatusNotAcceptableWhenInputIsNotValid(){
 
-        when(controllerValidazioneInput.isValidRecensione(any())).thenReturn(false);
+        when(useCaseValidaInputStruttura.isValidRecensione(recensione)).thenReturn(false);
         String expected = "Input non valido";
 
-        NoValidInputException exception = Assertions.assertThrows(NoValidInputException.class, () ->
-                controllerAggiungiRecensione.aggiungiRecensione(recensione,structureId));
+        ResponseEntity<Object> response = controllerAggiungiRecensione.aggiungiRecensione(recensione,structureId);
 
-        assertThat(expected,is(equalTo(exception.getMessage())));
+        assertThat(response.getStatusCode(),is(equalTo(HttpStatus.NOT_ACCEPTABLE)));
+    }
+    @Test
+    void shouldControllerAggiungiRecensioneReturnHttpStatusBadRequestWhenRequestIsBad(){
+        when(useCaseAggiungiRecensione.aggiungiRecensione(recensione,structureId,"some name")).
+                thenThrow(new NoSuchElementException());
+        when(useCaseValidaInputStruttura.isValidRecensione(recensione)).thenReturn(true);
+
+
+        ResponseEntity<Object> response = controllerAggiungiRecensione.aggiungiRecensione(recensione,structureId);
+
+        assertThat(response.getStatusCode(),is(equalTo(HttpStatus.BAD_REQUEST)));
+
     }
 }
