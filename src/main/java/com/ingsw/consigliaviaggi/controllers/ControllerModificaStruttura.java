@@ -102,9 +102,6 @@ public class ControllerModificaStruttura {
         {
             struttura=strutturaOptional.get();
             struttura.setCategoria(nuovaCategoria);
-            if( struttura.freeOfCharge() ){
-                struttura.setPrezzo(0);
-            }
             strutturaDAO.save(struttura);
             return new ResponseEntity<>("la categoria è stata modificata con successo", HttpStatus.OK);
         }
