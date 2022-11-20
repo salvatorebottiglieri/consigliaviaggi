@@ -34,8 +34,8 @@ public class ControllerRicercaStruttura {
 
 
     @PostMapping("/all/ricerca")
-    public List<Struttura> ricercaStruttura(@RequestBody Filtri filtri){
-        return useCaseRicercaStruttura.findStruttura(filtri);
+    public List<Struttura> ricercaStruttura(@RequestBody List<Filtri> filtri){
+        return useCaseRicercaStruttura.findStrutture(filtri);
     }
 
 }

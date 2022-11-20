@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface UseCaseRicercaStruttura {
 
-    public List<Struttura> findStruttura(Filtri filtri);
+    public List<Struttura> findStrutture(List<Filtri> filtri);
     public Struttura getStruttura(String strutturaID);
 }
