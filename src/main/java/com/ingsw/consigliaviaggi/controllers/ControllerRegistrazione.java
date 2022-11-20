@@ -31,8 +31,7 @@ public class ControllerRegistrazione {
     @PostMapping(path = "/all/registrazione", consumes = "application/json", produces = "application/json")
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Object> aggiungiUtente(@RequestBody Utente nuovoUtente){
-        if(useCaseValidaInputRegistrazione.isValidName(nuovoUtente.getNome())&&
-            useCaseValidaInputRegistrazione.isValidPassword(nuovoUtente.getPassword())) {
+        if(useCaseValidaInputRegistrazione.isValidRegistrazione(nuovoUtente)) {
             if (!utenteDAO.existsByNomeUtente(nuovoUtente.getNomeUtente())) {
                 nuovoUtente.setActive(true);
                 nuovoUtente.setMostraCome(NOMEUTENTE);
