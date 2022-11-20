@@ -2,6 +2,7 @@ package com.ingsw.consigliaviaggi.Controller;
 
 import com.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura;
 import com.ingsw.consigliaviaggi.interfaces.StrutturaDAO;
+import com.ingsw.consigliaviaggi.interfaces.UseCaseRicercaStruttura;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
 import com.ingsw.consigliaviaggi.model.TipoStruttura;
@@ -24,13 +25,13 @@ public class ControllerRicercaStrutturaTests {
 
     ControllerRicercaStruttura controllerRicercaStruttura;
     @Mock
-    StrutturaDAO strutturaDAO;
+    UseCaseRicercaStruttura useCaseRicercaStruttura;
 
     Struttura struttura;
     @BeforeEach
     void init(){
         MockitoAnnotations.initMocks(this);
-        controllerRicercaStruttura = new ControllerRicercaStruttura(strutturaDAO);
+        controllerRicercaStruttura = new ControllerRicercaStruttura(useCaseRicercaStruttura);
         struttura = new Struttura("some name","some descr.",
                 new Indirizzo("some via",0,"some city"),
                 TipoStruttura.hotel,10,"some path");
@@ -39,7 +40,7 @@ public class ControllerRicercaStrutturaTests {
     @Test
     void shouldGetStrutturaReturnStrutturaFromId(){
         Struttura expectedStructure = new Struttura();
-        when(strutturaDAO.findById(anyString())).thenReturn(Optional.of(expectedStructure));
+        when(useCaseRicercaStruttura.getStruttura(anyString())).thenReturn(expectedStructure);
         Struttura actualStructure = controllerRicercaStruttura.getStruttura("some id");
         assertThat(actualStructure,is(expectedStructure));
     }
