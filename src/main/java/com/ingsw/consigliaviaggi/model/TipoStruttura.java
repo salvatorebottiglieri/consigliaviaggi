@@ -13,7 +13,6 @@ public enum TipoStruttura {
     parcotematico,
     agriturismo,
     bar,
-
     piazza,
     spiaggia,
     riservanaturale,
