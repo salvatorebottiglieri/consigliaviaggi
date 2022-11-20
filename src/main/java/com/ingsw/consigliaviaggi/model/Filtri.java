@@ -1,49 +1,37 @@
 package com.ingsw.consigliaviaggi.model;
 
 
-public class Filtri{
+import com.ingsw.consigliaviaggi.interfaces.StrutturaDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 
-    private String nome;
-    private String city;
-    private TipoStruttura categoria;
-    private Double latitudine;
-    private Double longitudine;
-    private int distanza;
-    private int prezzo;
+import java.util.List;
 
-    public Double getLatitudine() {
-        return latitudine;
+public abstract class Filtri{
+    private String name;
+    @Autowired
+    StrutturaDAO strutturaDAO ;
+    private String value;
+
+    public Filtri(String name, String value) {
+        this.name = name;
+        this.value = value;
     }
 
-    public Double getLongitudine() {
-        return longitudine;
+    public String getValue() {
+        return value;
     }
 
-    public int getDistanza() {
-        return distanza;
+    public void setValue(String value) {
+        this.value = value;
     }
 
-    public void setDistanza(int distanza) {
-        this.distanza = distanza;
+    public void setName(String name){
+        this.name = name;
     }
 
     public String getNome() {
-        return nome;
+        return name;
     }
-
-    public String getCity() {
-        return city;
-    }
-
-    public TipoStruttura getCategoria() {
-        return categoria;
-    }
-
-
-    public int getPrezzo() {
-        return prezzo;
-    }
-
-
+    public abstract List<Struttura> research();
 
 }

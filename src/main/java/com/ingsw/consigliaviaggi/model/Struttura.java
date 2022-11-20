@@ -128,7 +128,6 @@ public class Struttura {
     }
 
     public boolean freeOfCharge(){
-
         return  categoria != TipoStruttura.hotel &&
                 categoria != TipoStruttura.museo &&
                 categoria != TipoStruttura.discoteca &&
@@ -141,6 +140,5 @@ public class Struttura {
                 categoria != TipoStruttura.agriturismo &&
                 categoria != TipoStruttura.bar;
     }
-
 }
 
