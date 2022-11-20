@@ -127,18 +127,6 @@ public class Struttura {
         return Objects.hash(nome, indirizzo);
     }
 
-    public boolean freeOfCharge(){
-        return  categoria != TipoStruttura.hotel &&
-                categoria != TipoStruttura.museo &&
-                categoria != TipoStruttura.discoteca &&
-                categoria != TipoStruttura.badandbreakfast &&
-                categoria != TipoStruttura.tour &&
-                categoria != TipoStruttura.ristorante &&
-                categoria != TipoStruttura.negozio &&
-                categoria != TipoStruttura.palestra &&
-                categoria != TipoStruttura.parcotematico &&
-                categoria != TipoStruttura.agriturismo &&
-                categoria != TipoStruttura.bar;
-    }
+
 }
 

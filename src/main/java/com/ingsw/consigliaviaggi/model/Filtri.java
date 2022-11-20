@@ -8,7 +8,6 @@ import java.util.List;
 
 public abstract class Filtri{
     private String name;
-    @Autowired
     StrutturaDAO strutturaDAO ;
     private String value;
 

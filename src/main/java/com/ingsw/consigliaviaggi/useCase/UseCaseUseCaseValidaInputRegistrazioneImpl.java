@@ -23,109 +23,48 @@ public class UseCaseUseCaseValidaInputRegistrazioneImpl implements UseCaseValida
 
     @Override
     public boolean isValidEmail(@NotNull String email) {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
-                "[a-zA-Z0-9_+&*-]+)*@" +
-                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
-                "A-Z]{2,7}$";
-
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-z A-Z]{2,7}$";
         Pattern pat = Pattern.compile(emailRegex);
         if (email == null)
             return false;
         return pat.matcher(email).matches();
     }
 
+    private boolean isLengthCorrect(String password){
+        return (password.length() >= 8) && (password.length() <= 15);
+    }
+    private boolean isWithoutEmptySpaces(String password){
+        return !password.contains(" ");
+    }
+    private boolean containsAlmostADigit(String password){
+        return password.matches(".*\\d.*");
+    }
+    private boolean containsAlmostASpecialChar(String password){
+        return password.matches("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
+    }
+    private boolean containsAlmostARegularLetter(String password){
+        return password.matches("[a-z]");
+    }
+    private boolean containsAlmostACapitalLetter(String password){
+        return password.matches("[A-Z]");
+    }
+
+
     @Override
     public boolean isValidPassword(@NotNull String password) {
 
-        //controllo di lunghezza
-        if (!((password.length() >= 8) && (password.length() <= 15))) {
-            return false;
-        }
-        //controllo di eventuali elementi vuoti
-        if (password.contains(" ")) {
-            return false;
-        }
-        //controllo presenza di numeri
-
-        int count = 0;
-
-
-        for (int i = 0; i <= 9; i++) {
-
-            String str1 = Integer.toString(i);
-
-            if (password.contains(str1)) {
-                count = 1;
-                break;
-            }
-        }
-        if (count == 0) {
-            return false;
-        }
-
-
-        // controllo la presenza di caratteri speciali
-        if (!(password.contains("@") || password.contains("#")
-                || password.contains("!") || password.contains("~")
-                || password.contains("$") || password.contains("%")
-                || password.contains("^") || password.contains("&")
-                || password.contains("*") || password.contains("(")
-                || password.contains(")") || password.contains("-")
-                || password.contains("+") || password.contains("/")
-                || password.contains(":") || password.contains(".")
-                || password.contains(", ") || password.contains("<")
-                || password.contains(">") || password.contains("?")
-                || password.contains("|"))) {
-            return false;
-        }
-
-
-        count = 0;
-
-        // controllo la presenza di lettere maiuscole
-        for (int i = 65; i <= 90; i++) {
-
-            // type casting
-            char c = (char)i;
-
-            String str1 = Character.toString(c);
-            if (password.contains(str1)) {
-                count = 1;
-                break;
-            }
-        }
-        if (count == 0) {
-            return false;
-        }
-
-
-
-        count = 0;
-
-        // controllo la presenza di lettere minuscole
-        for (int i = 90; i <= 122; i++) {
-
-            // type casting
-            char c = (char)i;
-            String str1 = Character.toString(c);
-
-            if (password.contains(str1)) {
-                count = 1;
-                break;
-            }
-        }
-        if (count == 0) {
-            return false;
-        }
-        return true;
+        return isLengthCorrect(password) &&
+                isWithoutEmptySpaces(password) &&
+                containsAlmostADigit(password) &&
+                containsAlmostASpecialChar(password)&&
+                containsAlmostACapitalLetter(password) &&
+                containsAlmostARegularLetter(password);
     }
 
     @Override
     public boolean isValidCity(@NotNull String city) {
         return isValidName(city);
     }
-
-
 
     @Override
     public boolean isValidDateOfBirth(@NotNull Date date) {
