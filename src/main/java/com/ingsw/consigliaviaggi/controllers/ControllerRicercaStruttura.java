@@ -1,22 +1,10 @@
 package com.ingsw.consigliaviaggi.controllers;
 
-
-import com.byteowls.jopencage.JOpenCageGeocoder;
-import com.byteowls.jopencage.model.JOpenCageForwardRequest;
-import com.byteowls.jopencage.model.JOpenCageLatLng;
-import com.byteowls.jopencage.model.JOpenCageResponse;
-import com.ingsw.consigliaviaggi.interfaces.StrutturaDAO;
 import com.ingsw.consigliaviaggi.interfaces.UseCaseRicercaStruttura;
 import com.ingsw.consigliaviaggi.model.Filtri;
-import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Struttura;
-import com.ingsw.consigliaviaggi.model.TipoStruttura;
 import org.springframework.web.bind.annotation.*;
-
-import javax.persistence.EntityNotFoundException;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class ControllerRicercaStruttura {
