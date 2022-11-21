@@ -92,7 +92,7 @@ public class ControllerModificaStruttura {
     }
 
     @RolesAllowed("ADMIN")
-    @PutMapping("/admin/struttura/categoria/{id}")  //url che richiama questo metodo
+    @PutMapping("/admin/struttura/categoria/{id}")
     public ResponseEntity<Object> modificaCategoria(@RequestBody TipoStruttura nuovaCategoria, @PathVariable String id)
     {
         Optional<Struttura> strutturaOptional = strutturaDAO.findById(id);
