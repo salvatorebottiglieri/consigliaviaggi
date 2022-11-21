@@ -23,7 +23,7 @@ public class UseCaseUseCaseValidaInputRegistrazioneImpl implements UseCaseValida
 
     @Override
     public boolean isValidEmail(@NotNull String email) {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-z A-Z]{2,7}$";
+        String emailRegex = "(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-z A-Z]{2,7}$";
         Pattern pat = Pattern.compile(emailRegex);
         return pat.matcher(email).matches();
     }
