@@ -24,12 +24,12 @@ public class FiltriFactory {
         List<Filtri> researcher = new ArrayList<>();
 
         for (Filtri filter:filterValues) {
-            if(filter.getNome().equalsIgnoreCase("NAME")){
-                researcher.add(new FiltroName(filter.getNome(),filter.getValue()));
-            }else if(filter.getNome().equalsIgnoreCase("CATEGORY")){
-                researcher.add(new FiltroTipoStruttura(filter.getNome(), filter.getValue()));
-            }else if(filter.getNome().equalsIgnoreCase("PRICE")){
-                researcher.add(new FiltroPrezzo(filter.getNome(), filter.getValue()));
+            if(filter.getName().equalsIgnoreCase("NAME")){
+                researcher.add(new FiltroName(filter.getName(),filter.getValue()));
+            }else if(filter.getName().equalsIgnoreCase("CATEGORY")){
+                researcher.add(new FiltroTipoStruttura(filter.getName(), filter.getValue()));
+            }else if(filter.getName().equalsIgnoreCase("PRICE")){
+                researcher.add(new FiltroPrezzo(filter.getName(), filter.getValue()));
             }
         }
         return  researcher;

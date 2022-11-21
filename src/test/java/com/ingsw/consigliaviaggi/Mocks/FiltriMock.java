@@ -15,13 +15,13 @@ public class FiltriMock extends Filtri {
 
     @Override
     public List<Struttura> research() {
-        if(getNome().equalsIgnoreCase("NAME")){
+        if(getName().equalsIgnoreCase("NAME")){
             return mockResearchName(getValue());
         }
-        else if(getNome().equalsIgnoreCase("PRICE")){
+        else if(getName().equalsIgnoreCase("PRICE")){
             return mockResearchPrice(getValue());
         }
-        else if(getNome().equalsIgnoreCase("CATEGORY")){
+        else if(getName().equalsIgnoreCase("CATEGORY")){
             return mockResearchTipoStruttura(getValue());
         }
         return null;

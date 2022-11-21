@@ -28,7 +28,7 @@ public abstract class Filtri{
         this.name = name;
     }
 
-    public String getNome() {
+    public String getName() {
         return name;
     }
     public abstract List<Struttura> research();

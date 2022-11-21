@@ -19,4 +19,5 @@ public class FiltroName extends Filtri{
     public String getValue() {
         return super.getValue();
     }
+
 }
