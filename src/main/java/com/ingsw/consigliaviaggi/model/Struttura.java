@@ -3,7 +3,6 @@ package com.ingsw.consigliaviaggi.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.util.*;
 
 @Entity
