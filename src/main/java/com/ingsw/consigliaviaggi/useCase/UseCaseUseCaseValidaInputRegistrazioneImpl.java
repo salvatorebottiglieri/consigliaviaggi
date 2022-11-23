@@ -28,36 +28,11 @@ public class UseCaseUseCaseValidaInputRegistrazioneImpl implements UseCaseValida
         return pat.matcher(email).matches();
     }
 
-    private boolean isLengthCorrect(String password){
-        return (password.length() >= 8) && (password.length() <= 15);
-    }
-    private boolean isWithoutEmptySpaces(String password){
-        return !password.contains(" ");
-    }
-    private boolean containsAlmostADigit(String password){
-        return password.matches(".*\\d.*");
-    }
-    private boolean containsAlmostASpecialChar(String password){
-        return password.matches("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
-    }
-    private boolean containsAlmostARegularLetter(String password){
-        return password.matches("[a-z]");
-    }
-    private boolean containsAlmostACapitalLetter(String password){
-        return password.matches("[A-Z]");
-    }
-
-
     @Override
-    public boolean isValidPassword(@NotNull String password) {
-
-        return isLengthCorrect(password) &&
-                isWithoutEmptySpaces(password) &&
-                containsAlmostADigit(password) &&
-                containsAlmostASpecialChar(password)&&
-                containsAlmostACapitalLetter(password) &&
-                containsAlmostARegularLetter(password);
+    public boolean isValidPassword(@NotNull String password){
+        return password.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
     }
+
 
     @Override
     public boolean isValidCity(@NotNull String city) {
@@ -71,12 +46,12 @@ public class UseCaseUseCaseValidaInputRegistrazioneImpl implements UseCaseValida
 
     @Override
     public boolean isValidRegistrazione(Utente utente) {
-        return  isValidName(utente.getNome()) &&
+        return  isValidPassword(utente.getPassword())&&
+                isValidName(utente.getNome()) &&
                 isValidCity(utente.getCity()) &&
                 isValidDateOfBirth(utente.getDataDiNascita()) &&
                 isValidEmail(utente.getIndirizzoEmail()) &&
-                isValidSurname(utente.getCognome()) &&
-                isValidPassword(utente.getPassword());
+                isValidSurname(utente.getCognome());
 
     }
 }
