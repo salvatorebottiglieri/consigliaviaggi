@@ -2,7 +2,6 @@ package com.ingsw.consigliaviaggi.Controller;
 
 import com.ingsw.consigliaviaggi.Mocks.FiltriMock;
 import com.ingsw.consigliaviaggi.controllers.ControllerRicercaStruttura;
-import com.ingsw.consigliaviaggi.interfaces.StrutturaDAO;
 import com.ingsw.consigliaviaggi.interfaces.UseCaseRicercaStruttura;
 import com.ingsw.consigliaviaggi.model.Filtri;
 import com.ingsw.consigliaviaggi.model.Indirizzo;
@@ -11,20 +10,13 @@ import com.ingsw.consigliaviaggi.model.TipoStruttura;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.hamcrest.Matchers.contains;
-
-
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-
 import java.util.ArrayList;
 import java.util.List;
-
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
-
 import static org.mockito.Mockito.when;
 
 
@@ -63,7 +55,7 @@ public class ControllerRicercaStrutturaTests {
         structures.add(struttura);
         when(useCaseRicercaStruttura.findStrutture(filters)).thenReturn(structures);
 
-        List<Struttura> actual = useCaseRicercaStruttura.findStrutture(filters);
+        List<Struttura> actual = controllerRicercaStruttura.ricercaStruttura(filters);
         assertThat(actual,contains(struttura));
     }
 

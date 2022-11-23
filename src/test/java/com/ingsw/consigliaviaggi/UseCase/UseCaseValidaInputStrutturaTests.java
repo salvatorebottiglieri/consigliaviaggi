@@ -1,11 +1,14 @@
 package com.ingsw.consigliaviaggi.UseCase;
 
 import com.ingsw.consigliaviaggi.interfaces.UseCaseValidaInputStruttura;
+import com.ingsw.consigliaviaggi.model.Indirizzo;
 import com.ingsw.consigliaviaggi.model.Recensione;
 import com.ingsw.consigliaviaggi.useCase.UseCaseUseCaseValidaInputStrutturaImpl;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Nested;
 
 
 import static org.hamcrest.CoreMatchers.is;
@@ -93,6 +96,77 @@ public class UseCaseValidaInputStrutturaTests {
         Recensione recensione = new Recensione(1,description);
         Boolean response = useCaseUseCaseValidaInputStruttura.isValidRecensione(recensione);
         assertThat(response,is(true));
+    }
+
+    @Nested
+    @DisplayName("Address Testing")
+    class AddressTest {
+
+        Indirizzo address;
+        @BeforeEach
+        void init(){
+             address = new Indirizzo();
+        }
+        @Test
+        void shouldIsValidAddressReturnFalseWhenCivicIsLessOrEqualZero () {
+            address.setCivico(0);
+            address.setVia("some via");
+            address.setCity("some city");
+
+            Boolean response = useCaseUseCaseValidaInputStruttura.isValidAddress(address);
+
+            assertThat(response,is(false));
+        }
+        @Test
+        void shouldIsValidAddressReturnTrueWhenCivicIsGreaterThanZeroViaAndCityAreNotEmptyAndLengthIsLessThan50(){
+            address.setCivico(1);
+            address.setVia("some via");
+            address.setCity("some city");
+
+            Boolean response = useCaseUseCaseValidaInputStruttura.isValidAddress(address);
+
+            assertThat(response,is(true));
+        }
+        @Test
+        void shouldIsValidAddressReturnFalseWhenViaIsEmpty () {
+            address.setVia("");
+            address.setCity("some city");
+            address.setCivico(1);
+
+            Boolean response = useCaseUseCaseValidaInputStruttura.isValidAddress(address);
+
+            assertThat(response,is(false));
+        }
+        @Test
+        void shouldIsValidAddressReturnFalseWhenCityIsEmpty(){
+            address.setVia("some via");
+            address.setCity("");
+            address.setCivico(1);
+
+            Boolean response = useCaseUseCaseValidaInputStruttura.isValidAddress(address);
+
+            assertThat(response,is(false));
+        }
+        @Test
+        void shouldIsValidAddressReturnFalseWhenViaIsGreaterThan50(){
+            address.setVia(RandomStringUtils.randomAlphabetic(51));
+            address.setCity("");
+            address.setCivico(1);
+
+            Boolean response = useCaseUseCaseValidaInputStruttura.isValidAddress(address);
+
+            assertThat(response,is(false));
+        }
+        @Test
+        void shouldIsValidAddressReturnFalseWhenCityIsGreaterThan50(){
+            address.setCity(RandomStringUtils.randomAlphabetic(51));
+            address.setVia("some via");
+            address.setCivico(1);
+
+            Boolean response = useCaseUseCaseValidaInputStruttura.isValidAddress(address);
+
+            assertThat(response,is(false));
+        }
     }
 
 }
