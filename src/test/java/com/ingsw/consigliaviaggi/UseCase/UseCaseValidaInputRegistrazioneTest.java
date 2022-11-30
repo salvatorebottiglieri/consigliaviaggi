@@ -118,13 +118,5 @@ public class UseCaseValidaInputRegistrazioneTest {
         Boolean response = useCaseValidaInputRegistrazione.isValidDateOfBirth(date);
         assertThat(response,is(true));
     }
-    @Test
-    void shouldIsValidRegistrazioneReturnFalse(){
-        Utente user = new Utente("some username","some name","some surname"
-        ,"sasibottiglieri@gmail.com","fn3i2A@32m", Gender.altro,"some city",
-                new Date());
 
-        boolean response = useCaseValidaInputRegistrazione.isValidRegistrazione(user);
-        assertThat(response,is(false));
-    }
 }
