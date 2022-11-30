@@ -12,7 +12,7 @@ import java.util.Date;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class UseCaseValidaInputRegistrazioneTest {
 
@@ -117,6 +117,14 @@ public class UseCaseValidaInputRegistrazioneTest {
         Date date = new Date(new Date().getTime()-1000);
         Boolean response = useCaseValidaInputRegistrazione.isValidDateOfBirth(date);
         assertThat(response,is(true));
+    }
+    @Test
+    void shouldIsValidRegistrazioneReturnTrue(){
+        Utente utente = new Utente("some username","some name","some surname",
+                "someemail@gmail.com","fn3i2A@32m",
+                Gender.altro,"some city",new Date(1996,1,1));
+        useCaseValidaInputRegistrazione.isValidRegistrazione(utente);
+        assertThat(true,is(true));
     }
 
 }

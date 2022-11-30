@@ -42,6 +42,7 @@ public class Utente {
     }
 
 
+
     public String getNomeUtente() {
         return nomeUtente;
     }
